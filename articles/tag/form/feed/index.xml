@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>form &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/form/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 10 Oct 2014 06:54:54 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>以浏览器方式保存文档时，更改 form 域的值</title>
+		<link>/articles/modified-form-field-value-when-document-is-save-from-the-web.html</link>
+				<comments>/articles/modified-form-field-value-when-document-is-save-from-the-web.html#comments</comments>
+				<pubDate>Fri, 05 Mar 2010 02:06:35 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[form]]></category>
+		<category><![CDATA[formula]]></category>
+
+		<guid isPermaLink="false">/?p=644588</guid>
+				<description><![CDATA[有些时候，我们会通过不同的表单显示同一个文档，以实现针对不同用户或场景的展现。但是一旦进行保存操作，文档的 f [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>有些时候，我们会通过不同的表单显示同一个文档，以实现针对不同用户或场景的展现。但是一旦进行保存操作，文档的 form 域就会发生改变。以如下场景为例：</p>
+<ol>
+<li>用户 A 通过 Form1 新建一个文档并保存，此时 form 的值为&#8221;Form1&#8243;</li>
+<li>用户 B 通过 Form2 打开此文档并保存，此时 form 域的值则变为&#8221;Form2&#8243;</li>
+</ol>
+<p>这样的话，本来应该属于同一类的文档，却有着不同的 form 域值。考虑到建立视图时的选择公式、搜索时的搜索条件的可维护性，我们希望将这些文档的 form 域值统一为&#8221;Form1&#8243;。</p>
+<p>首先想到的方法是在 Form2 上建立 form 计算域，将其计算公式写为&#8221;Form1&#8243;，但是经测试此方法无效。可行的方法为将 Form2 的 WebQuerySave 公式写为 @SetField(&#8220;Form&#8221;;&#8221;Form1&#8243;)。</p>
+<p>请参考：<a title="Fix for modified Form field value is ignored when document is submitted from the Web" href="http://searchdomino.techtarget.com/tip/0,289483,sid4_gci1084134,00.html" target="_blank">Fix for modified Form field value is ignored when document is submitted from the Web</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/modified-form-field-value-when-document-is-save-from-the-web.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+	</channel>
+</rss>

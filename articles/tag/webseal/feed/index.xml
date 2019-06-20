@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>webseal &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/webseal/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 12 Jul 2007 11:23:48 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>通过WebSeal访问Domino系统问题总结</title>
+		<link>/articles/webseal-and-domino.html</link>
+				<comments>/articles/webseal-and-domino.html#respond</comments>
+				<pubDate>Thu, 12 Jul 2007 11:23:48 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[webseal]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e9%80%9a%e8%bf%87webseal%e8%ae%bf%e9%97%aedomino%e7%b3%bb%e7%bb%9f%e9%97%ae%e9%a2%98%e6%80%bb%e7%bb%93.html</guid>
+				<description><![CDATA[最近一个项目使用了WebSeal作为其他系统的统一访问接口，在测试我们Domino应用过程中，发现了一些问题。 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>最近一个项目使用了WebSeal作为其他系统的统一访问接口，在测试我们Domino应用过程中，发现了一些问题。这些问题对于除了Domino以外的web应用，应该都是存在的。</p>
+<ol>
+<li> 使用JavaScript重定向的问题。<br />
+通过WebSeal访问web应用，服务器会在应用的URL路径前面加上一层目录，以区分不同的应用。如oa应用下的/login这个地址，如果通过WebSeal访问就会变成/oa/login。一般来说WebSeal 会将页面中的各种 URL 自动转换成相应的路径，但有一种情况除外：javascript 中 的URL。我们的解决方法是将相关的地址写到一个隐藏的 A 标签中，这样 WebSeal 就会对其做处理，然后在通过 js 将转换后的地址取出来即可。</li>
+<li>页面元素Content-Type不对的问题。<br />
+WebSeal会在 HTML 页中加入一段 js 代码，用来做它需要的一些处理。而它判断是否是 HTML 页的标准就是服务器返回的Content-Type。如果我们使用 Domino 的页面来存放 js 而没有更改其 Content-Type 的话，这个 js 也会被插入上面所说的代码，然后导致 js 错误。所以我们需要将各种资源的 Content-Type 设置正确，其实这不单是为了 WebSeal 而修改，还会有其他好处的。</li>
+<li>中文URL和POST中文数据的问题。<br />
+中文 URL 的话，应该尽量避免，编一下码就好了。POST中文数据后来确定是 WebSeal 的配置问题。</li>
+</ol>
+]]></content:encoded>
+							<wfw:commentRss>/articles/webseal-and-domino.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

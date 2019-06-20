@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>mantis &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/mantis/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 21 May 2010 01:51:15 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>问题跟踪系统 Mantis 配置要点</title>
+		<link>/articles/bug-track-system-mantis-configuration.html</link>
+				<comments>/articles/bug-track-system-mantis-configuration.html#comments</comments>
+				<pubDate>Fri, 21 May 2010 01:51:15 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[其他]]></category>
+		<category><![CDATA[JpGraph]]></category>
+		<category><![CDATA[mantis]]></category>
+
+		<guid isPermaLink="false">/?p=644769</guid>
+				<description><![CDATA[本文主要记录我在 Mantis 配置过程中遇到的几个问题，其安装比较简单这里就不详细描述，只是要注意 Mysq [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>本文主要记录我在 Mantis 配置过程中遇到的几个问题，其安装比较简单这里就不详细描述，只是要注意 Mysql 安装时字符集选择 UTF-8。</p>
+<p>（注：我的软件环境： Windows 2003，PHP 5.2.13，Mysql 5.1.46，Apache 2.2.15，Mantis 1.2.1）</p>
+<ul>
+<li>更改默认时区：在 config_inc.php 中加入</li>
+</ul>
+<blockquote>
+<pre>putenv("TZ=Asia/Shanghai");</pre>
+</blockquote>
+<ul>
+<li>更改默认语言：在 config_inc.php 中加入</li>
+</ul>
+<blockquote>
+<pre>$g_default_language='chinese_simplified';</pre>
+</blockquote>
+<ul>
+<li>更改窗口/页面标题：在 config_inc.php 中加入</li>
+</ul>
+<blockquote>
+<pre>$g_window_title = 'Bug跟踪系统';
+$g_page_title = 'Bug跟踪系统';</pre>
+</blockquote>
+<p>之后发现标题变为空白，将 config_inc.php 改为 <strong>UTF-8无BOM格式</strong> 后问题解决。</p>
+<ul>
+<li>图表中文乱码问题</li>
+</ul>
+<p>由于 Mantis 自带的图表引擎效果不好，所以建议使用 JpGraph 引擎。首先下载 <a href="http://www.aditus.nu/jpgraph/jpdownload.php" target="_blank">JpGraph</a>，将压缩包中 src 目录下所有文件解压到 <strong>{mantisroot}/library/jpgraph</strong>。</p>
+<p>以管理员帐号登录系统，通过 <strong>管理&gt;插件管理</strong> 安装 <strong>Mantis图表</strong> 插件，然后对其进行配置：将第一项图表引擎改为 JpGraph，其余保持默认设置并保存（尤其是字体要保留 Arial，下面会用到）。至此图表已经可用，但中文乱码。</p>
+<p>由于我的 Mysql 字符编码为 UTF-8，所以无需像网上大多数文章所述进行转码，直接找一个含有中文字符的字体即可。编辑 <strong><strong>{mantisroot}</strong>libraryjpgraphjpgraph_ttf.inc.php</strong> 文件，通过查找 “FF_ARIAL =&gt;”找到 Arial 字体配置部分，将原来的 arial.ttf 及各种粗斜变体替换为任意中文字体，样例如下：</p>
+<blockquote>
+<pre>FF_ARIAL =&gt;   array(FS_NORMAL =&gt;'msyh.ttf',
+ FS_BOLD  =&gt;'msyhbd.ttf',
+ FS_ITALIC =&gt;'msyh.ttf',
+ FS_BOLDITALIC =&gt;'msyhbd.ttf' ) ,</pre>
+</blockquote>
+<p>编辑好保存文件，乱码搞定。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/bug-track-system-mantis-configuration.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+	</channel>
+</rss>

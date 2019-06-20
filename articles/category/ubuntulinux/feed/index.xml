@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ubuntu/Linux &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/category/ubuntulinux/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Mon, 15 Sep 2014 10:05:01 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>session.getDatabase 中文件名大小写的问题</title>
+		<link>/articles/session-getdatabase-case-sensitive.html</link>
+				<comments>/articles/session-getdatabase-case-sensitive.html#respond</comments>
+				<pubDate>Mon, 15 Sep 2014 10:03:17 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[Ubuntu/Linux]]></category>
+		<category><![CDATA[dbcache]]></category>
+
+		<guid isPermaLink="false">/?p=645259</guid>
+				<description><![CDATA[最近在项目上遇到了一个奇怪的问题：某个 XPages 页面偶发性报错，对数据库进行签名后问题消失，但过些时间就 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>最近在项目上遇到了一个奇怪的问题：某个 XPages 页面偶发性报错，对数据库进行签名后问题消失，但过些时间就又会出现。</p>
+<p>由于签名后问题消失，最开始排查时就认为是代码签名的问题，可能是服务器上有对应的模板，设计不定时的被 Design 任务刷新回来导致问题。但是通过各种方法找了很多遍，都确认库的设计没有被刷新过。</p>
+<p>最终通过检查代码的错误行发现，是一处 session.getDatabase 调用时数据库路径的大小写有问题，修改成与文件系统一致后问题消失。问题虽然解决了，但为什么同样的代码大部分情况下没问题，只有偶发性的报错呢？同样的代码在同为 Linux 平台的产品测试环境上，为什么就一切正常呢？</p>
+<p>带着这些疑问继续探索，终于找到了一些端倪。在这个<a href="http://www-01.ibm.com/support/docview.wss?uid=swg1LO58955" target="_blank">技术文档</a>中提到如下内容：</p>
+<blockquote><p>DB on server names AgentRunner.nsf. Notes the upper/lowercase.</p>
+<p>Steps to Reproduce:</p>
+<p>After a server restart or a &#8220;dbcache flush&#8221;:</p>
+<p>&gt; lo fixup agentrunner<br />
+&gt; 25.06.2002 09:58:00   Database fixup process started<br />
+25.06.2002 09:58:00   Unable to fixup database agentrunner: File<br />
+does not exist<br />
+25.06.2002 09:58:00   Database fixup process shutdown<br />
+&#8211;&gt; <span style="color: #ff0000;">does not work, because db is not in server cache</span></p>
+<p>lo fixup AgentRunner<br />
+&gt; 25.06.2002 09:58:07   Database fixup process started<br />
+25.06.2002 09:58:07   Performing consistency check on<br />
+AgentRunner.nsf&#8230;<br />
+25.06.2002 09:58:08   Completed consistency check on<br />
+AgentRunner.nsf<br />
+25.06.2002 09:58:08   Database fixup process shutdown<br />
+&#8211;&gt; <span style="color: #ff0000;">works &#8211; it`s exact-case</span></p>
+<p>&gt; lo fixup agentrunner<br />
+&gt; 25.06.2002 09:58:12   Database fixup process started<br />
+25.06.2002 09:58:12   Database fixup process shutdown<br />
+&#8211;&gt; <span style="color: #ff0000;">works now with lowercase, cause db is in cache</span></p>
+<p>dbcache flush<br />
+&gt; lo fixup agentrunner<br />
+&gt; 25.06.2002 09:58:21   Database fixup process started<br />
+25.06.2002 09:58:21   Unable to fixup database agentrunner: File<br />
+does not exist<br />
+25.06.2002 09:58:21   Database fixup process shutdown<br />
+&#8211;&gt; <span style="color: #ff0000;">db removed from cache &#8211;&gt; doesn`t work</span></p></blockquote>
+<p>整个过程总结如下：</p>
+<ul>
+<li>首先用大小写错误的文件名访问，报错</li>
+<li>再用大小写正确的文件名访问，正常</li>
+<li>再次用大小写错误的文件名访问，正常（因为上一条命令已经将数据库加入了 dbcache）</li>
+<li>清空 dbcache 后，再次用大小写错误的文件名访问，报错</li>
+</ul>
+<p>导致这个现象的根本原因就是：</p>
+<ul>
+<li>当数据库不在 dbcache 中时，Domino 使用数据库文件名通过文件系统获取数据库对象，此时是区分大小写的</li>
+<li>当数据库在 dbcache 中时，Domino 使用数据库文件名在 dbcache 中查找，找到后直接返回数据库对象，此过程无需访问文件系统，所以就不区分大小写</li>
+</ul>
+<p>分析到这里，最初的所有现象就能说通了：</p>
+<ul>
+<li>错误偶发，是因为大部分情况下此库都在 dbcache 中，可能只有服务器刚刚启动/缓存超限将此库移除时，才会报错</li>
+<li>签名后错误消失，是因为签名的过程肯定会把此库加入到 dbcache</li>
+</ul>
+<p>吃一堑长一智，既然这个问题让我纠结了这么久，那么如何才能避免此类问题发生呢？建议如下：</p>
+<ul>
+<li>数据库名始终使用全小写，代码中获取数据库时也用全小写</li>
+<li>*nux 测试环境下建议通过 NSF_DbCache_Disable=1 禁用缓存。虽然性能会差一些，但是能尽早的发现问题（千万别在生产服务器上这样做）</li>
+</ul>
+]]></content:encoded>
+							<wfw:commentRss>/articles/session-getdatabase-case-sensitive.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Maximum number of file handles allowed for Domino is 1024 错误</title>
+		<link>/articles/maximum-number-of-file-handles-allowed-for-domino-is-1024.html</link>
+				<comments>/articles/maximum-number-of-file-handles-allowed-for-domino-is-1024.html#respond</comments>
+				<pubDate>Tue, 11 May 2010 06:24:42 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[Ubuntu/Linux]]></category>
+
+		<guid isPermaLink="false">/?p=644764</guid>
+				<description><![CDATA[今天同事报告一个问题：Linux 平台下的 Domino 服务器运行一段时间之后，Notes 客户机无法连接， [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>今天同事报告一个问题：Linux 平台下的 Domino 服务器运行一段时间之后，Notes 客户机无法连接，但 HTTP 服务器却是好的。同时在服务器控制台上出现以下错误：</p>
+<blockquote><p>WARNING: the maximum number of file handles (ulimit -n) allowed for  Domino is 1024. See Release Notes and set the allowable maximum to  20000.</p></blockquote>
+<p>经查明其原因是在 Linux 默认设置下，每个进程能够使用的 file handles 为 1024，达到这个限制之后就无法再打开任何文件了。修改此设定分为两种情况：</p>
+<ul>
+<li>用户登录系统手工启动 Domino（修改 /etc/security/limits.conf 文件）</li>
+<li>通过 /etc/init.d 脚本自动启动（在启动脚本中增加 ulimit -n 20000 命令）</li>
+</ul>
+<p>具体方法请参考 <a href="http://www-01.ibm.com/support/docview.wss?rs=463&amp;uid=swg21221870" target="_blank">IBM 技术支持文档</a>。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/maximum-number-of-file-handles-allowed-for-domino-is-1024.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Ubuntu 7.10 在 kernel 参数中指定 vga=xxx 导致 tty 黑屏</title>
+		<link>/articles/tty-get-black-screen-on-gutsy-gibbon-when-set-vga.html</link>
+				<comments>/articles/tty-get-black-screen-on-gutsy-gibbon-when-set-vga.html#respond</comments>
+				<pubDate>Fri, 19 Oct 2007 02:37:18 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Ubuntu/Linux]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/tty-get-black-screen-on-gutsy-gibbon-when-set-vga.html</guid>
+				<description><![CDATA[由于我的显示器比较特殊，所以启动的 kernel 参数中一直加上了 vga=791，来指定分辨率为 1024× [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>由于我的显示器比较特殊，所以启动的 kernel 参数中一直加上了 vga=791，来指定分辨率为 1024×768。前些天升级到 7.10 之后，开机过程以及 tty[1-6] 就都是黑屏。昨天终于找到了解决方法：</p>
+<ol>
+<li>修改 <em>/etc/initramfs-tools/modules</em>，加入了 fbcon,vesafb,nvidiafb 三行</li>
+<li>修改 <em>/etc/modprobe.d/blacklist-framebuffer</em>，把 nvidiafb,vesafb,vga16fb 三行注释掉</li>
+<li>运行sudo update-initramfs -u，重启机器</li>
+</ol>
+<p>其中的 nvidiafb 可以按照自己的显卡类型，换成相应的模块。</p>
+<p>参考链接：<a href="http://forum.ubuntu.org.cn/viewtopic.php?p=463775&amp;sid=3cdb203b1bb8ede3f5b4ae64c90c5ae1" target="_blank">Ubuntu 中文论坛</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/tty-get-black-screen-on-gutsy-gibbon-when-set-vga.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>不幸的消息：Fcitx项目中止</title>
+		<link>/articles/fcitx-project-terminate.html</link>
+				<comments>/articles/fcitx-project-terminate.html#respond</comments>
+				<pubDate>Wed, 11 Jul 2007 02:46:41 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Ubuntu/Linux]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e4%b8%8d%e5%b9%b8%e7%9a%84%e6%b6%88%e6%81%af%ef%bc%9afcitx%e9%a1%b9%e7%9b%ae%e4%b8%ad%e6%ad%a2.html</guid>
+				<description><![CDATA[Fcitx（小企鹅输入法）的作者于昨天宣布中止该项目。对于我个人来说，Fcitx是Linux下最好用的，也是我 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>Fcitx（小企鹅输入法）的作者于昨天宣布中止该项目。对于我个人来说，Fcitx是Linux下最好用的，也是我一直使用的输入法，听到这个消息感觉很可惜。希望能够尽快看到Fcitx重生的一天。</p>
+<p><a href="http://www.fcitx.org/" target="_blank">http://www.fcitx.org/</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/fcitx-project-terminate.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Linux环境下Domino的中文问题</title>
+		<link>/articles/set-domino-charset-on-linux.html</link>
+				<comments>/articles/set-domino-charset-on-linux.html#respond</comments>
+				<pubDate>Mon, 04 Jul 2005 13:07:55 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[Ubuntu/Linux]]></category>
+		<category><![CDATA[charset]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/linux%e7%8e%af%e5%a2%83%e4%b8%8bdomino%e7%9a%84%e4%b8%ad%e6%96%87%e9%97%ae%e9%a2%98.html</guid>
+				<description><![CDATA[现象：做字符串比较、包含相关的操作无法得到正确的结果。 解决方法： 检查当前操作系统的语言设置 使用local [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>现象：做字符串比较、包含相关的操作无法得到正确的结果。</p>
+<p>解决方法：</p>
+<ul>
+<li>检查当前操作系统的语言设置
+<ul>
+<li>使用locale命令来查询当前的语言环境 </li>
+</ul>
+</li>
+<li>设置Language Pack的语言环境。
+<ul>
+<li>前面安装Domino的过程我就不说了。安装完Domino之后，还需要安装Language Pack。在LP的readme.txt文件中，注明了各种操作系统下面需要使用的语言和字符集，以Linux为例，需要设置为zh_CN.GB2312。
+        </li>
+<li>操作如下：
+        </li>
+</ul>
+</li>
+</ul>
+<p>LANG=zh_CN.GB2312<br />
+LC_ALL=zh_CN.GB2312<br />
+export LANG<br />
+export LC_ALL
+</p>
+<ul>
+<li>安装Language Pack
+<ul>
+<li>运行install来进行安装，在安装过程中注意选择中文。 </li>
+</ul>
+</li>
+<li>设置notes用户的语言环境
+<ul>
+<li>Domino不能用root账号来启动，必须使用notes（安装Domino时候设置的账号）来进行启动。由于我们设置了当前的语言为中文，采用GB2312的字符集。所以该notes用户的语言环境也需要设置为zh_CN.GB2312 </li>
+</ul>
+</li>
+<li>修改profile文件
+<ul>
+<li>到domino运行账号(notes)的home目录下去（/home/notes)，然后编辑.bash_profile文件，添加如下行
+        </li>
+</ul>
+</li>
+</ul>
+<p>LANG=zh_CN.GB2312<br />
+LC_ALL=zh_CN.GB2312<br />
+export LANG<br />
+export LC_ALL<br />
+然后重新使用该账号登录系统，启动domino即可！ </p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/set-domino-charset-on-linux.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Linux操作系统修改系统时间的方法</title>
+		<link>/articles/set-system-clock-on-linux.html</link>
+				<comments>/articles/set-system-clock-on-linux.html#respond</comments>
+				<pubDate>Mon, 04 Jul 2005 13:05:18 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[Ubuntu/Linux]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/linux%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e4%bf%ae%e6%94%b9%e7%b3%bb%e7%bb%9f%e6%97%b6%e9%97%b4%e7%9a%84%e6%96%b9%e6%b3%95.html</guid>
+				<description><![CDATA[我们一般使用&#8220;date -s&#8221;命令来修改系统时间。比如将系统时间设定成1996年6月1 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我们一般使用&ldquo;date -s&rdquo;命令来修改系统时间。比如将系统时间设定成1996年6月10日的命令如下。 </p>
+<p>#date -s 06/10/96 <br />
+将系统时间设定成下午1点12分0秒的命令如下。 <br />
+#date -s 13:12:00 </p>
+<p>注意，这里说的是系统时间，是linux由操作系统维护的。 <br />
+在系统启动时，Linux操作系统将时间从CMOS中读到系统时间变量中，以后修改时间通过修改系统时间实现。为了保持系统时间与CMOS时间的一致性，Linux每隔一段时间会将系统时间写入CMOS。由于该同步是每隔一段时间（大约是11分钟）进行的，在我们执行date -s后，如果马上重起机器，修改时间就有可能没有被写入CMOS,这就是问题的原因。如果要确保修改生效可以执行如下命令。 </p>
+<p>#clock -w </p>
+<p>这个命令强制把系统时间写入CMOS</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/set-system-clock-on-linux.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

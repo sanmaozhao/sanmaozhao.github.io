@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nd7 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/nd7/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 12 Jun 2015 02:08:13 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Notes/Domino 7.0.x 服务已经到期</title>
+		<link>/articles/nd7-end-of-service.html</link>
+				<comments>/articles/nd7-end-of-service.html#comments</comments>
+				<pubDate>Thu, 05 May 2011 08:21:25 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd7]]></category>
+
+		<guid isPermaLink="false">/?p=644870</guid>
+				<description><![CDATA[ND 7.0.x 系列已于四月底到期，这意味着 IBM 不再提供此版本的技术支持，同时也不会再有新的修补版本。 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>ND 7.0.x 系列已于四月底到期，这意味着 IBM 不再提供此版本的技术支持，同时也不会再有新的修补版本。还在使用此版本的，请抓紧时间升级。</p>
+<p>注：ND7 于2005年发布，首次引入 NSFDB2（已故）、web service，7.0.2版新增 Notes Access for SAP，是一个很不错的版本。现在它走了，我们很怀念它。</p>
+<p>请参考：<a href="http://www-304.ibm.com/support/docview.wss?uid=swg21472992" target="_blank">End of Service (EOS) of Lotus Enterprise Integrator, Notes, and Domino 7.0.x</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/nd7-end-of-service.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>Domino7的新功能：代理简要表</title>
+		<link>/articles/domino7-new-feature-agent-profile.html</link>
+				<comments>/articles/domino7-new-feature-agent-profile.html#respond</comments>
+				<pubDate>Thu, 27 Apr 2006 08:55:37 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd7]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/domino7%e7%9a%84%e6%96%b0%e5%8a%9f%e8%83%bd%ef%bc%9a%e4%bb%a3%e7%90%86%e7%ae%80%e8%a6%81%e8%a1%a8.html</guid>
+				<description><![CDATA[在Domino6的时候，如果发现一个代理执行缓慢，想要定位影响速度的语句，往往是采用分段Msgbox来不断缩小 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在Domino6的时候，如果发现一个代理执行缓慢，想要定位影响速度的语句，往往是采用分段Msgbox来不断缩小范围，直到找到问题所在这种方法的。Domino7加入了代理简要表的功能，让我们可以非常方便的定位代理执行缓慢的问题所在。具体方法请往下看。</p>
+<p><span id="more-142923"></span></p>
+<p>首先在代理属性中选择为代理创建简要表：</p>
+<p><img src="/pic/agentProfile1-0002.jpg" alt="agentProfile1.png" width="372" height="317" /></p>
+<p>然后运行代理（定时、菜单、web触发都可以），在代理右键菜单中选择查看简要表结果：</p>
+<p><img src="/pic/agentProfile2-0003.jpg" alt="" width="265" height="295" /></p>
+<p>下面是结果样例：<img class="alignnone" src="http://www-10.lotus.com/ldd/dominowiki.nsf/A0C2E7F80769E75D8525741F00315523/$file/Profile_results.png" alt="" width="911" height="567" /></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/domino7-new-feature-agent-profile.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

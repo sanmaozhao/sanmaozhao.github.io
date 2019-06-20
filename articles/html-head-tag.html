@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<head>
+		<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<link rel="pingback" href="/xmlrpc.php" />
+	<title>HTML页面HEAD信息介绍 | Sanmao的幸福(?)生活</title>
+
+<!-- SEO Ultimate (http://www.seodesignsolutions.com/wordpress-seo/) -->
+	<link rel="author" href="https://plus.google.com/110741484037100884472/posts" />
+	<meta name="keywords" content="Web技术" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="HTML页面HEAD信息介绍" />
+	<meta property="og:url" content="/articles/html-head-tag.html" />
+	<meta property="article:published_time" content="2005-07-05" />
+	<meta property="article:modified_time" content="2005-07-05" />
+	<meta property="article:author" content="/articles/author/admin" />
+	<meta property="article:section" content="Web技术" />
+	<meta property="og:site_name" content="Sanmao的幸福(?)生活" />
+	<meta name="twitter:card" content="summary" />
+<!-- /SEO Ultimate -->
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Sanmao的幸福(?)生活 &raquo; Feed" href="/feed" />
+<link rel="alternate" type="application/rss+xml" title="Sanmao的幸福(?)生活 &raquo; 评论Feed" href="/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="Sanmao的幸福(?)生活 &raquo; HTML页面HEAD信息介绍评论Feed" href="/articles/html-head-tag.html/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.2.2"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='/wp-includes/css/dist/block-library/style.min.css?ver=5.2.2' media='all' />
+<link rel='stylesheet' id='parent-style-css' href='/wp-content/themes/flat/style.css?ver=5.2.2' media='all' />
+<link rel='stylesheet' id='flat-style-css' href='/wp-content/themes/flat-my/style.css?ver=5.2.2' media='all' />
+<link rel='stylesheet' id='flat_sky-child-style-css' href='/wp-content/themes/flat-my/style.css?ver=5.2.2' media='all' />
+<link rel='stylesheet' id='flat-fonts-css' href='//fonts.googleapis.com/css?family=Amatic+SC%7CRoboto:400,700%7CRoboto+Slab%7CRoboto+Condensed' media='all' />
+<link rel='stylesheet' id='flat-theme-css' href='/wp-content/themes/flat/assets/css/flat.min.css?ver=1.7.11' media='all' />
+<script src='/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script src='/wp-content/themes/flat/assets/js/flat.min.js?ver=1.7.11'></script>
+<!--[if lt IE 9]>
+<script src='http://blog.sanmaozhao.com/wp-content/themes/flat/assets/js/html5shiv.min.js?ver=3.7.2'></script>
+<![endif]-->
+<link rel='https://api.w.org/' href='/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='快速打开不是位于Data数据目录下的数据库' href='/articles/open-nsf-outside-of-data-directory.html' />
+<link rel='next' title='用来设置时间、日期格式的notes.ini参数' href='/articles/notes-ini-variable-for-date-time-format.html' />
+<meta name="generator" content="WordPress 5.2.2" />
+<link rel="canonical" href="/articles/html-head-tag.html" />
+<link rel='shortlink' href='/?p=142899' />
+<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Farticles%2Fhtml-head-tag.html" />
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style><style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style><style type="text/css"></style><style type="text/css">#masthead .site-title {font-family:Amatic SC}body {font-family:Roboto }h1,h2,h3,h4,h5,h6 {font-family:Roboto Slab}#masthead .site-description, .hentry .entry-meta {font-family:Roboto Condensed}</style><style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url("/wp-content/themes/flat-my/assets/img/default-background.jpg"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: scroll; }
+</style>
+	
+	<!-- Clean Archives Reloaded v3.2.0 | http://www.viper007bond.com/wordpress-plugins/clean-archives-reloaded/ -->
+	<style type="text/css">.car-collapse .car-yearmonth { cursor: s-resize; } </style>
+	<script type="text/javascript">
+		/* <![CDATA[ */
+			jQuery(document).ready(function() {
+				jQuery('.car-collapse').find('.car-monthlisting').hide();
+				jQuery('.car-collapse').find('.car-monthlisting:first').show();
+				jQuery('.car-collapse').find('.car-yearmonth').click(function() {
+					jQuery(this).next('ul').slideToggle('fast');
+				});
+				jQuery('.car-collapse').find('.car-toggler').click(function() {
+					if ( '展开所有月份' == jQuery(this).text() ) {
+						jQuery(this).parent('.car-container').find('.car-monthlisting').show();
+						jQuery(this).text('折叠所有月份');
+					}
+					else {
+						jQuery(this).parent('.car-container').find('.car-monthlisting').hide();
+						jQuery(this).text('展开所有月份');
+					}
+					return false;
+				});
+			});
+		/* ]]> */
+	</script>
+
+<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(45,53,63,.88);}</style>	</head>
+
+<body class="post-template-default single single-post postid-142899 single-format-standard custom-background" itemscope itemtype="http://schema.org/WebPage">
+<div id="page">
+	<div class="container">
+		<div class="row row-offcanvas row-offcanvas-left">
+			<div id="secondary" class="col-lg-3">
+								<header id="masthead" class="site-header" role="banner">
+										<div class="hgroup">
+						<h1 class="site-title display-title"><a href="/" title="Sanmao的幸福(?)生活" rel="home"><span itemprop="name">Sanmao的幸福(?)生活</span></a></h1><h2 itemprop="description" class="site-description">Domino/Notes技术、Ubuntu、TV Game</h2>					</div>
+					<button type="button" class="btn btn-link hidden-lg toggle-sidebar" data-toggle="offcanvas" aria-label="Sidebar"><i class="fa fa-gear"></i></button>
+					<button type="button" class="btn btn-link hidden-lg toggle-navigation" aria-label="Navigation Menu"><i class="fa fa-bars"></i></button>
+					<nav id="site-navigation" class="navigation main-navigation" role="navigation">
+						<div class="nav-menu"><ul>
+<li class="page_item page-item-424593 current_page_parent"><a href="/article_list">文章列表</a></li>
+</ul></div>
+					</nav>
+									</header>
+				
+				<div class="sidebar-offcanvas">
+					<div id="main-sidebar" class="widget-area" role="complementary">
+											<aside id="search-3" class="widget widget_search">
+	<form method="get" id="searchform" action="http://www.bing.com/search">
+		<label for="s" class="assistive-text">搜索</label>
+		<input type="text" class="field" name="q" id="s" placeholder="搜索" />
+		<input type="hidden" class="field" name="q1" id="s" value="site:blog.sanmaozhao.com" />
+		<input type="submit" class="submit" name="submit" id="searchsubmit" value="搜索" />
+	</form>
+					</aside>
+					<aside id="text-4" class="widget widget_text">
+						<h3 class='widget-title'>尊重原创：关于转载</h3>
+			<div class="textwidget">我希望在中文环境中建立一种健康的 TrackBack 和链接机制，保证原创，并不影响传播。因此欢迎您在网站上推荐我的文章，包括文字和图片片段，但不赞成任何形式的全文转载。若需全文转载，请您征得我的同意，并添加本站原文链接，标明所有的引用、参考信息和图片版权来源。</div><h4 class="widget-title">联系我：sanmaozhao at gmail.com</h4>
+							</aside>
+					<aside id="categories-4" class="widget widget_categories">
+						<h3 class='widget-title'>分类目录</h3>
+		<ul>
+				<li class="cat-item cat-item-3"><a href="/articles/category/dojo">Dojo</a> (3)
+</li>
+	<li class="cat-item cat-item-84"><a href="/articles/category/dominonotes">Domino/Notes</a> (149)
+<ul class='children'>
+	<li class="cat-item cat-item-109"><a href="/articles/category/dominonotes/xpages">XPages</a> (7)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-5"><a href="/articles/category/tv-game">TV Game</a> (10)
+</li>
+	<li class="cat-item cat-item-85"><a href="/articles/category/ubuntulinux" title="Ubuntu/Linux">Ubuntu/Linux</a> (6)
+</li>
+	<li class="cat-item cat-item-86"><a href="/articles/category/web">Web技术</a> (14)
+</li>
+	<li class="cat-item cat-item-87"><a href="/articles/category/%e5%85%b6%e4%bb%96">其他</a> (9)
+</li>
+	<li class="cat-item cat-item-1"><a href="/articles/category/%e6%9c%aa%e5%88%86%e7%b1%bb">未分类</a> (1)
+</li>
+		</ul>
+								</aside>
+					<aside id="archives-4" class="widget widget_archive">
+						<h3 class='widget-title'>文章归档</h3>
+		<label class="screen-reader-text" for="archives-dropdown-4">文章归档</label>
+		<select id="archives-dropdown-4" name="archive-dropdown">
+			
+			<option value="">选择月份</option>
+				<option value='/articles/2016/12'> 2016年十二月 &nbsp;(1)</option>
+	<option value='/articles/2016/11'> 2016年十一月 &nbsp;(1)</option>
+	<option value='/articles/2015/06'> 2015年六月 &nbsp;(1)</option>
+	<option value='/articles/2015/01'> 2015年一月 &nbsp;(1)</option>
+	<option value='/articles/2014/12'> 2014年十二月 &nbsp;(1)</option>
+	<option value='/articles/2014/09'> 2014年九月 &nbsp;(1)</option>
+	<option value='/articles/2014/07'> 2014年七月 &nbsp;(1)</option>
+	<option value='/articles/2013/11'> 2013年十一月 &nbsp;(1)</option>
+	<option value='/articles/2013/10'> 2013年十月 &nbsp;(1)</option>
+	<option value='/articles/2013/05'> 2013年五月 &nbsp;(2)</option>
+	<option value='/articles/2013/04'> 2013年四月 &nbsp;(2)</option>
+	<option value='/articles/2013/03'> 2013年三月 &nbsp;(1)</option>
+	<option value='/articles/2012/10'> 2012年十月 &nbsp;(2)</option>
+	<option value='/articles/2012/08'> 2012年八月 &nbsp;(1)</option>
+	<option value='/articles/2012/07'> 2012年七月 &nbsp;(2)</option>
+	<option value='/articles/2012/06'> 2012年六月 &nbsp;(3)</option>
+	<option value='/articles/2012/04'> 2012年四月 &nbsp;(1)</option>
+	<option value='/articles/2012/03'> 2012年三月 &nbsp;(1)</option>
+	<option value='/articles/2012/02'> 2012年二月 &nbsp;(1)</option>
+	<option value='/articles/2011/12'> 2011年十二月 &nbsp;(1)</option>
+	<option value='/articles/2011/11'> 2011年十一月 &nbsp;(2)</option>
+	<option value='/articles/2011/10'> 2011年十月 &nbsp;(1)</option>
+	<option value='/articles/2011/08'> 2011年八月 &nbsp;(2)</option>
+	<option value='/articles/2011/07'> 2011年七月 &nbsp;(3)</option>
+	<option value='/articles/2011/05'> 2011年五月 &nbsp;(2)</option>
+	<option value='/articles/2011/04'> 2011年四月 &nbsp;(1)</option>
+	<option value='/articles/2011/03'> 2011年三月 &nbsp;(3)</option>
+	<option value='/articles/2010/12'> 2010年十二月 &nbsp;(4)</option>
+	<option value='/articles/2010/09'> 2010年九月 &nbsp;(2)</option>
+	<option value='/articles/2010/08'> 2010年八月 &nbsp;(2)</option>
+	<option value='/articles/2010/07'> 2010年七月 &nbsp;(3)</option>
+	<option value='/articles/2010/06'> 2010年六月 &nbsp;(1)</option>
+	<option value='/articles/2010/05'> 2010年五月 &nbsp;(5)</option>
+	<option value='/articles/2010/03'> 2010年三月 &nbsp;(7)</option>
+	<option value='/articles/2010/02'> 2010年二月 &nbsp;(2)</option>
+	<option value='/articles/2009/12'> 2009年十二月 &nbsp;(1)</option>
+	<option value='/articles/2009/10'> 2009年十月 &nbsp;(2)</option>
+	<option value='/articles/2009/09'> 2009年九月 &nbsp;(1)</option>
+	<option value='/articles/2009/07'> 2009年七月 &nbsp;(2)</option>
+	<option value='/articles/2009/06'> 2009年六月 &nbsp;(1)</option>
+	<option value='/articles/2009/04'> 2009年四月 &nbsp;(5)</option>
+	<option value='/articles/2009/03'> 2009年三月 &nbsp;(2)</option>
+	<option value='/articles/2009/01'> 2009年一月 &nbsp;(3)</option>
+	<option value='/articles/2008/10'> 2008年十月 &nbsp;(2)</option>
+	<option value='/articles/2008/08'> 2008年八月 &nbsp;(3)</option>
+	<option value='/articles/2008/07'> 2008年七月 &nbsp;(1)</option>
+	<option value='/articles/2008/06'> 2008年六月 &nbsp;(1)</option>
+	<option value='/articles/2008/05'> 2008年五月 &nbsp;(3)</option>
+	<option value='/articles/2008/03'> 2008年三月 &nbsp;(2)</option>
+	<option value='/articles/2008/02'> 2008年二月 &nbsp;(2)</option>
+	<option value='/articles/2008/01'> 2008年一月 &nbsp;(5)</option>
+	<option value='/articles/2007/12'> 2007年十二月 &nbsp;(1)</option>
+	<option value='/articles/2007/11'> 2007年十一月 &nbsp;(2)</option>
+	<option value='/articles/2007/10'> 2007年十月 &nbsp;(3)</option>
+	<option value='/articles/2007/09'> 2007年九月 &nbsp;(8)</option>
+	<option value='/articles/2007/08'> 2007年八月 &nbsp;(1)</option>
+	<option value='/articles/2007/07'> 2007年七月 &nbsp;(14)</option>
+	<option value='/articles/2007/06'> 2007年六月 &nbsp;(3)</option>
+	<option value='/articles/2007/05'> 2007年五月 &nbsp;(2)</option>
+	<option value='/articles/2007/04'> 2007年四月 &nbsp;(2)</option>
+	<option value='/articles/2007/03'> 2007年三月 &nbsp;(2)</option>
+	<option value='/articles/2007/01'> 2007年一月 &nbsp;(1)</option>
+	<option value='/articles/2006/10'> 2006年十月 &nbsp;(3)</option>
+	<option value='/articles/2006/09'> 2006年九月 &nbsp;(1)</option>
+	<option value='/articles/2006/08'> 2006年八月 &nbsp;(3)</option>
+	<option value='/articles/2006/07'> 2006年七月 &nbsp;(3)</option>
+	<option value='/articles/2006/06'> 2006年六月 &nbsp;(4)</option>
+	<option value='/articles/2006/05'> 2006年五月 &nbsp;(1)</option>
+	<option value='/articles/2006/04'> 2006年四月 &nbsp;(7)</option>
+	<option value='/articles/2006/01'> 2006年一月 &nbsp;(1)</option>
+	<option value='/articles/2005/12'> 2005年十二月 &nbsp;(4)</option>
+	<option value='/articles/2005/11'> 2005年十一月 &nbsp;(3)</option>
+	<option value='/articles/2005/09'> 2005年九月 &nbsp;(2)</option>
+	<option value='/articles/2005/08'> 2005年八月 &nbsp;(2)</option>
+	<option value='/articles/2005/07'> 2005年七月 &nbsp;(10)</option>
+
+		</select>
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "archives-dropdown-4" );
+	function onSelectChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value !== '' ) {
+			document.location.href = this.options[ this.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onSelectChange;
+})();
+/* ]]> */
+</script>
+
+							</aside>
+					<aside id="tag_cloud-4" class="widget widget_tag_cloud">
+						<h3 class='widget-title'>标签</h3>
+<div class="tagcloud"><a href="/articles/tag/agent" class="tag-cloud-link tag-link-88 tag-link-position-1" style="font-size: 10.377358490566pt;" aria-label="agent (2个项目)">agent</a>
+<a href="/articles/tag/alloy" class="tag-cloud-link tag-link-10 tag-link-position-2" style="font-size: 8pt;" aria-label="alloy (1个项目)">alloy</a>
+<a href="/articles/tag/base64" class="tag-cloud-link tag-link-60 tag-link-position-3" style="font-size: 10.377358490566pt;" aria-label="base64 (2个项目)">base64</a>
+<a href="/articles/tag/bug" class="tag-cloud-link tag-link-11 tag-link-position-4" style="font-size: 11.962264150943pt;" aria-label="bug (3个项目)">bug</a>
+<a href="/articles/tag/build" class="tag-cloud-link tag-link-12 tag-link-position-5" style="font-size: 8pt;" aria-label="build (1个项目)">build</a>
+<a href="/articles/tag/capi" class="tag-cloud-link tag-link-13 tag-link-position-6" style="font-size: 11.962264150943pt;" aria-label="capi (3个项目)">capi</a>
+<a href="/articles/tag/charset" class="tag-cloud-link tag-link-61 tag-link-position-7" style="font-size: 10.377358490566pt;" aria-label="charset (2个项目)">charset</a>
+<a href="/articles/tag/column" class="tag-cloud-link tag-link-14 tag-link-position-8" style="font-size: 8pt;" aria-label="column (1个项目)">column</a>
+<a href="/articles/tag/conflict" class="tag-cloud-link tag-link-89 tag-link-position-9" style="font-size: 10.377358490566pt;" aria-label="conflict (2个项目)">conflict</a>
+<a href="/articles/tag/css" class="tag-cloud-link tag-link-65 tag-link-position-10" style="font-size: 10.377358490566pt;" aria-label="css (2个项目)">css</a>
+<a href="/articles/tag/custom" class="tag-cloud-link tag-link-15 tag-link-position-11" style="font-size: 8pt;" aria-label="custom (1个项目)">custom</a>
+<a href="/articles/tag/dblookup" class="tag-cloud-link tag-link-16 tag-link-position-12" style="font-size: 10.377358490566pt;" aria-label="dblookup (2个项目)">dblookup</a>
+<a href="/articles/tag/dct" class="tag-cloud-link tag-link-17 tag-link-position-13" style="font-size: 8pt;" aria-label="dct (1个项目)">dct</a>
+<a href="/articles/tag/delay" class="tag-cloud-link tag-link-18 tag-link-position-14" style="font-size: 8pt;" aria-label="delay (1个项目)">delay</a>
+<a href="/articles/tag/dijit" class="tag-cloud-link tag-link-19 tag-link-position-15" style="font-size: 8pt;" aria-label="dijit (1个项目)">dijit</a>
+<a href="/articles/tag/dojo" class="tag-cloud-link tag-link-115 tag-link-position-16" style="font-size: 10.377358490566pt;" aria-label="Dojo (2个项目)">Dojo</a>
+<a href="/articles/tag/domino" class="tag-cloud-link tag-link-20 tag-link-position-17" style="font-size: 14.339622641509pt;" aria-label="domino (5个项目)">domino</a>
+<a href="/articles/tag/domino-server-setup" class="tag-cloud-link tag-link-21 tag-link-position-18" style="font-size: 8pt;" aria-label="domino server setup (1个项目)">domino server setup</a>
+<a href="/articles/tag/formula" class="tag-cloud-link tag-link-25 tag-link-position-19" style="font-size: 16.584905660377pt;" aria-label="formula (8个项目)">formula</a>
+<a href="/articles/tag/ftsearch" class="tag-cloud-link tag-link-27 tag-link-position-20" style="font-size: 11.962264150943pt;" aria-label="ftsearch (3个项目)">ftsearch</a>
+<a href="/articles/tag/guitar-hero" class="tag-cloud-link tag-link-74 tag-link-position-21" style="font-size: 14.339622641509pt;" aria-label="guitar hero (5个项目)">guitar hero</a>
+<a href="/articles/tag/java" class="tag-cloud-link tag-link-96 tag-link-position-22" style="font-size: 10.377358490566pt;" aria-label="java (2个项目)">java</a>
+<a href="/articles/tag/javascript" class="tag-cloud-link tag-link-62 tag-link-position-23" style="font-size: 14.339622641509pt;" aria-label="javascript (5个项目)">javascript</a>
+<a href="/articles/tag/jsf" class="tag-cloud-link tag-link-110 tag-link-position-24" style="font-size: 8pt;" aria-label="jsf (1个项目)">jsf</a>
+<a href="/articles/tag/lotusscript" class="tag-cloud-link tag-link-33 tag-link-position-25" style="font-size: 20.283018867925pt;" aria-label="lotusscript (16个项目)">lotusscript</a>
+<a href="/articles/tag/mail" class="tag-cloud-link tag-link-36 tag-link-position-26" style="font-size: 11.962264150943pt;" aria-label="mail (3个项目)">mail</a>
+<a href="/articles/tag/nd7" class="tag-cloud-link tag-link-69 tag-link-position-27" style="font-size: 10.377358490566pt;" aria-label="nd7 (2个项目)">nd7</a>
+<a href="/articles/tag/nd9" class="tag-cloud-link tag-link-112 tag-link-position-28" style="font-size: 10.377358490566pt;" aria-label="nd9 (2个项目)">nd9</a>
+<a href="/articles/tag/nd85" class="tag-cloud-link tag-link-41 tag-link-position-29" style="font-size: 15.264150943396pt;" aria-label="nd85 (6个项目)">nd85</a>
+<a href="/articles/tag/nd702" class="tag-cloud-link tag-link-73 tag-link-position-30" style="font-size: 10.377358490566pt;" aria-label="nd702 (2个项目)">nd702</a>
+<a href="/articles/tag/nd801" class="tag-cloud-link tag-link-39 tag-link-position-31" style="font-size: 10.377358490566pt;" aria-label="nd801 (2个项目)">nd801</a>
+<a href="/articles/tag/nd802" class="tag-cloud-link tag-link-40 tag-link-position-32" style="font-size: 10.377358490566pt;" aria-label="nd802 (2个项目)">nd802</a>
+<a href="/articles/tag/nd851" class="tag-cloud-link tag-link-42 tag-link-position-33" style="font-size: 10.377358490566pt;" aria-label="nd851 (2个项目)">nd851</a>
+<a href="/articles/tag/nd852" class="tag-cloud-link tag-link-101 tag-link-position-34" style="font-size: 16.584905660377pt;" aria-label="nd852 (8个项目)">nd852</a>
+<a href="/articles/tag/nd853" class="tag-cloud-link tag-link-108 tag-link-position-35" style="font-size: 13.283018867925pt;" aria-label="nd853 (4个项目)">nd853</a>
+<a href="/articles/tag/notes-ini" class="tag-cloud-link tag-link-44 tag-link-position-36" style="font-size: 22pt;" aria-label="notes.ini (22个项目)">notes.ini</a>
+<a href="/articles/tag/nsd" class="tag-cloud-link tag-link-102 tag-link-position-37" style="font-size: 10.377358490566pt;" aria-label="nsd (2个项目)">nsd</a>
+<a href="/articles/tag/password" class="tag-cloud-link tag-link-46 tag-link-position-38" style="font-size: 10.377358490566pt;" aria-label="password (2个项目)">password</a>
+<a href="/articles/tag/performance" class="tag-cloud-link tag-link-71 tag-link-position-39" style="font-size: 15.264150943396pt;" aria-label="performance (6个项目)">performance</a>
+<a href="/articles/tag/release" class="tag-cloud-link tag-link-49 tag-link-position-40" style="font-size: 10.377358490566pt;" aria-label="release (2个项目)">release</a>
+<a href="/articles/tag/replica" class="tag-cloud-link tag-link-75 tag-link-position-41" style="font-size: 10.377358490566pt;" aria-label="replica (2个项目)">replica</a>
+<a href="/articles/tag/sap" class="tag-cloud-link tag-link-51 tag-link-position-42" style="font-size: 10.377358490566pt;" aria-label="sap (2个项目)">sap</a>
+<a href="/articles/tag/search" class="tag-cloud-link tag-link-52 tag-link-position-43" style="font-size: 10.377358490566pt;" aria-label="search (2个项目)">search</a>
+<a href="/articles/tag/unid" class="tag-cloud-link tag-link-56 tag-link-position-44" style="font-size: 10.377358490566pt;" aria-label="unid (2个项目)">unid</a>
+<a href="/articles/tag/xpage" class="tag-cloud-link tag-link-107 tag-link-position-45" style="font-size: 11.962264150943pt;" aria-label="xpage (3个项目)">xpage</a></div>
+					</aside>
+					<aside id="linkcat-2" class="widget widget_links">
+						<h3 class='widget-title'>链接表</h3>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://www-10.lotus.com/ldd/ddwiki.nsf" title="Lotus Notes and Domino Application Development wiki" target="_blank">LDD wiki</a></li>
+<li><a href="http://www-947.ibm.com/support/entry/portal/Overview/Software/Lotus/Lotus_Domino" target="_blank">Lotus Domino Support Portal</a></li>
+<li><a href="https://www.ibm.com/developerworks/lotus/community/" target="_blank">Lotus Forums and community</a></li>
+<li><a href="http://wanglaoban.org/" rel="friend" target="_blank">王老板</a></li>
+
+	</ul>
+					</aside>
+
+											</div>
+				</div>
+			</div>
+
+						<div id="primary" class="content-area col-lg-9" itemprop="mainContentOfPage">
+							<div id="content" class="site-content" role="main" itemscope itemtype="http://schema.org/Article">
+			<article id="post-142899" class="post-142899 post type-post status-publish format-standard hentry category-web">
+	<header class="entry-header">
+		<h1 class="entry-title" itemprop="name">HTML页面HEAD信息介绍</h1>
+							<div class="entry-meta"><span class="entry-date"><a href="/articles/html-head-tag.html" rel="bookmark"><time class="entry-date published" datetime="2005-07-05T21:06:07+08:00" itemprop="datepublished">2005年07月5日</time></a></span> by <span class="author vcard" itemscope itemprop="author" itemtype="http://schema.org/Person"><a class="url fn n" href="/articles/author/admin" rel="author" itemprop="url"><span itemprop="name">Sanmao</span></a></span><span class="sep">&middot;</span><span class="comments-link"><a href="/articles/html-head-tag.html#respond" itemprop="discussionUrl">0评论</a></span></div>
+			</header>
+		
+	
+	<div class="entry-content" itemprop="articleBody">
+				<p><span>您的个人网站即使做得再精彩，在“浩瀚如海”的网络空间中，也如一叶扁舟不易为人发现，如何推广个人网站，人们首先想到的方法无外乎以下几种：　　<br />　　●　在搜索引擎中登录自己的个人网站　　<br />　　●　在知名网站加入你个人网站的链接<br />　　●　在论坛中发帖子宣传你的个人网站 </p>
+<p>META标签是HTML语言HEAD区的一个辅助性标签，它位于HTML文档头部的&lt;HEAD&gt;标记和&lt;TITLE&gt;标记之间，它提供用户不可见的信息。meta标签通常用来为搜索引擎robots定义页面主题，或者是定义用户浏览器上的cookie；它可以用于鉴别作者，设定页面格式，标注内容提要和关键字；还可以设置页面使其可以根据你定义的时间间隔刷新自己,以及设置RASC内容等级，等等。</p>
+<p></span><br />
+<span id="more-142899"></span></p>
+<p>下面介绍一些有关 标记的例子及解释。</p>
+<p>META标签分两大部分：HTTP标题信息(HTTP-EQUIV)和页面描述信息(NAME)。</p>
+<p><font color="#ff0033"><strong>※ HTTP-EQUIV</strong></font></p>
+<p>HTTP-EQUIV类似于HTTP的头部协议，它回应给浏览器一些有用的信息，以帮助正确和精确地显示网页内容。常用的HTTP-EQUIV类型有：</p>
+<p><font color="#0033ff">1、Content-Type和Content-Language (显示字符集的设定)</font></p>
+<p>说明：设定页面使用的字符集，用以说明主页制作所使用的文字已经语言，浏览器会根据此来调用相应的字符集显示page内容。</p>
+<p>用法：&lt;Meta http-equiv=&#8221;Content-Type&#8221; Content=&#8221;text/html; Charset=gb2312&#8243;&gt;<br />　　　　　　&lt;Meta http-equiv=&#8221;Content-Language&#8221; Content=&#8221;zh-CN&#8221;&gt;</p>
+<p>注意：　该META标签定义了HTML页面所使用的字符集为GB2132，就是国标汉字码。如果将其中的“charset=GB2312”替换成“BIG5”，则该页面所用的字符集就是繁体中文Big5码。当你浏览一些国外的站点时，IE浏览器会提示你要正确显示该页面需要下载xx语支持。这个功能就是通过读取HTML页面META标签的Content-Type属性而得知需要使用哪种字符集显示该页面的。如果系统里没有装相应的字符集，则IE就提示下载。其他的语言也对应不同的charset，比如日文的字符集是“iso-2022-jp ”，韩文的是“ks_c_5601”。<br />　　　　　　<br />　　Content-Type的Content还可以是：text/xml等文档类型；<br />　　Charset选项：ISO-8859-1(英文)、BIG5、UTF-8、SHIFT-Jis、Euc、Koi8-2、us-ascii, x-mac-roman, iso-8859-2, x-mac-ce, iso-2022-jp, x-sjis, x-euc-jp,euc-kr, iso-2022-kr, gb2312, gb_2312-80, x-euc-tw, x-cns11643-1,x-cns11643-2等字符集；Content-Language的Content还可以是：EN、FR等语言代码。</p>
+<p><font color="#0033ff">2、Refresh (刷新)</font></p>
+<p>说明：让网页多长时间（秒）刷新自己，或在多长时间后让网页自动链接到其它网页。<br />　　　用法：&lt;Meta http-equiv=&#8221;Refresh&#8221; Content=&#8221;30&#8243;&gt;<br />　　　　　　&lt;Meta http-equiv=&#8221;Refresh&#8221; Content=&#8221;5; Url=http://www.xia8.net&#8221;&gt;<br />　　　注意：其中的5是指停留5秒钟后自动刷新到URL网址。</p>
+<p><font color="#0033ff">3、Expires (期限)</font></p>
+<p>说明：指定网页在缓存中的过期时间，一旦网页过期，必须到服务器上重新调阅。<br />　　　用法：&lt;Meta http-equiv=&#8221;Expires&#8221; Content=&#8221;0&#8243;&gt;<br />　　　　　　&lt;Meta http-equiv=&#8221;Expires&#8221; Content=&#8221;Wed, 26 Feb 1997 08:21:57 GMT&#8221;&gt;<br />　　　注意：必须使用GMT的时间格式，或直接设为0(数字表示多少时间后过期)。</p>
+<p><font color="#0033ff">4、Pragma (cach模式)</font></p>
+<p>说明：禁止浏览器从本地机的缓存中调阅页面内容。<br />　　　用法：&lt;Meta http-equiv=&#8221;Pragma&#8221; Content=&#8221;No-cach&#8221;&gt;<br />　　　注意：网页不保存在缓存中，每次访问都刷新页面。这样设定，访问者将无法脱机浏览。</p>
+<p><font color="#0033ff">5、Set-Cookie (cookie设定)</font></p>
+<p>说明：浏览器访问某个页面时会将它存在缓存中，下次再次访问时就可从缓存中读取，以提高速度。当你希望访问者每次都刷新你广告的图标，或每次都刷新你的计数器，就要禁用缓存了。通常HTML文件没有必要禁用缓存，对于ASP等页面，就可以使用禁用缓存，因为每次看到的页面都是在服务器动态生成的，缓存就失去意义。如果网页过期，那么存盘的cookie将被删除。<br />　　　用法：&lt;Meta http-equiv=&#8221;Set-Cookie&#8221; Content=&#8221;cookievalue=xxx; expires=Wednesday,<br />　　　　　　 21-Oct-98 16:14:21 GMT; path=/&#8221;&gt;<br />　　　注意：必须使用GMT的时间格式。</p>
+<p><font color="#0033ff">6、Window-target (显示窗口的设定)</font></p>
+<p>说明：强制页面在当前窗口以独立页面显示。<br />　　　用法：&lt;Meta http-equiv=&#8221;Widow-target&#8221; Content=&#8221;_top&#8221;&gt;<br />　　　注意：这个属性是用来防止别人在框架里调用你的页面。Content选项：_blank、_top、_self、_parent。</p>
+<p><font color="#0033ff">7、Pics-label (网页RSAC等级评定)</font><br />　　　说明：在IE的Internet选项中有一项内容设置，可以防止浏览一些受限制的网站，而网站的限制级<br />　　　　　　别就是通过该参数来设置的。<br />　　　用法：&lt;META http-equiv=&#8221;Pics-label&#8221; Contect=<br />　　　　　　　　　　　　　　　&#8221;(PICS－1.1&#8217;http://www.rsac.org/ratingsv01.html&#8217;<br />　　　　　　 I gen comment &#8216;RSACi North America Sever&#8217; by <a href="mailto:'inet@microsoft.com'">&#8216;inet@microsoft.com&#8217;</a><br />　　　　　　　for &#8216;http://www.microsoft.com&#8217; on &#8216;1997.06.30T14:21－0500&#8217; r(n0 s0 v0 l0))&#8221;&gt;</p>
+<p>注意：不要将级别设置的太高。RSAC的评估系统提供了一种用来评价Web站点内容的标准。用户可以设置Microsoft Internet Explorer（IE3.0以上）来排除包含有色情和暴力内容的站点。上面这个例子中的HTML取自Microsoft的主页。代码中的（n 0 s 0 v 0 l 0）表示该站点不包含不健康内容。级别的评定是由RSAC，即美国娱乐委员会的评级机构评定的，如果你想进一步了解RSAC评估系统的等级内容，或者你需要评价自己的网站，可以访问RSAC的站点：<a href="http://www.rsac.org/">http://www.rsac.org/</a>。</p>
+<p><font color="#0033ff">8、Page-Enter、Page-Exit (进入与退出)</font></p>
+<p>说明：这个是页面被载入和调出时的一些特效。<br />　　　用法：&lt;Meta http-equiv=&#8221;Page-Enter&#8221; Content=&#8221;blendTrans(Duration=0.5)&#8221;&gt;<br />　　　　　　&lt;Meta http-equiv=&#8221;Page-Exit&#8221; Content=&#8221;blendTrans(Duration=0.5)&#8221;&gt;<br />　　　注意：blendTrans是动态滤镜的一种，产生渐隐效果。另一种动态滤镜RevealTrans也可以用于页面进入与退出效果:</p>
+<p>&lt;Meta http-equiv=&#8221;Page-Enter&#8221; Content=&#8221;revealTrans(duration=x, transition=y)&#8221;&gt;<br />　　　　　　&lt;Meta http-equiv=&#8221;Page-Exit&#8221; Content=&#8221;revealTrans(duration=x, transition=y)&#8221;&gt;</p>
+<p>Duration　　表示滤镜特效的持续时间(单位：秒)<br />　　　　　　　Transition　滤镜类型。表示使用哪种特效，取值为0-23。</p>
+<p>0 矩形缩小<br />　　　　　　　1 矩形扩大<br />　　　　　　　2 圆形缩小<br />　　　　　　　3 圆形扩大<br />　　　　　　　4 下到上刷新<br />　　　　　　　5 上到下刷新<br />　　　　　　　6 左到右刷新<br />　　　　　　　7 右到左刷新<br />　　　　　　　8 竖百叶窗<br />　　　　　　　9 横百叶窗<br />　　　　　　 10 错位横百叶窗<br />　　　　　　 11 错位竖百叶窗<br />　　　　　　 12 点扩散<br />　　　　　　 13 左右到中间刷新<br />　　　　　　 14 中间到左右刷新<br />　　　　　　 15 中间到上下<br />　　　　　　 16 上下到中间<br />　　　　　　 17 右下到左上<br />　　　　　　 18 右上到左下<br />　　　　　　 19 左上到右下<br />　　　　　　 20 左下到右上<br />　　　　　　 21 横条<br />　　　　　　 22 竖条<br />　　　　　　 23 以上22种随机选择一种</p>
+<p><font color="#0033ff">9、MSThemeCompatible (XP主题)</font><br />　　　说明：是否在IE中关闭 xp 的主题<br />　　　用法：&lt;Meta http-equiv=&#8221;MSThemeCompatible&#8221; Content=&#8221;Yes&#8221;&gt;<br />　　　注意：关闭 xp 的蓝色立体按钮系统显示样式，从而和win2k 很象。</p>
+<p><font color="#0033ff">10、IE6 (页面生成器)<br /></font>　　　说明：页面生成器generator，是ie6<br />　　　用法：&lt;Meta http-equiv=&#8221;IE6&#8243; Content=&#8221;Generator&#8221;&gt;<br />　　　注意：用什么东西做的，类似商品出厂厂商。</p>
+<p><font color="#0033ff">11、Content-Script-Type (脚本相关)<br /></font>　　　说明：这是近来W3C的规范，指明页面中脚本的类型。<br />　　　用法：&lt;Meta http-equiv=&#8221;Content-Script-Type&#8221; Content=&#8221;text/javascript&#8221;&gt;<br />　　　注意：</p>
+<p><font color="#ff3300"><strong>※NAME变量</strong></font></p>
+<p>name是描述网页的，对应于Content（网页内容），以便于搜索引擎机器人查找、分类（目前几乎所有的搜索引擎都使用网上机器人自动查找meta值来给网页分类）。<br />　　name的value值（name=&#8221;&#8221;）指定所提供信息的类型。有些值是已经定义好的。例如description(说明)、keyword(关键字)、refresh(刷新)等。还可以指定其他任意值，如：creationdate(创建日期) 、<br />document ID(文档编号)和level(等级)等。<br />　　name的content指定实际内容。如：如果指定level(等级)为value(值)，则Content可能是beginner(初级)、intermediate(中级)、advanced(高级)。 </p>
+<p><font color="#0033ff">1、Keywords (关键字)</font><br />　　　说明：为搜索引擎提供的关键字列表<br />　　　用法：&lt;Meta name=&#8221;Keywords&#8221; Content=&#8221;关键词1,关键词2，关键词3,关键词4,……&#8221;&gt;<br />　　　注意：各关键词间用英文逗号“,”隔开。META的通常用处是指定搜索引擎用来提高搜索质量的关键词。当数个META元素提供文档语言从属信息时，搜索引擎会使用lang特性来过滤并通过用户的语言优先参照来显示搜索结果。例如：<br />　　　　　　&lt;Meta name=&#8221;Kyewords&#8221; Lang=&#8221;EN&#8221; Content=&#8221;vacation,greece,sunshine&#8221;&gt;<br />　　　　　　&lt;Meta name=&#8221;Kyewords&#8221; Lang=&#8221;FR&#8221; Content=&#8221;vacances,grè:ce,soleil&#8221;&gt;</p>
+<p><font color="#0033ff">2、Description (简介)</font><br />　　　说明：Description用来告诉搜索引擎你的网站主要内容。<br />　　　用法：&lt;Meta name=&#8221;Description&#8221; Content=&#8221;你网页的简述&#8221;&gt;<br />　　　注意：</p>
+<p><font color="#0033ff">3、Robots (机器人向导)</font><br />　　　说明：Robots用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引。Content的参数有all、none、index、noindex、follow、nofollow。默认是all。<br />　　　用法：&lt;Meta name=&#8221;Robots&#8221; Content=&#8221;All|None|Index|Noindex|Follow|Nofollow&#8221;&gt;<br />　　　注意：许多搜索引擎都通过放出robot/spider搜索来登录网站，这些robot/spider就要用到meta元素的一些特性来决定怎样登录。</p>
+<p>all：文件将被检索，且页面上的链接可以被查询；<br />　　　 none：文件将不被检索，且页面上的链接不可以被查询；(和 &#8220;noindex, no follow&#8221; 起相同作用)<br />　　　 index：文件将被检索；（让robot/spider登录）<br />　　　 follow：页面上的链接可以被查询；<br />　　　 noindex：文件将不被检索，但页面上的链接可以被查询；(不让robot/spider登录)<br />　　　nofollow：文件将不被检索，页面上的链接可以被查询。(不让robot/spider顺着此页的连接往下探找)</p>
+<p><font color="#0033ff">4、Author (作者)</font><br />　　　说明：标注网页的作者或制作组<br />　　　用法：&lt;Meta name=&#8221;Author&#8221; Content=&#8221;张三，<a href="mailto:abc@sohu.com">abc@sohu.com</a>&#8220;&gt;<br />　　　注意：Content可以是：你或你的制作组的名字,或Email</p>
+<p><font color="#0033ff">5、Copyright (版权)<br /></font>　　　说明：标注版权<br />　　　用法：&lt;Meta name=&#8221;Copyright&#8221; Content=&#8221;本页版权归Zerospace所有。All Rights Reserved&#8221;&gt;<br />　　　注意：</p>
+<p><font color="#0033ff">6、Generator (编辑器)</font><br />　　　说明：编辑器的说明<br />　　　用法：&lt;Meta name=&#8221;Generator&#8221; Content=&#8221;PCDATA|FrontPage|&#8221;&gt;<br />　　　注意：Content=&#8221;你所用编辑器&#8221;</p>
+<p><font color="#0033ff">7、revisit-after (重访)</font><br />　　　说明：<br />　　　用法：&lt;META name=&#8221;revisit-after&#8221; CONTENT=&#8221;7 days&#8221; &gt;<br />　　　注意：</p>
+<p><font color="#ff3300"><strong>※Head中的其它一些用法<br /></strong></font><br />　　<font color="#0033ff">1、scheme (方案)</font><br />　　　说明：scheme can be used when name is used to specify how the value of content should<br />　　　　　　be interpreted.<br />　　　用法：&lt;meta scheme=&#8221;ISBN&#8221; name=&#8221;identifier&#8221; content=&#8221;0-14-043205-1&#8243; /&gt;<br />　　　注意：</p>
+<p><font color="#0033ff">2、Link (链接)<br /></font>　　　说明：链接到文件<br />　　　用法：&lt;Link href=&#8221;soim.ico&#8221; rel=&#8221;Shortcut Icon&#8221;&gt;<br />　　　注意：很多网站如果你把她保存在收件夹中后，会发现它连带着一个小图标，如果再次点击进入之后还会发现地址栏中也有个小图标。现在只要在你的页头加上这段话，就能轻松实现这一功能。&lt;LINK&gt; 用来将目前文件与其它 URL 作连结，但不会有连结按钮，用於 &lt;HEAD&gt; 标记间， 格式如下： <br />　　　　　　　&lt;link href=&#8221;URL&#8221; rel=&#8221;relationship&#8221;&gt; <br />　　　　　　　&lt;link href=&#8221;URL&#8221; rev=&#8221;relationship&#8221;&gt;</p>
+<p><font color="#0033ff">3、Base (基链接)<br /></font>　　　说明：插入网页基链接属性<br />　　　用法：&lt;Base href=&#8221;<a href="http://www.csdn.net/">http://www.csdn.net/</a>&#8221; target=&#8221;_blank&#8221;&gt;<br />　　　注意：你网页上的所有相对路径在链接时都将在前面加上“http://www.cn8cn.com/”。其中target=&#8221;_blank&#8221;是链接文件在新的窗口中打开，你可以做其他设置。将“_blank”改为“_parent”是链接文件将在当前窗口的父级窗口中打开；改为“_self”链接文件在当前窗口（帧）中打开；改为“_top”链接文件全屏显示。</p>
+<blockquote>
+<p dir="ltr">&lt;head&gt;　　<br />&nbsp;&nbsp;&nbsp; &lt;title&gt;文件头，显示在浏览器标题区&lt;/title&gt;<br />&nbsp;&nbsp;&nbsp; &lt;meta http-equiv=&#8221;Content-Language&#8221; content=&#8221;zh-cn&#8221;&gt;<br />　&lt;meta http-equiv=&#8221;Content-Type&#8221; content=&#8221;text/html; charset=gb2312&#8243;&gt;<br />　&lt;meta name=&#8221;GENERATOR&#8221; content=&#8221;Microsoft FrontPage 4.0&#8243;&gt;<br />　&lt;meta name=&#8221;ProgId&#8221; content=&#8221;FrontPage.Editor.Document&#8221;&gt;<br />　&lt;meta name=&#8221;制作人&#8221; content=&#8221;Simonzy&#8221;&gt;<br />　&lt;meta name=&#8221;主题词&#8221; content=&#8221;HTML 网页制作 C# .NET JavaScript JS&#8221;&gt;<br />&lt;/head&gt;</p>
+</blockquote>
+<p>&nbsp; 以上是META标签的一些基本用法，其中最重要的就是：Keywords和Description的设定。为什么呢？道理很简单，这两个语句可以让搜索引擎能准确的发现你，吸引更多的人访问你的站点!根据现在流行搜索引擎(Google，Lycos，AltaVista等)的工作原理，搜索引擎先派机器人自动在WWW上搜索，当发现新的网站时，便于检索页面中的Keywords和Description，并将其加入到自己的数据库，然后再根据关键词的密度将网站排序。 </p>
+<p>引用自<a href="http://dev.csdn.net/article/58/58313.shtm" target="_blank">CSDN</a></p>
+							</div>
+		</article>
+	
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">文章导航</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="/articles/open-nsf-outside-of-data-directory.html" rel="prev"><span class="meta-nav" aria-hidden="true">上一</span> <span class="screen-reader-text">上篇文章：</span> <span class="post-title">快速打开不是位于Data数据目录下的数据库</span></a></div><div class="nav-next"><a href="/articles/notes-ini-variable-for-date-time-format.html" rel="next"><span class="meta-nav" aria-hidden="true">继续</span> <span class="screen-reader-text">下篇文章：</span> <span class="post-title">用来设置时间、日期格式的notes.ini参数</span></a></div></div>
+	</nav>
+
+<div id="comments" class="comments-area">
+
+	
+	
+	
+</div>
+
+			</div>
+											<footer class="site-info" itemscope itemtype="http://schema.org/WPFooter">
+										<a href="http://cn.wordpress.org/" title="优雅的个人发布平台">由WordPress自豪地提供</a>.
+					主题：Flat 1.0.4 by <a rel="nofollow" href="https://themeisle.com/themes/flat/" title="Flat WordPress Theme">Themeisle</a>				</footer>
+														</div>
+					</div>
+	</div>
+</div>
+<!-- Powered by WPtouch: 4.3.37 --><script src='/wp-includes/js/comment-reply.min.js?ver=5.2.2'></script>
+<script src='/wp-includes/js/wp-embed.min.js?ver=5.2.2'></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nsd &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/nsd/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 30 Nov 2011 08:57:33 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>在 NSD 中查看 LotusScript 的调用堆栈</title>
+		<link>/articles/examining-lotusscript-call-stack-in-nsd.html</link>
+				<comments>/articles/examining-lotusscript-call-stack-in-nsd.html#respond</comments>
+				<pubDate>Wed, 30 Nov 2011 08:57:33 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[lotusscript]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[nsd]]></category>
+
+		<guid isPermaLink="false">/?p=645093</guid>
+				<description><![CDATA[通过添加以下 Notes.ini 参数，可以抓取 LotusScript 的调用堆栈，帮助我们分析宕机等问题： [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>通过添加以下 Notes.ini 参数，可以抓取 LotusScript 的调用堆栈，帮助我们分析宕机等问题：</p>
+<blockquote><p><tt>DEBUG_LS_DUMP=1</tt></p></blockquote>
+<p>结果格式如下：</p>
+<blockquote><p><tt><strong>LotusScript Call Stack</strong></tt><br />
+<tt><strong>&lt;@@ ------ LotusScript Interpreter -&gt; Call Stack for [ </strong></tt><tt><strong>nlnotes:  0ef8:  1494</strong></tt><tt><strong>]  (Time 10:38:14) ------ @@&gt;</strong></tt></p>
+<p><tt><strong>[3] COUNTVIEWS</strong></tt><br />
+<tt><strong>[2] GETDBINFO @ line number 7</strong></tt><br />
+<tt><strong>[1] COUNTDOCUMENTS @ line number 12</strong></tt><br />
+<tt><strong>[0] INITIALIZE @ line number 2</strong></tt></p></blockquote>
+<p>请参考：<a href="https://www-304.ibm.com/support/docview.wss?uid=swg21499034" target="_blank">Examining LotusScript call stack after a crash or hang with NSD</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/examining-lotusscript-call-stack-in-nsd.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>nsd.sh 导致 cpu 100%占用</title>
+		<link>/articles/multiple-nsd-sh-processes-running-causing-high-cpu-usage.html</link>
+				<comments>/articles/multiple-nsd-sh-processes-running-causing-high-cpu-usage.html#respond</comments>
+				<pubDate>Wed, 22 Dec 2010 07:17:13 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[nsd]]></category>
+
+		<guid isPermaLink="false">/?p=644848</guid>
+				<description><![CDATA[今天我们的 Linux 测试服务器突然开始响应缓慢，而前几天都还是好的。连到服务器上发现 cpu 占用一直是1 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>今天我们的 Linux 测试服务器突然开始响应缓慢，而前几天都还是好的。连到服务器上发现 cpu 占用一直是100%，而占用的进程是很多个 nsd.sh。最终通过搜索技术支持网站找到原因：Domino 数据目录下有不符合命名规范的数据库（如“~”、“/”、中文字符等）。解决方法如下：</p>
+<ol>
+<li>重命名不符合规范的数据库文件</li>
+<li>添加 notes.ini 参数 <em>DISABLE_SAVENSDCONFIG=1</em></li>
+</ol>
+<p>请参考：<a href="http://www-01.ibm.com/support/docview.wss?uid=swg21430218" target="_blank">Multiple nsd.sh processes running causing high cpu usage</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/multiple-nsd-sh-processes-running-causing-high-cpu-usage.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

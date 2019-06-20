@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>sap &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/sap/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Mon, 23 Mar 2009 03:35:00 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>IBM 与 SAP 合作开发的新产品 Alloy 已发布</title>
+		<link>/articles/alloy-by-ibm-and-sap-available.html</link>
+				<comments>/articles/alloy-by-ibm-and-sap-available.html#respond</comments>
+				<pubDate>Mon, 23 Mar 2009 03:35:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[alloy]]></category>
+		<category><![CDATA[notes]]></category>
+		<category><![CDATA[sap]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=637726</guid>
+				<description><![CDATA[就是之前提到的 Atlantic，现已发布。 产品主页：Alloy by IBM and SAP]]></description>
+								<content:encoded><![CDATA[<p>就是之前提到的 <a href="/articles/ibm-and-sap-announce-atlantic.html">Atlantic</a>，现已发布。</p>
+<p>产品主页：<a href="http://www-01.ibm.com/software/lotus/products/alloy/">Alloy by IBM and SAP</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/alloy-by-ibm-and-sap-available.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>IBM 和 SAP 公布&#8221;Atlantic&#8221;计划</title>
+		<link>/articles/ibm-and-sap-announce-atlantic.html</link>
+				<comments>/articles/ibm-and-sap-announce-atlantic.html#respond</comments>
+				<pubDate>Tue, 22 Jan 2008 02:18:29 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[sap]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/ibm-and-sap-announce-atlantic.html</guid>
+				<description><![CDATA[今天，IBM 和 SAP 宣布他们将联合开发一个产品，代号为&#8221;Atlantic&#8221;。它将 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>今天，IBM 和 SAP 宣布他们将联合开发一个产品，代号为&#8221;Atlantic&#8221;。它将支持 SAP 的工作流、报表、分析功能，以及 Notes 的角色、离线功能等。产品第一版计划于 2008 年第四季度推出。</p>
+<p>除了产品本身的意义之外，继微软之后 IBM 也成为了 SAP 的官方合作伙伴。在做实施了 SAP 产品的客户时，以前在这一点上微软是有优势的，而现在的情况可能就不太一样了。</p>
+<p>参考链接：<a href="http://www.edbrill.com/ebrill/edbrill.nsf/dx/ibm-and-sap-announce-atlantic?opendocument&amp;comments" target="_blank">IBM and SAP announce &#8220;Atlantic&#8221;<br />
+</a><a href="http://www.johndavidhead.com/jhead/johnhead.nsf/dx/project-atlantic-a.k.a-the-ibm-and-sap-annoucement-...-is-a-huge-deal" target="_blank">Project Atlantic a.k.a the IBM and SAP annoucement &#8230; is a HUGE deal! </a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/ibm-and-sap-announce-atlantic.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

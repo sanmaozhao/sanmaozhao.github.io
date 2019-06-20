@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>server.id &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/server-id/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 24 Nov 2005 09:10:39 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>如何清除具有最小口令长度限制的服务器ID的口令</title>
+		<link>/articles/clear-password-of-server-id.html</link>
+				<comments>/articles/clear-password-of-server-id.html#respond</comments>
+				<pubDate>Thu, 24 Nov 2005 09:10:39 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[password]]></category>
+		<category><![CDATA[server.id]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e5%a6%82%e4%bd%95%e6%b8%85%e9%99%a4%e5%85%b7%e6%9c%89%e6%9c%80%e5%b0%8f%e5%8f%a3%e4%bb%a4%e9%95%bf%e5%ba%a6%e9%99%90%e5%88%b6%e7%9a%84%e6%9c%8d%e5%8a%a1%e5%99%a8id%e7%9a%84%e5%8f%a3%e4%bb%a4.html</guid>
+				<description><![CDATA[当一个Domino管理员想要把Domino服务器设置为不需要提供口令就可以启动（这样就可以实现关机后自动重起） [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>当一个Domino管理员想要把Domino服务器设置为不需要提供口令就可以启动（这样就可以实现关机后自动重起），但是，发现验证字和服务器ID都被设置了口令的最小长度限制，这样就限制了管理员来清除ID的口令。那么，如何做呢？请看下面的文档</p>
+<p>引用自<a href="http://www-900.ibm.com/cn/support/viewdoc/detail?DocId=1897665G18000" target="_blank">IBM技术支持库</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/clear-password-of-server-id.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

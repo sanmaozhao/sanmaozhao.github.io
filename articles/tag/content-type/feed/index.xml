@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>content-type &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/content-type/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 08 Dec 2010 11:05:58 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>为每种文件类型设定正确的 content-type</title>
+		<link>/articles/set-correct-content-type.html</link>
+				<comments>/articles/set-correct-content-type.html#respond</comments>
+				<pubDate>Wed, 08 Dec 2010 11:05:58 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[content-type]]></category>
+		<category><![CDATA[httpd.cnf]]></category>
+
+		<guid isPermaLink="false">/?p=644828</guid>
+				<description><![CDATA[为 HTTP 服务器上的每个文件设定正确的 content-type 头是很重要的，因为很多情况下区分文件类型 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>为 HTTP 服务器上的每个文件设定正确的 content-type 头是很重要的，因为很多情况下区分文件类型正是靠它（而不是文件后缀）。</p>
+<p>Domino 环境下默认带了常见文件的 content-type 配置，但总是有不全的。可以通过编辑 &lt;domino data&gt;/httpd.cnf 文件来实现，比如我们添加 json 文件类型就可以添加以下一行：</p>
+<blockquote><p><tt>AddType .json application/json</tt></p></blockquote>
+<p>参考链接：<a href="http://www-01.ibm.com/support/docview.wss?uid=swg21289700" target="_blank">http://www-01.ibm.com/support/docview.wss?uid=swg21289700</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/set-correct-content-type.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

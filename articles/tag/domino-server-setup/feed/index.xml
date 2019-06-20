@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>domino server setup &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/domino-server-setup/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 23 Jul 2009 09:33:43 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>配置附加服务器时，出现&#8221;You are not authorized to use the server&#8221;错误</title>
+		<link>/articles/you-are-not-authorized-to-use-the-server-when-setting-up-additional-server.html</link>
+				<comments>/articles/you-are-not-authorized-to-use-the-server-when-setting-up-additional-server.html#comments</comments>
+				<pubDate>Thu, 23 Jul 2009 09:33:43 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[domino server setup]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=640209</guid>
+				<description><![CDATA[在注册完附加服务器后，进行服务器配置的时候，在最后一步出现&#8221;You are not authori [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在注册完附加服务器后，进行服务器配置的时候，在最后一步出现&#8221;You are not authorized to use the server&#8221;错误。实际上就是附加服务器没有访问主服务器的权限，同时在主服务器控制台上也出现拒绝访问的消息。</p>
+<p>最后查明原因为在服务器文档的安全标签下，&#8221;Access Server&#8221; 域勾选了&#8221;Users listed in all trusted directories&#8221;。此选项会只允许信任目录中的用户访问服务器，从而禁止了服务器间的访问。</p>
+<p>IBM 的支持网站说可以先取消此复选框，服务器配置完成后，再重新勾上。不过按照我的理解和测试，这样还是会禁止服务器间的访问，应该还是不行的。不知道是不是我理解有误，欢迎大家指教。</p>
+<p>相关链接：<a href="http://www-01.ibm.com/support/docview.wss?uid=swg21113535" target="_blank">Server error: &#8220;You are not authorized to use the server&#8221; setting up a new server</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/you-are-not-authorized-to-use-the-server-when-setting-up-additional-server.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+	</channel>
+</rss>

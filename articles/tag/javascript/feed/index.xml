@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>javascript &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/javascript/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 19 Apr 2006 02:41:53 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>URL编码：escape和encodeURIComponent</title>
+		<link>/articles/escape-encode-uricomponent.html</link>
+				<comments>/articles/escape-encode-uricomponent.html#respond</comments>
+				<pubDate>Wed, 19 Apr 2006 02:41:53 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[javascript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/url%e7%bc%96%e7%a0%81%ef%bc%9aescape%e5%92%8cencodeuricomponent.html</guid>
+				<description><![CDATA[escape() 编码对 UTF-8 支持的不太好，我们应该用 encodeURI() 或者 encodeUR [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>escape() 编码对 UTF-8 支持的不太好，我们应该用 encodeURI() 或者 encodeURIComponent() 来取代 escape() 。不过 encodeURI() 和 encodeURIComponent() 都需要 <u>IE 5.5</u> 以上才支持，FireFox 则完全没有问题。 </p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 以下是 MSDN 对这三个编码函数的解释： </p>
+<p><strong>escape(charString) </strong></p>
+<blockquote>
+<p>escape 方法返回一个包含 charstring 内容的字符串值（Unicode 格式）。所有空格、标点、重音符号以及任何其他非 ASCII 字符都用 %xx 编码替换，其中 xx 等于表示该字符的十六进制数。例如，空格返回为&ldquo;%20&rdquo;。 </p>
+<p>字符值大于 255 的字符以 %uxxxx 格式存储。 </p>
+<p>注意 escape 方法不能用来对&ldquo;统一资源标识符&rdquo;(URI) 进行编码。</p>
+</blockquote>
+<p><strong>encodeURI(URIString)</strong> </p>
+<blockquote>
+<p>encodeURI 方法返回一个已编码的 URI。如果将编码结果传递给 decodeURI，则将返回初始的字符串。encodeURI 不对下列字符进行编码：&ldquo;:&rdquo;、&ldquo;/&rdquo;、&ldquo;;&rdquo;和&ldquo;?&rdquo;。请使用 encodeURIComponent 对这些字符进行编码。</p>
+</blockquote>
+<p><strong>encodeURIComponent(encodedURIString)</strong> </p>
+<blockquote>
+<p>encodeURIComponent 方法返回一个已编码的 URI。如果将编码结果传递给 decodeURIComponent，则将返回初始的字符串。因为 encodeURIComponent 方法将对所有字符编码，请注意，如果该字符串代表一个路径，例如 /folder1/folder2/default.html，则其中的斜杠也将被编码，这样，当该字符串作为请求发送到 Web 服务器时它将是无效的。如果字符串中包含多个 URI 组件，请使用 encodeURI 方法进行编码。</p>
+</blockquote>
+]]></content:encoded>
+							<wfw:commentRss>/articles/escape-encode-uricomponent.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>用Js检测一个链接是否存在</title>
+		<link>/articles/check-404-error-in-javascript.html</link>
+				<comments>/articles/check-404-error-in-javascript.html#respond</comments>
+				<pubDate>Tue, 01 Nov 2005 02:56:18 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[javascript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e7%94%a8js%e6%a3%80%e6%b5%8b%e4%b8%80%e4%b8%aa%e9%93%be%e6%8e%a5%e6%98%af%e5%90%a6%e5%ad%98%e5%9c%a8.html</guid>
+				<description><![CDATA[我们知道，使用 XMLHTTP.open(&#8220;GET&#8221;,url,false) 方法可以不 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我们知道，使用 XMLHTTP.open(&#8220;GET&#8221;,url,false) 方法可以不刷新页面请求一个文件，再检查 XMLHTTP.status 属性可以判断请求的状态。但是上面的方法会载入整个请求的文件，如果仅仅需要判断请求的链接是否存在，我们使用 XMLHTTP.open(&#8220;HEAD&#8221;,url,false) 方法可以判断一个链接是否存在，并且不用把请求的文件全部下载回来。具体代码如下：</p>
+<p><span id="more-142910"></span><br />
+<textarea rows="10" cols="60">function checkStatus(url)<br />
+{<br />
+XMLHTTP = new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)<br />
+XMLHTTP.open(&#8220;HEAD&#8221;,url,false)<br />
+XMLHTTP.send()<br />
+return XMLHTTP.status==200<br />
+}<br />
+alert(checkStatus(&#8220;http://testLink/&#8221;))</textarea></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/check-404-error-in-javascript.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>暗藏杀机的parseInt函数</title>
+		<link>/articles/proper-use-parseint.html</link>
+				<comments>/articles/proper-use-parseint.html#respond</comments>
+				<pubDate>Wed, 10 Aug 2005 12:58:08 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[javascript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e6%9a%97%e8%97%8f%e6%9d%80%e6%9c%ba%e7%9a%84parseint%e5%87%bd%e6%95%b0.html</guid>
+				<description><![CDATA[JavaScript里面有个parseInt函数，是用来把字符转成数字的，咱们一般这么用，返回值就是数字12了 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>JavaScript里面有个parseInt函数，是用来把字符转成数字的，咱们一般这么用，返回值就是数字12了：</p>
+<p><span class="Code">parseInt(&#8220;12ABC&#8221;)</span>&nbsp;</p>
+<p>嗯，看上去很不错。再来看看下面两个会返回什么样的结果？</p>
+<p><span class="Code">parseInt(&#8220;9&#8221;)</span></p>
+<p><span class="Code">parseInt(&#8220;13&#8221;)</span></p>
+<p>没错，他们分别返回了数字9和数字13。那么下面的两个呢？</p>
+<p><span class="Code">parseInt(&#8220;09&#8221;)</span></p>
+<p><span class="Code">parseInt(&#8220;013&#8221;)</span></p>
+<p>看上去他们应该和前面两个一样返回数字9和13。但是结果并非如此：第一个返回了数字0，第二个返回了数字11。其实parseInt本来的语法是这样的：</p>
+<p><strong>parseInt</strong>(<em><font color="#0000ff">numString</font></em>, [<em><font color="#0000ff">radix</font></em>])</p>
+<p>第一个参数是包含数字的字符串，第二个是转化时的进制。我们平时使用基本不带第二个参数，因为正常情况下按十进制转化，无须我们指定。但是0开头的字符串系统会认为是八进制数，09并不是合法的八进制数，所以返回了0；013从八进制转化成十进制正好是11。</p>
+<p>我们要小心了，这种错误出现了一般很难察觉。所以，还是每次使用都带上第二个参数吧。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/proper-use-parseint.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Javascript暂停函数</title>
+		<link>/articles/pause-in-javascript.html</link>
+				<comments>/articles/pause-in-javascript.html#comments</comments>
+				<pubDate>Wed, 06 Jul 2005 04:20:20 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[hack]]></category>
+		<category><![CDATA[javascript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/javascript%e6%9a%82%e5%81%9c%e5%87%bd%e6%95%b0.html</guid>
+				<description><![CDATA[在Web编程中，经常会遇到js并不是按照书写的顺序执行的问题：A语句明明写在B语句前面，但是B语句确先执行了， [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在Web编程中，经常会遇到js并不是按照书写的顺序执行的问题：A语句明明写在B语句前面，但是B语句确先执行了，往往只要在AB语句之间加入一个Alert就能恢复正常的顺序。但是不能无故弹对话框给用户看啊，真是莫名其妙的问题<img src="/fckeditor/editor/images/smiley/msn/confused_smile.gif">。</p>
+<p>下面这个暂停函数就是先弹出一个模式窗口，然后立刻关闭掉自己，不让用户看到这个窗口。有一个问题是如果安装了上网助手或者使用增强安全性的IE（比如XpSp2、2003），就需要进行相应的配置，否则窗口会被拦截掉的，导致Js错误而无法继续执行后面的代码。</p>
+<p><span id="more-142903"></span><br />
+<textarea rows="10" cols="60">function pause(numberMillis) {<br />
+        var dialogScript =<br />
+           &#8216;window.setTimeout(&#8216; +<br />
+           &#8216; function () { window.close(); }, &#8216; + numberMillis + &#8216;);&#8217;;<br />
+        var result =<br />
+// For IE5.<br />
+         window.showModalDialog(<br />
+           &#8216;javascript:document.writeln(&#8216; +<br />
+            &#8216;&#8221;&lt;script&gt;&#8217; + dialogScript + &#8216;&lt;&#8216; + &#8216;/script&gt;&#8221;)&#8217;);<br />
+/* For NN6, but it requires a trusted script.<br />
+         openDialog(<br />
+           &#8216;javascript:document.writeln(&#8216; +<br />
+            &#8216;&#8221;&lt;script&gt;&#8217; + dialogScript + &#8216;&lt;&#8216; + &#8216;/script&gt;&#8221;&#8216;,<br />
+           &#8216;pauseDialog&#8217;, &#8216;modal=1,width=10,height=10&#8217;);<br />
+ */<br />
+     }</textarea></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/pause-in-javascript.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>JavaScript版的Base64编码、解码函数</title>
+		<link>/articles/javascript-base64-encode-decode-function.html</link>
+				<comments>/articles/javascript-base64-encode-decode-function.html#respond</comments>
+				<pubDate>Mon, 04 Jul 2005 13:08:11 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[base64]]></category>
+		<category><![CDATA[javascript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/javascript%e7%89%88%e7%9a%84base64%e7%bc%96%e7%a0%81%e3%80%81%e8%a7%a3%e7%a0%81%e5%87%bd%e6%95%b0.html</guid>
+				<description><![CDATA[比如Sanmao的Base64编码结果是U2FubWFv  代码在下面。 http://www.webtool/ [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>比如<font color="#ff6600">Sanmao</font>的Base64编码结果是<font color="#ff6600">U2FubWFv  </font>代码在下面。</p>
+<p>http://www.webtoolkit.info/javascript-base64.html</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/javascript-base64-encode-decode-function.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

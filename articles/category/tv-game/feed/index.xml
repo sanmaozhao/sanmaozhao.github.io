@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>TV Game &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/category/tv-game/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 19 Oct 2011 05:51:06 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Guitar Hero系列攻略：Guitar Zero至Guitar Hero之路</title>
+		<link>/articles/guitar-hero-series-guide.html</link>
+				<comments>/articles/guitar-hero-series-guide.html#respond</comments>
+				<pubDate>Thu, 29 Jul 2010 13:20:32 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[TV Game]]></category>
+		<category><![CDATA[guitar hero]]></category>
+
+		<guid isPermaLink="false">/?p=644801</guid>
+				<description><![CDATA[说明 本文为 Sanmao 原创，部分结构参考了 GameFaqs的文章。原载于摇滚游戏集中营，现整理到自己博 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p><strong>说明</strong></p>
+<p>本文为 Sanmao 原创，部分结构参考了 <a href="http://www.gamefaqs.com/console/ps2/file/932565/46649" target="_blank">GameFaqs的文章</a>。原载于<a href="http://www.rockgameworld.com/" target="_blank">摇滚游戏集中营</a>，现整理到自己博客作为存档。<br />
+本文花费了我很多心血，<strong>转载请注明作者及出处</strong>。<br />
+本文针对没有基础的Guitar Zero 玩家，目的为引导他们一步一步走向Guitar Hero。<br />
+本文针对GH各项技术进行讲解，并推荐一些适合的练习曲目，但并没有专门针对哪首曲子做特殊的攻略。<br />
+如果你觉的某一部分的内容太过简单，可以跳过他直接看后边。<br />
+本文所有内容均针对吉他玩家，我的手柄水平也很烂，请手柄玩家见谅。 <strong> </strong></p>
+<p><strong>0</strong><strong>、写在前面</strong></p>
+<p>在你拿起吉他之前，我想强调一下左手握吉他的手势。<br />
+我是以一个不太好的手势练起的，到了现在再改比较麻烦。所以希望你能有个好的开始。</p>
+<p>以琴面朝上为例，拇指应该放到琴的下方，而不是侧面。<br />
+这样的好处是，你的手指可以分得更开，便于按<img src="/pic/gh_note//15.gif" alt="" />这样的和弦。还有就是手指的移动会更加灵活。</p>
+<p><strong>1</strong><strong>、初摸吉他</strong></p>
+<p>非常高兴你也和我一样选择了Guitar Hero 这个游戏，同时也恭喜你，这是一个不折不扣的佳作。<br />
+话不多说，我们从最基本的开始把。<span id="more-644801"></span></p>
+<p>1-1、弹奏音符</p>
+<p>首先我推荐你通过游戏的Training&gt;Tutorials 菜单先玩一遍教学模式，这里面有很多基础的东西。<br />
+英文听不懂或者不想听他们鸡歪？没问题！看这部分内容就行了。</p>
+<p>和其他音乐游戏不一样，GH演奏一个音符需要两个动作：按品 和 拨弦。<br />
+不过这并不难理解，就像弹真吉他一样，先按住对应的品位定下音调，然后拨弦发出声音。</p>
+<p>先来个最简单的：<br />
+<img src="/pic/gh_note//1.gif" alt="" />一个绿色音符过来了，我们首先按住琴颈的绿色按键，等绿色音符和屏幕下方的绿色圆圈重合的时候，拨动琴弦即可。<br />
+什么，没找到琴弦？哦，琴箱中间那个可以上下拨动的家伙就是了。<br />
+和真的琴弦类似，你可以往上或者往下拨动他，当然还可以用拇指和食指捏住他，然后上下拨动，就像在使用一个拨片一样。<br />
+不过上下拨动这时候后面要介绍的高级技巧了，你现在只要选择一个自己喜欢的方式就行。</p>
+<p>与其他音乐游戏相同的是，判断拨弦时机不要只去看，要配合音乐的节奏。这很关键。</p>
+<p>GH另外一个很有意思的地方是，只有你正确的弹上了音符，才会发出相应的吉他声。<br />
+不弹的话就没有声音，弹错了就会“支”的一声。哈哈，非常有趣。</p>
+<p>这里要提一下，玩GH的要尽量的放松，太紧张的话往往很难弹好。<br />
+如果总是很紧张的话，可以到练习模式试试。反正死不掉，就融入到音乐中好好享受吧！</p>
+<p>1-2、长音符</p>
+<p>和一般的音符类似，不过拨动琴弦后，需要一直按住按钮，直到音符结束。</p>
+<p>1-3、和弦</p>
+<p><img src="/pic/gh_note//12.gif" alt="" />就像你看上去的那样，只要同时按下相应的多个按钮，再拨动琴弦就行了。<br />
+不同的和弦按法有些讲究，不过我们现在不用研究太多。</p>
+<p>1-4、一系列相同的音符</p>
+<p>我们经常可以见到这样的谱子：<br />
+<img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><br />
+这时候我们应该怎么办？<br />
+很简单，只要一直按住绿色按钮，然后按照音乐的节奏去拨弦就可以了。你完全不用松开绿色按钮。</p>
+<p>1-5、按钮的优先级</p>
+<p>在GH中，按钮是有高低之分的。绿色的最低，橙色的最高。<br />
+在弹单个音符的时候，如果按下了多个按钮，则最高的按钮生效。</p>
+<p>举个例子<img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//2.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//3.gif" alt="" />你想怎么弹？<br />
+当然按照规矩，按下绿色按钮，弹，松开绿色按下红色，弹，松开红色按下黄色，弹。这样是可以的。<br />
+不过你还有另外的路可选。你可以按下绿色按钮，弹，绿色不放按下红色，弹，红绿不放按下黄色，弹。<br />
+这就是上面说的高品位按钮优先的原则。<br />
+这样做的好处是，整个过程省下了松开绿色红色两个动作。<br />
+注意，弹红色的时候不能按住黄色的，因为黄色的是更高的品位。<br />
+还有就是对于和弦，这招不灵。老老实实的按好相应的按钮把。</p>
+<p>还有更过分的。<img src="/pic/gh_note//2.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//12.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//2.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//12.gif" alt="" />你想怎么弹？<br />
+不停的按下绿色松开绿色？完全没有必要。只要一直按住绿色红色，然后按照节奏拨弦就行了。</p>
+<p>其实这部分属于高级一点的技巧，不过在这里说出来，就是让你先知道。<br />
+偶尔运用一下就行，不一定每个音符都要这样弹。你自己会慢慢找到适合的使用场景的。</p>
+<p><strong>2</strong><strong>、向中等难度进发</strong></p>
+<p>学习了一些基本技巧，你可以开始容易难度的生涯模式了。<br />
+这里有两个提示：一是每弹两组歌曲可以适当的休息一下、二是弹比较难的曲子前可以先找两手已经通过的曲子热身。</p>
+<p>等你完成了容易难度，我们就可以真正开始GH游戏了。<br />
+当然如果你觉的容易难度太过简单，可以跳过他，直接挑战中等难度。</p>
+<p>2-1、蓝色按钮</p>
+<p>中等难度和容易难度比起来最大的不同就是蓝色按钮的出现。<br />
+我几乎可以确定你第一次弹蓝色按钮的时候，会感觉很别扭。<br />
+不用介意，大家都是这样的。因为小指与其他三个手指相比，力量上差了许多，使用起来总是有些不便。<br />
+这不是问题。经过不懈的练习，你可以灵活的利用小指进行高速的solo。当然他比食指还是要差点意思。</p>
+<p>还记得上面说过么，玩GH的时候要尽量放松。那是第一个原则。<br />
+现在告诉你第二个原则：不要介意漏掉或弹错某些音符。几个失误不会影响你过关的。</p>
+<p>2-2、Star Power（俗称能量，简称SP）</p>
+<p>你可能已经注意到了，有些音符长的不太一样，他们不是圆形而是星形的。<br />
+记住他们，因为在很长一段时间内，他们会是你的救命稻草。</p>
+<p>当我们正确的弹奏一系列星形音符后，会点亮右侧血槽上方的小灯泡（能点亮一个半）。<br />
+当有三个以上被点亮时，我们就可以竖起吉他，使用能量了。<br />
+怎么样，很酷吧。能量被激活后会一直往下减，直到耗尽。<br />
+这个过程你可以把吉他放回原样，当然你喜欢竖着弹也没有问题。</p>
+<p>为什么说他是你的救命稻草呢？因为在激活能量的情况下，正确弹奏音符的加血量会有显著增加。<br />
+也就是说，只需要弹中几个音符，就能把你从红色区域拉回绿色。<br />
+所以，在你觉得顶不住的地方，选择合适的时机暴能量是过关的关键。<br />
+当然他还有加分的功能，不过这不属于本文关注的内容。</p>
+<p>就算放过别的音符，也争取将能量都弹对吧。</p>
+<p>2-3、Whammy Bar(颤音摇杆)</p>
+<p>看到琴箱上那个可以摇的东西了没？他就是颤音摇杆。<br />
+使用方法是转到你喜欢的角度，然后在垂直与琴箱的方向上摇动。</p>
+<p>他只有在弹奏长音符的时候才有用。在你按住按钮的同时使用颤音摇杆，声音会发生相应的变化。<br />
+怎么样，挺好玩吧？不过我们要介绍的不是变音这个功能。<br />
+如果你在长星形音符中使用颤音摇杆，会获得额外的能量。这就是关键。你应该明白该怎么做了。</p>
+<p>到了现在，你可能遇到了一些困难，某些歌无法通过。<br />
+那么，我来告诉你第三个原则吧：多练习是提高水平的最好办法。<br />
+GH的练习模式还是比较完善的，可以选择特定段落、速度等。好好利用他吧！</p>
+<p>这里还有另外一个建议：不要和一首歌死磕。<br />
+因为不同的曲子都有不同的特点，尝试不同的曲子比一直玩一首要好。这会让你的技术更加全面。<br />
+当然，如果你的某一项技术比较弱的话，可以多练习练习相应的曲子。总之目的就是全面发展。</p>
+<p><strong>3</strong><strong>、搞定一般难度</strong></p>
+<p>有了上面的一些技巧，你应该可以搞定一般难度的很多曲子了。<br />
+下面我们的目标就是搞定一般难度！在此之前我们还要学点东西。</p>
+<p>3-1、<img src="/pic/gh_note//13.gif" alt="" />和<img src="/pic/gh_note//24.gif" alt="" />和弦</p>
+<p>好，我们又一次提起和弦了。这里再次强调一次，高位优先原则对于和弦无效！<br />
+对于<img src="/pic/gh_note//12.gif" alt="" />、<img src="/pic/gh_note//23.gif" alt="" />、<img src="/pic/gh_note//34.gif" alt="" />和弦，其实没什么好说的，基本上和单音的区别就是要按下两个按钮。<br />
+我们要重点说一下13和24两种和弦。我猜你一定比较喜欢13而比较恨24。<br />
+是这样的。我们的小指本身就不太灵活，加上中指和小指一起动的时候，无名指也经常一起凑热闹，这就让24和弦非常难按。<br />
+你不妨做个试验，拿好吉他，计算一下准备姿势切换到13、24两种和弦的时间，看差距是否明显。</p>
+<p>如果你能按好24和弦，那很好，你这样继续就行了。<br />
+对于按不太明白的，恭喜你和我一样。我们多学习另外一种方法，那就是用食指和无名指按，就像按13那样。<br />
+这种方法对于类似<img src="/pic/gh_note//13.gif" alt="" /><img src="/pic/gh_note//24.gif" alt="" /><img src="/pic/gh_note//13.gif" alt="" /><img src="/pic/gh_note//24.gif" alt="" />这种谱子尤其有效。<br />
+因为你不需要换指法，只要左右滑动切换把位就行了。<br />
+当然，对于<img src="/pic/gh_note//34.gif" alt="" /><img src="/pic/gh_note//24.gif" alt="" /><img src="/pic/gh_note//34.gif" alt="" /><img src="/pic/gh_note//24.gif" alt="" />这类的谱子，还是要用正常的指法来按。<br />
+我们的原则就是，尽量让手部动作简单化。基于这个原则，你可以自由发挥。</p>
+<p>这个部分可能稍微难一些，需要练习的话，我推荐Hard难度的<a href="http://photo15.yupoo.com/20071211/212954_1490243152_wybivcib.jpg" target="_blank">When You Were Young（点击打开谱子，下同）</a>。<br />
+不要害怕，我们只是在练习模式而已，选择Chorus 1这个部分。</p>
+<p>3-2、Hammer On（简称HO）</p>
+<p>不知道你有没有注意到，有些音符的顶部没有黑色圆圈。就像这里的第二个。<img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><br />
+这种特殊的音符，表示我们只需要在正确的时机按下正确的按钮就行，而不需要拨弦。<br />
+举个离子说明吧。<img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//_3.gif" alt="" /><br />
+这段谱子你可以这样弹：按下绿色，弹，按住绿色不放按下红色按钮，按住绿红不放按下黄色按钮。<br />
+整个过程只弹一下，有点意思吧。<br />
+这是最标准的HO弹法，也是GH1代的方法。从二代开始，系统有所变化，有了另外的按法：<br />
+按下绿色，弹，松开绿色按下红色，松开红色按下黄色。同样也是只弹一下。<br />
+这两种方法你可以任选一种习惯的，不过我推荐第一种，因为左手动作更加简单。</p>
+<p>对于一般难度，已经有了一些这样的音符，当然由于密度不大，可以全部拨弦搞定。<br />
+这里和前面一样，先告诉你，具体是否使用看你自己的选择了。<br />
+想要练习的话，推荐Hard难度的 <a href="http://photo14.yupoo.com/20071211/215803_1146801218_dtwylvqy.jpg" target="_blank">Knights of Cydonia</a>，从第105小结开始。可以先从最慢的速度练起，然后逐渐提速。</p>
+<p>我想你一定会问，弹的过程根本来不及分辨那些需要拨弦哪些不需要。<br />
+没错，开始确实难以分辨。不过随着你对歌曲的熟悉，一切都会好起来的。<br />
+而且这些不需要弹的音符，往往是圆滑音，仔细听一下和那些需要弹的还是有点区别的。</p>
+<p><strong>4</strong><strong>、开始痛苦的旅程</strong></p>
+<p>OK，下面开始就是真正的GH游戏了。什么，之前切换到一般难度时我就这么说？<br />
+之前是骗你的，这回没错了。</p>
+<p>提升到困难难度远比提升到一般难度来的更加痛苦。你应该也这样认为把？<br />
+困难难度有几个挑战：谱子速度、橙色按钮、高速Solo、和弦切换、右手速度。让我们来一一破解吧。</p>
+<p>4-1、谱子速度</p>
+<p>困难难度的谱子速度比一般难度要快上不少，有没有让你措手不及？<br />
+不过这个困难很好克服，那就是利用高速模式（Hyper Speed，具体使用请参考<a href="http://bbs.a9vg.com/read.php?tid=799077&amp;fpage=1" target="_blank">全秘籍帖</a>）。<br />
+使用高速模式玩一般难度，这样就可以单独适应谱子速度的变化，而不会受其他因素影响。</p>
+<p>4-2、橙色按钮</p>
+<p>你觉不觉得，橙色按钮远比蓝色按钮麻烦？<br />
+没错，蓝色按钮只是要用到不灵活的小指，而橙色按钮却要移动把位了。<br />
+相信你经常会为了按橙色按钮搞乱后面很多音符吧。下面就帮你解决这个问题。</p>
+<p>我的建议是：改变你的把位，把你的食指从绿色移动到红色按钮上。<br />
+这样做的原因是，食指远比小指灵活，让他管绿红两个按钮比起让小指管蓝橙两个按钮好太多了。<br />
+可能切换的过程会很痛苦，但我保证你早晚会尝到甜头的。</p>
+<p>切换把位后的原则是，后三个指头一直放在后三个按钮上，除非来了<img src="/pic/gh_note//12.gif" alt="" />或<img src="/pic/gh_note//13.gif" alt="" />这样的和弦。<br />
+推荐的练习曲目：Expert难度的<a href="http://pic.yupoo.com/sanmao84/601954d3a19b/zxy8azxb/" target="_blank">Hier Kommt Alex</a>，最开始的部分直到17小节。</p>
+<p>4-3、滑动把位</p>
+<p>按照上面的滑动把位原则，像这类<img src="/pic/gh_note//13.gif" alt="" /><img src="/pic/gh_note//24.gif" alt="" />谱子都要用食指和无名指来按。<br />
+这样就相当于不停的切换把位。可以选择Expert难度的<a href="http://photo15.yupoo.com/20071211/215242_1924013683_lfaihihp.jpg" target="_blank">Hit Me with Your Best Shot</a>，最开始的部分。<br />
+和之前说的一样，<img src="/pic/gh_note//35.gif" alt="" />可以用中指小指按，也可以滑动把位用食指无名指按，全看你个人的习惯了。</p>
+<p><strong>5</strong><strong>、适应困难难度</strong></p>
+<p>OK，将上面的技巧联系熟练之后，你应该可以在困难难度混一混了。<br />
+不过困难难度远没那么甜蜜，想要玩后边一点的歌，继续学习吧兄弟。</p>
+<p>5-1、打品</p>
+<p>先看谱子。<img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//13.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//13.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//13.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//13.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><br />
+你痛恨这样的谱子么？反正我是非常的痛恨。最开始的时候我几乎只能按上其中的单音。<br />
+弹奏这种谱子有两个关键点。一是右手要保持拨弦的节奏，不要被左手的动作变化所影响。<br />
+二是左手的打品动作。食指按住绿色不放，当黄色出现右手拨弦的同时，用无名指快速用力的敲击黄色按钮。<br />
+这样做的好处是左右手动作一致，容易协调。推荐的练习曲目是Hard难度的 <a href="http://photo14.yupoo.com/20071211/215915_1865469649_lrkunqub.jpg" target="_blank">Kool Thing</a>，最开始的部分。</p>
+<p>5-2、Pull Off（简称PO）</p>
+<p>回忆一下之前的Hammer On部分。对于特殊音符，我们可以只按键不拨弦演奏。<br />
+PO与HO类似，只是HO是从低到高，PO是从高到低。不过对大部分人来说，PO应该会更难一些。<br />
+先看谱子。<img src="/pic/gh_note//4.gif" alt="" /><img src="/pic/gh_note//_3.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><br />
+标准的弹奏方法是：按住红黄蓝，弹，松开蓝色，松开黄色。整个过程也是只弹一下。<br />
+同样的从二代开始，新系统支持新弹法：按下蓝色，弹，松开蓝色按下黄色，松开黄色按下红色。<br />
+这就与HO基本一样了，只是反过来而已。<br />
+两种方法中我推荐第二种。因为第一种开始就要按下所有按键，需要背谱才行，很麻烦。<br />
+练习的曲目还是推荐Hard难度的 <a href="http://photo14.yupoo.com/20071211/215803_1146801218_dtwylvqy.jpg" target="_blank">Knights of Cydonia</a>，不过这次从第121小结开始。<br />
+可以先从最慢的速度练起，然后逐渐提速。</p>
+<p>5-4、上下拨弦</p>
+<p>睁大眼睛，又一个救命稻草出现了！<br />
+<img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//2.gif" alt="" /><img src="/pic/gh_note//2.gif" alt="" /><img src="/pic/gh_note//2.gif" alt="" /><img src="/pic/gh_note//2.gif" alt="" /><img src="/pic/gh_note//2.gif" alt="" /><img src="/pic/gh_note//2.gif" alt="" /><img src="/pic/gh_note//2.gif" alt="" /><img src="/pic/gh_note//2.gif" alt="" /><br />
+类似上面的谱子你见过没？我敢确定你只往一个方向拨的话肯定是立扑。这种最好的办法就是上下拨，能省下一半的动作。</p>
+<p>上下拨的方法是拇指和食指捏住中间的拨片，选择一个上下拨动都舒服的位置即可。<br />
+除了这种高密度一连串的必须上下拨之外，还有一些快节奏的歌曲，虽然可以单方向拨，但那是非常的累手。<br />
+上下拨可以节省你很多体力。<br />
+上下拨最关键的就是一个节奏感。因为一上一下有两个判定，所以一开始肯定会不适应。但是一定要练！在心中默数拍子吧。</p>
+<p>推荐两首练习曲目吧。Expert的<a href="http://photo15.yupoo.com/20071211/221156_1388104713_nkatjfuv.jpg" target="_blank">One</a>，第151小节开始。七个一组，从下开始拨到下结束。<br />
+Expert的<a href="http://photo15.yupoo.com/20071211/223622_53417375_chvjtmcm.jpg" target="_blank">3&#8217;s &amp; 7&#8217;s</a>，最开始的部分。所有单音从下开始上下拨，和弦往下拨。<br />
+比如最开始的<img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//134.gif" alt="" /><img src="/pic/gh_note//0.gif" alt="" /><img src="/pic/gh_note//134.gif" alt="" />，就是 下上下上下_下，其他的类推。这个可以练习上下拨和单方向拨交替的感觉。</p>
+<p><strong>6</strong><strong>、最后的技巧</strong></p>
+<p>很高兴你能坚持到现在，我能教你的东西就只剩下最后的一点点了。<br />
+专家难度和困难难度相比也没什么特殊的，就是各种技巧结合的多了一些。你马上就可以出师了，嘿嘿。</p>
+<p>6-1、颤音</p>
+<p>先看谱子。<img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><br />
+这就是一个常见的颤音型谱子。演奏方法很简单，其实就是HO、PO的结合：<br />
+按下绿色并一直按住，弹，按下红色，松开红色，按下红色，松开红色。。。<br />
+玩过吉他的都知道，其实就是按住低品位，敲高品位形成的颤音。怎么样，很简单吧？<br />
+推荐的练习曲目：Expert的<a href="http://photo14.yupoo.com/20071211/221756_784973024_aowqmpwc.jpg" target="_blank">Raining Blood</a>（我恨他），从134小节开始。</p>
+<p>6-2、高速Solo</p>
+<p>其实这个没什么特殊的，拿出来说只是因为他是一个必修的内容。主要就是HO、PO的结合。练习曲目大把，随便找吧。</p>
+<p>6-3、HOPO+滑弦</p>
+<p>其实滑弦可以早点说，不过没什么太好的场景结合，就放在这里说了。先看谱子吧。<img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><img src="/pic/gh_note//_3.gif" alt="" /><img src="/pic/gh_note//_4.gif" alt="" /><img src="/pic/gh_note//_5.gif" alt="" />和<img src="/pic/gh_note//5.gif" alt="" /><img src="/pic/gh_note//_4.gif" alt="" /><img src="/pic/gh_note//_3.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><br />
+咱们只说前面一种，后面的类似。<br />
+其实他也是HO技巧，不过一列有五个音符，四个手指不够用了。弹法如下：<br />
+用食指按绿色，弹，食指滑到红色上，中指弹黄色，无名指弹蓝色，小指弹红色。<br />
+这个过程也就是滑弦+HO。反过来就是PO+滑弦。<br />
+推荐练习曲目：Expert难度的 <a href="http://photo15.yupoo.com/20071211/215743_947634208_dxikjvmk.jpg" target="_blank">Knights of Cydonia</a>，105小节的绿红黄和133小节的黄红绿。</p>
+<p>6-4、三键和弦</p>
+<p>我想你应该遇到过一些三键和弦了，而且也和我一样恨他吧。以下分类说明。<br />
+第一类，<img src="/pic/gh_note//123.gif" alt="" /><img src="/pic/gh_note//234.gif" alt="" /><img src="/pic/gh_note//345.gif" alt="" />。这个比较简单，没啥好说的。<br />
+第二类，<img src="/pic/gh_note//134.gif" alt="" /><img src="/pic/gh_note//245.gif" alt="" />。这类是<img src="/pic/gh_note//13.gif" alt="" /><img src="/pic/gh_note//24.gif" alt="" />的延伸，用食指无名指按的时候带上小指就行了，也还可以。<br />
+第三类，<img src="/pic/gh_note//124.gif" alt="" /><img src="/pic/gh_note//235.gif" alt="" />。比上面一组难按一些，用食指中指小指按就行。<br />
+其他，<img src="/pic/gh_note//125.gif" alt="" /><img src="/pic/gh_note//145.gif" alt="" /><img src="/pic/gh_note//135.gif" alt="" />。出现的比较少，这里就不细说了。<br />
+说来说去，三键和弦我也没啥特殊的心得。多多练习吧。<br />
+推荐练习曲目：Expert难度的 <a href="http://photo15.yupoo.com/20071211/223622_53417375_chvjtmcm.jpg" target="_blank">3&#8217;s &amp; 7&#8217;s</a>、 <a href="http://photo15.yupoo.com/20071211/213200_600811869_xorpryko.jpg" target="_blank">Before I Forget</a>，整曲一票一票的三键和弦，慢慢练吧。</p>
+<p>6-4、双手HO-PO</p>
+<p>这个技巧主要用在大段的高速HOPO，而且跨度比较远的时候。这时用一个手难以完成，所以需要上双手。<br />
+最典型的例子就是二代的名曲Jordan和三代的TTFAF。先看谱子（TTFAF）：<br />
+<img src="/pic/gh_note//2.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_3.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_4.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_3.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_4.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_5.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_4.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_5.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_3.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_4.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_2.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_5.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_3.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_4.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><img src="/pic/gh_note//_3.gif" alt="" /><img src="/pic/gh_note//_1.gif" alt="" /><br />
+整个过程一直按住绿色按钮，右手弹下第一个音符后，迅速过来帮助按按钮。<br />
+下图为按键的指法说明（黑色左手、红色右手，不包含左手一直按住的食指）：<br />
+中 中 中 中 中 无 中 无 中 中 中 中 中 中 中 中<br />
+可以看到出了开始和最后会有连续的右手按键外，其他的都是左右手交替，平均分担。<br />
+练习曲目自然是Expert的<a href="http://img1.a9vg.com/200712/12/1197391924502.png" target="_blank">TTFAF</a>，最开始的部分。</p>
+<p><strong>7</strong><strong>、临别的忠告</strong></p>
+<p>OK，一起学习了这么久，是时候说再见了。在此之前，我们回顾一下之前的几个原则吧<br />
+一是要放松，二是不要介意弹错，三是练习是最好的老师。<br />
+除此之外，我最后再给你三条忠告，相信你会用的到的。</p>
+<p>7-1、合理放弃</p>
+<p>合理评估自己的能力，对于自己几乎弹不上的音符，合理放弃。<br />
+有些很难的谱子适当去掉几个音符就变得很容易了。不要让几个音符破坏了大局。而且GH中弹错的惩罚比不弹要严重。<br />
+当然如果能力允许，我们还是要有追求的都弹才行。</p>
+<p>比如<img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//13.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//1.gif" alt="" /><img src="/pic/gh_note//13.gif" alt="" />，如果弹不上和弦的话，就只弹绿色单音吧。这会简单很多。</p>
+<p>7-2、Star Power（能量）</p>
+<p>之前也有说过能量的重要性。高难度下，能量是过关必备的东西。尽量多攒能量，在适当的时候释放吧。</p>
+<p>7-3、分析谱子</p>
+<p>对于有些特别难的曲子，分析谱子很有必要。分析音符如何取舍，分析哪些能量可以拿到等等。<br />
+我以前从练习模式自己看，很麻烦而且看不清楚。现在你可以从<a href="http://bbs.a9vg.com/read.php?tid=798356&amp;fpage=1" target="_blank">全曲谱贴</a>里面来查了，你看你多幸福啊！</p>
+<p><strong>8</strong><strong>、You Rock</strong><strong>！</strong></p>
+<p>如果你掌握了上面所说的技巧，那么你应该已经从Guitar Zero成长为Guitar Hero了。<br />
+你可以开始向高分、五星、全连发起挑战了。好好享受GH的乐趣吧！</p>
+<p><strong>后记</strong></p>
+<p>由于GH的系统很有意思而很多玩家却不了解，我才写了这个攻略。目的是介绍和推广这个游戏系列。<br />
+没想到一发而不可收拾，一口气把我所有的技巧已经呈现给大家了。还希望能对大家有所帮助。</p>
+<p>当然我的水平有限，有任何问题还请大家多多指教！</p>
+<p>谨以此文献给所有的GH爱好者！</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/guitar-hero-series-guide.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>逆转检事通关</title>
+		<link>/articles/gyakuten-kenji.html</link>
+				<comments>/articles/gyakuten-kenji.html#respond</comments>
+				<pubDate>Thu, 11 Feb 2010 08:11:58 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[TV Game]]></category>
+
+		<guid isPermaLink="false">/?p=644582</guid>
+				<description><![CDATA[从前三章的公测版到完整版，今天终于通关了。从逆转一到检事，现在游戏的时间越来越少，不过还是把她给打穿了，毕竟系 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>从前三章的公测版到完整版，今天终于通关了。从逆转一到检事，现在游戏的时间越来越少，不过还是把她给打穿了，毕竟系列作一直都没有错过。</p>
+<p>游戏的素质就不多说了，见到通关后的合影环节，还是感慨颇多。不知道下一代的逆转，我是否还能通关呢？</p>
+<p><img class="alignnone" title="通关合影" src="/pic/gyakuten-kenji.jpg" alt="通关合影" width="320" height="235" /></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/gyakuten-kenji.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>把我的360折腾了一顿</title>
+		<link>/articles/repair-my-xbox-360.html</link>
+				<comments>/articles/repair-my-xbox-360.html#comments</comments>
+				<pubDate>Fri, 16 Nov 2007 08:13:56 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[TV Game]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/repair-my-xbox-360.html</guid>
+				<description><![CDATA[前些时间我的360终于也到了寿命，迎来了死亡光环。自己折腾一番之后不灵，最后还是拿到店里加了水冷，450元。本 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>前些时间我的360终于也到了寿命，迎来了死亡光环。自己折腾一番之后不灵，最后还是拿到店里加了水冷，450元。本来想在店里刷 iXtreme 的，不过老板那里没有软件，只好自己来搞。还好不是很麻烦，买个 sata 卡，先读光驱的 Key，然后把 Key 写入固件，刷进光驱就行了。但愿就能这么一直用下去，我可不想再折腾它了。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/repair-my-xbox-360.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>修复xbox 360吉他控制器的Whammy bar（颤音摇杆）</title>
+		<link>/articles/fix-xbox360-guitar-controller-xplorer-whammy-bar.html</link>
+				<comments>/articles/fix-xbox360-guitar-controller-xplorer-whammy-bar.html#respond</comments>
+				<pubDate>Mon, 17 Sep 2007 14:13:34 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[TV Game]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e4%bf%ae%e5%a4%8dxbox-360%e5%90%89%e4%bb%96%e6%8e%a7%e5%88%b6%e5%99%a8%e7%9a%84whammy-bar%ef%bc%88%e9%a2%a4%e9%9f%b3%e6%91%87%e6%9d%86%ef%bc%89.html</guid>
+				<description><![CDATA[周末买了 Guitar Hero II 的专用控制器，算是为了三代做好准备，因为国内这东西实在难买（而且好贵  [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>周末买了 Guitar Hero II 的专用控制器，算是为了三代做好准备，因为国内这东西实在难买（而且好贵 &#8211; -）。以前早就听说有些货的颤音摇杆有些问题，不过可以修复，所以买的时候就没在意。结果买回来果然就是有问题的，具体表现为：长音符摇颤音的时候不是很灵，而且有些延迟感。有问题的型号是 95055 和 95065 ，修复方法如下（可以将图拽出来看大图）：</p>
+<p>首先卸下后盖的11个螺丝，然后拿下后盖，找到下图中的这个东西（就是那个摇杆的位置）：</p>
+<p><img src="http://img.photobucket.com/albums/v229/Nickeleye/Before.jpg" border="0" height="300" width="400" /></p>
+<p>将正对着我们的两个螺丝拧松，然后稍微顺时针旋转一下，转到下图这样（这是网上的说法，我的是往另外的方向转的，也修好了）：</p>
+<p><img src="http://img.photobucket.com/albums/v229/Nickeleye/After.jpg" height="300" width="400" /></p>
+<p>调整好之后，将两个黑色小螺丝拧紧，再将后盖装上，试一下如果不行就再次微调角度，直到满意位置，最后将螺丝装上就成了。</p>
+<p>参考链接：<a href="http://www.allaboutthegames.net/feature_story.php?article_id=7714" target="_blank">Faulty Guitar Hero II Controller Fix</a>，<a href="http://forum.guitarherogame.com/Default.aspx?g=posts&amp;t=17898" target="_blank"><span>DIY GH2 Whammy Bar Fix for Xbox 360</span></a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/fix-xbox360-guitar-controller-xplorer-whammy-bar.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Xbox360 Live卖场无法使用：解决方法</title>
+		<link>/articles/xbox360-live-marketplace-unavailable.html</link>
+				<comments>/articles/xbox360-live-marketplace-unavailable.html#respond</comments>
+				<pubDate>Mon, 17 Sep 2007 13:53:24 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[TV Game]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/xbox360-live%e5%8d%96%e5%9c%ba%e6%97%a0%e6%b3%95%e4%bd%bf%e7%94%a8%ef%bc%9a%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95.html</guid>
+				<description><![CDATA[最近一段时间上 live 卖场一直显示“xbox live 卖场目前无法使用”，由于其他一切正常，应该不是被  [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>最近一段时间上 live 卖场一直显示“xbox live 卖场目前无法使用”，由于其他一切正常，应该不是被 M$ Ban 掉了。后来 google 了一下，发现很多人都有这个问题，好像是最近的系统更新导致的。解决方法是去硬盘里面把“系统项目》卖场资料”删除，然后重启机器就好了。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/xbox360-live-marketplace-unavailable.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>信赖玲音，很不错</title>
+		<link>/articles/trusty-bell.html</link>
+				<comments>/articles/trusty-bell.html#respond</comments>
+				<pubDate>Sun, 09 Sep 2007 08:03:59 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[TV Game]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e4%bf%a1%e8%b5%96%e7%8e%b2%e9%9f%b3%ef%bc%8c%e5%be%88%e4%b8%8d%e9%94%99.html</guid>
+				<description><![CDATA[我基本上是不玩 RPG 游戏的，这个游戏是 LGMars 同学要玩我才买的。看他搞了一会，各方面都不错：漂亮干 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我基本上是不玩 RPG 游戏的，这个游戏是 LGMars 同学要玩我才买的。看他搞了一会，各方面都不错：漂亮干净的画面、轻快的音乐，战斗系统也很有乐趣，其实我最受不了 RPG 游戏的一点就是回合制输入指令的战斗系统。游戏整体感觉和格兰迪亚2很像（那我唯一通关的 RPG），喜欢 RPG 游戏的朋友一定要试试。</p>
+<p><a href="http://www.xbox.com/NR/rdonlyres/93ED2639-00CA-4ACE-800B-DEF274B763E2/0/simjptrustybell0008.jpg" target="_blank"><img src="http://www.xbox.com/NR/rdonlyres/2A25DACE-0EEC-4A93-809D-073CA885D398/0/stnjptrustybell0008.jpg" border="0" height="58" width="103" /> </a><a href="http://www.xbox.com/NR/rdonlyres/C5B81B06-9A1D-4BFE-87C3-03418316F9A2/0/simjptrustybell0009.jpg" target="_blank"><img src="http://www.xbox.com/NR/rdonlyres/73DC9115-9F52-4E5C-875C-4A816D7C76BF/0/stnjptrustybell0009.jpg" border="0" height="58" width="103" /> </a><br />
+更多介绍请上：<a href="http://www.xbox.com/zh-HK/games/t/trustybell/" target="_blank">Trusty Bell《信賴鈴音》</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/trusty-bell.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>GH80s Hard通关</title>
+		<link>/articles/beat-guitar-hero-80s-on-hard.html</link>
+				<comments>/articles/beat-guitar-hero-80s-on-hard.html#respond</comments>
+				<pubDate>Thu, 26 Jul 2007 12:29:44 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[TV Game]]></category>
+		<category><![CDATA[guitar hero]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/gh80s-hard%e9%80%9a%e5%85%b3.html</guid>
+				<description><![CDATA[这一代只有30首歌，所以通起来也比较快。除了最后的 Play with me，所有歌都是一遍就过的。说起来最后 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>这一代只有30首歌，所以通起来也比较快。除了最后的 Play with me，所有歌都是一遍就过的。说起来最后一首和前面的难度拉的很开啊，已经有点变态了，还好第二次用 Hyper Speed 模式过了。掐指一算，所有歌都玩过了，可惜的是几乎没有几首喜欢的歌。GH80s 你让太多人失望了。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/beat-guitar-hero-80s-on-hard.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Guitar Hero Encore: Rocks the 80s初玩感想</title>
+		<link>/articles/guitar-hero-encore-rocks-the-80s.html</link>
+				<comments>/articles/guitar-hero-encore-rocks-the-80s.html#respond</comments>
+				<pubDate>Mon, 23 Jul 2007 12:51:25 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[TV Game]]></category>
+		<category><![CDATA[guitar hero]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/guitar-hero-encore-rocks-the-80s%e5%88%9d%e7%8e%a9%e6%84%9f%e6%83%b3.html</guid>
+				<description><![CDATA[吉他英雄新作周末终于来了，虽然说只是个外传，但我其实对他还是抱有很大期望的。最近一直比较忙，所以只是抽空玩了几 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>吉他英雄新作周末终于来了，虽然说只是个外传，但我其实对他还是抱有很大期望的。最近一直比较忙，所以只是抽空玩了几首。由于有了一代二代的练习，我直接选择的 Hard 难度。总体来说好像比二代稍稍难那么一些，因为一开始的几首歌就开始有大段 solo 使用 HOPO 技巧了。</p>
+<p>再说说系统方面，这个稍微有点失望。玩法和二代一样就不说什么了，画面也几乎是完全一样，连开头动画都懒得重做了。不过这游戏玩的也不是画面，所以这倒不是什么大问题。</p>
+<p>最后再说说音乐。目前刚刚玩了前两组，感觉音乐比二代要差一些。而且尤其过分的是，18 and life 这首歌居然给降调演唱了！！！完全没有了原来的力度和震撼的感觉。前两作虽然大部分歌也都不是原唱，但每首都很得原唱的神韵。而这首歌唱的实在是让我太失望了。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/guitar-hero-encore-rocks-the-80s.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>搞定吉他英雄2的Hard难度</title>
+		<link>/articles/beat-guitar-hero-2-on-hard.html</link>
+				<comments>/articles/beat-guitar-hero-2-on-hard.html#respond</comments>
+				<pubDate>Sat, 30 Jun 2007 10:44:26 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[TV Game]]></category>
+		<category><![CDATA[guitar hero]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e6%90%9e%e5%ae%9a%e5%90%89%e4%bb%96%e8%8b%b1%e9%9b%842%e7%9a%84hard%e9%9a%be%e5%ba%a6.html</guid>
+				<description><![CDATA[吉他英雄这个游戏实在是不错，音乐好听、游戏轻松，而且有几分钟就能弹上一曲，不需要大块的时间。DS Lite被同 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>吉他英雄这个游戏实在是不错，音乐好听、游戏轻松，而且有几分钟就能弹上一曲，不需要大块的时间。DS Lite被同学抢走，无法继续逆转，所以最近基本有时间就玩它来着。</p>
+<p>前些时间刚刚完成一般难度的时候，Hard难度完全没戏。如今经过我不懈的练习 ，今天终于一口气将第七第八组搞定，Hard难度也算是通关了。其实第八组倒不是很难，FreeBird一次就过了。反倒是第七组那几首都挺变态的。接下来就是Expert难度，目前依然被Woman虐待。。。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/beat-guitar-hero-2-on-hard.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>吉他英雄2一般难度通关</title>
+		<link>/articles/beat-guitar-hero-2-on-normal.html</link>
+				<comments>/articles/beat-guitar-hero-2-on-normal.html#respond</comments>
+				<pubDate>Thu, 07 Jun 2007 12:28:04 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[TV Game]]></category>
+		<category><![CDATA[guitar hero]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e5%90%89%e4%bb%96%e8%8b%b1%e9%9b%842%e4%b8%80%e8%88%ac%e9%9a%be%e5%ba%a6%e9%80%9a%e5%85%b3.html</guid>
+				<description><![CDATA[其实之前早就有用XO通过吉他英雄2的一般难度，只不过这次是用吉他通的，在PS2上面。 说起来之前用手柄玩这个游 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>其实之前早就有用XO通过吉他英雄2的一般难度，只不过这次是用吉他通的，在PS2上面。</p>
+<p>说起来之前用手柄玩这个游戏，基本上就和Djmax差不多，由于曲风自己多是自己喜欢的风格，所以玩起来也是不亦乐乎。通了一般难度之后，就想来搞Hard难度。不过嘛，这第五个钮的位置实在是让人摸不着头脑。。。于是乎就买了吉他控制器。</p>
+<p>可以这么说，用专用控制器的吉他英雄和用手柄的完全是两个游戏，就像用跳舞毯的DDR和用手柄的完全不同一样。尤其最后一首Free bird，后面长长的Solo真是非常过瘾，真正的感觉到自己不是在听歌，而是在演奏，呵呵。其实本来以为用控制器第五个按钮会好按一些的，没想到试了几首Hard难度的歌曲，竟然没有一个能过的。。。不知道哪位高手能否指导指导</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/beat-guitar-hero-2-on-normal.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

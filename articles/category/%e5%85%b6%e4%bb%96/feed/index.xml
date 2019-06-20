@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>其他 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/category/%E5%85%B6%E4%BB%96/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 19 Jun 2019 06:45:50 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>更新到 Firefox 4</title>
+		<link>/articles/update-to-firefox-4.html</link>
+				<comments>/articles/update-to-firefox-4.html#respond</comments>
+				<pubDate>Thu, 24 Mar 2011 09:56:52 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[其他]]></category>
+		<category><![CDATA[firefox]]></category>
+
+		<guid isPermaLink="false">/?p=644860</guid>
+				<description><![CDATA[我一直是 Firefox 的坚定支持者，最近也更新了新版，外观、速度等各方面感觉良好。升级过程中有两个小问题： [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我一直是 Firefox 的坚定支持者，最近也更新了新版，外观、速度等各方面感觉良好。升级过程中有两个小问题：</p>
+<ul>
+<li>一些常用扩展无法使用。这是每次升级都会遇到的问题，其实很多宣称无法支持的扩展通过安装 <a href="https://addons.mozilla.org/zh-CN/firefox/addon/add-on-compatibility-reporter/" target="_blank">Add-on Compatibility Reporter</a> 扩展就可以使用（并非所有的都能用，请自行测试）</li>
+<li>新版移除了状态栏，原有在状态栏放置的一些扩展按钮就显得累赘了。安装 <a href="https://addons.mozilla.org/zh-cn/firefox/addon/firefox-4-ui-fixer/" target="_self">Firefox 4 UI Fixer</a> 扩展可以将这些按钮移动到工具栏。</li>
+</ul>
+<p>折腾完毕，Firefox 最棒！</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/update-to-firefox-4.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>问题跟踪系统 Mantis 配置要点</title>
+		<link>/articles/bug-track-system-mantis-configuration.html</link>
+				<comments>/articles/bug-track-system-mantis-configuration.html#comments</comments>
+				<pubDate>Fri, 21 May 2010 01:51:15 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[其他]]></category>
+		<category><![CDATA[JpGraph]]></category>
+		<category><![CDATA[mantis]]></category>
+
+		<guid isPermaLink="false">/?p=644769</guid>
+				<description><![CDATA[本文主要记录我在 Mantis 配置过程中遇到的几个问题，其安装比较简单这里就不详细描述，只是要注意 Mysq [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>本文主要记录我在 Mantis 配置过程中遇到的几个问题，其安装比较简单这里就不详细描述，只是要注意 Mysql 安装时字符集选择 UTF-8。</p>
+<p>（注：我的软件环境： Windows 2003，PHP 5.2.13，Mysql 5.1.46，Apache 2.2.15，Mantis 1.2.1）</p>
+<ul>
+<li>更改默认时区：在 config_inc.php 中加入</li>
+</ul>
+<blockquote>
+<pre>putenv("TZ=Asia/Shanghai");</pre>
+</blockquote>
+<ul>
+<li>更改默认语言：在 config_inc.php 中加入</li>
+</ul>
+<blockquote>
+<pre>$g_default_language='chinese_simplified';</pre>
+</blockquote>
+<ul>
+<li>更改窗口/页面标题：在 config_inc.php 中加入</li>
+</ul>
+<blockquote>
+<pre>$g_window_title = 'Bug跟踪系统';
+$g_page_title = 'Bug跟踪系统';</pre>
+</blockquote>
+<p>之后发现标题变为空白，将 config_inc.php 改为 <strong>UTF-8无BOM格式</strong> 后问题解决。</p>
+<ul>
+<li>图表中文乱码问题</li>
+</ul>
+<p>由于 Mantis 自带的图表引擎效果不好，所以建议使用 JpGraph 引擎。首先下载 <a href="http://www.aditus.nu/jpgraph/jpdownload.php" target="_blank">JpGraph</a>，将压缩包中 src 目录下所有文件解压到 <strong>{mantisroot}/library/jpgraph</strong>。</p>
+<p>以管理员帐号登录系统，通过 <strong>管理&gt;插件管理</strong> 安装 <strong>Mantis图表</strong> 插件，然后对其进行配置：将第一项图表引擎改为 JpGraph，其余保持默认设置并保存（尤其是字体要保留 Arial，下面会用到）。至此图表已经可用，但中文乱码。</p>
+<p>由于我的 Mysql 字符编码为 UTF-8，所以无需像网上大多数文章所述进行转码，直接找一个含有中文字符的字体即可。编辑 <strong><strong>{mantisroot}</strong>libraryjpgraphjpgraph_ttf.inc.php</strong> 文件，通过查找 “FF_ARIAL =&gt;”找到 Arial 字体配置部分，将原来的 arial.ttf 及各种粗斜变体替换为任意中文字体，样例如下：</p>
+<blockquote>
+<pre>FF_ARIAL =&gt;   array(FS_NORMAL =&gt;'msyh.ttf',
+ FS_BOLD  =&gt;'msyhbd.ttf',
+ FS_ITALIC =&gt;'msyh.ttf',
+ FS_BOLDITALIC =&gt;'msyhbd.ttf' ) ,</pre>
+</blockquote>
+<p>编辑好保存文件，乱码搞定。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/bug-track-system-mantis-configuration.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+		<item>
+		<title>博客搬迁完毕</title>
+		<link>/articles/move-to-blog-sanmaozhao-com.html</link>
+				<comments>/articles/move-to-blog-sanmaozhao-com.html#comments</comments>
+				<pubDate>Wed, 10 Feb 2010 02:55:12 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[其他]]></category>
+
+		<guid isPermaLink="false">/?p=644578</guid>
+				<description><![CDATA[这几个月以来，在优博网托管的博客一直无法访问，原因是大家都知道的，和 cn 域名审查有关。这期间也有几位朋友询 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>这几个月以来，在<a title="优博网" href="http://yo2.cn/" target="_blank">优博网</a>托管的博客一直无法访问，原因是大家都知道的，和 cn 域名审查有关。这期间也有几位朋友询问此事，所以我才有了购买一个自己的域名这样的想法。</p>
+<p>现在博客搬迁已经完成，麻烦大家更新收藏夹和订阅地址，也请大家继续支持咯。</p>
+<p>另外还要感谢<a title="优博网" href="http://yo2.cn/" target="_blank">优博网</a>，为我的旧域名设置了 301 重定向。其实几年来<a title="优博网" href="http://yo2.cn/" target="_blank">优博网</a>的服务一直是不错的，只是这次可能要到五月份才能恢复，所以有些等不及了。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/move-to-blog-sanmaozhao-com.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>找工作</title>
+		<link>/articles/job.html</link>
+				<comments>/articles/job.html#respond</comments>
+				<pubDate>Fri, 17 Jul 2009 07:26:54 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[其他]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=640157</guid>
+				<description><![CDATA[最近个人发生了很多变动，现在正在找工作。具体信息见侧边栏，请各位朋友帮忙推荐，谢谢！]]></description>
+								<content:encoded><![CDATA[<p>最近个人发生了很多变动，现在正在找工作。具体信息见侧边栏，请各位朋友帮忙推荐，谢谢！</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/job.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>暂停更新</title>
+		<link>/articles/no-recent-update.html</link>
+				<comments>/articles/no-recent-update.html#comments</comments>
+				<pubDate>Tue, 02 Jun 2009 10:02:32 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[其他]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=639290</guid>
+				<description><![CDATA[由于换了新的工作，刚刚开始做还没什么心得，所以最近应该没什么内容可以更新。]]></description>
+								<content:encoded><![CDATA[<p>由于换了新的工作，刚刚开始做还没什么心得，所以最近应该没什么内容可以更新。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/no-recent-update.html/feed</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+							</item>
+		<item>
+		<title>转贴陈年笑话：童趣</title>
+		<link>/articles/jokes.html</link>
+				<comments>/articles/jokes.html#comments</comments>
+				<pubDate>Tue, 10 Jul 2007 01:24:20 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[其他]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e8%bd%ac%e8%b4%b4%e9%99%88%e5%b9%b4%e7%ac%91%e8%af%9d%ef%bc%9a%e7%ab%a5%e8%b6%a3.html</guid>
+				<description><![CDATA[1.题目: 原来 小朋友写: 原来他是我爸爸。 老师评语: 妈妈关切一下 2.照样造句 题目: (树呀树呀)我 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>1.题目: 原来</p>
+<p>小朋友写: 原来他是我爸爸。</p>
+<p>老师评语: 妈妈关切一下</p>
+<p>2.照样造句</p>
+<p>题目: (树呀树呀)我把你(种下)</p>
+<p>小朋友写: (汤圆汤圆)我把你(吃掉)</p>
+<p>老师评语: 真是可爱~~</p>
+<p>3.题目: ..一边&#8230;&#8230;&#8230;..一边&#8230;&#8230;&#8230;&#8230; ..</p>
+<p>小朋友写: 他一边脱衣服,一边穿裤子.</p>
+<p>老师评语: 他到底要脱还是要穿啊~~<br />
+<span id="more-223008"></span></p>
+<p>4.题目: 课本</p>
+<p>小朋友写: 上课本来就很无聊。</p>
+<p>老师评语:上课要专心</p>
+<p>5.题目: 吃香</p>
+<p>小朋友写: 我很喜欢吃香蕉。</p>
+<p>老师评语: 小心噎到</p>
+<p>6.题目: 从前</p>
+<p>小朋友写: 小明从前门进来。</p>
+<p>7.题目: 天真</p>
+<p>小朋友写: 今天真热。</p>
+<p>老师评语: 你真天真~~</p>
+<p>8.题目: 十分</p>
+<p>小朋友写: 我今天考十分。</p>
+<p>老师评语: 我会跟你爸妈说~~</p>
+<p>9.题目: 其中</p>
+<p>小朋友写: 我的其中一只左脚受伤了。</p>
+<p>老师评语: 你是蜈蚣？~~</p>
+<p>10.题目: 一&#8230;就&#8230;.</p>
+<p>小朋友写: 一只娃娃就要一百块。</p>
+<p>老师评语: 老师笑到不行..</p>
+<p>11.題目: 你看</p>
+<p>小朋友写: 你看什么看 ! 没看过啊!</p>
+<p>12.照样造句</p>
+<p>例题: 你(唱歌) 我(跳舞)</p>
+<p>小朋友写: 你(好吗) 我(很好)</p>
+<p>老师评语: 你在写英文翻译吗??</p>
+<p>13.照样造句</p>
+<p>例题: 别人都夸我( )，其实我( )</p>
+<p>小朋友写: 别人都夸我( 很帅 )，其实我( 是戴面具的 )。</p>
+<p>老师评语: 什么面具这么好用???</p>
+<p>14.题目: 好 &#8230; 又好 ..</p>
+<p>小朋友写: 妈妈的腿,好细又好粗&#8230;</p>
+<p>老师评语: 那到底是细还是粗？</p>
+<p>15.题目: 陆陆续续</p>
+<p>小朋友写: 下班了，爸爸陆陆续续的回来。</p>
+<p>老师评语: 你到底有几个爸爸呀?</p>
+<p>16.题目: 先．．．再．．．</p>
+<p>例题: 先吃饭，再洗澡。</p>
+<p>小朋友写: 先生，再见!</p>
+<p>17.题目: 天涯海角</p>
+<p>小朋友写: 妹妹乱跑跑到天涯海角。</p>
+<p>老师评语: 你妹妹真会跑~~</p>
+<p>18.題目: 一直</p>
+<p>小朋友写: 我画了一直线。</p>
+<p>老师评语: &#8230;&#8230;&#8230;. &#8230;&#8230;.</p>
+<p>19.題目：马上</p>
+<p>小朋友写: 我骑在马上。</p>
+<p>老师评语: 马上来找老师！</p>
+<p>20.题目: 皮开肉绽</p>
+<p>小朋友写: 停电的夜晚，到处很黑，我吓得皮开肉绽!</p>
+<p>老师评语: 看到这句&#8230; 老师佩服你。。</p>
+<p>21.题目: 欣欣向荣-比喻生长美好的样子。</p>
+<p>小朋友写: 我的弟弟长得欣欣向荣。</p>
+<p>老师评语: 孩子，你弟弟是植物人吗&#8230;</p>
+<p>还有一个更瞎的…</p>
+<p>小朋友写: 欣欣向荣荣告白。</p>
+<p>老师评语: 连续剧不要看太多~~</p>
+<p>22.题目: 谢谢&#8230;.因为&#8230;&#8230;</p>
+<p>小朋友写: 我要谢谢妈妈,因为她每天都帮我写作业&#8230;&#8230;</p>
+<p>老师评语: 原来你的作业是妈妈写的!!!!!!!</p>
+<p>23.题目: 难过</p>
+<p>小朋友写: 我家门前有条水沟很难过。</p>
+<p>老师评语: 老师更难过&#8230;&#8230;</p>
+<p>24.题目: 如果</p>
+<p>小朋友写: 汽水不如果汁营养。</p>
+<p>小朋友写: 假如果汁不好喝就不要喝。</p>
+<p>老师评语: Orz&#8230;..</p>
+<p>25.题目: 干脆</p>
+<p>小朋友写: 饼干脆脆的很好吃!</p>
+<p>老师评语: (无语)&#8230;&#8230;&#8230;. =.=</p>
+<p>26.题目: 天才</p>
+<p>小朋友写: 我３天才洗一次澡。</p>
+<p>老师评语: 要每天洗才干净~~</p>
+<p>27.題目: 一…便…</p>
+<p>小朋友写: 我一走出门，对面就是便利商店。</p>
+<p>还有一個更瞎的…</p>
+<p>小朋友写: 哥哥一吃完饭，就大便。</p>
+<p>老师评语: 造句不要乱造&#8230;</p>
+<p>28.題目: 边&#8230; 边&#8230;</p>
+<p>小朋友写: 我的左边有人 , 我的右边也有。</p>
+<p>29.題目: 非常</p>
+<p>小朋友写: 我不知道非常是什么意思。</p>
+<p>老师评语: 不知道要问&#8230;.</p>
+<p>30.題目: 因为&#8230;所以&#8230;</p>
+<p>小朋友写: 因为有爸爸妈妈，所以我才诞生在这世上。</p>
+<p>老师评语: 扣5分&#8230;.</p>
+<p>31.題目: 又&#8230;..又&#8230;..</p>
+<p>小朋友寫: 我的妈妈又矮又高又瘦又肥。</p>
+<p>老师评语:你妈妈&#8230;&#8230;是怪物吗?</p>
+<p>32 果然<br />
+上课小朋友说：昨天我吃了水果，然后又喝了凉水<br />
+老师：这是词组，不能分开造句。<br />
+小朋友又说：老师，我还没说完呢，果然晚上我拉肚子了！<br />
+老师：…………</p>
+<p>33 瓜分<br />
+小朋友：大傻瓜分不清是非<br />
+老师：小傻瓜也分不清</p>
+<p>34 好吃<br />
+小朋友：好吃个屁<br />
+老师：………</p>
+<p>35 况且<br />
+小朋友：一辆火车经过，况且况且况且况且．．．．．<br />
+老师：……………</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/jokes.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>How to find/display your MAC Address</title>
+		<link>/articles/how-to-finddisplay-your-mac-address.html</link>
+				<pubDate>Wed, 25 Oct 2006 01:55:16 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[其他]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/how-to-finddisplay-your-mac-address.html</guid>
+				<description><![CDATA[Linux Solaris/SunOS FreeBSD/NetBSD OpenBSD Caldera/SCO  [&#8230;]]]></description>
+								<content:encoded><![CDATA[<ul>
+<li><a href="#linux">Linux</a></li>
+<li><a href="#solaris">Solaris/SunOS</a></li>
+<li><a href="#freebsd">FreeBSD/NetBSD</a></li>
+<li><a href="#openbsd">OpenBSD</a></li>
+<li><a href="#sco">Caldera/SCO UnixWare/OpenUNIX</a></li>
+<li><a href="#hpux">HP-UX (HP UNIX)</a></li>
+<li><a href="#irix">IRIX (SGI UNIX)</a></li>
+<li><a href="#next">NeXTStep (NeXT UNIX)</a></li>
+<li><a href="#aix">AIX (IBM UNIX)</a></li>
+<li><a href="#tru64">Tru64 UNIX (Digital UNIX)</a></li>
+<li><a href="#osx">Macintosh OS X</a></li>
+<li><a href="#opentrans">Macintosh OS w/ Open Transport (Pre-MacOS X)</a></li>
+<li><a href="#mactcp">Macintosh OS w/ MacTCP (Pre-MacOS X)</a></li>
+<li><a href="#new">Windows NT/2000/2003/XP</a></li>
+<li><a href="#old">Windows 95/98/ME</a></li>
+<li><a href="#dos">DOS/Windows 3.11/Windows for Workgroups</a></li>
+</ul>
+<p><span id="more-142941"></span></p>
+<hr />
+<h3><a title="linux" name="linux"></a>Linux</h3>
+<ul>
+<li>As the root user (or user with appropriate permissions)</li>
+<li>Type &#8220;ifconfig -a&#8221;</li>
+<li>From the displayed information, find eth0 (this is the default first Ethernet adapter)</li>
+<li>Locate the number next to the <strong>HWaddr</strong>. This is your MAC address</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>00:08:C7:1B:8C:02</strong>. <span> </span></p>
+<pre><span><strong>Example "ifconfig -a" output:</strong>
+eth0      Link encap:Ethernet <strong>HWaddr 00:08:C7:1B:8C:02</strong>
+          inet addr:192.168.111.20  Bcast:192.168.111.255  Mask:255.255.255.0
+
+<em>...additional output removed...</em>
+</span></pre>
+<hr />
+<h3><a title="solaris" name="solaris"></a>Solaris/SunOS</h3>
+<ul>
+<li>As the root user (or user with appropriate permissions)</li>
+<li>Type &#8220;/sbin/ifconfig -a&#8221;</li>
+<li>From the displayed information, find the Ethernet adapter (it will probably be called le0 or ie0)</li>
+<li>Locate the number next to <strong>ether</strong>. This is your MAC address</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>0:3:ba:26:1:b0</strong> &#8212; leading zeros are removed. For this example, the actual MAC Address would be <strong>00:03:ba:26:01:b0</strong>. <span> </span></p>
+<pre><span><strong>Example "ifconfig -a" output:</strong>
+le0: flags=863 mtu 1500
+     inet 192.168.111.30 netmask ffffff00 broadcast 192.168.111.255
+     ether 0:3:ba:26:1:b0</span></pre>
+<hr />
+<h3><a title="freebsd" name="freebsd"></a>FreeBSD/NetBSD</h3>
+<ul>
+<li>As the root user (or user with appropriate permissions)</li>
+<li>Type &#8220;ifconfig -a&#8221;</li>
+<li>From the displayed information, find the Ethernet adapter (the name changes based on the Ethernet card installed)</li>
+<li>Locate the number next to the <strong>HWaddr</strong>. This is your MAC address</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>00:08:C7:1B:8C:02</strong>.</p>
+<p><em>(Using the command</em>&#8220;dmesg&#8221;<em>will also display the MAC address &#8212; along with a lot of other information)</em></p>
+<p><span> </span></p>
+<pre><span><strong>Example "ifconfig -a" output:</strong>
+    ed0: flags=8843 mtu 1500
+         inet 192.168.111.40 netmask 0xffffff00 broadcast 192.168.111.255
+         ether <strong>00:08:C7:1B:8C:02</strong>
+
+<em>...additional output removed...</em>
+</span></pre>
+<hr />
+<h3><a title="openbsd" name="openbsd"></a>OpenBSD</h3>
+<ul>
+<li>As the root user (or user with appropriate permissions)</li>
+<li>Type &#8220;netstat -in&#8221;</li>
+<li>From the displayed information, find the Ethernet adapter (the name changes based on the Ethernet card installed)</li>
+<li>Locate the number below <strong>Address</strong>. This is your MAC address</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>00:08:c7:1b:8c:02</strong>.</p>
+<pre><span><strong>Example "netstat -in" output:</strong>
+Name  Mtu  Network  Address           Ipkts    Ierrs Opkts   Oerrs Colls
+fxp0  1500 &lt;Link&gt;   00:08:c7:1b:8c:02 4112773  0     224501  0     0
+
+<em>...additional output removed...</em>
+</span></pre>
+<hr />
+<h3><a title="sco" name="sco"></a>Caldera/SCO UnixWare/OpenUNIX</h3>
+<ul>
+<li>As the root user (or user with appropriate permissions)</li>
+<li>Type &#8220;ndstat&#8221;</li>
+<li>From the displayed information, find net0 (this is the default first Ethernet adapter)</li>
+<li>Locate the number below <strong>MAC Address in use</strong>. This is your MAC address</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>00:00:c0:88:0a:2e</strong>. <span> </span></p>
+<pre><span><strong>Example "ndstat" output:</strong>
+   Device       MAC address in use    Factory MAC Address
+   ------       ------------------    -------------------
+   /dev/net0    <strong>00:00:c0:88:0a:2e</strong>     00:00:c0:88:0a:2e
+
+<em>...additional output removed...</em>
+</span></pre>
+<hr />
+<h3><a title="hpux" name="hpux"></a>HP-UX (HP UNIX)</h3>
+<ul>
+<li>As the root user (or user with appropriate permissions)</li>
+<li>Type &#8220;/usr/sbin/lanscan&#8221;</li>
+<li>From the displayed information, find lan0 (this is the default first Ethernet adapter)</li>
+<li>Locate the number below <strong>Address</strong>. This is your MAC address</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>0x000E7F0D81D6</strong> &#8212; the leading hexadecimal indicator should be removed. For this example, the actual MAC Address would be <strong>00:0E:7F:0D:81:D6</strong>. <span> </span></p>
+<pre><span><strong>Example "lanscan" output:</strong>
+Hardware Station        Dev Hardware Net-Interface   NM  Encapsulation      Mjr
+Path     Address        lu  State    NameUnit State  ID  Methods            Num
+2.0.2    0x000E7F0D81D6 0   UP       lan0     UP     4   ETHER              52
+
+<em>...additional output removed...</em>
+</span></pre>
+<hr />
+<h3><a title="irix" name="irix"></a>IRIX (SGI UNIX)</h3>
+<ul>
+<li>IRIX 4.01 or later
+<ul>
+<li>As the root user (or user with appropriate permissions)</li>
+<li>Type &#8220;netstat -ia&#8221;</li>
+<li>From the displayed information, find the Ethernet adapter (the name changes based on the Ethernet card installed)</li>
+<li>Locate the number below <strong>Address</strong>. This is your MAC address</li>
+</ul>
+</li>
+<li>Alternate Method
+<ul>
+<li>Typing &#8220;/etc/nvram eaddr&#8221; should also show the MAC address</li>
+</ul>
+</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>00:00:6b:71:1a:6a</strong>. <span> </span></p>
+<pre><span><strong>Example "netstat -ia" output:</strong>
+Name  Mtu    Network   Address            Ipkts   Ierrs   Opkts  Oerrs  Coll
+ec0   1500   noWhere   warum              6514913 10234  184317     0  13513
+                       192.168.111.90
+                       <strong>00:00:6b:71:1a:6a</strong>
+<em>...additional output removed...</em>
+</span></pre>
+<hr />
+<h3><a title="next" name="next"></a>NeXTStep</h3>
+<ul>
+<li>As the root user (or user with appropriate permissions)</li>
+<li>Type &#8220;/sbin/ifconfig -a&#8221;</li>
+<li>From the displayed information, find the Ethernet adapter (it will probably be called le0 or ie0)</li>
+<li>Locate the number next to <strong>ether</strong>. This is your MAC address</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>0:0:f:a1:75:a0</strong> &#8212; leading zeros are removed. For this example, the actual MAC Address would be <strong>00:00:0f:a1:75:a0</strong>. <span> </span></p>
+<pre><span><strong>Example "ifconfig -a" output:</strong>
+le0: flags=863 mtu 1500
+     inet 192.168.111.70 netmask ffffff00 broadcast 192.168.111.255
+     ether 0:0:f:a1:75:a0</span></pre>
+<hr />
+<h3><a title="aix" name="aix"></a>AIX (IBM UNIX)</h3>
+<ul>
+<li>As the root user (or user with appropriate permissions)</li>
+<li>Type &#8220;netstat -ia&#8221;</li>
+<li>From the displayed information, find the Ethernet adapter (the name changes based on the Ethernet card installed)</li>
+<li>Locate the number below <strong>Address</strong>. This is your MAC address</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>00:09:6B:51:1f:79</strong>. <span> </span></p>
+<pre><span><strong>Example "netstat -ia" output:</strong>
+Name  Mtu    Network   Address            Ipkts   Ierrs   Opkts  Oerrs  Coll
+ec0   1500   noWhere   flotsam              5514233 11434  101317     0  14113
+                       192.168.111.95
+                       <strong>00:09:6B:51:1f:79</strong>
+<em>...additional output removed...</em>
+</span></pre>
+<hr />
+<h3><a title="tru64" name="tru64"></a>Tru64 UNIX (Digital UNIX)</h3>
+<ul>
+<li>As the root user (or user with appropriate permissions)</li>
+<li>Type &#8220;netstat -ia&#8221;</li>
+<li>From the displayed information, find the Ethernet adapter (the name changes based on the Ethernet card installed)</li>
+<li>Locate the number below <strong>Address</strong>. This is your MAC address</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>&gt;00:00:F8:1a:73:da</strong>. <span> </span></p>
+<pre><span><strong>Example "netstat -ia" output:</strong>
+Name  Mtu    Network   Address            Ipkts   Ierrs   Opkts  Oerrs  Coll
+ec0   1500   noWhere   jetsam              5514233 11434  101317     0  14113
+                       192.168.111.95
+                       <strong>00:00:F8:1a:73:da</strong>
+<em>...additional output removed...</em>
+</span></pre>
+<hr />
+<h3><a title="osx" name="osx"></a>Macintosh OS X</h3>
+<ul>
+<li><strong>Wired (MacOS 10.2 and earlier)</strong>
+<ul>
+<li>From the dock, select System Preferences</li>
+<li>Select Network, Select Location, Select Interface</li>
+<li>Select TCP/IP Tab</li>
+<li>Locate the number next to the <strong>Ethernet Address</strong>. This is your MAC address</li>
+</ul>
+</li>
+<li><strong>Wired (MacOS 10.3 and later)</strong>
+<ul>
+<li>From the dock, select System Preferences</li>
+<li>Select Network, Select Location, Select Interface</li>
+<li>Select Ethernet Tab</li>
+<li>Locate the number next to the <strong>Ethernet ID</strong>. This is your MAC address</li>
+</ul>
+</li>
+<li><strong>Wireless (AirPort)</strong>
+<ul>
+<li>From the dock, select System Preferences</li>
+<li>Select Network, Select Location, Select Interface</li>
+<li>Select AirPort Tab</li>
+<li>Locate the number next to the <strong>AirPort ID</strong>. This is your MAC address</li>
+</ul>
+</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>00:0D:93:13:51:1A</strong>.</p>
+<hr />
+<h3><a title="opentrans" name="opentrans"></a>Macintosh OS w/ Open Transport (Pre-MacOS X)</h3>
+<ul>
+<li>From the Apple Menu, select Control Panels</li>
+<li>Open either the Appletalk or the TCP/IP Control Panel</li>
+<li>From the Edit Menu, select User Mode</li>
+<li>Change the mode to Advanced or Admin</li>
+<li>Click the Info Button (lower left hand corner)</li>
+<li>An AppleTalk or TCP/IP window will pop up</li>
+<li>Locate the number next to the <strong>Hardware Address</strong>. This is your MAC address</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>00 0D 93 13 51 1A</strong>.</p>
+<hr />
+<h3><a title="mactcp" name="mactcp"></a>Macintosh OS w/ MacTCP (Pre-MacOS X)</h3>
+<ul>
+<li>Make sure CAPS Lock is not on</li>
+<li>Make sure the Macintosh is connected to an Ethernet network</li>
+<li>From the Apple Menu, select Control Panels</li>
+<li>Open the MacTCP Control Panel</li>
+<li>Hold down the Option Key and click the Ethernet icon</li>
+<li>Locate the number next to the <strong>Hardware Ethercard Address</strong> that appears beneath the icon. This is your MAC address</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>00 0D 93 13 51 1A</strong>.</p>
+<hr />
+<h3><a title="new" name="new"></a>Windows NT/2000/2003/XP</h3>
+<ul>
+<li>Open the command prompt</li>
+<li>From the command prompt type &#8220;ipconfig /all&#8221;</li>
+<li>(If the information scrolls off the screen you can type &#8220;ipconfig /all|more&#8221;)</li>
+<li>Find the network adapter you want to know the MAC address of</li>
+<li>Locate the number next to <strong>Physical Address</strong>. This is your MAC address</li>
+</ul>
+<p>The MAC Address will be displayed in the form of <strong>00-02-2D-11-55-4D</strong>. <span> </span></p>
+<pre><span><strong>Example "ipconfig /all" output:</strong>
+Ethernet adapter Wired:
+
+        Connection-specific DNS Suffix  . : roundfile.com
+        Description . . . . . . . . . . . : ORiNOCO PC Card (5 Volt)
+        Physical Address. . . . . . . . . : <strong>00-02-2D-11-55-4D</strong>
+
+<em>...additional output removed...</em></span></pre>
+<hr />
+<h3><a title="old" name="old"></a>Windows 95/98/ME</h3>
+<ul>
+<li>Click the Start Menu, then select Run</li>
+<p>	&lt;l</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>捕获windows提示框的文本</title>
+		<link>/articles/copy-text-in-alert-window.html</link>
+				<comments>/articles/copy-text-in-alert-window.html#respond</comments>
+				<pubDate>Fri, 07 Apr 2006 02:05:49 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[其他]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e6%8d%95%e8%8e%b7windows%e6%8f%90%e7%a4%ba%e6%a1%86%e7%9a%84%e6%96%87%e6%9c%ac.html</guid>
+				<description><![CDATA[当程序发生错误的时候，经常会弹出包含错误消息的对话框。而我们经常需要把这些信息复制下来，发送给相关人员或者上网 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>当程序发生错误的时候，经常会弹出包含错误消息的对话框。而我们经常需要把这些信息复制下来，发送给相关人员或者上网寻求答案。在这个时候其实我们只要按下Ctrl+C就可以了，是不是很方便呢？</p>
+<p><a onclick="alert('一些文本');">弹出提示框</a></p>
+<p>复制上面的弹出信息，可以得到以下结果：</p>
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br />
+Microsoft Internet Explorer<br />
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br />
+一些文本<br />
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br />
+确定<br />
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/copy-text-in-alert-window.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>iexplore , come back !</title>
+		<link>/articles/iexplore-come-back.html</link>
+				<comments>/articles/iexplore-come-back.html#comments</comments>
+				<pubDate>Wed, 14 Dec 2005 09:38:28 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[其他]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/iexplore-come-back.html</guid>
+				<description><![CDATA[前两天从网上找了个脚本调试器，装上后没啥用就卸掉了。这一卸不要紧，弄出一堆麻烦来。一是Office自带的脚本编 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>前两天从网上找了个脚本调试器，装上后没啥用就卸掉了。这一卸不要紧，弄出一堆麻烦来。一是Office自带的脚本编辑器不能直接调试IE脚本错误了；二是IE的Session完全混乱，具体表现为新开的IE进程会继承以前登陆过的权限，所有的IE窗口就像一个进程一样。。。而且在任务管理器里面找不到 iexplore 这个进程<img src="/fckeditor/editor/images/smiley/msn/thumbs_down.gif" />。</p>
+<p>尝试重装脚本调试器、IE6均未生效，莫非真的要我重装系统？万般无奈只好google一下，嘿，还真对得起咱这只手，原因给我找到了！原来是有个注册表的值控制着是否合并iexplore和explorer，我就是不知道被什么东西给改了这个键值，所以所有的IE进程都被合并到explorer里面当成一个进程了，也就找不到iexplore这个进程了。这个神奇的键值就是<font color="#ff0000">HKEY_CURRENT_USER  Software  Microsoft  Windows  CurrentVersion  Explorer  BrowseNewProcess</font>下面的BrowseNewProcess，值为&#8221;no&#8221;表示合并iexplore和explorer，&#8221;yes&#8221;为不合并。可怜的是有好多人都没找到原因，只好重装系统了，看来我还算幸运的呢<img src="/fckeditor/editor/images/smiley/msn/confused_smile.gif" />。</p>
+<p>最后有两个结论：没事google一下、MS的东西真烂。。。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/iexplore-come-back.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+	</channel>
+</rss>

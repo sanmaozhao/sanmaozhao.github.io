@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nd853 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/nd853/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 28 Sep 2012 07:07:58 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Notes/Domino 8.5.3 FP2 已发布</title>
+		<link>/articles/notesdomino-853-fp2-available.html</link>
+				<comments>/articles/notesdomino-853-fp2-available.html#respond</comments>
+				<pubDate>Mon, 16 Jul 2012 07:41:44 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd853]]></category>
+
+		<guid isPermaLink="false">/?p=645136</guid>
+				<description><![CDATA[今天刚收到的邮件通知，本来还想不着急发上来呢，结果自己的性能测试服务器就崩溃了。到修订列表一看，这个问题正好在 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>今天刚收到的邮件通知，本来还想不着急发上来呢，结果自己的性能测试服务器就崩溃了。到修订列表一看，这个问题正好在 FP2 的内容里面，也太巧了吧！所以赶紧发上来了。</p>
+<p>请参考 <a href="http://www-10.lotus.com/ldd/fixlist.nsf/8d1c0550e6242b69852570c900549a74/2d0360dc7479a29585257a07006ae8a7?OpenDocument" target="_blank">Release Notes</a>，<a href="http://www-01.ibm.com/support/docview.wss?uid=swg24032242" target="_blank">下载链接</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notesdomino-853-fp2-available.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Notes/Domino 8.5.3 FP1 已发布</title>
+		<link>/articles/notesdomino-853-fp1-available.html</link>
+				<comments>/articles/notesdomino-853-fp1-available.html#respond</comments>
+				<pubDate>Thu, 19 Apr 2012 03:39:09 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd853]]></category>
+
+		<guid isPermaLink="false">/?p=645114</guid>
+				<description><![CDATA[请参考 Release Notes，下载链接]]></description>
+								<content:encoded><![CDATA[<p>请参考 <a href="http://www-10.lotus.com/ldd/r5fixlist.nsf/8d1c0550e6242b69852570c900549a74/32b7be7d76cc04a48525799800774482?OpenDocument" target="_blank">Release Notes</a>，<a href="http://www-01.ibm.com/support/docview.wss?uid=swg24032242" target="_blank">下载链接</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notesdomino-853-fp1-available.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Notes/Domino 8.5.3 中文版已发布</title>
+		<link>/articles/notes-domino-853-chinese-available.html</link>
+				<comments>/articles/notes-domino-853-chinese-available.html#comments</comments>
+				<pubDate>Wed, 09 Nov 2011 01:34:08 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd853]]></category>
+
+		<guid isPermaLink="false">/?p=645088</guid>
+				<description><![CDATA[请参考：IBM Lotus Notes and Domino V8.5.3 availability of g [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>请参考：<a href="http://www-01.ibm.com/common/ssi/ShowDoc.jsp?docURL=/common/ssi/rep_ca/2/649/ENUSA11-0952/index.html&amp;lang=en" target="_blank">IBM Lotus Notes and Domino V8.5.3 availability of group 1 national languages</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notes-domino-853-chinese-available.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>Notes/Domino 8.5.3 已发布</title>
+		<link>/articles/notes-domino-853-available.html</link>
+				<comments>/articles/notes-domino-853-available.html#comments</comments>
+				<pubDate>Sat, 08 Oct 2011 03:46:56 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd853]]></category>
+
+		<guid isPermaLink="false">/?p=645081</guid>
+				<description><![CDATA[Notes/Domino 8.5.3 已于10月4日发布，包含了很多实用的新功能： 版本控制支持：可以将库中的 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>Notes/Domino 8.5.3 已于10月4日发布，包含了很多实用的新功能：</p>
+<ul>
+<li>版本控制支持：可以将库中的每一个设计元素通过 SVN 等版本控制系统管理</li>
+<li>JavaScript/CSS 聚合：服务器自动将多个 JS/CSS 文件动态合并为一个，大大改善性能</li>
+<li>XPage 预加载选项：减少首次访问 XPages 时的等待时间</li>
+<li>全文搜索排序：新的 FTSearchSorted API，同时 XPages 也支持此功能</li>
+<li>XPages 控件增加 HTML5 支持：增加 attrs、type 属性</li>
+</ul>
+<p>完整的新功能列表请参考：<a href="http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.designer.domino.ui.doc/wpd_whatsnew.html" target="_blank">Domino Designer 8.5.3 中的新增功能</a>、<a href="http://www-01.ibm.com/common/ssi/ShowDoc.jsp?docURL=/common/ssi/rep_ca/0/897/ENUS211-330/index.html&amp;lang=en" target="_blank">IBM US Announcement Letter</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notes-domino-853-available.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>hack &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/hack/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 06 Jul 2005 04:20:20 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Javascript暂停函数</title>
+		<link>/articles/pause-in-javascript.html</link>
+				<comments>/articles/pause-in-javascript.html#comments</comments>
+				<pubDate>Wed, 06 Jul 2005 04:20:20 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[hack]]></category>
+		<category><![CDATA[javascript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/javascript%e6%9a%82%e5%81%9c%e5%87%bd%e6%95%b0.html</guid>
+				<description><![CDATA[在Web编程中，经常会遇到js并不是按照书写的顺序执行的问题：A语句明明写在B语句前面，但是B语句确先执行了， [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在Web编程中，经常会遇到js并不是按照书写的顺序执行的问题：A语句明明写在B语句前面，但是B语句确先执行了，往往只要在AB语句之间加入一个Alert就能恢复正常的顺序。但是不能无故弹对话框给用户看啊，真是莫名其妙的问题<img src="/fckeditor/editor/images/smiley/msn/confused_smile.gif">。</p>
+<p>下面这个暂停函数就是先弹出一个模式窗口，然后立刻关闭掉自己，不让用户看到这个窗口。有一个问题是如果安装了上网助手或者使用增强安全性的IE（比如XpSp2、2003），就需要进行相应的配置，否则窗口会被拦截掉的，导致Js错误而无法继续执行后面的代码。</p>
+<p><span id="more-142903"></span><br />
+<textarea rows="10" cols="60">function pause(numberMillis) {<br />
+        var dialogScript =<br />
+           &#8216;window.setTimeout(&#8216; +<br />
+           &#8216; function () { window.close(); }, &#8216; + numberMillis + &#8216;);&#8217;;<br />
+        var result =<br />
+// For IE5.<br />
+         window.showModalDialog(<br />
+           &#8216;javascript:document.writeln(&#8216; +<br />
+            &#8216;&#8221;&lt;script&gt;&#8217; + dialogScript + &#8216;&lt;&#8216; + &#8216;/script&gt;&#8221;)&#8217;);<br />
+/* For NN6, but it requires a trusted script.<br />
+         openDialog(<br />
+           &#8216;javascript:document.writeln(&#8216; +<br />
+            &#8216;&#8221;&lt;script&gt;&#8217; + dialogScript + &#8216;&lt;&#8216; + &#8216;/script&gt;&#8221;&#8216;,<br />
+           &#8216;pauseDialog&#8217;, &#8216;modal=1,width=10,height=10&#8217;);<br />
+ */<br />
+     }</textarea></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/pause-in-javascript.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+	</channel>
+</rss>

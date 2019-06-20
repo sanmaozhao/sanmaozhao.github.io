@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>ls2008 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/ls2008/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Sat, 02 Feb 2008 15:03:06 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Lotusphere 2008 大会的 PPT 下载</title>
+		<link>/articles/lotussphere-2008-presentation-download.html</link>
+				<comments>/articles/lotussphere-2008-presentation-download.html#comments</comments>
+				<pubDate>Sat, 02 Feb 2008 15:03:06 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[ls2008]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/lotussphere-2008-presentation-download.html</guid>
+				<description><![CDATA[今年的 Lotusphere 大会的内容较每年丰富了很多，共有170多个 Topic（往年也就50个左右）。这 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>今年的 Lotusphere 大会的内容较每年丰富了很多，共有170多个 Topic（往年也就50个左右）。这其中包括 Lotus 产品线未来产品的介绍、开发技巧、最佳实践等，有很多内容还是不错的，大家感兴趣的可以看看。<a href="http://en.swoopshare.com/file/b8f2029c4eabe2504499c2a7c60b0344/LS2008?tags=LS2008&amp;lang=en" target="_blank">下载链接</a>在此。</p>
+<p>PS：前两天我一个同学还说 MS 要收购 Yahoo 呢，今天就已经公布搞定了，速度挺快。据说罗技也在 MS 的收购计划当中。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/lotussphere-2008-presentation-download.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+	</channel>
+</rss>

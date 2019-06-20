@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>capi &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/capi/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Mon, 16 Jul 2007 11:28:17 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>通过LotusScript编程修改数据库的属性</title>
+		<link>/articles/modify-database-properties-using-lotusscript.html</link>
+				<comments>/articles/modify-database-properties-using-lotusscript.html#comments</comments>
+				<pubDate>Mon, 16 Jul 2007 11:28:17 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[capi]]></category>
+		<category><![CDATA[lotusscript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e9%80%9a%e8%bf%87lotusscript%e7%bc%96%e7%a8%8b%e4%bf%ae%e6%94%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e7%9a%84%e5%b1%9e%e6%80%a7.html</guid>
+				<description><![CDATA[上一次我们提到，Database icon 文档里面包含很多数据库属性信息。实际上它们都保存在 $Flags  [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>上一次我们提到，Database icon 文档里面包含很多数据库属性信息。实际上它们都保存在 $Flags 域中，而这个域中每个字符都代表一个属性，列表如下（来源于 Notes C API 中的 stdnames.h 文件）：</p>
+<blockquote><p>Flag  =  Meaning / Action<br />
+4  =  Allow Soft Deletes<br />
+Z  =  Enable LZ1 Compression<br />
+f  =  Do Not Allow Stored Forms<br />
+z  =  Do Not Maintain Unread Marks<br />
+h  =  Mark Parent Document on Reply or Forward<br />
+J  =  Use JavaScript when generating Web Pages<br />
+F  =  Launch Designated Frameset<br />
+n  =  Never Show Policy (ie. Never show About Database when first opened)<br />
+7  =  Large UNK Table (ie. allow more fields in database)<br />
+6  =  Allow Design Locking<br />
+K  =  Restore as lasted viewed by user<br />
+c  =  Show About Database if Modified<br />
+Q  =  Replicate Unread Marks to Clustered Servers Only<br />
+U  =  Replicate Unread Marks to All Servers (appears with Q set)<br />
+2  =  Optimise Document Table Bitmap<br />
+3  =  Maintain LastAccessed Property<br />
+1  =  Don&#8217;t Support Specialised Response Hierarchy<br />
+M  =  Multilingual Database<br />
+X  =  Web Access Requires SSL Connection<br />
+8  =  Web Access Don&#8217;t Allow URL Open<br />
+i  =  Display Images After Loading<br />
+5  =  Allow Document Locking<br />
+g  =  Database Type = Library<br />
+j  =  Database Type = Personal Journal<br />
+b  =  Database Type = Domino Directory<br />
+B  =  Database Type = Directory Catalog<br />
+m  =  Database Type = Multi DB Search<br />
+u  =  Database Type = Portfolio<br />
+A  =  Database Type = Mailbox<br />
+r  =  Database Type = Mailfile<br />
+p  =  Always Show About Database Document (ie. When Opened in the Client Property)<br />
+l  =  Launch Designated Navigator<br />
+s  =  Launch Designated Navigator in Own Window (used in conjuction with l above)<br />
+a  =  Launch First Attachment in About Database Document<br />
+d  =  Launch First DocLink in About Database Document<br />
+P  =  Web Launch = Show About Database Document<br />
+S  =  Web Launch = Open Designated Frameset<br />
+E  =  Web Launch = Open Designated Page<br />
+L  =  Web Launch = Open Designated Navigator in its Own Window<br />
+D  =  Web Launch = Open First DocLink in About Database Document<br />
+T  =  Web Launch = Open Designated DocLink<br />
+V  =  Web Launch = Open First Document in Designated View</p></blockquote>
+<p>通过向这个域中增加（或除去）字符标记，即可设置（或取消）相应的属性。下面是一段具体的代码：</p>
+<blockquote><p>Set doc = db.GetDocumentByID(&#8220;FFFF0010&#8221;)     &#8216;获得 Icon 文档<br />
+doc.~$Flags = doc.~$Flags(0) &amp; &#8220;x&#8221;                        &#8216;x代表需要增加的属性<br />
+doc.Save (True, False)</p></blockquote>
+]]></content:encoded>
+							<wfw:commentRss>/articles/modify-database-properties-using-lotusscript.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>获得数据库中的特殊设计元素</title>
+		<link>/articles/get-special-design-element.html</link>
+				<comments>/articles/get-special-design-element.html#comments</comments>
+				<pubDate>Wed, 11 Jul 2007 12:59:05 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[capi]]></category>
+		<category><![CDATA[lotusscript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e8%8e%b7%e5%be%97%e6%95%b0%e6%8d%ae%e5%ba%93%e4%b8%ad%e7%9a%84%e7%89%b9%e6%ae%8a%e8%ae%be%e8%ae%a1%e5%85%83%e7%b4%a0.html</guid>
+				<description><![CDATA[数据库中的一些特殊元素，他们有着固定的 Note ID。如下表： Note ID Database Eleme [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>数据库中的一些特殊元素，他们有着固定的 Note ID。如下表：</p>
+<table border="1" cellpadding="8" cellspacing="0">
+<tr>
+<th>Note ID</th>
+<th>Database Element</th>
+</tr>
+<tr>
+<td>FFFF0002</td>
+<td>&#8220;About This Database&#8221; document</td>
+</tr>
+<tr>
+<td>FFFF0004</td>
+<td>Default form</td>
+</tr>
+<tr>
+<td>FFFF0008</td>
+<td>Default view</td>
+</tr>
+<tr>
+<td>FFFF0010</td>
+<td>Database icon</td>
+</tr>
+<tr>
+<td>FFFF0020</td>
+<td>Database Design Collection (view)</td>
+</tr>
+<tr>
+<td>FFFF0040</td>
+<td>Database ACL</td>
+</tr>
+<tr>
+<td>FFFF0100</td>
+<td>&#8220;Using This Database&#8221; document</td>
+</tr>
+<tr>
+<td>FFFF0800</td>
+<td>Replication Formul</td>
+</tr>
+</table>
+<p>比如通过 db.GetDocumentByID(&#8220;FFFF0010&#8221;) 即可获得 Database icon 文档。而这个文档中保存了很多数据库属性信息，也就是说我们可以通过编程来修改这些数据库属性。是不是有点意思了呢？</p>
+<p>请参考 <a href="http://www.nsftools.com/tips/NotesTips.htm#defaultelements">Getting Default Elements in the Database</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/get-special-design-element.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>创建显示特殊文档的视图：$FormulaClass的奥秘</title>
+		<link>/articles/fun-about-formulaclass.html</link>
+				<comments>/articles/fun-about-formulaclass.html#respond</comments>
+				<pubDate>Wed, 11 Jul 2007 12:52:18 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[capi]]></category>
+		<category><![CDATA[lotusscript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e5%88%9b%e5%bb%ba%e6%98%be%e7%a4%ba%e7%89%b9%e6%ae%8a%e6%96%87%e6%a1%a3%e7%9a%84%e8%a7%86%e5%9b%be%ef%bc%9aformulaclass%e7%9a%84%e5%a5%a5%e7%a7%98.html</guid>
+				<description><![CDATA[一般情况下，视图都是用来显示文档的。实际上通过更改视图 $FormulaClass 的值，我们可以让它显示其他 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>一般情况下，视图都是用来显示文档的。实际上通过更改视图 $FormulaClass 的值，我们可以让它显示其他的内容。参照下表：</p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr>
+<th>Note Class Type</th>
+<th>Hex Value</th>
+<th>Decimal Value</th>
+<th>Comments</th>
+</tr>
+<tr>
+<td>NOTE_CLASS_DOCUMENT</td>
+<td>0x0001</td>
+<td>1</td>
+<td>document note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_INFO</td>
+<td>0x0002</td>
+<td>2</td>
+<td>notefile info (help-about) note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_FORM</td>
+<td>0x0004</td>
+<td>4</td>
+<td>form note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_VIEW</td>
+<td>0x0008</td>
+<td>8</td>
+<td>view note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_ICON</td>
+<td>0x0010</td>
+<td>16</td>
+<td>icon note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_DESIGN</td>
+<td>0x0020</td>
+<td>32</td>
+<td>design note collection</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_ACL</td>
+<td>0x0040</td>
+<td>64</td>
+<td>acl note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_HELP_INDEX</td>
+<td>0x0080</td>
+<td>128</td>
+<td>Notes product help index note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_HELP</td>
+<td>0x0100</td>
+<td>256</td>
+<td>designer&#8217;s help note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_FILTER</td>
+<td>0x0200</td>
+<td>512</td>
+<td>filter note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_FIELD</td>
+<td>0x0400</td>
+<td>1024</td>
+<td>field note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_REPLFORMULA</td>
+<td>0x0800</td>
+<td>2048</td>
+<td>replication formula</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_PRIVATE</td>
+<td>0x1000</td>
+<td>4096</td>
+<td>Private design note, use $PrivateDesign view to locate/classify</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_DEFAULT</td>
+<td>0x8000</td>
+<td>32,768</td>
+<td>MODIFIER &#8211; default version of each</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_ALL</td>
+<td>0x7fff</td>
+<td>32,767</td>
+<td>all note types</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_ALLNONDATA</td>
+<td>0x7ffe</td>
+<td>32,766</td>
+<td>all non-data notes</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_NONE</td>
+<td>0x0000</td>
+<td>0</td>
+<td>no notes</td>
+</tr>
+</table>
+<p>比如我们一般的视图，$FormulaClass 的值为1，所以显示一般文档 ；如果是4，则显示所有表单设计元素（实际上，每个设计元素都可以说是一种特殊的文档）。另外还可以这样用：如果将 $FormulaClass 的值指定为 1548（4 + 8 + 512 + 1024），则可以同时显示表单、视图等几种设计元素。</p>
+<p>修改 $FormulaClass 域的方法，可以通过类似如下的代码实现：</p>
+<blockquote><p>Set view= db.GetView(&#8220;FormView&#8221;)<br />
+Set doc = db.GetDocumentByUNID(view.UniversalID)<br />
+Call doc.ReplaceItemValue(&#8220;$FormulaClass&#8221;, &#8220;4&#8221;)</p></blockquote>
+<p>至于这样的视图有什么用，就要看自己的想像力了。比如创建一个包含所有设计元素的视图，就可以通过名字来查找设计元素文档了。</p>
+<p>请参考 <a href="http://www.nsftools.com/tips/NotesTips.htm#formulaclass" target="_blank">Modifying $FormulaClass in Views</a>、<a href="http://www.dominopower.com/issuesprint/issue199908/design.html" target="_blank">Fun with $FormulaClass</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/fun-about-formulaclass.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Web技术 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/category/web/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 08 Dec 2010 11:05:58 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>为每种文件类型设定正确的 content-type</title>
+		<link>/articles/set-correct-content-type.html</link>
+				<comments>/articles/set-correct-content-type.html#respond</comments>
+				<pubDate>Wed, 08 Dec 2010 11:05:58 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[content-type]]></category>
+		<category><![CDATA[httpd.cnf]]></category>
+
+		<guid isPermaLink="false">/?p=644828</guid>
+				<description><![CDATA[为 HTTP 服务器上的每个文件设定正确的 content-type 头是很重要的，因为很多情况下区分文件类型 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>为 HTTP 服务器上的每个文件设定正确的 content-type 头是很重要的，因为很多情况下区分文件类型正是靠它（而不是文件后缀）。</p>
+<p>Domino 环境下默认带了常见文件的 content-type 配置，但总是有不全的。可以通过编辑 &lt;domino data&gt;/httpd.cnf 文件来实现，比如我们添加 json 文件类型就可以添加以下一行：</p>
+<blockquote><p><tt>AddType .json application/json</tt></p></blockquote>
+<p>参考链接：<a href="http://www-01.ibm.com/support/docview.wss?uid=swg21289700" target="_blank">http://www-01.ibm.com/support/docview.wss?uid=swg21289700</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/set-correct-content-type.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>更改 Domino 生成 HTML 页面的 DOCTYPE</title>
+		<link>/articles/change-domino-doctype.html</link>
+				<comments>/articles/change-domino-doctype.html#respond</comments>
+				<pubDate>Wed, 08 Dec 2010 10:52:40 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[doctype]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[quirks]]></category>
+
+		<guid isPermaLink="false">/?p=644835</guid>
+				<description><![CDATA[我们知道所有的浏览器都有怪癖模式（Quirks Mode）和标准模式（Standards Mode）。怪癖模式 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我们知道所有的浏览器都有怪癖模式（Quirks Mode）和标准模式（Standards Mode）。怪癖模式是为了兼容老旧的网页，去模拟早期浏览器（如 IE5.5）的非标准实现；而标准模式会尽可能的按照标准去执行。而激活不同模式的关键正是 HTML 页面的 DOCTYPE。</p>
+<p>现在已经是 2010 年了，可是 Domino 生成的默认的 DOCTYPE 还是：</p>
+<blockquote><p>&lt;!DOCTYPE HTML PUBLIC &#8220;-//W3C//DTD HTML 4.01 Transitional//EN&#8221;&gt;</p></blockquote>
+<p>在目前所有流行的浏览器下它都会触发怪癖模式。所以我们需要以下 Notes.ini 参数来改掉它：</p>
+<blockquote><p>DominoCompleteDoctype = 0 或 1 或 2</p>
+<p>0 = !DOCTYPE HTML PUBLIC &#8220;W3CDTD HTML 4.01 TransitionaEN&#8221;<br />
+1 = !DOCTYPE HTML PUBLIC &#8220;-W3DTD HTML 4.01 TransitionalEN&#8221; &#8220;<a class="linkification-ext" title="Linkification: http://www.w3.org/TR/html4/loose.dtd" href="http://www.w3.org/TR/html4/loose.dtd">http://www.w3.org/TR/html4/loose.dtd</a>&#8221;<br />
+2 = !DOCTYPE HTML PUBLIC &#8220;W3CDTD HTML 4.0EN&#8221; &#8220;<a class="linkification-ext" title="Linkification: http://www.w3.org/TR/html4/strict.dtd" href="http://www.w3.org/TR/html4/strict.dtd">http://www.w3.org/TR/html4/strict.dtd</a>&#8220;</p></blockquote>
+<p>我们只是想要触发标准模式，那么用 1 就可以了。不过由于是通过 Notes.ini 修改的，肯定会影响到所有的表单，想要更改个别的表单可以使用 $$HTMLFrontMatter 域。</p>
+<p>参考链接：<a href="http://www-10.lotus.com/ldd/ddwiki.nsf/dx/07302008092123AMKMKHNG.htm" target="_blank">Working with the DOCTYPE</a>，<a href="http://www-10.lotus.com/ldd/ddwiki.nsf/dx/07302008101816AMKMKJRZ.htm" target="_blank">HTMLOptions and HTMLTagAttribute fields</a>，<a title="到《用doctype激活浏览器模式》的永久链接" href="http://dancewithnet.com/2009/06/14/activating-browser-modes-with-doctype/" target="_blank">用doctype激活浏览器模式</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/change-domino-doctype.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>解决启用 Fiddler 后 IE 响应非常缓慢的问题</title>
+		<link>/articles/fiddler-slow-performance-on-ie.html</link>
+				<comments>/articles/fiddler-slow-performance-on-ie.html#respond</comments>
+				<pubDate>Tue, 14 Sep 2010 09:10:45 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[fiddler]]></category>
+		<category><![CDATA[performance]]></category>
+
+		<guid isPermaLink="false">/?p=644820</guid>
+				<description><![CDATA[Fiddler 是一个很好用的 HTTP 调试工具，我曾把它推荐给很多同事。 今天在一个同事的机器上启用了 F [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p><a href="http://www.fiddler2.com/fiddler2/" target="_blank">Fiddler</a> 是一个很好用的 HTTP 调试工具，我曾把它推荐给很多同事。</p>
+<p>今天在一个同事的机器上启用了 Fiddler 之后，IE 打开一个页面要十多秒的时间，不用 Fiddler 则没有问题。通过 Fiddler 的 Log 标签页，可以发现以下错误信息：</p>
+<blockquote><p>Fiddler.Network.AutoProxy&gt; AutoProxy Detection failed</p></blockquote>
+<p>最终发现更改以下设定可以解决问题：</p>
+<blockquote><p>IE Internet 选项 &gt; 连接标签页 &gt; 局域网选项 &gt; 取消选择“自动检测设置”项</p></blockquote>
+<p>以上方案供大家参考。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/fiddler-slow-performance-on-ie.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>表格内的 PRE 标签产生多余空白的问题</title>
+		<link>/articles/pre-tag-inside-table-result-extra-space.html</link>
+				<comments>/articles/pre-tag-inside-table-result-extra-space.html#respond</comments>
+				<pubDate>Wed, 08 Apr 2009 07:56:40 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[pre]]></category>
+		<category><![CDATA[space]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=637994</guid>
+				<description><![CDATA[项目中要将用户输入的文本直接原样显示，所以就想到了 PRE 标签，加上下面的样式，就可以实现自动换行： wor [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>项目中要将用户输入的文本直接原样显示，所以就想到了 PRE 标签，加上下面的样式，就可以实现自动换行：</p>
+<blockquote><p>word-wrap: break-word;</p></blockquote>
+<p>使用后发现一个问题，如果把 PRE 放在表格中，那么就算内容折行了，但还是会占不换行时的宽度。估计是 IE 的问题，最后找到方法，加入以下样式就没问题了：</p>
+<blockquote><p>white-space : normal;</p></blockquote>
+]]></content:encoded>
+							<wfw:commentRss>/articles/pre-tag-inside-table-result-extra-space.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>怎样去掉页面最后多出来的一行？</title>
+		<link>/articles/remove-blank-line-at-bottom-of-page.html</link>
+				<comments>/articles/remove-blank-line-at-bottom-of-page.html#comments</comments>
+				<pubDate>Tue, 06 Jun 2006 09:20:30 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e6%80%8e%e6%a0%b7%e5%8e%bb%e6%8e%89%e9%a1%b5%e9%9d%a2%e6%9c%80%e5%90%8e%e5%a4%9a%e5%87%ba%e6%9d%a5%e7%9a%84%e4%b8%80%e8%a1%8c%ef%bc%9f.html</guid>
+				<description><![CDATA[使用Domino做Web表单时，经常发现在页面的最后面多出一行来。其原因是Form元素默认是有边界空白的，只要 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>使用Domino做Web表单时，经常发现在页面的最后面多出一行来。其原因是Form元素默认是有边界空白的，只要将Form的 <strong>MARGIN-BOTTOM</strong> 样式设置成0就可以了。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/remove-blank-line-at-bottom-of-page.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+		<item>
+		<title>URL编码：escape和encodeURIComponent</title>
+		<link>/articles/escape-encode-uricomponent.html</link>
+				<comments>/articles/escape-encode-uricomponent.html#respond</comments>
+				<pubDate>Wed, 19 Apr 2006 02:41:53 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[javascript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/url%e7%bc%96%e7%a0%81%ef%bc%9aescape%e5%92%8cencodeuricomponent.html</guid>
+				<description><![CDATA[escape() 编码对 UTF-8 支持的不太好，我们应该用 encodeURI() 或者 encodeUR [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>escape() 编码对 UTF-8 支持的不太好，我们应该用 encodeURI() 或者 encodeURIComponent() 来取代 escape() 。不过 encodeURI() 和 encodeURIComponent() 都需要 <u>IE 5.5</u> 以上才支持，FireFox 则完全没有问题。 </p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 以下是 MSDN 对这三个编码函数的解释： </p>
+<p><strong>escape(charString) </strong></p>
+<blockquote>
+<p>escape 方法返回一个包含 charstring 内容的字符串值（Unicode 格式）。所有空格、标点、重音符号以及任何其他非 ASCII 字符都用 %xx 编码替换，其中 xx 等于表示该字符的十六进制数。例如，空格返回为&ldquo;%20&rdquo;。 </p>
+<p>字符值大于 255 的字符以 %uxxxx 格式存储。 </p>
+<p>注意 escape 方法不能用来对&ldquo;统一资源标识符&rdquo;(URI) 进行编码。</p>
+</blockquote>
+<p><strong>encodeURI(URIString)</strong> </p>
+<blockquote>
+<p>encodeURI 方法返回一个已编码的 URI。如果将编码结果传递给 decodeURI，则将返回初始的字符串。encodeURI 不对下列字符进行编码：&ldquo;:&rdquo;、&ldquo;/&rdquo;、&ldquo;;&rdquo;和&ldquo;?&rdquo;。请使用 encodeURIComponent 对这些字符进行编码。</p>
+</blockquote>
+<p><strong>encodeURIComponent(encodedURIString)</strong> </p>
+<blockquote>
+<p>encodeURIComponent 方法返回一个已编码的 URI。如果将编码结果传递给 decodeURIComponent，则将返回初始的字符串。因为 encodeURIComponent 方法将对所有字符编码，请注意，如果该字符串代表一个路径，例如 /folder1/folder2/default.html，则其中的斜杠也将被编码，这样，当该字符串作为请求发送到 Web 服务器时它将是无效的。如果字符串中包含多个 URI 组件，请使用 encodeURI 方法进行编码。</p>
+</blockquote>
+]]></content:encoded>
+							<wfw:commentRss>/articles/escape-encode-uricomponent.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>再谈CSS expression</title>
+		<link>/articles/css-expression-reload.html</link>
+				<comments>/articles/css-expression-reload.html#respond</comments>
+				<pubDate>Wed, 18 Jan 2006 04:20:52 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[css]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e5%86%8d%e8%b0%88css-expression.html</guid>
+				<description><![CDATA[记得前些时间写了一个例子，说明了CSS expression是如何的方便和强大。这回再来数落一下CSS exp [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>记得前些时间写了一个例子，说明了CSS expression是如何的方便和强大。这回再来数落一下CSS expression。</p>
+<p>首先它的兼容性有很大问题。由于它不属于CSS标准，所以除了IE之外的浏览器支持的不好。firefox就只能处理一些非常简单的，比如下文中控制文本框颜色的例子。另外就是效率问题。每个鼠标、键盘的动作都会导致CSS expression重新计算，对于复杂的表达式就会是很大的开销。更要命的是你无法预料某一个表达式可能会导致另一个表达式重新计算，这样的情况会让你的IE死掉。<br />
+所以使用CSS expression时一定要小心谨慎。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/css-expression-reload.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>用Js检测一个链接是否存在</title>
+		<link>/articles/check-404-error-in-javascript.html</link>
+				<comments>/articles/check-404-error-in-javascript.html#respond</comments>
+				<pubDate>Tue, 01 Nov 2005 02:56:18 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[javascript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e7%94%a8js%e6%a3%80%e6%b5%8b%e4%b8%80%e4%b8%aa%e9%93%be%e6%8e%a5%e6%98%af%e5%90%a6%e5%ad%98%e5%9c%a8.html</guid>
+				<description><![CDATA[我们知道，使用 XMLHTTP.open(&#8220;GET&#8221;,url,false) 方法可以不 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我们知道，使用 XMLHTTP.open(&#8220;GET&#8221;,url,false) 方法可以不刷新页面请求一个文件，再检查 XMLHTTP.status 属性可以判断请求的状态。但是上面的方法会载入整个请求的文件，如果仅仅需要判断请求的链接是否存在，我们使用 XMLHTTP.open(&#8220;HEAD&#8221;,url,false) 方法可以判断一个链接是否存在，并且不用把请求的文件全部下载回来。具体代码如下：</p>
+<p><span id="more-142910"></span><br />
+<textarea rows="10" cols="60">function checkStatus(url)<br />
+{<br />
+XMLHTTP = new ActiveXObject(&#8220;Microsoft.XMLHTTP&#8221;)<br />
+XMLHTTP.open(&#8220;HEAD&#8221;,url,false)<br />
+XMLHTTP.send()<br />
+return XMLHTTP.status==200<br />
+}<br />
+alert(checkStatus(&#8220;http://testLink/&#8221;))</textarea></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/check-404-error-in-javascript.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>HTML表单神奇的自动提交</title>
+		<link>/articles/strange-form-auto-submit.html</link>
+				<comments>/articles/strange-form-auto-submit.html#respond</comments>
+				<pubDate>Wed, 28 Sep 2005 09:26:48 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/html%e8%a1%a8%e5%8d%95%e7%a5%9e%e5%a5%87%e7%9a%84%e8%87%aa%e5%8a%a8%e6%8f%90%e4%ba%a4.html</guid>
+				<description><![CDATA[今天碰到了一个奇怪的事：在显示视图的页面上有个Input框，用来输入页号，然后回车可以直接跳转到第n页。我发现 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>今天碰到了一个奇怪的事：在显示视图的页面上有个Input框，用来输入页号，然后回车可以直接跳转到第n页。我发现按下回车后，跳转的地址似乎不是我用javascript重定向的地址，而是表单提交的返回地址。仔细一看果然是提交表单了，但是我在回车按下的事件里面并没有这样做呀，其他地方也没有类似的处理。。。</p>
+<p>无奈查一下form元素的帮助，这才发现一个神奇的事情：当表单上只有一个Input框时（hidden的不算），在这个Input框上按下回车就会提交表单。比较意外，嗯。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/strange-form-auto-submit.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>暗藏杀机的parseInt函数</title>
+		<link>/articles/proper-use-parseint.html</link>
+				<comments>/articles/proper-use-parseint.html#respond</comments>
+				<pubDate>Wed, 10 Aug 2005 12:58:08 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[javascript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e6%9a%97%e8%97%8f%e6%9d%80%e6%9c%ba%e7%9a%84parseint%e5%87%bd%e6%95%b0.html</guid>
+				<description><![CDATA[JavaScript里面有个parseInt函数，是用来把字符转成数字的，咱们一般这么用，返回值就是数字12了 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>JavaScript里面有个parseInt函数，是用来把字符转成数字的，咱们一般这么用，返回值就是数字12了：</p>
+<p><span class="Code">parseInt(&#8220;12ABC&#8221;)</span>&nbsp;</p>
+<p>嗯，看上去很不错。再来看看下面两个会返回什么样的结果？</p>
+<p><span class="Code">parseInt(&#8220;9&#8221;)</span></p>
+<p><span class="Code">parseInt(&#8220;13&#8221;)</span></p>
+<p>没错，他们分别返回了数字9和数字13。那么下面的两个呢？</p>
+<p><span class="Code">parseInt(&#8220;09&#8221;)</span></p>
+<p><span class="Code">parseInt(&#8220;013&#8221;)</span></p>
+<p>看上去他们应该和前面两个一样返回数字9和13。但是结果并非如此：第一个返回了数字0，第二个返回了数字11。其实parseInt本来的语法是这样的：</p>
+<p><strong>parseInt</strong>(<em><font color="#0000ff">numString</font></em>, [<em><font color="#0000ff">radix</font></em>])</p>
+<p>第一个参数是包含数字的字符串，第二个是转化时的进制。我们平时使用基本不带第二个参数，因为正常情况下按十进制转化，无须我们指定。但是0开头的字符串系统会认为是八进制数，09并不是合法的八进制数，所以返回了0；013从八进制转化成十进制正好是11。</p>
+<p>我们要小心了，这种错误出现了一般很难察觉。所以，还是每次使用都带上第二个参数吧。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/proper-use-parseint.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

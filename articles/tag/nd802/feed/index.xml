@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nd802 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/nd802/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Tue, 04 May 2010 14:07:33 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Notes/Domino 8.0.2 FP5 已发布</title>
+		<link>/articles/notesdomino-8-0-2-fp5-release.html</link>
+				<comments>/articles/notesdomino-8-0-2-fp5-release.html#respond</comments>
+				<pubDate>Tue, 04 May 2010 14:07:33 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd802]]></category>
+
+		<guid isPermaLink="false">/?p=644761</guid>
+				<description><![CDATA[请参考：Notes/Domino 8.0.2 Fix Pack 5 Release Notice，Downlo [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>请参考：<a href="http://www.lotus.com/ldd/r5fixlist.nsf/8d1c0550e6242b69852570c900549a74/613a204806e3f211852576e2006afa3d?OpenDocument" target="_blank">Notes/Domino  8.0.2 Fix Pack 5 Release Notice</a>，<a href="http://www.ibm.com/support/docview.wss?uid=swg24026644" target="_blank">Download  options for Notes/Domino 8.0.2 Fix Pack 5</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notesdomino-8-0-2-fp5-release.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Notes/Domino 8.0.2 发布</title>
+		<link>/articles/notesdomino-802-available.html</link>
+				<comments>/articles/notesdomino-802-available.html#respond</comments>
+				<pubDate>Wed, 27 Aug 2008 01:55:45 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd802]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/notesdomino-802-available.html</guid>
+				<description><![CDATA[新特性： iNotestm Ultralite 技术，为 iPhone 和 Domino Access for [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>新特性：</p>
+<ul>
+<li>iNotes<sup>tm</sup> Ultralite 技术，为 iPhone 和 Domino Access for Microsoft® Outlook 提供更灵活的方式，来访问邮件和日历等信息</li>
+<li>Notes 端重大性能改善</li>
+<li>支持 Office 2007 格式文档的查看</li>
+</ul>
+<p>相应的中文版 9-24 日发布。<br />
+相关链接：<a href="http://www-01.ibm.com/common/ssi/index.wss?DocURL=http://www-01.ibm.com/common/ssi/rep_ca/8/897/ENUS208-238/index.html&amp;InfoType=AN&amp;InfoSubType%C3%8A&amp;InfoDesc=Announcement+Letters&amp;panelurl=index.wss%3Fbuttonpressed%3DDET001PT116%26page%3D1000%26paneltext1%3DDET001PEF011%26user%2Btype%3DEXT&amp;paneltext=Announcement%20letter%20search" target="_blank">IBM Lotus Notes and Domino 8.0.2 includes significant performance improvements and iPhone support</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notesdomino-802-available.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

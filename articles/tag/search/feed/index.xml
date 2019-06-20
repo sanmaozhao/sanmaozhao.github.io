@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>search &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/search/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Mon, 07 May 2012 02:17:33 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>善用 Domino Designer 8.5 新的代码搜索</title>
+		<link>/articles/design-search-in-domino-designer-8-5.html</link>
+				<comments>/articles/design-search-in-domino-designer-8-5.html#comments</comments>
+				<pubDate>Sun, 04 Mar 2012 15:49:41 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[search]]></category>
+
+		<guid isPermaLink="false">/?p=645106</guid>
+				<description><![CDATA[我相信只要是做开发的，就会维护别人写的代码；只要做维护代码工作，就会有全局搜索代码的需要。可惜在 Domino [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我相信只要是做开发的，就会维护别人写的代码；只要做维护代码工作，就会有全局搜索代码的需要。可惜在 Domino 开发中这不是一件容易事儿：只能先生成代码摘要，然后从摘要中搜索。而且摘要还有大小限制、又不包括计算文本的内容。</p>
+<p>所以之前我们想了很多办法：用 DXL 导出设计元素、使用 TeamStudio 等等。从 Domino Designer 8.5 转到 Eclipse 平台以后，为我们带来了一项新的搜索功能，用法如下：</p>
+<ol>
+<li>打开任意一个代理或 Script 库或 XPage</li>
+<li>通过“搜索&gt;搜索”菜单，或“Ctrl+H”打开搜索对话框</li>
+<li>按下图填写条件<img class="aligncenter size-full wp-image-645109" title="design-search" src="/pic/design-search.png" alt="" width="539" height="487" /></li>
+<li>查看结果，双击可以打开相应的设计元素<img class="aligncenter size-full wp-image-645110" title="design-search2" src="/pic/design-search2.png" alt="" width="606" height="222" /></li>
+</ol>
+]]></content:encoded>
+							<wfw:commentRss>/articles/design-search-in-domino-designer-8-5.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>Domino 的全文搜索支持哪些格式的附件？</title>
+		<link>/articles/what-types-of-attachments-are-supported-by-the-full-text-indexer-in-notesdomino.html</link>
+				<comments>/articles/what-types-of-attachments-are-supported-by-the-full-text-indexer-in-notesdomino.html#respond</comments>
+				<pubDate>Mon, 23 Mar 2009 03:20:49 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[domino]]></category>
+		<category><![CDATA[search]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=637724</guid>
+				<description><![CDATA[常见的文档格式基本都支持，如：text、MS word/excel/powerpoint、PDF等。 详细列表 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>常见的文档格式基本都支持，如：text、MS word/excel/powerpoint、PDF等。</p>
+<p>详细列表参考 <a href="http://www-01.ibm.com/support/docview.wss?rs=0&amp;uid=swg21137802" target="_blank">What types of attachments are supported by the full text indexer in Notes/Domino 6.x?</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/what-types-of-attachments-are-supported-by-the-full-text-indexer-in-notesdomino.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

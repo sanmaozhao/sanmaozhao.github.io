@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>delay &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/delay/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 29 Oct 2008 08:42:19 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>减少修改 Internet 密码时的延迟</title>
+		<link>/articles/decrease-delay-when-change-internet-password.html</link>
+				<comments>/articles/decrease-delay-when-change-internet-password.html#comments</comments>
+				<pubDate>Wed, 29 Oct 2008 08:42:19 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[delay]]></category>
+		<category><![CDATA[password]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/decrease-delay-when-change-internet-password.html</guid>
+				<description><![CDATA[修改 Domino 用户的 Internet 密码，或者注册新用户时时，我们一般都要等待一段时间更改才生效。可 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>修改 Domino 用户的 Internet 密码，或者注册新用户时时，我们一般都要等待一段时间更改才生效。可以通过以下操作和命令加速这个过程：</p>
+<ul>
+<li>在各服务器间复制 Names 库</li>
+<li>tell adminp process all （此操作在生产环境慎用，可能会很占资源）</li>
+<li>show nlcache reset</li>
+<li>restart task http</li>
+</ul>
+<p>以上操作不一定每条都要做，可以按照具体条件自行选择，运行的操作越多加速越明显。</p>
+<p>参考资料：<a href="http://www-01.ibm.com/support/docview.wss?rs=0&amp;q1=change+password+delay&amp;uid=swg21245252&amp;loc=en_US&amp;cs=utf-8&amp;cc=us&amp;lang=all" target="_blank">New Internet password is not immediately usable</a></p>
+<p>补充：还有个相关的 Notes.ini 参数 HTTP_Pwd_Change_Cache_Hours，可以设定新旧密码共存的时间，默认是<span style="text-decoration: line-through">24</span> 48小时。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/decrease-delay-when-change-internet-password.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+	</channel>
+</rss>

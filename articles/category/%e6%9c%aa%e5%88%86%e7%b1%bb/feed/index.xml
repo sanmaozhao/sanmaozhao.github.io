@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>未分类 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/category/%E6%9C%AA%E5%88%86%E7%B1%BB/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 30 Oct 2013 02:17:28 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Notes/Domino 9.0.1 英文版已发布</title>
+		<link>/articles/notesdomino-901-available.html</link>
+				<comments>/articles/notesdomino-901-available.html#comments</comments>
+				<pubDate>Wed, 30 Oct 2013 02:17:28 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[未分类]]></category>
+		<category><![CDATA[nd9]]></category>
+
+		<guid isPermaLink="false">/?p=645224</guid>
+				<description><![CDATA[Notes/Domino 9.0.1 英文版已发布，这是一个bug修正版本，推荐更新。按照惯例中文版估计一个月 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>Notes/Domino 9.0.1 英文版已发布，这是一个bug修正版本，推荐更新。按照惯例中文版估计一个月后也就能发布了。</p>
+<p>完整的新功能列表请参考：<a href="http://www-10.lotus.com/ldd/fixlist.nsf/8d1c0550e6242b69852570c900549a74/de0329821264ceff85257c130056adda?OpenDocument" target="_blank">修复bug列表</a>、<a href="http://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/1/897/ENUS213-481/index.html&amp;lang=en&amp;request_locale=en" target="_blank">IBM US Announcement Letter</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notesdomino-901-available.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+	</channel>
+</rss>

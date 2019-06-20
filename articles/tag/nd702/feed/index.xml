@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nd702 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/nd702/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 12 Mar 2010 05:33:18 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>慎用 7.0.2 中的 JSON 功能</title>
+		<link>/articles/take-care-json-feature-in-domino-702.html</link>
+				<comments>/articles/take-care-json-feature-in-domino-702.html#respond</comments>
+				<pubDate>Fri, 12 Mar 2010 05:33:18 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[json]]></category>
+		<category><![CDATA[nd702]]></category>
+
+		<guid isPermaLink="false">/?p=644599</guid>
+				<description><![CDATA[之前介绍过 domino 7.0.2 引入了一个新的功能：以 JSON 格式返回视图的内容。当时我只是做了简单 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>之前介绍过 domino 7.0.2 引入了一个新的功能：以 JSON 格式返回视图的内容。当时我只是做了简单的测试，并没有用于实际项目。最近我在一个项目中使用了这个功能，没想到遇到了一个棘手的问题：服务器返回的 JSON 内容是以 GB2312 编码的，但是却没有在 Http Header 中声明。由此带来的结果就是，xmlHttpRequest 对象将其以默认的 UTF-8 编码处理，最终导致乱码等错误。而同样的代码在 Domino 8.0 上就没有问题，因为它返回的 JSON 是以 UTF-8 编码的。</p>
+<p>找到问题的来源后，我通过 800 联系了 IBM，得到的答复是：此功能是在 8.0 版正式引入的，没有任何正式文档说明在 7.0.2 版中有此功能，所以无法进行技术支持。我查来查去才想起来，这个功能是在 Lotusphere 08 的一个 PPT 上看到的，还真没啥官方文档的说明。对于各种非正式文档记载的功能，大家用之前也要三思啊。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/take-care-json-feature-in-domino-702.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Lotus Domino 7.0.2的一些新功能</title>
+		<link>/articles/lotus-domino-702-new-feature.html</link>
+				<comments>/articles/lotus-domino-702-new-feature.html#respond</comments>
+				<pubDate>Thu, 25 Jan 2007 01:56:30 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd702]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/lotus-domino-702%e7%9a%84%e4%b8%80%e4%ba%9b%e6%96%b0%e5%8a%9f%e8%83%bd.html</guid>
+				<description><![CDATA[新增&#160;$$HTMLTagAttributes 域，可以为&#60;HTML&#62;标签添加属性 新增&#038; [&#8230;]]]></description>
+								<content:encoded><![CDATA[<ul>
+<li>新增&nbsp;<em>$$HTMLTagAttributes </em>域，可以为&lt;HTML&gt;标签添加属性</li>
+<li>新增&nbsp;<em>$$HTMLFrontMatter</em> 域，可以自定义Document Type Definition (DTD)</li>
+<li><em>ReadViewEntries</em> 命令新增 <em>OutputFormat=JSON</em> 参数，支持JSON格式输出</li>
+<li>通过站点规则，可以设定特定的URL使用HTTP基本认证登陆</li>
+<li>DB2 query views支持Web访问</li>
+</ul>
+]]></content:encoded>
+							<wfw:commentRss>/articles/lotus-domino-702-new-feature.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

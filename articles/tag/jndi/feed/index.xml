@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>jndi &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/jndi/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 06 Jun 2007 07:15:40 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Java代理中使用JNDI出现“ Error cleaning up threads”问题</title>
+		<link>/articles/jndi-error-cleaning-up-threads.html</link>
+				<comments>/articles/jndi-error-cleaning-up-threads.html#respond</comments>
+				<pubDate>Wed, 06 Jun 2007 07:15:40 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[jndi]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/java%e4%bb%a3%e7%90%86%e4%b8%ad%e4%bd%bf%e7%94%a8jndi%e5%87%ba%e7%8e%b0%e2%80%9c-error-cleaning-up-threads%e2%80%9d%e9%97%ae%e9%a2%98.html</guid>
+				<description><![CDATA[我们在Java代理中通过JNDI查询LDAP数据的时候，出现 “ Error cleaning up thre [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我们在Java代理中通过JNDI查询LDAP数据的时候，出现 “ Error cleaning up threads” 错误信息。虽然代理返回的结果正确，但是有人提出可能会导致内存泄漏。最后查明只要在close LdapContext 对象之前，将 NamingEnumeration 对象也 close 就可以了。部分代码如下：</p>
+<blockquote><p>LdapContext ctx = LDAPLogin(&#8220;cn=xxxxx, ou=xx, ou=xx, o=xxxx&#8221;, &#8220;password&#8221;, &#8220;ldap://ldap.mycompany.com:389&#8221;);<br />
+&#8230;&#8230;<br />
+NamingEnumeration ne = ctx.search(&#8220;&#8221;,&#8221;(&amp;(objectclass=person)(cn=&#8221; + doc.getItemValueString(&#8220;Mod_Remote_User&#8221;) + &#8220;))&#8221;, constraints);<br />
+&#8230;&#8230;<br />
+ne.close();<br />
+ctx.close();</p></blockquote>
+<p>这样我就安心了。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/jndi-error-cleaning-up-threads.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>quirks &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/quirks/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 08 Dec 2010 10:52:40 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>更改 Domino 生成 HTML 页面的 DOCTYPE</title>
+		<link>/articles/change-domino-doctype.html</link>
+				<comments>/articles/change-domino-doctype.html#respond</comments>
+				<pubDate>Wed, 08 Dec 2010 10:52:40 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[doctype]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[quirks]]></category>
+
+		<guid isPermaLink="false">/?p=644835</guid>
+				<description><![CDATA[我们知道所有的浏览器都有怪癖模式（Quirks Mode）和标准模式（Standards Mode）。怪癖模式 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我们知道所有的浏览器都有怪癖模式（Quirks Mode）和标准模式（Standards Mode）。怪癖模式是为了兼容老旧的网页，去模拟早期浏览器（如 IE5.5）的非标准实现；而标准模式会尽可能的按照标准去执行。而激活不同模式的关键正是 HTML 页面的 DOCTYPE。</p>
+<p>现在已经是 2010 年了，可是 Domino 生成的默认的 DOCTYPE 还是：</p>
+<blockquote><p>&lt;!DOCTYPE HTML PUBLIC &#8220;-//W3C//DTD HTML 4.01 Transitional//EN&#8221;&gt;</p></blockquote>
+<p>在目前所有流行的浏览器下它都会触发怪癖模式。所以我们需要以下 Notes.ini 参数来改掉它：</p>
+<blockquote><p>DominoCompleteDoctype = 0 或 1 或 2</p>
+<p>0 = !DOCTYPE HTML PUBLIC &#8220;W3CDTD HTML 4.01 TransitionaEN&#8221;<br />
+1 = !DOCTYPE HTML PUBLIC &#8220;-W3DTD HTML 4.01 TransitionalEN&#8221; &#8220;<a class="linkification-ext" title="Linkification: http://www.w3.org/TR/html4/loose.dtd" href="http://www.w3.org/TR/html4/loose.dtd">http://www.w3.org/TR/html4/loose.dtd</a>&#8221;<br />
+2 = !DOCTYPE HTML PUBLIC &#8220;W3CDTD HTML 4.0EN&#8221; &#8220;<a class="linkification-ext" title="Linkification: http://www.w3.org/TR/html4/strict.dtd" href="http://www.w3.org/TR/html4/strict.dtd">http://www.w3.org/TR/html4/strict.dtd</a>&#8220;</p></blockquote>
+<p>我们只是想要触发标准模式，那么用 1 就可以了。不过由于是通过 Notes.ini 修改的，肯定会影响到所有的表单，想要更改个别的表单可以使用 $$HTMLFrontMatter 域。</p>
+<p>参考链接：<a href="http://www-10.lotus.com/ldd/ddwiki.nsf/dx/07302008092123AMKMKHNG.htm" target="_blank">Working with the DOCTYPE</a>，<a href="http://www-10.lotus.com/ldd/ddwiki.nsf/dx/07302008101816AMKMKJRZ.htm" target="_blank">HTMLOptions and HTMLTagAttribute fields</a>，<a title="到《用doctype激活浏览器模式》的永久链接" href="http://dancewithnet.com/2009/06/14/activating-browser-modes-with-doctype/" target="_blank">用doctype激活浏览器模式</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/change-domino-doctype.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

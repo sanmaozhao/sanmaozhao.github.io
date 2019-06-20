@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>bug &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/bug/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 28 Jul 2011 05:25:07 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>运行 Java 代理时出现“Invalid or nonexistent document”错误</title>
+		<link>/articles/invalid-or-nonexistent-document-on-java-agent.html</link>
+				<comments>/articles/invalid-or-nonexistent-document-on-java-agent.html#comments</comments>
+				<pubDate>Thu, 28 Jul 2011 05:25:07 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[bug]]></category>
+		<category><![CDATA[nd852]]></category>
+
+		<guid isPermaLink="false">/?p=645069</guid>
+				<description><![CDATA[今天发现在 Domino 8.5.2 环境下如果通过 Java 代理引用 Script 库，那么代理运行的时候 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>今天发现在 Domino 8.5.2 环境下如果通过 Java 代理引用 Script 库，那么代理运行的时候就会报“Invalid or nonexistent document”错误。此问题为已知的 <a href="http://www-10.lotus.com/ldd/r5fixlist.nsf/Public/0B6D05C2AA76FC0385257814005D2374?OpenDocument" target="_blank">bug</a>，通过安装最新的<a href="https://www-304.ibm.com/support/docview.wss?uid=swg24028680" target="_blank">补丁包</a>可以解决。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/invalid-or-nonexistent-document-on-java-agent.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>SearchOrder=4返回错误的结果</title>
+		<link>/articles/searchorder-4-unexpected-result.html</link>
+				<comments>/articles/searchorder-4-unexpected-result.html#respond</comments>
+				<pubDate>Thu, 12 Jul 2007 12:09:57 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[bug]]></category>
+		<category><![CDATA[ftsearch]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/searchorder4%e8%bf%94%e5%9b%9e%e9%94%99%e8%af%af%e7%9a%84%e7%bb%93%e6%9e%9c.html</guid>
+				<description><![CDATA[我们知道通过 ?SearchView&#38;SearchOrder=4 命令，可以搜索一个视图并以视图原序返 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我们知道通过 ?SearchView&amp;SearchOrder=4 命令，可以搜索一个视图并以视图原序返回结果。但是这个功能目前有些问题，Designer 帮助（R7）里面有如下说明：</p>
+<blockquote>
+<p align="left">在以下情况，指定 SearchOrder=4 会产生错误的结果：</p>
+<ul>
+<li>指定 count=n 并且 n 小于找到的文档数</li>
+<li>指定 start=n 并且 n 不等于1</li>
+<li>默认搜索返回结果数小于找到的文档数</li>
+<li>最大搜索返回结果数小于找到的文档数</li>
+</ul>
+</blockquote>
+<blockquote><p>如果需要指定  SearchOrder=4，请参考以下建议：</p></blockquote>
+<blockquote>
+<ul>
+<li>不要使用 start、count参数</li>
+<li>总是指定 SearchMax=0</li>
+<li>将服务器的最大搜返回结果数设定到一个比较大的值</li>
+</ul>
+</blockquote>
+<p>考虑以上建议，我们的结论是。。。。。。不要使用 SearchOrder=4 <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f641.png" alt="🙁" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/searchorder-4-unexpected-result.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>RestrictToCategory参数的问题</title>
+		<link>/articles/bug-in-restricttocategory-empty-category.html</link>
+				<comments>/articles/bug-in-restricttocategory-empty-category.html#respond</comments>
+				<pubDate>Mon, 03 Jul 2006 09:12:28 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[bug]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/restricttocategory%e5%8f%82%e6%95%b0%e7%9a%84%e9%97%ae%e9%a2%98.html</guid>
+				<description><![CDATA[在OpenView、ReadViewEntries命令中，使用RestrictToCategory参数可以只显 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在OpenView、ReadViewEntries命令中，使用RestrictToCategory参数可以只显示一个分类。</p>
+<p>但是这个方法有一个问题：比如你指定了显示&ldquo;ABC&rdquo;分类，而&ldquo;ABC&rdquo;这个分类是空的，那么Domino会显示第一个以&ldquo;ABC&rdquo;开始的分类，比如&ldquo;ABCD&rdquo;。这有点像byKey查找中的非精确匹配。在<a target="_blank" href="http://www-1.ibm.com/support/docview.wss?rs=0&amp;q1=exact+match&amp;q2=category&amp;uid=swg21108324&amp;loc=en_US&amp;cs=utf-8&amp;cc=us&amp;lang=en">IBM网站上</a>有提及这个问题，并且说原本就是这样设计的，并非Bug。同样存在问题的还有嵌入视图的显示单个分类选项。</p>
+<p>可以用如下方法绕过这个问题：在分类列值的最后追加一个&ldquo;~&rdquo;，这样&ldquo;ABCD~&rdquo;就不是以&ldquo;ABC~&rdquo;开头的，这个问题也就不存在了。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/bug-in-restricttocategory-empty-category.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

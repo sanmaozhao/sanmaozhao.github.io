@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>notes.ini &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/notes-ini/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 29 May 2014 07:18:14 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>调整 XPages 相关的内存设置</title>
+		<link>/articles/adjust-xpages-memory-settings.html</link>
+				<comments>/articles/adjust-xpages-memory-settings.html#comments</comments>
+				<pubDate>Wed, 06 Jun 2012 03:31:33 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[XPages]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[xpage]]></category>
+
+		<guid isPermaLink="false">/?p=645127</guid>
+				<description><![CDATA[XPages 为我们带来了新的开发体验，但其服务器端组件树、服务器端状态存储等特性会消耗大量的内存。Domin [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>XPages 为我们带来了新的开发体验，但其服务器端组件树、服务器端状态存储等特性会消耗大量的内存。Domino 8.5.2 版之后，为 HTTP JVM 分配的内存默认为64M，如果使用了较多的 XPages 的话，一般来说这个默认值是不够的。可以通过以下 Notes.ini 参数调整（增加到256M）：</p>
+<blockquote><p>HTTPJVMMaxHeapSize=256M<br />
+HTTPJVMMaxHeapSizeSet=1</p></blockquote>
+<p>如果使用了较多的XPages，通常来说32位操作系统推荐设置为256M，64位操作系统+32位Domino为1024M，64位操作系统+64位Domino为物理内存的1/4。当然具体环境请酌情调整。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/adjust-xpages-memory-settings.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>加快 XPages 第一次访问时的速度</title>
+		<link>/articles/speed-up-xpages-on-first-request.html</link>
+				<comments>/articles/speed-up-xpages-on-first-request.html#comments</comments>
+				<pubDate>Wed, 06 Jun 2012 03:02:58 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[XPages]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[xpage]]></category>
+
+		<guid isPermaLink="false">/?p=645125</guid>
+				<description><![CDATA[在实际使用 XPages 的过程中，我们发现第一次访问时会非常慢，有时候甚至要等5秒钟以上。这是因为第一次访问 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在实际使用 XPages 的过程中，我们发现第一次访问时会非常慢，有时候甚至要等5秒钟以上。这是因为第一次访问时需要加载一些 XPages 相关的 class，所以耗时比较长。</p>
+<p>为了解决这个问题，在 Domino 8.5.3 中引入了 XPages 预加载功能。通过以下 Notes.ini 参数实现：</p>
+<blockquote><p>XPagesPreload=1<br />
+XPagesPreloadDB=myDb.nsf/myXPage.xsp,myDb.nsf/test.xsp</p></blockquote>
+<p>请参考：<a href="http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/topic/com.ibm.designer.domino.ui.doc/wpd_whatsnew.html" target="_blank">Domino Designer 8.5.3 中的新增功能</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/speed-up-xpages-on-first-request.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>在 NSD 中查看 LotusScript 的调用堆栈</title>
+		<link>/articles/examining-lotusscript-call-stack-in-nsd.html</link>
+				<comments>/articles/examining-lotusscript-call-stack-in-nsd.html#respond</comments>
+				<pubDate>Wed, 30 Nov 2011 08:57:33 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[lotusscript]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[nsd]]></category>
+
+		<guid isPermaLink="false">/?p=645093</guid>
+				<description><![CDATA[通过添加以下 Notes.ini 参数，可以抓取 LotusScript 的调用堆栈，帮助我们分析宕机等问题： [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>通过添加以下 Notes.ini 参数，可以抓取 LotusScript 的调用堆栈，帮助我们分析宕机等问题：</p>
+<blockquote><p><tt>DEBUG_LS_DUMP=1</tt></p></blockquote>
+<p>结果格式如下：</p>
+<blockquote><p><tt><strong>LotusScript Call Stack</strong></tt><br />
+<tt><strong>&lt;@@ ------ LotusScript Interpreter -&gt; Call Stack for [ </strong></tt><tt><strong>nlnotes:  0ef8:  1494</strong></tt><tt><strong>]  (Time 10:38:14) ------ @@&gt;</strong></tt></p>
+<p><tt><strong>[3] COUNTVIEWS</strong></tt><br />
+<tt><strong>[2] GETDBINFO @ line number 7</strong></tt><br />
+<tt><strong>[1] COUNTDOCUMENTS @ line number 12</strong></tt><br />
+<tt><strong>[0] INITIALIZE @ line number 2</strong></tt></p></blockquote>
+<p>请参考：<a href="https://www-304.ibm.com/support/docview.wss?uid=swg21499034" target="_blank">Examining LotusScript call stack after a crash or hang with NSD</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/examining-lotusscript-call-stack-in-nsd.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>通过服务器命令批量拷贝数据库</title>
+		<link>/articles/batch-copy-database-via-server-command.html</link>
+				<comments>/articles/batch-copy-database-via-server-command.html#comments</comments>
+				<pubDate>Thu, 21 Jul 2011 09:27:49 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[notes.ini]]></category>
+
+		<guid isPermaLink="false">/?p=644886</guid>
+				<description><![CDATA[首先在控制台输入以下命令，启用额外的数据库拷贝命令（不是群集也可以用）： set config CLUSTER [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>首先在控制台输入以下命令，启用额外的数据库拷贝命令（不是群集也可以用）：</p>
+<blockquote><p>set config CLUSTER_ADMIN_ON=1</p></blockquote>
+<p>无需重启服务器，以下命令就可以用于拷贝数据库了：</p>
+<blockquote><p>CL copy serverA!!db1.nsf serverB!!db2.nsf（将 serverA 上的 db1 <strong>新建拷贝</strong>到 serverB 的 db2）</p>
+<p>CL copy serverA!!db1.nsf serverB!!db2.nsf REPLICA（将 serverA 上的 db1<strong> 新建副本</strong>到 serverB 的 db2）</p>
+<p>CL copy serverA!!db1.nsf serverB!!db2.nsf TEMPLATE（将 serverA 上的 db1 新建拷贝为模板到 serverB 的 db2，不含文档）</p>
+<p>CL copy db1.nsf db2.nsf（将 db1 从当前服务器新建拷贝到 db2）</p></blockquote>
+<p>将各个拷贝数据库的命令写成一个文本文件copydb.txt，保存到服务器的程序目录：</p>
+<blockquote><p>CL copy db1.nsf bak/db1.ntf TEMPLATE</p>
+<p>CL copy db2.nsf bak/db2.ntf TEMPLATE</p></blockquote>
+<p>然后在服务器控制台输入：</p>
+<blockquote><p>&lt; copydb.txt</p></blockquote>
+<p>就完成了批量备份数据库设计为模板库的工作。</p>
+<p>请参考：<a href="http://www-10.lotus.com/ldd/dominowiki.nsf/dx/cluster_admin_on" target="_blank">Cluster_admin_on</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/batch-copy-database-via-server-command.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>nsd.sh 导致 cpu 100%占用</title>
+		<link>/articles/multiple-nsd-sh-processes-running-causing-high-cpu-usage.html</link>
+				<comments>/articles/multiple-nsd-sh-processes-running-causing-high-cpu-usage.html#respond</comments>
+				<pubDate>Wed, 22 Dec 2010 07:17:13 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[nsd]]></category>
+
+		<guid isPermaLink="false">/?p=644848</guid>
+				<description><![CDATA[今天我们的 Linux 测试服务器突然开始响应缓慢，而前几天都还是好的。连到服务器上发现 cpu 占用一直是1 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>今天我们的 Linux 测试服务器突然开始响应缓慢，而前几天都还是好的。连到服务器上发现 cpu 占用一直是100%，而占用的进程是很多个 nsd.sh。最终通过搜索技术支持网站找到原因：Domino 数据目录下有不符合命名规范的数据库（如“~”、“/”、中文字符等）。解决方法如下：</p>
+<ol>
+<li>重命名不符合规范的数据库文件</li>
+<li>添加 notes.ini 参数 <em>DISABLE_SAVENSDCONFIG=1</em></li>
+</ol>
+<p>请参考：<a href="http://www-01.ibm.com/support/docview.wss?uid=swg21430218" target="_blank">Multiple nsd.sh processes running causing high cpu usage</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/multiple-nsd-sh-processes-running-causing-high-cpu-usage.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>更改 Domino 生成 HTML 页面的 DOCTYPE</title>
+		<link>/articles/change-domino-doctype.html</link>
+				<comments>/articles/change-domino-doctype.html#respond</comments>
+				<pubDate>Wed, 08 Dec 2010 10:52:40 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[doctype]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[quirks]]></category>
+
+		<guid isPermaLink="false">/?p=644835</guid>
+				<description><![CDATA[我们知道所有的浏览器都有怪癖模式（Quirks Mode）和标准模式（Standards Mode）。怪癖模式 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我们知道所有的浏览器都有怪癖模式（Quirks Mode）和标准模式（Standards Mode）。怪癖模式是为了兼容老旧的网页，去模拟早期浏览器（如 IE5.5）的非标准实现；而标准模式会尽可能的按照标准去执行。而激活不同模式的关键正是 HTML 页面的 DOCTYPE。</p>
+<p>现在已经是 2010 年了，可是 Domino 生成的默认的 DOCTYPE 还是：</p>
+<blockquote><p>&lt;!DOCTYPE HTML PUBLIC &#8220;-//W3C//DTD HTML 4.01 Transitional//EN&#8221;&gt;</p></blockquote>
+<p>在目前所有流行的浏览器下它都会触发怪癖模式。所以我们需要以下 Notes.ini 参数来改掉它：</p>
+<blockquote><p>DominoCompleteDoctype = 0 或 1 或 2</p>
+<p>0 = !DOCTYPE HTML PUBLIC &#8220;W3CDTD HTML 4.01 TransitionaEN&#8221;<br />
+1 = !DOCTYPE HTML PUBLIC &#8220;-W3DTD HTML 4.01 TransitionalEN&#8221; &#8220;<a class="linkification-ext" title="Linkification: http://www.w3.org/TR/html4/loose.dtd" href="http://www.w3.org/TR/html4/loose.dtd">http://www.w3.org/TR/html4/loose.dtd</a>&#8221;<br />
+2 = !DOCTYPE HTML PUBLIC &#8220;W3CDTD HTML 4.0EN&#8221; &#8220;<a class="linkification-ext" title="Linkification: http://www.w3.org/TR/html4/strict.dtd" href="http://www.w3.org/TR/html4/strict.dtd">http://www.w3.org/TR/html4/strict.dtd</a>&#8220;</p></blockquote>
+<p>我们只是想要触发标准模式，那么用 1 就可以了。不过由于是通过 Notes.ini 修改的，肯定会影响到所有的表单，想要更改个别的表单可以使用 $$HTMLFrontMatter 域。</p>
+<p>参考链接：<a href="http://www-10.lotus.com/ldd/ddwiki.nsf/dx/07302008092123AMKMKHNG.htm" target="_blank">Working with the DOCTYPE</a>，<a href="http://www-10.lotus.com/ldd/ddwiki.nsf/dx/07302008101816AMKMKJRZ.htm" target="_blank">HTMLOptions and HTMLTagAttribute fields</a>，<a title="到《用doctype激活浏览器模式》的永久链接" href="http://dancewithnet.com/2009/06/14/activating-browser-modes-with-doctype/" target="_blank">用doctype激活浏览器模式</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/change-domino-doctype.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>为 Java 代理设置编译器的&#8221;-target&#8221;参数</title>
+		<link>/articles/set-java-compiler-target-in-domino-designer.html</link>
+				<comments>/articles/set-java-compiler-target-in-domino-designer.html#respond</comments>
+				<pubDate>Tue, 24 Aug 2010 03:02:26 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[java]]></category>
+		<category><![CDATA[JavaCompilerTarget]]></category>
+		<category><![CDATA[notes.ini]]></category>
+
+		<guid isPermaLink="false">/?p=644816</guid>
+				<description><![CDATA[从 8.0 版开始，出于对旧版本兼容性的考虑，在 Designer 中编写 Java 代理时，编译器会生成与  [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>从 8.0 版开始，出于对旧版本兼容性的考虑，在 Designer 中编写 Java 代理时，编译器会生成与 Domino 6(JVM 1.2) 兼容的 class 文件。我们可以通过以下 Notes.ini 参数来修改它（以 1.5 为例，重启客户端生效）：</p>
+<blockquote><p><tt>JavaCompilerTarget=1.5</tt></p></blockquote>
+<p>对于兼容版本的设定，这里有个权衡需要把握：版本设定的越高可用的新特性越多，但同时能够兼容的 Domino 版本越少。大家可以按照实际需要，参考下表来选择。</p>
+<table border="1" width="100%">
+<tbody>
+<tr valign="top">
+<td width="28%"><strong>JavaCompilerTarget=</strong></td>
+<td width="38%">
+<div><strong>等同的 javac 参数<br />
+</strong></div>
+</td>
+<td width="34%">
+<div><strong>兼容的 Notes/Domino 版本</strong></div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>1.1</div>
+</td>
+<td width="38%">
+<div>-source 1.3 -target 1.1</div>
+</td>
+<td width="34%">
+<div>N/D 5.0 及以上</div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>1.2</div>
+</td>
+<td width="38%">
+<div>-source 1.3 -target 1.2</div>
+</td>
+<td width="34%">
+<div>N/D 6.0 及以上</div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>1.3</div>
+</td>
+<td width="38%">
+<div>-source 1.3 -target 1.3</div>
+</td>
+<td width="34%">
+<div>N/D 6.0 及以上</div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>1.4</div>
+</td>
+<td width="38%">
+<div>-source 1.4 -target 1.4</div>
+</td>
+<td width="34%">
+<div>N/D 7.0 及以上</div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>1.5</div>
+</td>
+<td width="38%">
+<div>-source 1.5 -target 1.5</div>
+</td>
+<td width="34%">
+<div>N/D 8.0 及以上</div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>1.6</div>
+</td>
+<td width="38%">
+<div>-source 1.6 -target 1.6</div>
+</td>
+<td width="34%">
+<div>N/D 8.5 及以上</div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>CurrentJavaVersion</div>
+<div>（取当前版本 Notes 附带的 Java版本，以 N/D 8.5 为例，此值等同于 1.6）</div>
+</td>
+<td width="38%">
+<div>-source 1.6 -target 1.6</div>
+</td>
+<td width="34%">
+<div>N/D 8.5 及以上</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>参考链接：<a href="http://www-10.lotus.com/ldd/ddwiki.nsf/dx/07152009034956PMMSTR75.htm" target="_blank">JavaCompilerTarget</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/set-java-compiler-target-in-domino-designer.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>禁用 Domino HTTP 服务器的 Trace 方法</title>
+		<link>/articles/disable-domino-http-trace-method.html</link>
+				<comments>/articles/disable-domino-http-trace-method.html#respond</comments>
+				<pubDate>Tue, 27 Jul 2010 09:16:44 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[http]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[security]]></category>
+		<category><![CDATA[trace]]></category>
+
+		<guid isPermaLink="false">/?p=644798</guid>
+				<description><![CDATA[在最近客户提交的一份安全检查报告中，有一条是检测到 Domino HTTP 服务器启用了 Trace 方法，可 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在最近客户提交的一份安全检查报告中，有一条是检测到 Domino HTTP 服务器启用了 Trace 方法，可能存在安全漏洞。虽然在 <a href="http://www-01.ibm.com/support/docview.wss?rs=463&amp;context=SSKTMJ&amp;context=SSKTWP&amp;dc=DB520&amp;dc=D600&amp;dc=DB530&amp;dc=D700&amp;dc=DB500&amp;dc=DB540&amp;dc=DB510&amp;dc=DB550&amp;q1=http+trace+method&amp;uid=swg21158630&amp;loc=en_US&amp;cs=utf-8&amp;lang=en" target="_blank">IBM 技术支持文档</a>中宣称此处不存在安全漏洞，但也提供了禁用它的方法：</p>
+<ul>
+<li>使用了 Internet 站点配置：在站点配置文档的配置标签页中，禁止 Trace 方法</li>
+<li>未使用 Internet 站点配置：在 Notes.ini 中加入一行 <em>HTTPDisableMethods=TRACE</em></li>
+</ul>
+<p>请参考：<a href="http://www-01.ibm.com/support/docview.wss?uid=swg21201202" target="_blank">How to enable or disable HTTP methods</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/disable-domino-http-trace-method.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>通过 Notes.ini 参数禁用 xPage 功能</title>
+		<link>/articles/there-a-notes-ini-parameter-to-disable-xpages.html</link>
+				<comments>/articles/there-a-notes-ini-parameter-to-disable-xpages.html#comments</comments>
+				<pubDate>Thu, 01 Jul 2010 09:05:23 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd85]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[xpage]]></category>
+
+		<guid isPermaLink="false">/?p=644794</guid>
+				<description><![CDATA[Domino 8.5 版引入了新的设计元素：xPage。我承认这是个很强大的东西，但在很多生产服务器我们还没有 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>Domino 8.5 版引入了新的设计元素：xPage。我承认这是个很强大的东西，但在很多生产服务器我们还没有用到它。而我向来有关闭这种不使用的功能的洁癖，所以通过以下参数可以将其禁用：</p>
+<blockquote><p>INOTESDISABLEXPAGECMD=1</p></blockquote>
+<p>设置参数后重启 HTTP 服务即可生效。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/there-a-notes-ini-parameter-to-disable-xpages.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>记录 Web 代理的执行</title>
+		<link>/articles/enable-agent-thread-debug.html</link>
+				<comments>/articles/enable-agent-thread-debug.html#comments</comments>
+				<pubDate>Wed, 09 Jun 2010 01:55:57 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[agent]]></category>
+		<category><![CDATA[notes.ini]]></category>
+
+		<guid isPermaLink="false">/?p=644788</guid>
+				<description><![CDATA[在开发过程中我们经常使用 msgbox 语句来调试代理，由于种种原因有时这些调试语句会被带入测试/生产环境。这 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在开发过程中我们经常使用 msgbox 语句来调试代理，由于种种原因有时这些调试语句会被带入测试/生产环境。这种问题一旦发生，一般来说很难定位它究竟来自哪个代理。</p>
+<p>此时我们可以在 notes.ini 中添加</p>
+<blockquote><p>Debug_Agent_Thread=1</p></blockquote>
+<p>参数来打开 Web 代理调试功能，在代理开始和结束时，控制台会打印出代理的名称、所在数据库以及 thread id。有了这些信息，我们就很容易定位调试语句的来源了。</p>
+<p>请参考：<a href="http://www.lntoolbox.com/en/notesini-reference/bycategory/debug/41-debug/2621-debug_agent_thread.html" target="_blank">Lotus Notes.ini Entry &#8211; Debug_Agent_Thread</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/enable-agent-thread-debug.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nd852 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/nd852/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Sat, 03 Dec 2011 05:21:51 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Notes/Domino 8.5.2 FP4 已发布</title>
+		<link>/articles/notesdomino-852-fp4-available.html</link>
+				<comments>/articles/notesdomino-852-fp4-available.html#respond</comments>
+				<pubDate>Sat, 03 Dec 2011 05:21:51 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd852]]></category>
+
+		<guid isPermaLink="false">/?p=645097</guid>
+				<description><![CDATA[请参考 Release Notes，下载链接]]></description>
+								<content:encoded><![CDATA[<p>请参考 <a href="http://www-10.lotus.com/ldd/r5fixlist.nsf/8d1c0550e6242b69852570c900549a74/b93adf7c96f57afa8525794c00500d74?OpenDocument" target="_blank">Release Notes</a>，<a href="http://www-01.ibm.com/support/docview.wss?uid=swg24028680" target="_blank">下载链接</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notesdomino-852-fp4-available.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>运行 Java 代理时出现“Invalid or nonexistent document”错误</title>
+		<link>/articles/invalid-or-nonexistent-document-on-java-agent.html</link>
+				<comments>/articles/invalid-or-nonexistent-document-on-java-agent.html#comments</comments>
+				<pubDate>Thu, 28 Jul 2011 05:25:07 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[bug]]></category>
+		<category><![CDATA[nd852]]></category>
+
+		<guid isPermaLink="false">/?p=645069</guid>
+				<description><![CDATA[今天发现在 Domino 8.5.2 环境下如果通过 Java 代理引用 Script 库，那么代理运行的时候 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>今天发现在 Domino 8.5.2 环境下如果通过 Java 代理引用 Script 库，那么代理运行的时候就会报“Invalid or nonexistent document”错误。此问题为已知的 <a href="http://www-10.lotus.com/ldd/r5fixlist.nsf/Public/0B6D05C2AA76FC0385257814005D2374?OpenDocument" target="_blank">bug</a>，通过安装最新的<a href="https://www-304.ibm.com/support/docview.wss?uid=swg24028680" target="_blank">补丁包</a>可以解决。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/invalid-or-nonexistent-document-on-java-agent.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>Notes/Domino 8.5.2 FP3 已发布</title>
+		<link>/articles/notes-domino-852-fp3-available.html</link>
+				<comments>/articles/notes-domino-852-fp3-available.html#respond</comments>
+				<pubDate>Thu, 28 Jul 2011 03:35:03 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd852]]></category>
+
+		<guid isPermaLink="false">/?p=645065</guid>
+				<description><![CDATA[请参考 Release Notes，下载链接]]></description>
+								<content:encoded><![CDATA[<p>请参考 <a href="http://www-10.lotus.com/ldd/r5fixlist.nsf/8d1c0550e6242b69852570c900549a74/b23767bb4ff78657852578d1005f85b8?OpenDocument" target="_blank">Release Notes</a>，<a href="https://www-304.ibm.com/support/docview.wss?uid=swg24028680#FP3" target="_blank">下载链接</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notes-domino-852-fp3-available.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>警告：Domino 8.5.2 FP1服务器丢失数据的风险</title>
+		<link>/articles/alert-domino-852-fp1-delete-data.html</link>
+				<comments>/articles/alert-domino-852-fp1-delete-data.html#comments</comments>
+				<pubDate>Mon, 30 May 2011 09:18:09 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd852]]></category>
+
+		<guid isPermaLink="false">/?p=644880</guid>
+				<description><![CDATA[在某些情况下，Linux/Unix 下的 Domino 数据目录会在服务器退出时被删除。（后果很严重！） 其原 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在某些情况下，Linux/Unix 下的 Domino 数据目录会在服务器退出时被删除。（后果很严重！）</p>
+<p>其原因是记录临时目录的文件 ~notetmp.reg 错误的指向了数据目录，所以数据目录被当成临时文件清除掉了。在 852FP3 发布之前，可以通过删除 ~notetmp.reg 文件来解决这个问题。</p>
+<p>请参考：<a href="https://www-304.ibm.com/support/docview.wss?mynp=OCSSKTMJ&amp;mync=E&amp;uid=swg21500850&amp;myns=swglotus" target="_blank">Domino data can be deleted during server shutdown on UNIX and Linux platforms</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/alert-domino-852-fp1-delete-data.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>Notes/Domino 8.5.2 FP2 已发布</title>
+		<link>/articles/notes-domino-852-fp2-available.html</link>
+				<comments>/articles/notes-domino-852-fp2-available.html#respond</comments>
+				<pubDate>Wed, 30 Mar 2011 04:11:44 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd852]]></category>
+
+		<guid isPermaLink="false">/?p=644865</guid>
+				<description><![CDATA[请参考 Release Notes，下载链接]]></description>
+								<content:encoded><![CDATA[<p>请参考 <a href="http://www-10.lotus.com/ldd/r5fixlist.nsf/0/91eb8ae5fa35b3cc85257826007a2d94" target="_blank">Release Notes</a>，<a href="https://www-304.ibm.com/support/docview.wss?uid=swg24028680" target="_blank">下载链接</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notes-domino-852-fp2-available.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Notes/Domino 8.5.2 FP1 已发布</title>
+		<link>/articles/notes-domino-852-fp1-available.html</link>
+				<comments>/articles/notes-domino-852-fp1-available.html#respond</comments>
+				<pubDate>Mon, 20 Dec 2010 02:15:26 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd852]]></category>
+
+		<guid isPermaLink="false">/?p=644844</guid>
+				<description><![CDATA[请参考 Release Notes，下载链接]]></description>
+								<content:encoded><![CDATA[<p>请参考 <a href="http://www-10.lotus.com/ldd/r5fixlist.nsf/8d1c0550e6242b69852570c900549a74/c9009c721faf4d17852577d8006ab4f7?OpenDocument" target="_blank">Release Notes</a>，<a href="http://www.ibm.com/support/docview.wss?uid=swg24028680" target="_blank">下载链接</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notes-domino-852-fp1-available.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Notes/Domino 8.5.2 中文版已发布</title>
+		<link>/articles/notes-domino-852-chinese-available.html</link>
+				<comments>/articles/notes-domino-852-chinese-available.html#comments</comments>
+				<pubDate>Fri, 17 Sep 2010 10:06:56 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd852]]></category>
+
+		<guid isPermaLink="false">/?p=644824</guid>
+				<description><![CDATA[火速下载中。]]></description>
+								<content:encoded><![CDATA[<p>火速下载中。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notes-domino-852-chinese-available.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+		<item>
+		<title>Lotus Notes/Domino 8.5.2 即将发布</title>
+		<link>/articles/lotus-notes-domino-8-5-2-is-coming.html</link>
+				<comments>/articles/lotus-notes-domino-8-5-2-is-coming.html#respond</comments>
+				<pubDate>Mon, 16 Aug 2010 06:23:23 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd852]]></category>
+
+		<guid isPermaLink="false">/?p=644813</guid>
+				<description><![CDATA[ND852 版将于 8 月 24 日发布。本版新特性比较多，在此就不列举，请参考 IBM 官方的发布通告。]]></description>
+								<content:encoded><![CDATA[<p>ND852 版将于 8 月 24 日发布。本版新特性比较多，在此就不列举，请参考 IBM 官方的<a href="http://www-01.ibm.com/common/ssi/cgi-bin/ssialias?subtype=ca&amp;infotype=an&amp;appname=iSource&amp;supplier=877&amp;letternum=ENUSZP10-0306" target="_blank">发布通告</a>。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/lotus-notes-domino-8-5-2-is-coming.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

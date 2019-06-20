@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>replica &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/replica/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 05 Mar 2010 08:29:04 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Domino 环境中各种 ID 的介绍</title>
+		<link>/articles/various-ids-in-domino.html</link>
+				<comments>/articles/various-ids-in-domino.html#comments</comments>
+				<pubDate>Fri, 05 Mar 2010 08:29:04 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[noteid]]></category>
+		<category><![CDATA[replica]]></category>
+		<category><![CDATA[unid]]></category>
+
+		<guid isPermaLink="false">/?p=644591</guid>
+				<description><![CDATA[基于 Domino 平台的开发过程中，我们经常会用到各种 ID，如 UNID、Note ID、复本 ID 等等 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>基于 Domino 平台的开发过程中，我们经常会用到各种 ID，如 UNID、Note ID、复本 ID 等等。本文简要介绍各种 ID 的组成以及用途。</p>
+<p>在开始之前，我们首先来分析一下<em>文档属性对话框-标识符标签</em>中的各部分。以如下数据为例：</p>
+<blockquote><p><span style="color: #ff0000"><strong>OF</strong></span>0000039D:3836C29F-<strong><span style="color: #ff0000">ON</span></strong>85255DC9:0056FB94<br />
+<strong><span style="color: #ff0000">SD</span></strong>00255DF4:0057B8FA-<strong><span style="color: #ff0000">SN</span></strong>00000003<br />
+<strong><span style="color: #ff0000">DB</span></strong>85255CD9:00567287-<strong><span style="color: #ff0000">NT</span></strong>0000C092</p></blockquote>
+<p>其中红色部分为数据名称的简写，其余部分才是数据本身。各部分含义如下：</p>
+<blockquote><p>OF : <strong>O</strong>riginator ID.<strong>F</strong>ile<br />
+虽然名字叫 File，其实是个完完全全的随机数（唯一），与数据库文件没有任何关系 &#8211; &#8211;</p>
+<p>ON : <strong>O</strong>riginator ID.<strong>N</strong>ote<br />
+Note（可理解为文档，实际为文档、设计元素、ACL等。下同）最初的创建日期及时间</p>
+<p>SD : <strong>S</strong>equence <strong>D</strong>atetime<br />
+Note 的修改日期及时间</p>
+<p>SN : <strong>S</strong>equence <strong>N</strong>umber<br />
+Note 的修改序列号，每修改一次加一</p>
+<p>DB : <strong>D</strong>ata<strong>b</strong>ase ID<br />
+数据库的创建日期及时间</p>
+<p>NT : <strong>N</strong>o<strong>t</strong>e ID<br />
+Note 在 Record Relocation Vector (RRV) 中的位置，可以理解为在数据库文件中的位置偏移</p></blockquote>
+<p>接下来我们再介绍各种常见的 ID 由以上哪些部分组成。</p>
+<p>UNID(Universal ID, Unique ID) = OF+ON。UNID 是我们最常用的文档标识，它不随着文档的修改而改变。同一个文档在各个复本中具有相同的 UNID，反过来它也是确定两个文档是否为复本的根据。新建数据库拷贝后 UNID 也不变。编程过程中可以通过 getDocumentByUNID 方法来获取文档，在浏览器中也可以通过 <a class="linkification-ext" title="Linkification: http://db.nsf/view/UNID" href="http://db.nsf/view/UNID">db.nsf/view/UNID</a> 的方式访问文档。根据我的测试，@Created 公式返回的值就是 ON 这个部分。</p>
+<p>Note ID = NT。它也不随着文档的修改而改变，但是在不同的副本、新建数据库拷贝中，Note ID 可能与原数据库中的不同。编程过程中可以通过 getDocumentByID 方法来获取文档。</p>
+<p>Replica ID = DB。复本 ID 用来识别两个数据库是否具有复本关系，除此之外复本 ID 还经常用来作为数据库的唯一标识，如浏览器中可以用复本 ID 代替数据库路径来访问文档、视图等。</p>
+<p>Originator ID(OID) = UNID + SD + SN。OID 我们一般很少接触，因为它是用于后台的复制任务。复制过程大概如下（以数据库 A 向具有复本关系的数据库 B 发起单向复制为例）：</p>
+<ol>
+<li>从 A 的复制历史中找到与 B 完成最后一次复制的时间</li>
+<li>在 A 中搜索在此时间之后新建及修改的文档，返回一组 OID 值</li>
+<li>使用上一步返回的 OID 中的 UNID 部分作为条件，在 B 中查找文档，返回 OID 值
+<ol type="a">
+<li>如果查找不到，则该文档视为新建的，添加到 B 中</li>
+<li>如果两个 OID 相同，则两个文档已经同步，视为不需要复制</li>
+<li>如果两个 OID 不同，则两个文档不同步，通过分析 $Revisions 域值判断是否存在冲突，通过 $ConflictAction 域判断是否合并冲突，通过分析 SD 和 SN 决定哪个将作为冲突文档（此过程较复杂，如果大家感兴趣，可以另开一篇文章讨论）</li>
+</ol>
+</li>
+</ol>
+<p>请参考：<a title="Anatomy of a Note ID" href="http://www-12.lotus.com/ldd/doc/tools/c/6.5/api65ug.nsf/85255d56004d2bfd85255b1800631684/00d000c1005800c985255e0e00726863?OpenDocument" target="_blank">Anatomy of a Note ID</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/various-ids-in-domino.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>更改数据库的复本ID</title>
+		<link>/articles/change-replica-id.html</link>
+				<comments>/articles/change-replica-id.html#respond</comments>
+				<pubDate>Tue, 02 Mar 2010 07:30:35 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[replica]]></category>
+
+		<guid isPermaLink="false">/?p=644586</guid>
+				<description><![CDATA[项目中有的时候需要将某个数据库的复本关系切断，之前往往都是通过新建拷贝的方法获得一个新的复本ID。但如果要处理 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>项目中有的时候需要将某个数据库的复本关系切断，之前往往都是通过新建拷贝的方法获得一个新的复本ID。但如果要处理很多库的话，这样就很麻烦。好在 IBM 有提供相应的工具：<a title="A Notes Tool for Replica IDs" href="http://www.rprsystems.com/index.html" target="_self">ANTRID</a></p>
+<p>请参考：<a title="How to change the replica ID of a database" href="http://www-01.ibm.com/support/docview.wss?uid=swg21094568">How to change the replica ID of a database</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/change-replica-id.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

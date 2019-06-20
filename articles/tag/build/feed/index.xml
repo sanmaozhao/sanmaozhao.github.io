@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>build &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/build/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 15 Apr 2009 06:58:51 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>使用 Dojo 的打包工具</title>
+		<link>/articles/use-dojo-custom-build.html</link>
+				<comments>/articles/use-dojo-custom-build.html#respond</comments>
+				<pubDate>Wed, 15 Apr 2009 06:58:51 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Dojo]]></category>
+		<category><![CDATA[build]]></category>
+		<category><![CDATA[custom]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=638081</guid>
+				<description><![CDATA[Dojo 一般的发布包是把各个组件单独存放在各自的文件中的，比如按钮控件对应 /dijit/form/Butt [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>Dojo 一般的发布包是把各个组件单独存放在各自的文件中的，比如按钮控件对应 /dijit/form/Button.js，这样做对于代码的维护和开发是比较有利的。但如果放在生产环境，每个使用  Dojo 的页面将产生数十个单独的 HTTP 请求，则会影响到应用的性能。针对这个问题，Dojo 提供了一个自定义打包工具，可以将自己常用的组件合并到一个文件中，还能压缩 js、css 文件的大小，以提高性能。</p>
+<p>使用此工具需要准备：</p>
+<ul>
+<li>Java 运行环境</li>
+<li>Dojo 的源代码包（以 -src 结尾）</li>
+</ul>
+<p>接下来是创建 Profile。在 util/buildscripts/profiles 目录下，可以看到一些样例 profile，我们可以参考已有的创建一个：</p>
+<blockquote>
+<pre>dependencies =<span class="br0">{</span><br class="geshibr" />    layers:  <span class="br0">[</span>
+        <span class="br0">{</span> //第一部分
+        <span class="kw3">name</span>: <span class="st0">"mydojo.js"</span>,
+
+dependencies: <span class="br0">[ //第二部分</span>
+            <span class="st0">"dijit.Button"</span>,
+            <span class="st0">"dojox.wire.Wire"</span>,
+            <span class="st0">"dojox.wire.XmlWire"</span>,
+            <span class="st0">"explosive.space.Modulator"</span>
+        <span class="br0">]</span>
+        <span class="br0">}</span>
+    <span class="br0">]</span>,<br class="geshibr" />    prefixes: <span class="br0">[</span> //第三部分
+
+      <span class="br0">[</span> <span class="st0">"dijit"</span>, <span class="st0">"../dijit"</span> <span class="br0">]</span>,
+        <span class="br0">[</span> <span class="st0">"dojox"</span>, <span class="st0">"../dojox"</span> <span class="br0">]</span>,
+        <span class="br0">[</span> <span class="st0">"explosive"</span>, <span class="st0">"../../explosive"</span> <span class="br0">]</span>
+    <span class="br0">]</span><br class="geshibr" /><span class="br0">}</span>;</pre>
+</blockquote>
+<p>下面说明一下各个主要部分的作用：</p>
+<ol>
+<li>指定打包最后生成的文件名</li>
+<li>列举都有哪些组件将被打包到此文件</li>
+<li>各源文件所在的路径，比如 dijit 开头的包，都放在 ../dijit 目录下</li>
+</ol>
+<p>然后，运行打包脚本，通过 profile 参数指定配置文件：</p>
+<blockquote><p>$ <span class="kw3">cd</span> util/buildscripts<br />
+$ build.sh <span class="re2">profile=</span>foo <span class="re2">action=</span>release</p></blockquote>
+<p>最后，将打好包的文件替代原始的 Dojo 文件，加入到页面引用中就行了。</p>
+<p>参考资料：<a href="http://www.dojotoolkit.org/book/dojo-book-0-9/part-4-meta-dojo/package-system-and-custom-builds" target="_blank">The Package System and Custom Builds</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/use-dojo-custom-build.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>ftsearch &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/ftsearch/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 12 Jul 2007 12:09:57 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>SearchOrder=4返回错误的结果</title>
+		<link>/articles/searchorder-4-unexpected-result.html</link>
+				<comments>/articles/searchorder-4-unexpected-result.html#respond</comments>
+				<pubDate>Thu, 12 Jul 2007 12:09:57 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[bug]]></category>
+		<category><![CDATA[ftsearch]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/searchorder4%e8%bf%94%e5%9b%9e%e9%94%99%e8%af%af%e7%9a%84%e7%bb%93%e6%9e%9c.html</guid>
+				<description><![CDATA[我们知道通过 ?SearchView&#38;SearchOrder=4 命令，可以搜索一个视图并以视图原序返 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我们知道通过 ?SearchView&amp;SearchOrder=4 命令，可以搜索一个视图并以视图原序返回结果。但是这个功能目前有些问题，Designer 帮助（R7）里面有如下说明：</p>
+<blockquote>
+<p align="left">在以下情况，指定 SearchOrder=4 会产生错误的结果：</p>
+<ul>
+<li>指定 count=n 并且 n 小于找到的文档数</li>
+<li>指定 start=n 并且 n 不等于1</li>
+<li>默认搜索返回结果数小于找到的文档数</li>
+<li>最大搜索返回结果数小于找到的文档数</li>
+</ul>
+</blockquote>
+<blockquote><p>如果需要指定  SearchOrder=4，请参考以下建议：</p></blockquote>
+<blockquote>
+<ul>
+<li>不要使用 start、count参数</li>
+<li>总是指定 SearchMax=0</li>
+<li>将服务器的最大搜返回结果数设定到一个比较大的值</li>
+</ul>
+</blockquote>
+<p>考虑以上建议，我们的结论是。。。。。。不要使用 SearchOrder=4 <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f641.png" alt="🙁" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/searchorder-4-unexpected-result.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>在全文检索中搜索创建时间等保留域</title>
+		<link>/articles/use-creation-date-in-ftsearch.html</link>
+				<comments>/articles/use-creation-date-in-ftsearch.html#respond</comments>
+				<pubDate>Tue, 15 Aug 2006 06:54:58 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[ftsearch]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e5%9c%a8%e5%85%a8%e6%96%87%e6%a3%80%e7%b4%a2%e4%b8%ad%e6%90%9c%e7%b4%a2%e5%88%9b%e5%bb%ba%e6%97%b6%e9%97%b4%e7%ad%89%e4%bf%9d%e7%95%99%e5%9f%9f.html</guid>
+				<description><![CDATA[&#160;在db.search方法中，我们可以通过@Created方便的获取文档的创建时间。在FTsearc [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>&nbsp;在db.search方法中，我们可以通过@Created方便的获取文档的创建时间。在FTsearch中，Domino也提供了一些保留域供我们使用，虽然在域列表里看到不到他们。</p>
+<table cellspacing="0" cellpadding="1" width="100%" summary="" border="1">
+<tbody>
+<tr valign="top">
+<td width="50%"><strong>Header Field</strong></td>
+<td width="50%"><strong>Item name</strong></td>
+</tr>
+<tr valign="top">
+<td width="50%">CREATION DATE</td>
+<td width="50%">_CreationDate</td>
+</tr>
+<tr valign="top">
+<td width="50%">REVISION DATE</td>
+<td width="50%">_RevisionDate</td>
+</tr>
+<tr valign="top">
+<td width="50%">DB TITLE (domain index only)</td>
+<td width="50%">_Title</td>
+</tr>
+<tr valign="top">
+<td width="50%">DB CATEGORIES (domain index only)</td>
+<td width="50%">DbCategories</td>
+</tr>
+<tr valign="top">
+<td width="50%">NOTE TITLE</td>
+<td width="50%">_Note_Title</td>
+</tr>
+<tr valign="top">
+<td width="50%">AUTHOR</td>
+<td width="50%">_Note_Author</td>
+</tr>
+</tbody>
+</table>
+<p>例如，查找2000-01-05之前创建的文档，可以使用下面的查询：</p>
+<p><tt><font size="2">[_CreationDate] &lt; 2000-01-05</font></tt></p>
+<p>我大概测试了一下，创建时间可以用，但是作者那个不太好使。。。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/use-creation-date-in-ftsearch.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>搜索空白域</title>
+		<link>/articles/ftsearch-against-blank-field.html</link>
+				<comments>/articles/ftsearch-against-blank-field.html#respond</comments>
+				<pubDate>Fri, 07 Apr 2006 01:59:31 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[ftsearch]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e6%90%9c%e7%b4%a2%e7%a9%ba%e7%99%bd%e5%9f%9f.html</guid>
+				<description><![CDATA[我们在检索的时候，一般都是检索某个域值是XX的文档。使用&#34;NOT [fieldname] is pr [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我们在检索的时候，一般都是检索某个域值是XX的文档。使用&quot;NOT [fieldname] is present&quot;可以检索fieldname为空的文档，这是一个未公开的检索功能。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/ftsearch-against-blank-field.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>formula &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/formula/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 10 Oct 2014 06:54:54 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>针对分类视图查询数据</title>
+		<link>/articles/categorized-view-and-data-lookup.html</link>
+				<comments>/articles/categorized-view-and-data-lookup.html#comments</comments>
+				<pubDate>Mon, 17 May 2010 07:02:42 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[dblookup]]></category>
+		<category><![CDATA[formula]]></category>
+		<category><![CDATA[lotusscript]]></category>
+
+		<guid isPermaLink="false">/?p=644767</guid>
+				<description><![CDATA[在 Domino 应用开发中，有很多方法可以对数据进行查询。@dblookup 和 NotesView.get [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在 Domino 应用开发中，有很多方法可以对数据进行查询。@dblookup 和 NotesView.getAllDocumentsByKey 利用了预先建好的视图索引，所以在各种查询数据的方法中，它们的性能是最出色的，也是我们最常用的。</p>
+<p>最近在工作中遇到了一个于此相关的问题，请大家也注意：如果查询的视图具有多层分类，那么 @dblookup 和 getAllDocumentsByKey 只能返回第一个子分类下的结果。以如下数据为例：</p>
+<blockquote>
+<pre>分类1
+  分类1.1
+    文档1.1.1
+  分类2.2
+    文档1.1.2
+分类2</pre>
+</blockquote>
+<p>如果以“分类1”作为查询条件，则只有“文档1.1.1”会返回，同样符合条件的“文档1.1.2”则丢失。</p>
+<p>请参考：<a href="http://www-10.lotus.com/ldd/ddwiki.nsf/dx/dblookup-troubleshooting.htm" target="_blank">Troubleshooting @DbLookup, @DbColumn, GetAllDocumentsByKey</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/categorized-view-and-data-lookup.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>以浏览器方式保存文档时，更改 form 域的值</title>
+		<link>/articles/modified-form-field-value-when-document-is-save-from-the-web.html</link>
+				<comments>/articles/modified-form-field-value-when-document-is-save-from-the-web.html#comments</comments>
+				<pubDate>Fri, 05 Mar 2010 02:06:35 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[form]]></category>
+		<category><![CDATA[formula]]></category>
+
+		<guid isPermaLink="false">/?p=644588</guid>
+				<description><![CDATA[有些时候，我们会通过不同的表单显示同一个文档，以实现针对不同用户或场景的展现。但是一旦进行保存操作，文档的 f [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>有些时候，我们会通过不同的表单显示同一个文档，以实现针对不同用户或场景的展现。但是一旦进行保存操作，文档的 form 域就会发生改变。以如下场景为例：</p>
+<ol>
+<li>用户 A 通过 Form1 新建一个文档并保存，此时 form 的值为&#8221;Form1&#8243;</li>
+<li>用户 B 通过 Form2 打开此文档并保存，此时 form 域的值则变为&#8221;Form2&#8243;</li>
+</ol>
+<p>这样的话，本来应该属于同一类的文档，却有着不同的 form 域值。考虑到建立视图时的选择公式、搜索时的搜索条件的可维护性，我们希望将这些文档的 form 域值统一为&#8221;Form1&#8243;。</p>
+<p>首先想到的方法是在 Form2 上建立 form 计算域，将其计算公式写为&#8221;Form1&#8243;，但是经测试此方法无效。可行的方法为将 Form2 的 WebQuerySave 公式写为 @SetField(&#8220;Form&#8221;;&#8221;Form1&#8243;)。</p>
+<p>请参考：<a title="Fix for modified Form field value is ignored when document is submitted from the Web" href="http://searchdomino.techtarget.com/tip/0,289483,sid4_gci1084134,00.html" target="_blank">Fix for modified Form field value is ignored when document is submitted from the Web</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/modified-form-field-value-when-document-is-save-from-the-web.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>视图列公式返回值的大小限制</title>
+		<link>/articles/limit-for-view-column-formula.html</link>
+				<comments>/articles/limit-for-view-column-formula.html#comments</comments>
+				<pubDate>Thu, 17 Dec 2009 06:31:44 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[column]]></category>
+		<category><![CDATA[formula]]></category>
+		<category><![CDATA[limit]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=644225</guid>
+				<description><![CDATA[昨天同事提交了一个奇怪的问题，两个选择条件一样的视图 A 和 B，却有一部分文档在 A 中莫名的丢失。 排查了 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>昨天同事提交了一个奇怪的问题，两个选择条件一样的视图 A 和 B，却有一部分文档在 A 中莫名的丢失。</p>
+<p>排查了半天，试过新建视图，但只要把某个列加入进去，文档就开始丢失。这也把问题定位在这个列公式上：这一列包含了一个大列表的处理，其计算结果超过了 32k 限制，最终与此文档相关的视图条目就丢失了。</p>
+<p>所以在视图列中处理大列表时，请一定要小心谨慎。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/limit-for-view-column-formula.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>使用公式语言将列表反序排列</title>
+		<link>/articles/reversing-the-order-of-a-list-in-formula-language.html</link>
+				<comments>/articles/reversing-the-order-of-a-list-in-formula-language.html#respond</comments>
+				<pubDate>Wed, 02 Sep 2009 08:38:48 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[formula]]></category>
+		<category><![CDATA[list]]></category>
+		<category><![CDATA[reverse]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=640878</guid>
+				<description><![CDATA[代码如下： _forward := "ANY_TEXT/" + @Implode(myorderedlist; [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>代码如下：</p>
+<blockquote>
+<pre>_forward := "ANY_TEXT/" + @Implode(myorderedlist; "/");
+REM {将list连接为字符串，并在最前面添加一级（由于第一级会被去掉）};
+_reverse := @Name([ToKeyword]; _forward);
+REM {反序然后在将字符串切割为list};
+_reverselist := @Explode(_reverse; "");</pre>
+</blockquote>
+<p>关于@Name([ToKeyword]; name)的帮助文档：</p>
+<blockquote><p><strong>[TOKEYWORD]</strong><br />
+Reverses the order in which the naming components are displayed, and replaces slashes with backslashes: CountryOrganizationOrganization Unit&#8230; This is useful when you want to categorize a view by the components of a user&#8217;s hierarchical name (backslashes represent subcategories in views). The [TOKEYWORD] option does not return the Common Name portion of the user name.</p></blockquote>
+<p>参考链接：<a title="Reversing the order of a list in formula language" href="http://www.domblog.de/domblog.nsf/d6plinks/JPOR-76JNNG" target="_blank">Reversing the order of a list in formula language</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/reversing-the-order-of-a-list-in-formula-language.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>将群组展开为成员列表</title>
+		<link>/articles/expand-group-member.html</link>
+				<comments>/articles/expand-group-member.html#respond</comments>
+				<pubDate>Wed, 21 Jan 2009 08:30:36 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[formula]]></category>
+		<category><![CDATA[group]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/expand-group-member.html</guid>
+				<description><![CDATA[有时候我们需要获得一个群组中的成员列表，一般都是直接去 Names 查找，如果遇到嵌套群组则更加麻烦。其实有个 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>有时候我们需要获得一个群组中的成员列表，一般都是直接去 Names 查找，如果遇到嵌套群组则更加麻烦。其实有个简单的方法，通过如下的函数：</p>
+<blockquote><p><strong>Syntax</strong></p>
+<p><strong>@ExpandNameList(</strong><em>servername : notesdatabase ; groupname</em><strong>)</strong></p>
+<p><strong>Parameters</strong></p>
+<p><em>    * servername</em></p>
+<p>Text. Specify the target Domino Server for your query.</p>
+<p><em>    * notesdatabase</em></p>
+<p>Text. Specifiy the target NotesDatabase for your query.</p>
+<p><em>    * groupname</em></p>
+<p>Text. Specify the target Group, by name, for your query.</p>
+<p><strong>Return value</strong></p>
+<p><em>   * valuelist</em></p>
+<p>Text list. A multi-value text list containing members of the queried Domino Directory Group. No value is returned for unmatched Groups. To display the return values in a dialog box using @Prompt, enclose this function in an @Text function.</p>
+<p><strong>Usage</strong></p>
+<p>@ExpandNameList cannot be used in form selection and view column formulas.</p></blockquote>
+<p>举例说明，以下公式就可以获取在 Domino/Server 服务器上 names.nsf 库中定义的 LocalDomainAdmins 群组的成员列表：</p>
+<blockquote><p>@ExpandNameList(&#8220;Domino/Server&#8221;:&#8221;names.nsf&#8221;; &#8220;LocalDomainAdmins&#8221;)</p></blockquote>
+<p>最后有一点需要说明的是，这个函数在文档中并没有注明，所以有可能会有不稳定、或者未来版本会不可用等可能性，大家请自行评估其中的风险。</p>
+<p>参考链接：<a href="http://www.dominoguru.com/pages/01202009030630.html" target="_blank">Undocument Command Documented: ExpandNameList</a> ,  <a href="http://www-01.ibm.com/support/docview.wss?rs=0&amp;uid=swg21101582" target="_blank">Undocumented @functions in Notes/Domino</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/expand-group-member.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>@Attachments公式无法计算MIME格式邮件中的附件？</title>
+		<link>/articles/attachments-and-mime-content.html</link>
+				<comments>/articles/attachments-and-mime-content.html#comments</comments>
+				<pubDate>Thu, 31 May 2007 03:06:34 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[formula]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/attachments%e5%85%ac%e5%bc%8f%e6%97%a0%e6%b3%95%e8%ae%a1%e7%ae%97mime%e6%a0%bc%e5%bc%8f%e9%82%ae%e4%bb%b6%e4%b8%ad%e7%9a%84%e9%99%84%e4%bb%b6%ef%bc%9f.html</guid>
+				<description><![CDATA[Attachments MIME]]></description>
+								<content:encoded><![CDATA[<p>如果在MIME格式邮件的正文中包含附件，那么直接使用@Attachments公式是无法计算到的。我们在项目中发现了这个问题，而且Notes邮件模板同样存在。</p>
+<p>Designer help中有如下说明：</p>
+<div align="left"><strong>Syntax</strong></div>
+<div align="left"><strong>@Attachments(</strong> <em>excludeMIMEBody</em> <strong>)</strong> </div>
+<div align="left"><strong>Parameters</strong></div>
+<div align="left"><em>excludeMIMEBody</em></div>
+<div align="left">Boolean. Optional.</div>
+<div align="left"><span>&bull;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Specify True (1) to exclude large MIME parts that are stored as attachments (but displayed in-line). This is the default.</div>
+<div align="left"><span>&bull;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span>Specify False (0) to include large MIME parts that are stored as attachments (but displayed in-line).</div>
+<p>实验证明，其实通过指定参数 excludeMIMEBody =&nbsp;0 是可以计算到MIME邮件正文的附件的。不知道这样用是否有什么问题，Notes的邮件模板为什么不这样使用。</p>
+<p>类似的公式还有@AttachmentNames、@AttachmentLengths。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/attachments-and-mime-content.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>如何把一个RTF（Rich Text Field）中的信息显示在一个Notes视图中？</title>
+		<link>/articles/show-value-of-rtfield-in-view-column.html</link>
+				<comments>/articles/show-value-of-rtfield-in-view-column.html#respond</comments>
+				<pubDate>Tue, 20 Dec 2005 07:31:50 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[formula]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e5%a6%82%e4%bd%95%e6%8a%8a%e4%b8%80%e4%b8%aartf%ef%bc%88rich-text-field%ef%bc%89%e4%b8%ad%e7%9a%84%e4%bf%a1%e6%81%af%e6%98%be%e7%a4%ba%e5%9c%a8%e4%b8%80%e4%b8%aanotes%e8%a7%86%e5%9b%be%e4%b8%ad.html</guid>
+				<description><![CDATA[环境:(产品,平台,机型,软件版本,等) 产品：Lotus Domino Server 平台：与平台无关 版本 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>环境:(产品,平台,机型,软件版本,等) <br />产品：Lotus Domino Server <br />平台：与平台无关 <br />版本：6.x, 5.x, 4.x </p>
+<p>问题描述: </p>
+<p>Notes是不允许把RTF（Rich Text Field）中的信息直接显示在视图中的列里。那么，有没有变通的办法可以实现呢？ </p>
+<p><span id="more-142917"></span></p>
+<p>解答: </p>
+<p>使用 @Abstract，就可以把RTF（Rich Text Field）中的信息显示在视图中的列 里。 </p>
+<p>例如，用户有一个叫做“Body”的RTF 域，为了把这个“Body”域里的文本信息显示出来，需要创建一个叫做“TextForView”的计算域，设置它从RTF 域里的内容读取文本信息。具体的公式为：</p>
+<p>@Abstract( [TextOnly] ; 15360 ; &#8220;&#8221; ; &#8220;Body&#8221;) </p>
+<p>其中，15360的数值是可以使用的最大值。这是因为文本域在一个视图的列里是不能显示超过15360个字符的。设计者需要考虑所要显示的最多的字符数，然后用@Abstract的公式来定义它。 </p>
+<p>之后，在视图列的公式中，定义为使用这个TextForView的域。 </p>
+<p>如果在已有的文档中实施这个方法，那么这些文档还需要被刷新（或是编辑并保存），这样才能执行这个计算域（如此例中的TextForView）。为了刷新所选的文档，可以创建一个便捷图标或是工具条的图标，并定义它使用以下的公式： </p>
+<p>@Command([ToolsRefreshSelectedDocs]) </p>
+<p>另外，还需要注意的是，对于列的公式，一定需要使用另外一个计算域，而这个计算域需要使用@Abstract的公式。这是因为，此公式是不推荐被直接使用在列的选择公式里。具体内容请参考管理员指南中的《Where does this @function work?》中的相关章节。 </p>
+<p>引用自<a href="http://www-1.ibm.com/support/docview.wss?uid=csc13af808932118b07a48257046000e7f29" target="_blank">IBM支持网站</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/show-value-of-rtfield-in-view-column.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>页面中的@username公式</title>
+		<link>/articles/username-in-formula.html</link>
+				<comments>/articles/username-in-formula.html#comments</comments>
+				<pubDate>Mon, 01 Aug 2005 11:06:10 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[formula]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e9%a1%b5%e9%9d%a2%e4%b8%ad%e7%9a%84username%e5%85%ac%e5%bc%8f.html</guid>
+				<description><![CDATA[如果在Domino的页面中使用了@username公式（还有@UserRoles），会发现即使每次使用不同的用 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>如果在Domino的页面中使用了@username公式（还有@UserRoles），会发现即使每次使用不同的用户来访问这个页面，公式计算的结果一直是之前的某个人。不知道是Domino对页面作了缓存还是什么其它的原因。目前我的解决方法是，在某处加一个@now的公式，每次访问的时候Domino好像就会重新计算了。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/username-in-formula.html/feed</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+							</item>
+	</channel>
+</rss>

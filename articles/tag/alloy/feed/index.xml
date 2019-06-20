@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>alloy &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/alloy/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Mon, 23 Mar 2009 03:35:00 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>IBM 与 SAP 合作开发的新产品 Alloy 已发布</title>
+		<link>/articles/alloy-by-ibm-and-sap-available.html</link>
+				<comments>/articles/alloy-by-ibm-and-sap-available.html#respond</comments>
+				<pubDate>Mon, 23 Mar 2009 03:35:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[alloy]]></category>
+		<category><![CDATA[notes]]></category>
+		<category><![CDATA[sap]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=637726</guid>
+				<description><![CDATA[就是之前提到的 Atlantic，现已发布。 产品主页：Alloy by IBM and SAP]]></description>
+								<content:encoded><![CDATA[<p>就是之前提到的 <a href="/articles/ibm-and-sap-announce-atlantic.html">Atlantic</a>，现已发布。</p>
+<p>产品主页：<a href="http://www-01.ibm.com/software/lotus/products/alloy/">Alloy by IBM and SAP</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/alloy-by-ibm-and-sap-available.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>list &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/list/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 02 Sep 2009 08:38:48 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>使用公式语言将列表反序排列</title>
+		<link>/articles/reversing-the-order-of-a-list-in-formula-language.html</link>
+				<comments>/articles/reversing-the-order-of-a-list-in-formula-language.html#respond</comments>
+				<pubDate>Wed, 02 Sep 2009 08:38:48 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[formula]]></category>
+		<category><![CDATA[list]]></category>
+		<category><![CDATA[reverse]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=640878</guid>
+				<description><![CDATA[代码如下： _forward := "ANY_TEXT/" + @Implode(myorderedlist; [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>代码如下：</p>
+<blockquote>
+<pre>_forward := "ANY_TEXT/" + @Implode(myorderedlist; "/");
+REM {将list连接为字符串，并在最前面添加一级（由于第一级会被去掉）};
+_reverse := @Name([ToKeyword]; _forward);
+REM {反序然后在将字符串切割为list};
+_reverselist := @Explode(_reverse; "");</pre>
+</blockquote>
+<p>关于@Name([ToKeyword]; name)的帮助文档：</p>
+<blockquote><p><strong>[TOKEYWORD]</strong><br />
+Reverses the order in which the naming components are displayed, and replaces slashes with backslashes: CountryOrganizationOrganization Unit&#8230; This is useful when you want to categorize a view by the components of a user&#8217;s hierarchical name (backslashes represent subcategories in views). The [TOKEYWORD] option does not return the Common Name portion of the user name.</p></blockquote>
+<p>参考链接：<a title="Reversing the order of a list in formula language" href="http://www.domblog.de/domblog.nsf/d6plinks/JPOR-76JNNG" target="_blank">Reversing the order of a list in formula language</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/reversing-the-order-of-a-list-in-formula-language.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

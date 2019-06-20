@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>eclipse &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/eclipse/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 24 Jan 2008 03:19:07 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>基于 Eclipse 平台的 Domino Designer 8.5</title>
+		<link>/articles/domino-designer-in-eclipse.html</link>
+				<comments>/articles/domino-designer-in-eclipse.html#respond</comments>
+				<pubDate>Thu, 24 Jan 2008 03:19:07 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[eclipse]]></category>
+		<category><![CDATA[nd85]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/domino-designer-in-eclipse.html</guid>
+				<description><![CDATA[继 Notes 8 后，Domino Designer 8.5 也转向了 Eclipse 平台，预计于今年下半 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>继 Notes 8 后，Domino Designer 8.5 也转向了 Eclipse 平台，预计于今年下半年发布。转移到 Eclipse 平台将会有如下的优势：</p>
+<ul>
+<li>可以使用 Eclipse 内置的 CSS、HTML、XML 编辑器</li>
+<li>带来了移植到 Linux、Mac 等操作系统的可能性</li>
+<li>更强大的调试功能</li>
+</ul>
+<p>除此之外，8.5 版还引入了一些新特性，都是方便开发 Web 2.0 应用，以及将传统的应用转化为 Web 2.0 应用：</p>
+<ul>
+<li>整合 Dojo Toolkit</li>
+<li>新的设计元素：xPage，它是针对 Domino 的 JSF 扩展</li>
+</ul>
+<p>相比于 Notes 8 的变化，Domino Designer 8.5 的革新与我的工作更加密切相关，我已经有点激动和兴奋了。</p>
+<p>关于 Domino Designer 8.5 的 PPT 我还没有拿到，稍后会补上。感兴趣的可以先看看这个关于 <a href="http://www.lotusgeek.com/SapphireOak/LotusGeekBlog.nsf/downloads/ROLR-7B4QCF" target="_blank">Dojo 及 xPage 的介绍</a>。最后放上一张实际图片供大家 YY（点击查看大图）。</p>
+<p><a href="http://pic.yupoo.com/sanmao84/738964fb7663/vudcgxj5.jpg" target="_blank"><img src="http://pic.yupoo.com/sanmao84/738964fb7663/medium.jpg" alt="Domino Designer in Eclipse" /></a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/domino-designer-in-eclipse.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

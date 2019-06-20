@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>902 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/902/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Mon, 07 Nov 2016 03:45:06 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>IBM 发布 Notes/Domino 发展路线图</title>
+		<link>/articles/ibm-presents-the-ibm-notes-and-domino-roadmap.html</link>
+				<comments>/articles/ibm-presents-the-ibm-notes-and-domino-roadmap.html#comments</comments>
+				<pubDate>Mon, 07 Nov 2016 03:40:35 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[XPages]]></category>
+		<category><![CDATA[902]]></category>
+
+		<guid isPermaLink="false">/?p=645321</guid>
+				<description><![CDATA[11月3日，IBM 发布了一个重要的信息：Notes/Domino 的发展路线图。原文件请点此查看，以下是我个 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>11月3日，IBM 发布了一个重要的信息：Notes/Domino 的发展路线图。原文件请<a href="http://www.slideshare.net/Teamstudio/ibm-presents-the-ibm-notes-and-domino-roadmap-68154347" target="_blank">点此查看</a>，以下是我个人的解读：</p>
+<h3>Domino 又一次要死掉了？</h3>
+<p>前些时间由于 902 版本的取消，Domino 社区里引起了很多讨论，很多人对 Domino 后续的发展持悲观态度（例如：<a title="There is no 9.0.2. Dead. Canceled. Killed. " href="https://blog.darrenduke.net/Darren/DDBZ.nsf/dx/there-is-no-9.0.2.-dead.-canceled.-killed.-.htm" target="_blank">There is no 9.0.2. Dead. Canceled. Killed. </a>）。</p>
+<p>IBM 官方的回应是 901 版本的支持会延长到 2021 年，而且期间不仅是 bug fix，也包含新功能的增强，实际上的 902 版会以 901 feature pack 的形式发布。</p>
+<h3>产品更新策略</h3>
+<p>一个重要的变化，901 FP7 已经从 fix pack 转变为 <span style="color: #ff0000;">feature pack</span>，后续的所有新功能也都是以 FP 形式发布，所以才会有上文提及的取消 902 版本。</p>
+<p>IBM 官方的说法是为了加快版本迭代速度，才引入了这个变化。其实这个行为也很好理解，类似于 Windows 10 的策略，似乎大家都不准备让产品的大版本号往前滚动了：毕竟升一个大版本要做很艰难的决定，小版本就简单多了不是么。</p>
+<p>但是对于用户来讲，以前 FP 包发布后是可以无脑更新的，毕竟都是在改 bug；现在加入了新功能，是否要更新肯定就要打一个大大的问号了。</p>
+<h3>支持的操作系统</h3>
+<p>新的路线图中，将现有的操作系统分为两类：</p>
+<ul>
+<li>Win/RHEL：支持后续的 feature pack，有功能的持续改进</li>
+<li>其他操作系统（AIX/IBM i）：仅有安全性更新、bug修复</li>
+</ul>
+<h3>Verse/iNotes</h3>
+<p>Verse 的私有环境版（非云环境，Verse On-premises）将于 12 月发布。VOP 将替代现有的 iNotes，作为今后的新邮件客户端。</p>
+<h3>Notes/Domino 后续新功能</h3>
+<ul>
+<li>Java 1.8 + OSGi/Eclipse 4.x</li>
+</ul>
+<p>祖传的 1.6 终于更新了，感动啊</p>
+<ul>
+<li>视图索引可移至 nsf 外部</li>
+</ul>
+<p>这个还是不错的，nsf 就应该存持久化的数据；索引这种缓存类数据分离出来后，更方便独立优化</p>
+<ul>
+<li>XPages</li>
+</ul>
+<p>持续更新，说起来 XPages 早就已经开始版本内的功能迭代了（853 Upgrade Pack 1）</p>
+<h3>总结</h3>
+<p>总体来说，Domino 肯定会继续发展和更新的。但是主要集中在 Java 端：VOP 基于 Connections、XPages。</p>
+<p>啥时候把祖传的 NSF 存储也更新一下啊，万恶的 16K、32K 限制……</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/ibm-presents-the-ibm-notes-and-domino-roadmap.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+	</channel>
+</rss>

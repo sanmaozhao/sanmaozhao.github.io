@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>LTPA &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/ltpa/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 29 Apr 2015 12:54:42 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Domino LTPA cookie 的生成原理</title>
+		<link>/articles/the-domino-ltpa-cookie-authentication.html</link>
+				<comments>/articles/the-domino-ltpa-cookie-authentication.html#respond</comments>
+				<pubDate>Mon, 13 Apr 2009 02:24:48 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[domino]]></category>
+		<category><![CDATA[LTPA]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=638018</guid>
+				<description><![CDATA[在与 Domino 做 SSO 的时候，经常会使用 LTPA  的方式，本文描述了它的生成原理，通过它我们可以 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在与 Domino 做 SSO 的时候，经常会使用 LTPA  的方式，本文描述了它的生成原理，通过它我们可以自己编码生成身份认证的 cookie，实现 SSO。</p>
+<p>首先，这个 cookie 由以下部分组成：</p>
+<ul>
+<li>LTPA token 版本（4字节）</li>
+<li>创建时间（8字节）</li>
+<li>过期时间（8字节）</li>
+<li>用户名（可变长度）</li>
+<li>Domino LTPA 密钥（20字节）</li>
+</ul>
+<p>接下来分别说明各部分的具体内容：</p>
+<ul>
+<li>LTPA token 版本目前 Domino 只有一种值：<em><del>0x0001</del> 0x0123</em></li>
+<li>创建时间和过期时间为以十六进制方式表示的 <a href="http://en.wikipedia.org/wiki/Unix_time" target="_blank">Unix time</a>，例如 <em>2009-04-09 13:52:42 (GMT +8) = 1239256362 = 49DD8D2A</em>。过期时间为 <em>创建时间 + SSO 配置文档的过期时间（LTPA_TokenExpiration域）</em></li>
+<li>用户名为 Names 中用户文档的 <em>FullName</em> 域值</li>
+<li>Domino LTPA 密钥通过 Base64编码后，保存在 SSO 配置文档的 <em>LTPA_DominoSecret</em> 域中</li>
+</ul>
+<p><img class="alignnone size-full wp-image-638017" src="/pic/ltpa-01.png" alt="ltpa-01" width="471" height="230" /></p>
+<p>在这里当然不能将密钥直接发送给浏览器，所以将上述部分合并起来（如上图），计算 SHA-1 校验和。</p>
+<p><img class="alignnone size-full wp-image-638016" src="/pic/ltpa-02.png" alt="ltpa-02" width="471" height="230" /></p>
+<p>然后用 SHA-1 校验和替换掉 Domino LTPA 密钥，最后再将内容通过 Base64 编码，形成最终的 cookie 发送给浏览器（如上图）。这样如果 cookie 中的任何内容被修改，校验和就不对了，达到了防篡改的效果。</p>
+<p>参考资料：<a href="http://www.dominoexperts.com/articles/Creating-a-session-for-a-user" target="_blank">Creating a session for a user</a>，<del><a href="http://blogs.nil.com/jeds/2009/04/04/ltpa-token/">The Domino cookie authentication</a>，<a href="http://code.google.com/p/offbytwo/source/browse/#svn/trunk/bitsandpieces/LTPAUtils" target="_blank">LTPAUtils</a></del></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/the-domino-ltpa-cookie-authentication.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

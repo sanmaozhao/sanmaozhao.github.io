@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>release &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/release/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 09 Apr 2009 02:52:39 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Notes/Domino 7.0.4 已发布</title>
+		<link>/articles/notesdomino-704-available.html</link>
+				<comments>/articles/notesdomino-704-available.html#respond</comments>
+				<pubDate>Thu, 09 Apr 2009 02:52:39 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[domino]]></category>
+		<category><![CDATA[release]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=638012</guid>
+				<description><![CDATA[这是一个维护更新版本，英文版现已发布，中文版将于5月7日发布。除了大量的 bug 修正，主要更新点如下： Ja [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>这是一个维护更新版本，英文版现已发布，中文版将于5月7日发布。除了大量的 bug 修正，主要更新点如下：</p>
+<ul>
+<li>Java<img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" /> 版本升级为 1.4.2 SR11</li>
+<li>增强对操作系统和硬件的支持</li>
+<li>增加禁用保存聊天记录的选项</li>
+</ul>
+<p><a href="http://www-01.ibm.com/cgi-bin/common/ssi/ssialias?infotype=an&amp;subtype=ca&amp;htmlfid=897/ENUS209-096&amp;appname=isource&amp;language=enus&amp;open&amp;cm_mmc=4770-_-n-_-vrm_newsletter-_-10207_110934&amp;cmibm_em=dm:0:16632223" target="_blank">IBM Lotus Notes and Domino 7.0.4 maintenance release contains updated platform support and fixes</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notesdomino-704-available.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Notes/Domino 8.5 发布</title>
+		<link>/articles/notes-domino-85-available.html</link>
+				<comments>/articles/notes-domino-85-available.html#respond</comments>
+				<pubDate>Wed, 07 Jan 2009 02:30:33 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[domino]]></category>
+		<category><![CDATA[release]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/notes-domino-85-available.html</guid>
+				<description><![CDATA[原本计划于08年底发布的 ND8.5 来迟了一周，终于在09年初发布了。关键新特性如下： ID 管理功能增强： [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>原本计划于08年底发布的 ND8.5 来迟了一周，终于在09年初发布了。关键新特性如下：</p>
+<ul>
+<li>ID 管理功能增强： 共享登录（登录 Windows 后自动登录 Notes，而且不需要密码相同）、ID Vault</li>
+<li>通过新增的 DAOS(Domino Attachment and Object Service) 特性，减少磁盘存储的开销</li>
+<li>XPage 和基于 Eclipse 的新设计端</li>
+<li>日历增强：可以导入其他外部日历，如 Google 日历和 iCal 格式的日历</li>
+<li>Notes Traveler 增加对 Nokia S60 平台的支持（原来仅支持 Windows Mobile 设备）</li>
+<li>新增 DCT(Domino Configuration Tuner ) 工具，帮助管理员分析系统存在的问题</li>
+<li>增加对 Mac OS 10.5 和 Ubuntu Linux 的支持（我非工作时用的两个操作系统，嘿嘿）</li>
+</ul>
+<p>英文版本已经可以下载，中文版将于 1月15日推出。</p>
+<p><a href="http://www-01.ibm.com/common/ssi/index.wss?DocURL=http://www-01.ibm.com/common/ssi/rep_ca/3/897/ENUS209-033/index.html&amp;InfoType=AN&amp;InfoSubType%C3%8A&amp;InfoDesc=Announcement+Letters&amp;panelurl=index.wss%3F&amp;paneltext=Announcement%20letter%20search" target="_blank">IBM US Announcement Letter</a>, <a href="http://www.nokia.com/A4136001?newsid=1271807" target="_blank">Nokia extends IBM Lotus email access to 80 million mobile phones</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notes-domino-85-available.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

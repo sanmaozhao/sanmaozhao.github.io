@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>i18n &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/i18n/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Tue, 05 Jul 2005 13:09:39 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>用来设置时间、日期格式的notes.ini参数</title>
+		<link>/articles/notes-ini-variable-for-date-time-format.html</link>
+				<comments>/articles/notes-ini-variable-for-date-time-format.html#respond</comments>
+				<pubDate>Tue, 05 Jul 2005 13:09:39 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[i18n]]></category>
+		<category><![CDATA[notes.ini]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e7%94%a8%e6%9d%a5%e8%ae%be%e7%bd%ae%e6%97%b6%e9%97%b4%e3%80%81%e6%97%a5%e6%9c%9f%e6%a0%bc%e5%bc%8f%e7%9a%84notesini%e5%8f%82%e6%95%b0.html</guid>
+				<description><![CDATA[在 Windows 操作系统上，可以根据各国家的习惯设置自己的时间、日期格式。但在 UNIX 操作系统上没有这 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在 Windows 操作系统上，可以根据各国家的习惯设置自己的时间、日期格式。但在 UNIX 操作系统上没有这样的设置。如何为安装在 UNIX 操作系统上的 Domino 服务器设置时间、日期格式呢？</p>
+<p><span id="more-142900"></span></p>
+<p>以下 notes.ini 参数可以用来为Domino及Domino上的应用设置时间、日期格式：</p>
+<p>DateOrder=&lt;值&gt;</p>
+<p>这个参数用来设置日期的排列顺序，可以设置为“DMY”，“YMD”或“MDY”。其中 Y 代表年，M 代表月，D 代表日。例如，在 notes.ini 中设置</p>
+<p>DateOrder=YMD</p>
+<p>表示日期的排列顺序是“年月日”。</p>
+<p>DateSeparator=&lt;值&gt;</p>
+<p>这个参数用来设置日期分隔符，可以设置为任意字符，如果需要，也可以设置为字符串。最常用的日期分隔符是“/”和“-”。如果不设置，缺省为“/”。例如，以下参数将日期分隔符设置为“-”：</p>
+<p>DateSeparator=-</p>
+<p>ClockType=&lt;值&gt;</p>
+<p>这个参数用来将时间设置为12小时或24小时的格式，可以设置的值包括“12_HOUR”和“24_HOUR”。在 Domino 5.x 的版本中，缺省时间格式是12小时。在 Domino 6.x 的版本中，缺省时间格式是24小时。</p>
+<p>例如，以下参数将日期格式设置为12小时：</p>
+<p>ClockType=12_HOUR</p>
+<p>提示 如果时间为12小时的格式，表示上午、下午的字符串（如“AM”、“PM”）是从 UNIX 的 locale 设置中读取的，不能通过notes.ini改变。</p>
+<p>TimeSeparator=&lt;值&gt;</p>
+<p>这个参数用来设置时间分隔符，可以设置为任意字符，如果需要，也可以设置为字符串。缺省的分隔符为冒号“:”。例如，以下参数将时间分隔符设置为逗号：</p>
+<p>TimeSeparator=,</p>
+<p>引用自<a href="http://www.oaunion.com/oaunion/oaunion.nsf/doc/CD255AEB51EF606248256F12002C8ED0?opendocument" target="_blank">Oaunion</a>，是否可用没有测试过，有谁用过的话留言说一下吧。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notes-ini-variable-for-date-time-format.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

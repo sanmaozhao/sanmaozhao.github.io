@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>security &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/security/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Tue, 27 Jul 2010 09:16:44 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>禁用 Domino HTTP 服务器的 Trace 方法</title>
+		<link>/articles/disable-domino-http-trace-method.html</link>
+				<comments>/articles/disable-domino-http-trace-method.html#respond</comments>
+				<pubDate>Tue, 27 Jul 2010 09:16:44 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[http]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[security]]></category>
+		<category><![CDATA[trace]]></category>
+
+		<guid isPermaLink="false">/?p=644798</guid>
+				<description><![CDATA[在最近客户提交的一份安全检查报告中，有一条是检测到 Domino HTTP 服务器启用了 Trace 方法，可 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在最近客户提交的一份安全检查报告中，有一条是检测到 Domino HTTP 服务器启用了 Trace 方法，可能存在安全漏洞。虽然在 <a href="http://www-01.ibm.com/support/docview.wss?rs=463&amp;context=SSKTMJ&amp;context=SSKTWP&amp;dc=DB520&amp;dc=D600&amp;dc=DB530&amp;dc=D700&amp;dc=DB500&amp;dc=DB540&amp;dc=DB510&amp;dc=DB550&amp;q1=http+trace+method&amp;uid=swg21158630&amp;loc=en_US&amp;cs=utf-8&amp;lang=en" target="_blank">IBM 技术支持文档</a>中宣称此处不存在安全漏洞，但也提供了禁用它的方法：</p>
+<ul>
+<li>使用了 Internet 站点配置：在站点配置文档的配置标签页中，禁止 Trace 方法</li>
+<li>未使用 Internet 站点配置：在 Notes.ini 中加入一行 <em>HTTPDisableMethods=TRACE</em></li>
+</ul>
+<p>请参考：<a href="http://www-01.ibm.com/support/docview.wss?uid=swg21201202" target="_blank">How to enable or disable HTTP methods</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/disable-domino-http-trace-method.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>font &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/font/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Sun, 09 Sep 2007 07:35:57 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>更改Notes中默认的字体大小</title>
+		<link>/articles/change-default-font-size-in-notes-client.html</link>
+				<comments>/articles/change-default-font-size-in-notes-client.html#respond</comments>
+				<pubDate>Sun, 09 Sep 2007 07:35:57 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[font]]></category>
+		<category><![CDATA[notes.ini]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e6%9b%b4%e6%94%b9notes%e4%b8%ad%e9%bb%98%e8%ae%a4%e7%9a%84%e5%ad%97%e4%bd%93%e5%a4%a7%e5%b0%8f.html</guid>
+				<description><![CDATA[最近购入了22寸的宽屏液晶，屏幕大了看起来很爽没错，但是相对以前字体小了不少，时间长了眼睛有些难受。通过调节  [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>最近购入了22寸的宽屏液晶，屏幕大了看起来很爽没错，但是相对以前字体小了不少，时间长了眼睛有些难受。通过调节 windows 外观里面的各种字体大小，大部分程序都好了很多，但是 Notes 里面的字体还是以前的大小，尤其是帮助里面的字又多又小，看起来那叫一个晕。</p>
+<p>还好我们有办法，在 notes.ini 里面加入如下一行就可以了：</p>
+<blockquote><p>Display_font_adjustment=1</p></blockquote>
+<p>数字越大字体就越大，我这边用 1 基本上就可以了。好好享受大屏幕吧！</p>
+<p>参考资料：<a href="http://www-1.ibm.com/support/docview.wss?rs=899&amp;context=SSKTK9&amp;context=SSKTL5&amp;context=SSKTM2&amp;context=SSKTMJ&amp;context=SSPQ69&amp;context=SSCVRGU&amp;context=SSPQ7E&amp;context=SSPQ5C&amp;context=SS5N9B&amp;context=SS5NA4&amp;context=SSKTPA&amp;context=SS5LUA&amp;context=SSMT72&amp;context=SSMSB2&amp;context=SSTJRD&amp;context=SSKTWB&amp;context=SSKTWP&amp;context=SSYSVG&amp;context=SSKTXQ&amp;context=SSKTYF&amp;context=SSTJRP&amp;context=SSKTZF&amp;dc=DB510&amp;dc=DB520&amp;dc=D800&amp;dc=D900&amp;dc=DA900&amp;dc=DA800&amp;dc=DB530&amp;dc=DA600&amp;dc=DB550&amp;dc=D100&amp;dc=D600&amp;dc=D700&amp;dc=DA500&amp;dc=D200&amp;dc=DA410&amp;dc=DA450&amp;dc=DA430&amp;dc=DA440&amp;dc=DA420&amp;dc=DA460&amp;dc=DB300&amp;dc=DA470&amp;dc=DA480&amp;dc=DB100&amp;dc=DA4A10&amp;dc=DA4A20&amp;dc=DA700&amp;dc=DA4A30&amp;q1=font+size&amp;uid=swg21094943&amp;loc=en_US&amp;cs=UTF-8%816%EB5=all" title="Can you increase the display font size in the Notes client?" target="_blank">Can you increase the display font size in the Notes client?</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/change-default-font-size-in-notes-client.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

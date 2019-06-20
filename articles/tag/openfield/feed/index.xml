@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>openfield &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/openfield/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 13 Aug 2008 06:57:17 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>一个未公开的 URL 命令：?OpenField</title>
+		<link>/articles/undocumented-domino-url-command-openfield.html</link>
+				<comments>/articles/undocumented-domino-url-command-openfield.html#respond</comments>
+				<pubDate>Wed, 13 Aug 2008 06:57:17 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[openfield]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/undocumented-domino-url-command-openfield.html</guid>
+				<description><![CDATA[通过此 URL 命令可以将一个 RTF 域的内容作为一个单独的 HTML 页返回。可以想象的应用场景：通过 A [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>通过此 URL 命令可以将一个 RTF 域的内容作为一个单独的 HTML 页返回。可以想象的应用场景：通过 Ajax 获取某个富文本内容，并对页面做局部更新。不过此命令并没有在设计帮助中出现，所以说不定某一版可能就会去掉它，大家自己权衡着使用。</p>
+<p>语法如下：</p>
+<blockquote><p>http://<em>Host/Database/View/DocumentName/RTFFieldName</em>?OpenField</p></blockquote>
+<p>参考链接：<a href="http://www.iminstant.com/iminstant/iminstant.nsf/d6plinks/CTYR-7H6S6R" target="_blank">A very useful undocumented Domino URL command</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/undocumented-domino-url-command-openfield.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>dblookup &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/dblookup/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Mon, 17 May 2010 07:02:42 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>针对分类视图查询数据</title>
+		<link>/articles/categorized-view-and-data-lookup.html</link>
+				<comments>/articles/categorized-view-and-data-lookup.html#comments</comments>
+				<pubDate>Mon, 17 May 2010 07:02:42 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[dblookup]]></category>
+		<category><![CDATA[formula]]></category>
+		<category><![CDATA[lotusscript]]></category>
+
+		<guid isPermaLink="false">/?p=644767</guid>
+				<description><![CDATA[在 Domino 应用开发中，有很多方法可以对数据进行查询。@dblookup 和 NotesView.get [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在 Domino 应用开发中，有很多方法可以对数据进行查询。@dblookup 和 NotesView.getAllDocumentsByKey 利用了预先建好的视图索引，所以在各种查询数据的方法中，它们的性能是最出色的，也是我们最常用的。</p>
+<p>最近在工作中遇到了一个于此相关的问题，请大家也注意：如果查询的视图具有多层分类，那么 @dblookup 和 getAllDocumentsByKey 只能返回第一个子分类下的结果。以如下数据为例：</p>
+<blockquote>
+<pre>分类1
+  分类1.1
+    文档1.1.1
+  分类2.2
+    文档1.1.2
+分类2</pre>
+</blockquote>
+<p>如果以“分类1”作为查询条件，则只有“文档1.1.1”会返回，同样符合条件的“文档1.1.2”则丢失。</p>
+<p>请参考：<a href="http://www-10.lotus.com/ldd/ddwiki.nsf/dx/dblookup-troubleshooting.htm" target="_blank">Troubleshooting @DbLookup, @DbColumn, GetAllDocumentsByKey</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/categorized-view-and-data-lookup.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>通过 DbLookup 获取文档 UNID 时返回错误的值</title>
+		<link>/articles/dblookup-with-returndocumentuniqueid-returns-only-one-unid-or-several-incorrect-unids.html</link>
+				<comments>/articles/dblookup-with-returndocumentuniqueid-returns-only-one-unid-or-several-incorrect-unids.html#respond</comments>
+				<pubDate>Thu, 08 Oct 2009 08:16:35 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[dblookup]]></category>
+		<category><![CDATA[unid]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=641800</guid>
+				<description><![CDATA[前些天在做应用的时候，需要通过 DbLookup 获取文档 UNID，结果发现除了第一个文档的 UNID 正确 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>前些天在做应用的时候，需要通过 DbLookup 获取文档 UNID，结果发现除了第一个文档的 UNID 正确之外，其他全为 32 个 0。最后查明为 Domino bug，通过在视图中添加一列显示 UNID 的方式解决。</p>
+<p>请参考：<a href="http://www-01.ibm.com/support/docview.wss?uid=swg21244598" target="_blank">@DbLookup with [ReturnDocumentUniqueID] returns only one UNID or several incorrect UNIDs</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/dblookup-with-returndocumentuniqueid-returns-only-one-unid-or-several-incorrect-unids.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

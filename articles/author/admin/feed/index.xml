@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Sanmao &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/author/admin/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 19 Dec 2018 02:42:34 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>扩展 LotusScript 的能力</title>
+		<link>/articles/extending-lotusscript.html</link>
+				<comments>/articles/extending-lotusscript.html#comments</comments>
+				<pubDate>Tue, 27 Dec 2016 05:50:36 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[ls2c]]></category>
+		<category><![CDATA[lsx]]></category>
+
+		<guid isPermaLink="false">/?p=645332</guid>
+				<description><![CDATA[需求 LotusScript 最近的更新是版本 7/8 时增加的 WebService 调用者、提供者，这已经 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<h3>需求</h3>
+<p>LotusScript 最近的更新是版本 7/8 时增加的 WebService 调用者、提供者，这已经是快十年前的事情了。现在 LotusScript 已经明显落后，欠缺的大量基础能力：JSON 解析器、跨代理的数据缓存、HTTP Client、完善的面向对象机制、将函数作为参数传递……这严重制约了应用层面的开发。</p>
+<p>IBM 对此问题的应对是推出 XPages，一种新的开发模式。XPages 确实是一个不错的东西，展现和数据分离、內置 Ajax 框架……但是，作为应用开发商我们无法抛弃历史资产一切推倒重来。所以 XPages 我们只能用来做一些新的业务、功能点，对于原有的业务还是要继续在 LotusScript 上发展。</p>
+<p>所以我们必须自己来扩展 LotusScript 的能力。</p>
+<h3>方案</h3>
+<h4>LotusScript 类、函数库</h4>
+<p>首先想到的就是直接用 LotusScript 来实现，但这只能解决一部分问题：比如 JSON 解析器。而类似于 HTTP Client 这种，LotusScript 就无能为力了。</p>
+<p>我们也确实做了一版 LotusScript 的 JSON 解析器，但是性能实在是太差了：由于需要一个字符一个字符的解析，最终导致一个 15K 的 JSON 串解析出来要花 0.5 秒。结果我们又废弃了它，重新回到手工拆解字符串的老路上。</p>
+<p>此路不通。</p>
+<h4>LSX（LotusScript eXtension）</h4>
+<p>这是最正统的扩展 LotusScript 的方式（看看名字就知道），实际上我们使用的 NotesDocument 等 Domino 后台对象都是用这种方式扩展出来的。实际的 C 代码编译成共享库，位于 nlsxbe.dll（<strong>n</strong>=windows平台前缀,<strong>lsx,be=</strong>Back-end）中，LotusScript 引擎会自动加载它，所以我们不用再通过 <strong>USELSX lsxbe</strong> 来手工加载。</p>
+<p>LSX 的优点有很多：跨平台、与 LotusScript 无缝集成……</p>
+<p>但是，LSX 现在已经处于一个半废弃的状态。为什么这么说呢，LSX 最新版 8.0 于 2009 年发布，再往前一版就是 1999 年了。所以即使是最新版也缺少了很多内容：xlinux 64 位的支持等。</p>
+<p>此路不通。</p>
+<h4>LS2C（LotusScript to C API）</h4>
+<p>这是一个比较成熟、<a href="http://www.nsftools.com/tips/APITips.htm" target="_blank" rel="noopener">使用较多的方案</a>。一般都用于在 LotusScript 中调用底层的 C API（例如隐藏设计、重新编译所有代码），因为这些 API 没有暴露到 LotusScript 这一层。</p>
+<p>LS2C 与 LSX 相比会多一些限制，比如：</p>
+<ul>
+<li>只能传递数值、字符串等基础类型，无法传递 NotesDocuemnt</li>
+<li>不支持 LotusScript 扩展语法（doc.itemName 这种）</li>
+</ul>
+<p>但这个方案至少在持续的更新，而且 C 这个层面不需要使用 Lotus 的开发工具包，用任何编译器生成标准的共享库即可。</p>
+<p>我们最终采用了此方案。</p>
+<h3>经验总结</h3>
+<h4>变长字符串</h4>
+<p>C 语言中不支持变长字符串，所以我们在返回变长字符串时，实际返回的是一个 handle 值；这个 handle 值再通过另一个 API 获取实际的字符串（类似于 NSFDbOpen 返回的 handle）。</p>
+<p>handle 用完之后要注意释放（类似于 NSFDbClose）。</p>
+<h4>中文的处理</h4>
+<p>LS2C 的字符串参数传递有三种声明方式：</p>
+<ol>
+<li>arg As String<br />
+采用操作系统本地的编码方式，windows 一般为 GBK，linux 一般为 UTF-8。不同系统编码不同，不利于统一处理</li>
+<li>arg As LMBCS String<br />
+不管操作系统本地的编码方式，统一采用 <a href="/articles/character-encoding-in-domino.html" target="_blank" rel="noopener">LMBCS</a>。这种编码方式适用范围太小，仅 Lotus 自己的产品线</li>
+<li>arg As Unicode String<br />
+不管操作系统本地的编码方式，统一采用 UTF-16。推荐使用此方式，对环境的适应性更好。<br />
+但要注意 UTF-16 英文也用双字节存储，C 语言中会把其中的 0x00 识别为字符串结束。所以进入到 C 代码内部后，可以转为 UTF-8 存储。<br />
+还要注意不同硬件下字节序的问题，x64 和 Power 架构下刚好是相反的。</li>
+</ol>
+<h4>Double 类型的传递</h4>
+<p>LS2C 在 64 位环境下的参数传递有 bug，浮点数无法正常处理。</p>
+<p>bug 已经提交给 IBM 处理（更新：<a href="http://www-01.ibm.com/support/docview.wss?uid=swg21998636" target="_blank" rel="noopener">已确认不修复</a>），在解决前可以先把参数改为按引用传递（即使是只读的参数，也不按值传递）。</p>
+<h4>资源的释放</h4>
+<p>有一部分内存在 C 代码中分配后，后续会被 LotusScript 端继续使用。所以需要在 LotusScript 端不再使用的时候，手工释放这部分资源。</p>
+<p>推荐的做法是把这类资源包装成 LotusScript Class，在 Delete 析构函数中释放资源。这样相当于 LotusScript 引擎会帮忙自动跟踪变量的引用，比较方便。</p>
+<h4>调试共享库加载失败</h4>
+<p>Domino 给出的错误信息很模糊：“dll 加载失败”，没有太多有用的信息。而错误背后可能的原因有很多：文件找不到、32/64 位不匹配、缺少依赖的库……</p>
+<p>可以先通过其他语言（比如 LuaJIT）调用共享库，会得到更详细的错误信息。成功之后再放到 Domino 环境下调试。</p>
+<h4>共享库的权限</h4>
+<p>Linux、Aix 环境下要注意上传的 so 库必须要有运行权限。</p>
+<h4>共享库的更新</h4>
+<p>Linux、Aix 环境下 so 库更新的行为有些奇怪，有时候覆盖 so 文件后会导致 Domino 崩溃。看上去像是内存中保留了一部分旧版的代码，与新版搭配在一起就不行了。</p>
+<p>所以更新共享库时要停掉Domino。</p>
+<h3>总结</h3>
+<p>虽然 LotusScript 已经步入晚年，但我们希望通过 LS2C 这种方式给它注入新的活力，在既有业务资产中继续发光发热。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/extending-lotusscript.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>IBM 发布 Notes/Domino 发展路线图</title>
+		<link>/articles/ibm-presents-the-ibm-notes-and-domino-roadmap.html</link>
+				<comments>/articles/ibm-presents-the-ibm-notes-and-domino-roadmap.html#comments</comments>
+				<pubDate>Mon, 07 Nov 2016 03:40:35 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[XPages]]></category>
+		<category><![CDATA[902]]></category>
+
+		<guid isPermaLink="false">/?p=645321</guid>
+				<description><![CDATA[11月3日，IBM 发布了一个重要的信息：Notes/Domino 的发展路线图。原文件请点此查看，以下是我个 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>11月3日，IBM 发布了一个重要的信息：Notes/Domino 的发展路线图。原文件请<a href="http://www.slideshare.net/Teamstudio/ibm-presents-the-ibm-notes-and-domino-roadmap-68154347" target="_blank">点此查看</a>，以下是我个人的解读：</p>
+<h3>Domino 又一次要死掉了？</h3>
+<p>前些时间由于 902 版本的取消，Domino 社区里引起了很多讨论，很多人对 Domino 后续的发展持悲观态度（例如：<a title="There is no 9.0.2. Dead. Canceled. Killed. " href="https://blog.darrenduke.net/Darren/DDBZ.nsf/dx/there-is-no-9.0.2.-dead.-canceled.-killed.-.htm" target="_blank">There is no 9.0.2. Dead. Canceled. Killed. </a>）。</p>
+<p>IBM 官方的回应是 901 版本的支持会延长到 2021 年，而且期间不仅是 bug fix，也包含新功能的增强，实际上的 902 版会以 901 feature pack 的形式发布。</p>
+<h3>产品更新策略</h3>
+<p>一个重要的变化，901 FP7 已经从 fix pack 转变为 <span style="color: #ff0000;">feature pack</span>，后续的所有新功能也都是以 FP 形式发布，所以才会有上文提及的取消 902 版本。</p>
+<p>IBM 官方的说法是为了加快版本迭代速度，才引入了这个变化。其实这个行为也很好理解，类似于 Windows 10 的策略，似乎大家都不准备让产品的大版本号往前滚动了：毕竟升一个大版本要做很艰难的决定，小版本就简单多了不是么。</p>
+<p>但是对于用户来讲，以前 FP 包发布后是可以无脑更新的，毕竟都是在改 bug；现在加入了新功能，是否要更新肯定就要打一个大大的问号了。</p>
+<h3>支持的操作系统</h3>
+<p>新的路线图中，将现有的操作系统分为两类：</p>
+<ul>
+<li>Win/RHEL：支持后续的 feature pack，有功能的持续改进</li>
+<li>其他操作系统（AIX/IBM i）：仅有安全性更新、bug修复</li>
+</ul>
+<h3>Verse/iNotes</h3>
+<p>Verse 的私有环境版（非云环境，Verse On-premises）将于 12 月发布。VOP 将替代现有的 iNotes，作为今后的新邮件客户端。</p>
+<h3>Notes/Domino 后续新功能</h3>
+<ul>
+<li>Java 1.8 + OSGi/Eclipse 4.x</li>
+</ul>
+<p>祖传的 1.6 终于更新了，感动啊</p>
+<ul>
+<li>视图索引可移至 nsf 外部</li>
+</ul>
+<p>这个还是不错的，nsf 就应该存持久化的数据；索引这种缓存类数据分离出来后，更方便独立优化</p>
+<ul>
+<li>XPages</li>
+</ul>
+<p>持续更新，说起来 XPages 早就已经开始版本内的功能迭代了（853 Upgrade Pack 1）</p>
+<h3>总结</h3>
+<p>总体来说，Domino 肯定会继续发展和更新的。但是主要集中在 Java 端：VOP 基于 Connections、XPages。</p>
+<p>啥时候把祖传的 NSF 存储也更新一下啊，万恶的 16K、32K 限制……</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/ibm-presents-the-ibm-notes-and-domino-roadmap.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>记录 Lotusscript 代码运行的时间</title>
+		<link>/articles/lotusscript-timing-log.html</link>
+				<comments>/articles/lotusscript-timing-log.html#comments</comments>
+				<pubDate>Fri, 12 Jun 2015 02:22:16 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[lotusscript]]></category>
+		<category><![CDATA[performance]]></category>
+
+		<guid isPermaLink="false">/?p=645302</guid>
+				<description><![CDATA[在分析 Lotusscript 性能时，我们经常需要找到耗时最长的瓶颈点，然后再进行针对性的优化。这时最常用的 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在分析 Lotusscript 性能时，我们经常需要找到耗时最长的瓶颈点，然后再进行针对性的优化。这时最常用的工具是<a href="/articles/domino7-new-feature-agent-profile.html" target="_blank">代理性能简要表</a>，但它有个限制是只能记录 Domino 相关对象方法的运行时间，比如 db.getView、view.getAllDocumentsByKey 等，对于原生 Lotusscript 的语句无法记录。</p>
+<p>这时我们就需要将代码打成各个片段，记录每个片段的运行时间以缩小范围、进而定位到性能瓶颈的几条语句。但是 Lotusscript 中的 Now 只能精确到秒，显然是不够用的。还好通过 <a href="http://www-01.ibm.com/support/knowledgecenter/SSVRGU_8.5.3/com.ibm.designer.domino.main.doc/LSAZ_GETTHREADINFO.html?lang=de" target="_blank">getThreadInfo</a> 我们可以获取到毫秒级的时间值，具体代码如下：</p>
+<blockquote><p>Dim startTic As Long<br />
+Dim seconds As Double</p>
+<p>startTic = Getthreadinfo(6)<br />
+seconds = (Getthreadinfo(6) &#8211; startTic) / Getthreadinfo(7)</p>
+<p>msgbox &#8220;Finished. The code ran for &#8221; &amp; seconds &amp; &#8221; seconds.&#8221;</p></blockquote>
+]]></content:encoded>
+							<wfw:commentRss>/articles/lotusscript-timing-log.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>Domino日期时间的16进制表示法</title>
+		<link>/articles/domino-datetime-in-hex-string.html</link>
+				<comments>/articles/domino-datetime-in-hex-string.html#respond</comments>
+				<pubDate>Tue, 27 Jan 2015 07:17:37 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+
+		<guid isPermaLink="false">/?p=645282</guid>
+				<description><![CDATA[Domino 环境中各种 ID 的介绍这篇文章中我介绍过，NSF 的副本 ID 实际上就是库的创建时间，文档  [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p><a title="链接到 Domino 环境中各种 ID 的介绍" href="/articles/various-ids-in-domino.html" target="_blank">Domino 环境中各种 ID 的介绍</a>这篇文章中我介绍过，NSF 的副本 ID 实际上就是库的创建时间，文档 UNID 的后半部分也是文档的创建时间。我们来看看样例：</p>
+<blockquote><p>副本标识符：<strong>48257BA6</strong>:<strong>033771DF</strong></p>
+<p>文档UNID：9CC4EF2FC8A16397<strong>48257CB40036EBE6</strong></p></blockquote>
+<p>看上去粗体的部分是很类似，只不过和时间看不出太大联系，应该是编码过了。</p>
+<p>再看两个 Domino 自带数据库的文档样例。第一个是管理请求文档：</p>
+<p><a href="/wp-content/uploads/2015/01/domino-hex-time-1.png"><img class="aligncenter size-medium wp-image-645283" src="/wp-content/uploads/2015/01/domino-hex-time-1-300x153.png" alt="domino-hex-time-1" width="300" height="153" srcset="/wp-content/uploads/2015/01/domino-hex-time-1-300x153.png 300w, /wp-content/uploads/2015/01/domino-hex-time-1.png 370w" sizes="(max-width: 300px) 100vw, 300px" /></a>第二个是 Catalog 文档：</p>
+<p><a href="/wp-content/uploads/2015/01/domino-hex-time-2.png"><img class="aligncenter size-medium wp-image-645284" src="/wp-content/uploads/2015/01/domino-hex-time-2-300x154.png" alt="domino-hex-time-2" width="300" height="154" srcset="/wp-content/uploads/2015/01/domino-hex-time-2-300x154.png 300w, /wp-content/uploads/2015/01/domino-hex-time-2.png 369w" sizes="(max-width: 300px) 100vw, 300px" /></a>这两个文档存储的都是数据库副本 ID，但从右边的结果上看实际存储的都是时间值。看上去日期/时间和副本 ID 的 16 进制数应该是可以互相转换的。通过查看相关视图设计，我们发现一个文档中没有的公式函数：</p>
+<blockquote><p><span style="font-family: sans-serif; font-size: small;">@Text(&#8220;ProxyReplicaID&#8221;; &#8220;*&#8221;)</span></p></blockquote>
+<p>通过 @Text 的”*“参数，可以将一个时间值转换为对应的字符串。对应的，通过以下 Lotusscript 代码可以反过来转换：</p>
+<blockquote><p><span style="font-family: sans-serif; font-size: small;">Dim replicaTD as New NotesDateTime(dbTarget.ReplicaID)</span></p></blockquote>
+<p>参考文档：<br />
+<a title="Creating a replica ID item for adminp requests" href="http://www-10.lotus.com/ldd/bpmpblog.nsf/dx/creating-a-replica-id-item-for-adminp-requests" target="_blank" rel="bookmark">Creating a replica ID item for adminp requests</a>，<a href="http://www-01.ibm.com/support/docview.wss?uid=swg27003019" target="_blank">How to interpret the Hexadecimal values in a Time/Date value</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/domino-datetime-in-hex-string.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>保存冲突的那些事儿</title>
+		<link>/articles/save-conflict.html</link>
+				<comments>/articles/save-conflict.html#comments</comments>
+				<pubDate>Wed, 31 Dec 2014 08:39:19 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[conflict]]></category>
+
+		<guid isPermaLink="false">/?p=645270</guid>
+				<description><![CDATA[几年前，我写过一篇关于复制冲突的文章，今天来聊聊它的小兄弟：保存冲突。 从名字上就能看出来，复制冲突是在两台服 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>几年前，我写过一篇关于<a href="/articles/behind-the-scenes-of-replication-conflict.html" target="_blank">复制冲突</a>的文章，今天来聊聊它的小兄弟：保存冲突。</p>
+<p>从名字上就能看出来，复制冲突是在两台服务器上修改同一个文档后产生的，而保存冲突则是在同一台服务器上修改同一个文档后产生的。</p>
+<p>在 web 应用中修改一个文档，主要有两种方式：</p>
+<ol>
+<li>以 ?EditDocument URL 命令打开文档，然后调用 form.submit() 保存当前文档</li>
+<li>通过代理等后台代码的方式修改并保存文档</li>
+</ol>
+<p>以下图的时间线场景为例：</p>
+<p><img class="aligncenter" src="/pic/save-conflict-1.png" alt="" width="493" height="151" /></p>
+<p>由于代理的运行时间一般很短， 3、4 两个代理在时间线上可以考虑为点，所以理论上他们之间的时间是不会有交叉的，也就是两个代理保存同一个文档一般不会出现保存冲突</p>
+<p>通过 ?EditDocument 方式一般持续时间较长，从打开文档到点击保存按钮这一段时间都是其处理时间，这期间出现保存冲突的可能性很大。例如：在用户A编辑期间，代理C保存了同一条文档，那么用户A点击保存按钮的时候，就会产生冲突文档。同样的，用户B编辑期间，用户A通过用户A点击保存按钮修改了同一条文档，用户B点击保存按钮的时候，就会产生冲突文档。</p>
+<p>那么如何避免保存冲突的产生呢？NotesDocument.lock 方法就是针对这个问题的，但是很遗憾此方法在 web 端无法使用。所以我们需要自己实现一个文档锁的逻辑：每次进入编辑状态时加锁，离开编辑状态后解锁；未取得的锁的情况下不允许进入编辑状态。这样就能保证同时只有一人编辑文档，避免了保存冲突的产生。这里有一个思路供参考：<a href="http://www.wissel.net/blog/d6plinks/SHWL-7UVGSE" target="_blank">Distributed Document Locking Web Style</a> 。</p>
+<p>再回到上面的一个问题，代理的运行时间短，一般不会导致冲突文档。如果代理的运行时间很长呢，两个代理保存同一个文档会不会产生冲突文档？为此我写了如下代码做测试：</p>
+<blockquote><p>Sub Initialize<br />
+Dim s As New NotesSession<br />
+Dim db As NotesDatabase<br />
+Dim doc As NotesDocument<br />
+MsgBox &#8220;agent start&#8221;<br />
+Set db = s.Currentdatabase<br />
+Set doc = db.Getdocumentbyunid(&#8220;FC71D0667744C41D48257D6C0011AB7F&#8221;)<br />
+Dim count As Integer<br />
+count  = doc.count(0)<br />
+MsgBox count<br />
+Sleep(5)<br />
+doc.count = count + 1<br />
+doc.agentname = &#8220;1&#8221;<br />
+MsgBox doc.save(true,true)<br />
+MsgBox &#8220;agent end&#8221;<br />
+End Sub</p></blockquote>
+<p>为了拉长运行时间，我在中间加了 Sleep(5)。连续运行两次代理，测试结果如下：</p>
+<ul>
+<li>doc.save(false,false)：后一次保存失败，文档未保存，返回值为 false</li>
+<li>doc.save(false,true)：后一次保存为前一次的答复文档（注意不是冲突文档），返回值为 true</li>
+<li>doc.save(true,true)：后一次保存覆盖前一次保存的内容，前一次的内容丢失，返回值为 true（第二个参数随便传true/false，没有影响）</li>
+</ul>
+<p>总结一下：web 端通过 ?EditDocument 方式编辑文档时，很容易出现保存冲突，注意用文档那个锁的方式来避免；代理保存文档时，一般不会出现冲突，但如果 getDocument 至 doc.save 之间的代码逻辑很复杂、运行时间长，也要注意处理数据覆盖的问题。</p>
+<p>今天是 2014 年的最后一天了，祝大家新年快乐！保存冲突系列还有一篇没写完，明年继续。</p>
+<p>Edit：经测试发现，如果用户A和代理C是以同一个用户身份保存的，那么不会有冲突文档，结果是后保存的覆盖之前的。（这样也合理，同一个用户间的数据覆盖没问题，不同用户间就要保留两份文档，供管理员后续合并冲突文档时参考）</p>
+<p><img class="aligncenter" src="/pic/save-conflict-1.png" alt="" width="493" height="151" /></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/save-conflict.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+		<item>
+		<title>session.getDatabase 中文件名大小写的问题</title>
+		<link>/articles/session-getdatabase-case-sensitive.html</link>
+				<comments>/articles/session-getdatabase-case-sensitive.html#respond</comments>
+				<pubDate>Mon, 15 Sep 2014 10:03:17 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[Ubuntu/Linux]]></category>
+		<category><![CDATA[dbcache]]></category>
+
+		<guid isPermaLink="false">/?p=645259</guid>
+				<description><![CDATA[最近在项目上遇到了一个奇怪的问题：某个 XPages 页面偶发性报错，对数据库进行签名后问题消失，但过些时间就 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>最近在项目上遇到了一个奇怪的问题：某个 XPages 页面偶发性报错，对数据库进行签名后问题消失，但过些时间就又会出现。</p>
+<p>由于签名后问题消失，最开始排查时就认为是代码签名的问题，可能是服务器上有对应的模板，设计不定时的被 Design 任务刷新回来导致问题。但是通过各种方法找了很多遍，都确认库的设计没有被刷新过。</p>
+<p>最终通过检查代码的错误行发现，是一处 session.getDatabase 调用时数据库路径的大小写有问题，修改成与文件系统一致后问题消失。问题虽然解决了，但为什么同样的代码大部分情况下没问题，只有偶发性的报错呢？同样的代码在同为 Linux 平台的产品测试环境上，为什么就一切正常呢？</p>
+<p>带着这些疑问继续探索，终于找到了一些端倪。在这个<a href="http://www-01.ibm.com/support/docview.wss?uid=swg1LO58955" target="_blank">技术文档</a>中提到如下内容：</p>
+<blockquote><p>DB on server names AgentRunner.nsf. Notes the upper/lowercase.</p>
+<p>Steps to Reproduce:</p>
+<p>After a server restart or a &#8220;dbcache flush&#8221;:</p>
+<p>&gt; lo fixup agentrunner<br />
+&gt; 25.06.2002 09:58:00   Database fixup process started<br />
+25.06.2002 09:58:00   Unable to fixup database agentrunner: File<br />
+does not exist<br />
+25.06.2002 09:58:00   Database fixup process shutdown<br />
+&#8211;&gt; <span style="color: #ff0000;">does not work, because db is not in server cache</span></p>
+<p>lo fixup AgentRunner<br />
+&gt; 25.06.2002 09:58:07   Database fixup process started<br />
+25.06.2002 09:58:07   Performing consistency check on<br />
+AgentRunner.nsf&#8230;<br />
+25.06.2002 09:58:08   Completed consistency check on<br />
+AgentRunner.nsf<br />
+25.06.2002 09:58:08   Database fixup process shutdown<br />
+&#8211;&gt; <span style="color: #ff0000;">works &#8211; it`s exact-case</span></p>
+<p>&gt; lo fixup agentrunner<br />
+&gt; 25.06.2002 09:58:12   Database fixup process started<br />
+25.06.2002 09:58:12   Database fixup process shutdown<br />
+&#8211;&gt; <span style="color: #ff0000;">works now with lowercase, cause db is in cache</span></p>
+<p>dbcache flush<br />
+&gt; lo fixup agentrunner<br />
+&gt; 25.06.2002 09:58:21   Database fixup process started<br />
+25.06.2002 09:58:21   Unable to fixup database agentrunner: File<br />
+does not exist<br />
+25.06.2002 09:58:21   Database fixup process shutdown<br />
+&#8211;&gt; <span style="color: #ff0000;">db removed from cache &#8211;&gt; doesn`t work</span></p></blockquote>
+<p>整个过程总结如下：</p>
+<ul>
+<li>首先用大小写错误的文件名访问，报错</li>
+<li>再用大小写正确的文件名访问，正常</li>
+<li>再次用大小写错误的文件名访问，正常（因为上一条命令已经将数据库加入了 dbcache）</li>
+<li>清空 dbcache 后，再次用大小写错误的文件名访问，报错</li>
+</ul>
+<p>导致这个现象的根本原因就是：</p>
+<ul>
+<li>当数据库不在 dbcache 中时，Domino 使用数据库文件名通过文件系统获取数据库对象，此时是区分大小写的</li>
+<li>当数据库在 dbcache 中时，Domino 使用数据库文件名在 dbcache 中查找，找到后直接返回数据库对象，此过程无需访问文件系统，所以就不区分大小写</li>
+</ul>
+<p>分析到这里，最初的所有现象就能说通了：</p>
+<ul>
+<li>错误偶发，是因为大部分情况下此库都在 dbcache 中，可能只有服务器刚刚启动/缓存超限将此库移除时，才会报错</li>
+<li>签名后错误消失，是因为签名的过程肯定会把此库加入到 dbcache</li>
+</ul>
+<p>吃一堑长一智，既然这个问题让我纠结了这么久，那么如何才能避免此类问题发生呢？建议如下：</p>
+<ul>
+<li>数据库名始终使用全小写，代码中获取数据库时也用全小写</li>
+<li>*nux 测试环境下建议通过 NSF_DbCache_Disable=1 禁用缓存。虽然性能会差一些，但是能尽早的发现问题（千万别在生产服务器上这样做）</li>
+</ul>
+]]></content:encoded>
+							<wfw:commentRss>/articles/session-getdatabase-case-sensitive.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>webservice 保存时报&#8217;PortType class&#8217;未指定的错误</title>
+		<link>/articles/porttype-class-error-on-save-webservice.html</link>
+				<comments>/articles/porttype-class-error-on-save-webservice.html#respond</comments>
+				<pubDate>Fri, 11 Jul 2014 03:16:21 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[lotusscript]]></category>
+		<category><![CDATA[webservice]]></category>
+
+		<guid isPermaLink="false">/?p=645249</guid>
+				<description><![CDATA[在使用 Lotusscript 开发 webservice 的过程中，有时会提示以下错误信息： Web Ser [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在使用 Lotusscript 开发 webservice 的过程中，有时会提示以下错误信息：</p>
+<blockquote><p>Web Service 已经保存，但是无效。: Please specify which class exposes your web service interface(s), using the &#8216;PortType class&#8217; field of the Web Service properties panel.</p></blockquote>
+<p>按照提示排查，发现在属性框中&#8217;PortType class&#8217;已经指定了对应的类名。既然不是这里的问题，那只能回头看代码了：</p>
+<blockquote><p>Class Test<br />
+Sub printDoc(doc As NotesDocument)</p>
+<p>End Sub<br />
+End Class</p></blockquote>
+<p>代码足够简单：仅有一个空白方法的 Class。</p>
+<p>这个方法没有声明权限，按帮助中说的默认是 Public。那么此方法就会暴露到 WSDL 中，可以通过 webservice 调用。</p>
+<p>问题出来了：通过 webservice 调用时如何能传进来一个 NotesDocument 对象呢？这显然是不可能的。赶紧把方法改成 Private 或者把 doc 参数改为 String 类型，问题就解决了。</p>
+<p>总结：暴露给 webservice 的方法/函数，不能以 Domino 对象作为参数。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/porttype-class-error-on-save-webservice.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>全文搜索时报错：文本域不支持关系运算符</title>
+		<link>/articles/relational-operators-are-not-supported-in-text-fields.html</link>
+				<comments>/articles/relational-operators-are-not-supported-in-text-fields.html#respond</comments>
+				<pubDate>Fri, 15 Nov 2013 09:18:05 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+
+		<guid isPermaLink="false">/?p=645228</guid>
+				<description><![CDATA[在对时间、数值域进行全文搜索的时候，如果使用了&#62;、&#60;等关系运算符，有时会报如下错误： 文本域不支持 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在对时间、数值域进行全文搜索的时候，如果使用了&gt;、&lt;等关系运算符，有时会报如下错误：</p>
+<blockquote><p>文本域不支持关系运算符</p></blockquote>
+<p>去文档域中查看一下，明明是日期域，怎么提示的却是文本域呢？</p>
+<p>问题是这样的：在 nsf 中，有一个叫 UNK 表（可以用 notespeek 查看，在 Item Def Table 中）的东西，保存了数据库中所有字段的类型。当包含某个字段的第一个文档添加到库时，会写入 UNK 表。所以如果之前在数据库中曾经出现过同名的文本字段，那么这个 UNK 表中记录的就是文本型，所以会报前面说的错误。</p>
+<p>原因搞清楚了，想要解决就简单了：</p>
+<ol>
+<li>清除所有非日期型的同名字段</li>
+<li>删除全文索引</li>
+<li>压缩数据库，此时会重建 UNK 表（我测试时需要 compact -c 才行）</li>
+<li>重建全文索引</li>
+</ol>
+<p>参考资料：<a href="https://www-304.ibm.com/support/docview.wss?uid=swg21261002" target="_blank">Searching on a field in Notes fails when indexer does not recognize field data type</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/relational-operators-are-not-supported-in-text-fields.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Notes/Domino 9.0.1 英文版已发布</title>
+		<link>/articles/notesdomino-901-available.html</link>
+				<comments>/articles/notesdomino-901-available.html#comments</comments>
+				<pubDate>Wed, 30 Oct 2013 02:17:28 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[未分类]]></category>
+		<category><![CDATA[nd9]]></category>
+
+		<guid isPermaLink="false">/?p=645224</guid>
+				<description><![CDATA[Notes/Domino 9.0.1 英文版已发布，这是一个bug修正版本，推荐更新。按照惯例中文版估计一个月 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>Notes/Domino 9.0.1 英文版已发布，这是一个bug修正版本，推荐更新。按照惯例中文版估计一个月后也就能发布了。</p>
+<p>完整的新功能列表请参考：<a href="http://www-10.lotus.com/ldd/fixlist.nsf/8d1c0550e6242b69852570c900549a74/de0329821264ceff85257c130056adda?OpenDocument" target="_blank">修复bug列表</a>、<a href="http://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/1/897/ENUS213-481/index.html&amp;lang=en&amp;request_locale=en" target="_blank">IBM US Announcement Letter</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notesdomino-901-available.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+		<item>
+		<title>Unknown OS error</title>
+		<link>/articles/unknown-os-error.html</link>
+				<comments>/articles/unknown-os-error.html#comments</comments>
+				<pubDate>Wed, 08 May 2013 06:01:18 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+
+		<guid isPermaLink="false">/?p=645211</guid>
+				<description><![CDATA[通过 web 方式访问某个数据库时，Domino 报如下错误： Error 500: Unknown OS e [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>通过 web 方式访问某个数据库时，Domino 报如下错误：</p>
+<blockquote><p>Error 500: Unknown OS error.</p></blockquote>
+<p>解决方法如下：</p>
+<ul>
+<li>集群环境：在 admin 端找到问题数据库，右键&gt;集群&#8230;&gt;集群可用性状态 选择 “使用中”&gt;确定</li>
+<li>非集群环境：将问题库新建拷贝/新建副本 即可</li>
+</ul>
+<p>IBM的<a href="http://www-01.ibm.com/support/docview.wss?uid=swg21207310" target="_blank">技术支持文档</a>，描述了此问题的解决方案，但并未说明是如何导致的。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/unknown-os-error.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+	</channel>
+</rss>

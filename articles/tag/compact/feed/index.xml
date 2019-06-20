@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>compact &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/compact/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 21 Jun 2006 02:31:59 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>不断运行的Compact任务</title>
+		<link>/articles/often-unscheduled-compact-task.html</link>
+				<comments>/articles/often-unscheduled-compact-task.html#respond</comments>
+				<pubDate>Wed, 21 Jun 2006 02:31:59 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[compact]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e4%b8%8d%e6%96%ad%e8%bf%90%e8%a1%8c%e7%9a%84compact%e4%bb%bb%e5%8a%a1.html</guid>
+				<description><![CDATA[我们知道Compact程序可以由以下方式触发： Names中的程序文档 控制台输入Compact命令 Note [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我们知道Compact程序可以由以下方式触发：</p>
+<ul>
+<li>Names中的程序文档</li>
+<li>控制台输入Compact命令</li>
+<li>Notes端在数据库属性页上点击压缩按钮</li>
+</ul>
+<p>但是有些时候我们发现除了上述的几种发式，Compact程序会自己运行，而且频率相当高。这种情况可能是由Event4数据库中的 Event generator 文档引起的。这个文档可以在数据库使用率达到设定的值时产生一个事件，如果同时选择了自动压缩数据库就会运行Compact命令。而如果某个数据库出了问题无法压缩，这样每次检测都会导致Compact命令运行，这就是每过一格时间间隔就自动压缩数据库的原因。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/often-unscheduled-compact-task.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

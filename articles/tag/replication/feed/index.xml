@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>replication &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/replication/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Mon, 31 May 2010 09:25:32 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>复制冲突文档的生成原理</title>
+		<link>/articles/behind-the-scenes-of-replication-conflict.html</link>
+				<comments>/articles/behind-the-scenes-of-replication-conflict.html#comments</comments>
+				<pubDate>Mon, 31 May 2010 09:25:32 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[conflict]]></category>
+		<category><![CDATA[replication]]></category>
+
+		<guid isPermaLink="false">/?p=644776</guid>
+				<description><![CDATA[前些天在讨论 Domino 环境中各种 ID 时，提到了一些关于如何处理复制冲突的内容，由于其原理比较复杂，当 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>前些天在讨论 <a title="Permanent Link to Domino 环境中各种 ID 的介绍" rel="bookmark" href="/articles/various-ids-in-domino.html">Domino  环境中各种 ID</a> 时，提到了一些关于如何处理复制冲突的内容，由于其原理比较复杂，当时就没有展开讨论。今天有读者询问其中的细节，所以在这篇文章中我们就仔细研究一下这个话题。</p>
+<p>上一次说到在复制过程中如果发现两个副本关系的文档其 OID 不同，那么说明这两个文档处于不同步的状态。首先分析两个文档的 $Revisions 域（此域记录了文档历次修改的时间），判断是否存在冲突：</p>
+<ul>
+<li>如果两个域值除了某一个文档多出来一些值以外，其余部分完全相同，如：<br />
+<blockquote><p>A：时间1，时间2，时间3<br />
+B：时间1，时间2，时间3，时间4，时间5</p></blockquote>
+<p>则表示 B 文档在 A 文档的基础上额外多修改了两次，不存在冲突</li>
+<li>如果两个域值最初相同，然后各自出现了不同的部分，如：<br />
+<blockquote><p>A：时间1，时间2，时间3，时间4<br />
+B：时间1，时间2，时间3，时间5</p></blockquote>
+<p>则表示两个文档在不同的时间分别修改过，存在冲突</li>
+</ul>
+<p>如果存在冲突，下一步检查目标文档（就是这次复制过程中会被修改的那个）的 $ConflictAction 域，如果其值为“1”表示允许合并复制冲突，开始分析两个文档各个域值，以判断能否进行合并：</p>
+<ul>
+<li>首先通过 $Revisions 域和 Sequence Number 找出两个文档最后一致的版本，以下面数据为例：<br />
+<blockquote><p>A $Revisions：时间1，时间2，时间3，时间4<br />
+A SN：5<br />
+B $Revisions：时间1，时间2，时间3，时间5<br />
+B SN：5</p></blockquote>
+<p>两个文档在时间3这一版本是一致的，从 SN = 5 往回反推可以得到一致版本为 4</li>
+<li>每个文档域也有一个 SN 属性，它记录了此域最后一次修改时文档的 SN。用文档域的 SN 与之前得到的一致版本号 4 进行比对，就可以得到在一致版本之后修改的域。</li>
+<li>如果两个文档修改过的域有重合的部分，说明在不同的副本中对相同的域同时做了修改，无法合并冲突；反之则可以合并</li>
+</ul>
+<p>如果 $ConflictAction 域值不是“1”或者属于上一段所述无法合并冲突的情况，则必须创建冲突文档。下一步就是通过 Sequence Number 和 Sequence Datetime 来分析哪个文档作为主文档（winner），哪个文档作为冲突文档（loser）：</p>
+<ul>
+<li>SN 比较大的（在一致版本之后编辑次数较多的）文档是 winner</li>
+<li>如果 SN 相同，SD 比较大的（最后编辑的）文档是 winner</li>
+</ul>
+<p>至此，一个崭新的复制冲突文档诞生了。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/behind-the-scenes-of-replication-conflict.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nd801 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/nd801/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 20 Feb 2008 03:35:25 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Lotus Notes/Domino 8.0.1 发布相关信息</title>
+		<link>/articles/lotus-notes-and-domino-801-channel-announcement.html</link>
+				<comments>/articles/lotus-notes-and-domino-801-channel-announcement.html#respond</comments>
+				<pubDate>Wed, 20 Feb 2008 03:35:25 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd801]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/lotus-notes-and-domino-801-channel-announcement.html</guid>
+				<description><![CDATA[新特性： Domino 部署方面的增强 DWA Lite mode：为移动办公及低网速用户新增了一个节省带宽的 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>新特性：</p>
+<ul>
+<li>Domino 部署方面的增强</li>
+<li> DWA Lite mode：为移动办公及低网速用户新增了一个节省带宽的模式</li>
+<li>增加与 Quickr、Connections、Sametime 8.0 整合的能力</li>
+<li>通过 Lotus Notes Widgets 实现很强的可扩张性</li>
+<li>支持 Citrix Presentation Server 4.5</li>
+<li>数据库压缩，节省 NSF 的存储空间占用</li>
+<li>Domino 原生支持64位，包括 Windows 2003、AIX；带来的好处是可以使用更多的内存</li>
+<li>Notes 邮件支持 FIPS (Federal Information Processing Standards) 140-2 标准的加密</li>
+<li>Notes Traveler，为移动设备（Windows Mobile 5/6）提供邮件同步等功能</li>
+</ul>
+<p>发布日期：</p>
+<ul>
+<li>电子介质：英文 2月20日，中文 3月7日</li>
+<li>物理介质和文档：英文 3月14日，中文 4月11日</li>
+</ul>
+<p>参考链接：<a href="http://www-01.ibm.com/common/ssi/index.wss?DocURL=http://www-01.ibm.com/common/ssi/rep_ca/4/897/ENUS208-024/index.html&amp;InfoType=AN&amp;InfoSubType%C3%8A&amp;InfoDesc=Announcement+Letters&amp;panelurl=index.wss%3F&amp;paneltext=Announcement%20letter%20search" target="_blank">Lotus Notes and Domino 8.0.1 channel announcement</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/lotus-notes-and-domino-801-channel-announcement.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Domino 8.0.1 的一些新特性</title>
+		<link>/articles/domino-801-new-feature.html</link>
+				<comments>/articles/domino-801-new-feature.html#respond</comments>
+				<pubDate>Thu, 20 Sep 2007 03:08:45 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd801]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/domino-801-new-feature.html</guid>
+				<description><![CDATA[Domino Blog 公布了一些 8.0.1 将加入的新特性： 新的压缩算法，可以节省 40% 左右的磁盘空 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p><a href="http://www.dominoblog.com/dominoblog/dblog.nsf/dx/domino-8.0.1-details-announced" target="_blank">Domino Blog</a> 公布了一些 8.0.1 将加入的新特性：</p>
+<ul>
+<li>新的压缩算法，可以节省 40% 左右的磁盘空间</li>
+<li>支持 64 位平台（Windows 2003 和 Aix）</li>
+</ul>
+<p>预计发布时间为 2008 年第一季度。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/domino-801-new-feature.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>agent &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/agent/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 19 Jul 2012 08:49:32 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>显示 Java 代理中的错误行号</title>
+		<link>/articles/show-line-number-in-java-agent-error.html</link>
+				<comments>/articles/show-line-number-in-java-agent-error.html#comments</comments>
+				<pubDate>Thu, 19 Jul 2012 08:48:18 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[agent]]></category>
+		<category><![CDATA[java]]></category>
+
+		<guid isPermaLink="false">/?p=645141</guid>
+				<description><![CDATA[在调试 Java 代理的过程中，Domino 服务器给出的错误信息是这样的： HTTP JVM: java.l [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在调试 Java 代理的过程中，Domino 服务器给出的错误信息是这样的：</p>
+<blockquote><p>HTTP JVM: java.lang.NullPointerException<br />
+HTTP JVM: at JavaAgent.createYjPDF(<strong>Unknown Source</strong>)<br />
+HTTP JVM: at JavaAgent.NotesMain(<strong>Unknown Source</strong>)</p></blockquote>
+<p>这一堆的 Unknown Source 让人无从下手。还好这个问题很好解决：在代理属性中勾上如下选项即可（lib 库也是一样的）</p>
+<p><img class="alignnone" title="启用Java代理调试信息" src="/pic/javaagent.png" alt="" width="602" height="330" /></p>
+<p>结果如下，是不是舒服多了？</p>
+<blockquote><p>HTTP JVM: java.lang.NullPointerException<br />
+HTTP JVM: at JavaAgent.createYjPDF(<strong>JavaAgent.java:674</strong>)<br />
+HTTP JVM: at JavaAgent.NotesMain(<strong>JavaAgent.java:134</strong>)</p></blockquote>
+]]></content:encoded>
+							<wfw:commentRss>/articles/show-line-number-in-java-agent-error.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>记录 Web 代理的执行</title>
+		<link>/articles/enable-agent-thread-debug.html</link>
+				<comments>/articles/enable-agent-thread-debug.html#comments</comments>
+				<pubDate>Wed, 09 Jun 2010 01:55:57 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[agent]]></category>
+		<category><![CDATA[notes.ini]]></category>
+
+		<guid isPermaLink="false">/?p=644788</guid>
+				<description><![CDATA[在开发过程中我们经常使用 msgbox 语句来调试代理，由于种种原因有时这些调试语句会被带入测试/生产环境。这 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在开发过程中我们经常使用 msgbox 语句来调试代理，由于种种原因有时这些调试语句会被带入测试/生产环境。这种问题一旦发生，一般来说很难定位它究竟来自哪个代理。</p>
+<p>此时我们可以在 notes.ini 中添加</p>
+<blockquote><p>Debug_Agent_Thread=1</p></blockquote>
+<p>参数来打开 Web 代理调试功能，在代理开始和结束时，控制台会打印出代理的名称、所在数据库以及 thread id。有了这些信息，我们就很容易定位调试语句的来源了。</p>
+<p>请参考：<a href="http://www.lntoolbox.com/en/notesini-reference/bycategory/debug/41-debug/2621-debug_agent_thread.html" target="_blank">Lotus Notes.ini Entry &#8211; Debug_Agent_Thread</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/enable-agent-thread-debug.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+	</channel>
+</rss>

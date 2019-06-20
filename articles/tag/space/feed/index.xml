@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>space &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/space/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 08 Apr 2009 07:56:40 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>表格内的 PRE 标签产生多余空白的问题</title>
+		<link>/articles/pre-tag-inside-table-result-extra-space.html</link>
+				<comments>/articles/pre-tag-inside-table-result-extra-space.html#respond</comments>
+				<pubDate>Wed, 08 Apr 2009 07:56:40 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[pre]]></category>
+		<category><![CDATA[space]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=637994</guid>
+				<description><![CDATA[项目中要将用户输入的文本直接原样显示，所以就想到了 PRE 标签，加上下面的样式，就可以实现自动换行： wor [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>项目中要将用户输入的文本直接原样显示，所以就想到了 PRE 标签，加上下面的样式，就可以实现自动换行：</p>
+<blockquote><p>word-wrap: break-word;</p></blockquote>
+<p>使用后发现一个问题，如果把 PRE 放在表格中，那么就算内容折行了，但还是会占不换行时的宽度。估计是 IE 的问题，最后找到方法，加入以下样式就没问题了：</p>
+<blockquote><p>white-space : normal;</p></blockquote>
+]]></content:encoded>
+							<wfw:commentRss>/articles/pre-tag-inside-table-result-extra-space.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

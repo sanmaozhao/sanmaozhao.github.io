@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>update &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/update/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 19 Mar 2010 09:46:55 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Domino 中的视图和索引器任务</title>
+		<link>/articles/view-and-indexer-task-in-domino.html</link>
+				<comments>/articles/view-and-indexer-task-in-domino.html#respond</comments>
+				<pubDate>Fri, 19 Mar 2010 09:46:55 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[indexer]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[performance]]></category>
+		<category><![CDATA[updall]]></category>
+		<category><![CDATA[update]]></category>
+
+		<guid isPermaLink="false">/?p=644606</guid>
+				<description><![CDATA[视图在 Domino 环境中起着重要的作用，它将文档按照定义好的方式组织起来，作为展现给用户的数据或者查找数据 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>视图在 Domino 环境中起着重要的作用，它将文档按照定义好的方式组织起来，作为展现给用户的数据或者查找数据的索引。而保持视图中的数据随时更新，是由一个重要的服务器任务：索引器（Indexer）完成的。</p>
+<p>索引器任务由 Update、Updall（Update all）两个任务组成，它们通过调用 Notes Index Facility (NIF) 和 Full-Text services，保持各视图和全文索引内容为最新。本文仅讨论视图和索引器任务相关的部分，全文索引相关内容并未涉及。</p>
+<p>Update 任务默认写在 Notes.ini 文件的 ServerTasks 参数中，所以它是随服务器一起启动的，持续不断地运行，检查其工作队列以查找需要更新的视图和文件夹。Update 保持两个工作队列：一个即时队列，一个延迟队列。其他服务器组件，例如路由器（Router）和复制器（Replicator），在数据库发生修改时将请求投递给 Update 任务。有些请求投递为延迟，有些请求投递为即时。此请求只包含数据库的完整路径，不包含视图名。延迟队列请求在被处理之前会保持 15 秒，以便在此时间内更新同一数据库的请求作为重复请求而被忽略，通过统一处理来提高性能。这个 15 秒的延迟时间可以通过 Update_Suppression_Time 参数修改。</p>
+<p>工作队列中记录了哪些数据库需要更新索引，那么数据库中的具体哪个视图需要更新呢？在数据库的头信息里面，记录了数据库的修改时间；同时在视图的索引信息里面也记录了上次更新索引的时间。通过比较两个时间就可以判断哪些视图需要更新。</p>
+<p>Updall 与 Update 类似，但它不是持续不断地运行，也不使用队列；而是根据需要运行。默认情况下，Updall 包括在 NOTES.INI 设置 ServerTasksAt2 中，因此它在每天凌晨 2 点运行。在运行 Updall 时您可以指定选项，但是如果不指定这些选项，则 Updall 会更新服务器上所有数据库中，需要更新的任何视图索引或全文搜索索引。为节省磁盘空间，Updall 还从数据库中清除删除存根（deletion stubs ），并删除符合条件视图的视图索引。</p>
+<p>在视图属性的高级页签中，有两个和索引相关的选项：刷新、废弃。先看看刷新选项：</p>
+<ul>
+<li>第一次使用后自动刷新<br />
+新建视图时的默认选项，也是一个功能和性能比较均衡的选项，无特殊情况下推荐使用。在用户第一次访问之前，索引器不会更新它，减小了无用视图对性能的影响。用户第一次访问时建立视图索引，所以这次访问会比较慢。不过一旦索引建立起来，索引器就会负责更新它，从而保证用户访问时无需等待。</li>
+<li>自动刷新<br />
+与上一个类似，只是不管用户是否使用过它。这个选项对于用户的体验是最好的，因为打开视图时一般来说无需等待就能查看最新的数据；但对服务器来说压力是最大的，因为即使视图从没有人使用过，依然需要更新它的索引。情谨慎使用。</li>
+<li>手工刷新<br />
+索引器不更新视图索引，完全依赖用户手工操作，对于服务器来说压力最小。用户打开视图时没有任何延迟，但是看到的数据可能不是最新的。此情况下视图左侧会显示刷新图标，提示用户数据并非最新的，用户点击图标或者按 F9 刷新数据。但对于浏览器应用来说，没有任何方式可以触发索引更新，所以无法使用。</li>
+<li>间隔 n 小时自动刷新<br />
+手工刷新和自动刷新的混合体。如果距上次更新索引的时间超过了 n 小时，与自动刷新类似；反之与手工刷新类似。用于可预知更新频率的视图，比如每天晚上定时任务会创建文档，则可以设定为 24 小时刷新一次。</li>
+</ul>
+<p>废弃选项：</p>
+<ul>
+<li>如果闲置 45 天<br />
+45 天内没有任何用户访问此视图，则删除其索引。可以通过 Default_Index_Lifetime_Days 参数修改。</li>
+<li>每次使用后<br />
+用了就删，下次用再重新创建。此方式对服务器压力会很大，一般很少用到，除非真的几乎是一次性使用。</li>
+<li>如果闲置 n 天<br />
+与第一个选项类似。</li>
+</ul>
+<p>请参考：<a href="http://www.duffbert.com/duffbert/blog.nsf/d6plinks/TDUF-5WG454" target="_blank">The Indexer and Its Functionality</a>，<a href="http://www-01.ibm.com/support/docview.wss?uid=swg27002624" target="_blank">The basics of Notes view index refreshing</a>，<a href="http://www-01.ibm.com/support/docview.wss?rs=0&amp;uid=swg21085954" target="_blank">Updall switches, Update and NIF &#8211; Notes indexing basics</a>，<a href="https://infocenters.lotus.com/domino/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_INDEXER_TASKS_UPDATE_AND_UPDALL_STEPS.html" target="_blank">Indexer tasks: Update and Updall</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/view-and-indexer-task-in-domino.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

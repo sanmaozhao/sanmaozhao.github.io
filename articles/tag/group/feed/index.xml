@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>group &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/group/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 21 Jan 2009 08:30:36 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>将群组展开为成员列表</title>
+		<link>/articles/expand-group-member.html</link>
+				<comments>/articles/expand-group-member.html#respond</comments>
+				<pubDate>Wed, 21 Jan 2009 08:30:36 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[formula]]></category>
+		<category><![CDATA[group]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/expand-group-member.html</guid>
+				<description><![CDATA[有时候我们需要获得一个群组中的成员列表，一般都是直接去 Names 查找，如果遇到嵌套群组则更加麻烦。其实有个 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>有时候我们需要获得一个群组中的成员列表，一般都是直接去 Names 查找，如果遇到嵌套群组则更加麻烦。其实有个简单的方法，通过如下的函数：</p>
+<blockquote><p><strong>Syntax</strong></p>
+<p><strong>@ExpandNameList(</strong><em>servername : notesdatabase ; groupname</em><strong>)</strong></p>
+<p><strong>Parameters</strong></p>
+<p><em>    * servername</em></p>
+<p>Text. Specify the target Domino Server for your query.</p>
+<p><em>    * notesdatabase</em></p>
+<p>Text. Specifiy the target NotesDatabase for your query.</p>
+<p><em>    * groupname</em></p>
+<p>Text. Specify the target Group, by name, for your query.</p>
+<p><strong>Return value</strong></p>
+<p><em>   * valuelist</em></p>
+<p>Text list. A multi-value text list containing members of the queried Domino Directory Group. No value is returned for unmatched Groups. To display the return values in a dialog box using @Prompt, enclose this function in an @Text function.</p>
+<p><strong>Usage</strong></p>
+<p>@ExpandNameList cannot be used in form selection and view column formulas.</p></blockquote>
+<p>举例说明，以下公式就可以获取在 Domino/Server 服务器上 names.nsf 库中定义的 LocalDomainAdmins 群组的成员列表：</p>
+<blockquote><p>@ExpandNameList(&#8220;Domino/Server&#8221;:&#8221;names.nsf&#8221;; &#8220;LocalDomainAdmins&#8221;)</p></blockquote>
+<p>最后有一点需要说明的是，这个函数在文档中并没有注明，所以有可能会有不稳定、或者未来版本会不可用等可能性，大家请自行评估其中的风险。</p>
+<p>参考链接：<a href="http://www.dominoguru.com/pages/01202009030630.html" target="_blank">Undocument Command Documented: ExpandNameList</a> ,  <a href="http://www-01.ibm.com/support/docview.wss?rs=0&amp;uid=swg21101582" target="_blank">Undocumented @functions in Notes/Domino</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/expand-group-member.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

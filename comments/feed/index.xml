@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	“Sanmao的幸福(?)生活”的评论	</title>
+	<atom:link href="/comments/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 19 Dec 2018 02:44:38 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+			<item>
+				<title>
+				Sanmao对《扩展 LotusScript 的能力》的评论				</title>
+				<link>/articles/extending-lotusscript.html/comment-page-1#comment-17031</link>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+		<pubDate>Wed, 19 Dec 2018 02:44:38 +0000</pubDate>
+		<guid isPermaLink="false">/?p=645332#comment-17031</guid>
+					<description><![CDATA[其实对厂商来说，加个JSON解析器是举手之劳，可惜就是不做。
+发展新的开发框架可以理解，老的修修补补我觉得也是很有必要的。
+还好Domino10引入了HTTP Client？是个好迹象]]></description>
+		<content:encoded><![CDATA[<p>其实对厂商来说，加个JSON解析器是举手之劳，可惜就是不做。<br />
+发展新的开发框架可以理解，老的修修补补我觉得也是很有必要的。<br />
+还好Domino10引入了HTTP Client？是个好迹象</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				koalain对《扩展 LotusScript 的能力》的评论				</title>
+				<link>/articles/extending-lotusscript.html/comment-page-1#comment-16984</link>
+		<dc:creator><![CDATA[koalain]]></dc:creator>
+		<pubDate>Tue, 09 Oct 2018 06:00:19 +0000</pubDate>
+		<guid isPermaLink="false">/?p=645332#comment-16984</guid>
+					<description><![CDATA[总结里的第一句满是伤感。大佬厂商们都忙着做“大事”了，cloud\ai\bigdata，传统应用难以打动他们动用大笔投资来做这些事情。]]></description>
+		<content:encoded><![CDATA[<p>总结里的第一句满是伤感。大佬厂商们都忙着做“大事”了，cloud\ai\bigdata，传统应用难以打动他们动用大笔投资来做这些事情。</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				Terry对《扩展 LotusScript 的能力》的评论				</title>
+				<link>/articles/extending-lotusscript.html/comment-page-1#comment-16092</link>
+		<dc:creator><![CDATA[Terry]]></dc:creator>
+		<pubDate>Tue, 10 Jan 2017 09:13:43 +0000</pubDate>
+		<guid isPermaLink="false">/?p=645332#comment-16092</guid>
+					<description><![CDATA[厉害！]]></description>
+		<content:encoded><![CDATA[<p>厉害！</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				Sanmao对《IBM 发布 Notes/Domino 发展路线图》的评论				</title>
+				<link>/articles/ibm-presents-the-ibm-notes-and-domino-roadmap.html/comment-page-1#comment-16091</link>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+		<pubDate>Tue, 10 Jan 2017 03:19:21 +0000</pubDate>
+		<guid isPermaLink="false">/?p=645321#comment-16091</guid>
+					<description><![CDATA[倒也不是，IBM写着至少支持到2021年]]></description>
+		<content:encoded><![CDATA[<p>倒也不是，IBM写着至少支持到2021年</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				Terry对《IBM 发布 Notes/Domino 发展路线图》的评论				</title>
+				<link>/articles/ibm-presents-the-ibm-notes-and-domino-roadmap.html/comment-page-1#comment-16088</link>
+		<dc:creator><![CDATA[Terry]]></dc:creator>
+		<pubDate>Mon, 09 Jan 2017 08:52:02 +0000</pubDate>
+		<guid isPermaLink="false">/?p=645321#comment-16088</guid>
+					<description><![CDATA[到2021，之后就不管了吗]]></description>
+		<content:encoded><![CDATA[<p>到2021，之后就不管了吗</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				扩展 LotusScript 的能力 &#124; Sanmao的幸福(?)生活对《Domino 环境中的字符编码》的评论				</title>
+				<link>/articles/character-encoding-in-domino.html/comment-page-1#comment-16073</link>
+		<dc:creator><![CDATA[扩展 LotusScript 的能力 &#124; Sanmao的幸福(?)生活]]></dc:creator>
+		<pubDate>Tue, 27 Dec 2016 05:50:41 +0000</pubDate>
+		<guid isPermaLink="false">/?p=644612#comment-16073</guid>
+					<description><![CDATA[[&#8230;] As LMBCS String 不管操作系统本地的编码方式，统一采用 LMBCS。这种编码方式适用范围太小，仅 Lotus [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] As LMBCS String 不管操作系统本地的编码方式，统一采用 LMBCS。这种编码方式适用范围太小，仅 Lotus [&#8230;]</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				Terry对《IBM 发布 Notes/Domino 发展路线图》的评论				</title>
+				<link>/articles/ibm-presents-the-ibm-notes-and-domino-roadmap.html/comment-page-1#comment-16042</link>
+		<dc:creator><![CDATA[Terry]]></dc:creator>
+		<pubDate>Wed, 14 Dec 2016 01:03:09 +0000</pubDate>
+		<guid isPermaLink="false">/?p=645321#comment-16042</guid>
+					<description><![CDATA[技术没死掉，但是生态死掉了！]]></description>
+		<content:encoded><![CDATA[<p>技术没死掉，但是生态死掉了！</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				abdeDgd对《清空 Designer 中打开过的数据库列表》的评论				</title>
+				<link>/articles/clean-up-project-list-from-applications-view-in-domino-designer.html/comment-page-1#comment-14848</link>
+		<dc:creator><![CDATA[abdeDgd]]></dc:creator>
+		<pubDate>Fri, 11 Mar 2016 11:29:55 +0000</pubDate>
+		<guid isPermaLink="false">/?p=645183#comment-14848</guid>
+					<description><![CDATA[删除这个文件会导致designer报错，直接删除这个目录是可以的：Notes\Data\workspace\.metadata\.plugins\com.ibm.designer.domino.ide.resources]]></description>
+		<content:encoded><![CDATA[<p>删除这个文件会导致designer报错，直接删除这个目录是可以的：Notes\Data\workspace\.metadata\.plugins\com.ibm.designer.domino.ide.resources</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				帅对《Unknown OS error》的评论				</title>
+				<link>/articles/unknown-os-error.html/comment-page-1#comment-13391</link>
+		<dc:creator><![CDATA[帅]]></dc:creator>
+		<pubDate>Sat, 19 Sep 2015 01:33:23 +0000</pubDate>
+		<guid isPermaLink="false">/?p=645211#comment-13391</guid>
+					<description><![CDATA[还有一种原因，当前页面加载了其他库的设计元素。而当前人员对该库又没有访问权限，页面也会报出这样的错误。]]></description>
+		<content:encoded><![CDATA[<p>还有一种原因，当前页面加载了其他库的设计元素。而当前人员对该库又没有访问权限，页面也会报出这样的错误。</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				Sanmao对《记录 Lotusscript 代码运行的时间》的评论				</title>
+				<link>/articles/lotusscript-timing-log.html/comment-page-1#comment-13274</link>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+		<pubDate>Wed, 29 Jul 2015 03:25:21 +0000</pubDate>
+		<guid isPermaLink="false">/?p=645302#comment-13274</guid>
+					<description><![CDATA[Nice job!
+If you can upload to openntf? So that more people can benefit.Thanks!]]></description>
+		<content:encoded><![CDATA[<p>Nice job!<br />
+If you can upload to openntf? So that more people can benefit.Thanks!</p>
+]]></content:encoded>
+						</item>
+			</channel>
+</rss>

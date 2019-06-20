@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>urldecode &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/urldecode/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Mon, 04 Jul 2005 13:01:47 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>LotusScript版本的UrlDecode函数</title>
+		<link>/articles/lotusscript-version-urldecode-function.html</link>
+				<comments>/articles/lotusscript-version-urldecode-function.html#respond</comments>
+				<pubDate>Mon, 04 Jul 2005 13:01:47 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[lotusscript]]></category>
+		<category><![CDATA[urldecode]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/lotusscript%e7%89%88%e6%9c%ac%e7%9a%84urldecode%e5%87%bd%e6%95%b0.html</guid>
+				<description><![CDATA[浏览器的请求的地址在交给服务器前会对其进行编码，像空格、%、汉字都会被编码成%XX的格式，我们在服务器端如果要 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>浏览器的请求的地址在交给服务器前会对其进行编码，像空格、%、汉字都会被编码成%XX的格式，我们在服务器端如果要取得原来的字符就要进行解码。</p>
+<p>Domino提供了一个query_string_decoded域用来获得解码过的字符，但是在使用中发现有些字符通过这个域无法获得（我遇到的是“砚”字，听说还有其他字也获取不到）。<img src="/fckeditor/editor/images/smiley/msn/whatchutalkingabout_smile.gif"></p>
+<p>解决方法是用query_string获得未解码的字符，在用一个函数自己来解码。下面就是一个解码函数，在国华项目中使用没有问题。</p>
+<p><span id="more-142890"></span><br />
+<textarea name="code" rows="10" cols="60">Function fnDecode(inString As String) As String<br />
+	inString=Replace(inString,&#8221;+&#8221;,&#8221; &#8220;)<br />
+	Dim L As String<br />
+	Dim M As String<br />
+	Dim R As String<br />
+	Dim P As Integer<br />
+	Dim TP As Integer<br />
+	Dim fnDecode1 As String<br />
+	Dim rstr As String<br />
+	Dim TempStr As String<br />
+	If Instr(inString,&#8221;%&#8221;)&gt;0 Then<br />
+		TempStr=inString<br />
+		Do While Instr(TempStr,&#8221;%&#8221;)&gt;0<br />
+			P=Instr(TempStr,&#8221;%&#8221;)<br />
+			L=Left(TempStr,P-1)<br />
+			M=Mid(TempStr,P+1,5)<br />
+			If Cint(&#8220;&amp;H&#8221;+Left(M,1))&lt;10 Then<br />
+				M=Left(M,2)<br />
+				If M=&#8221;0A&#8221; Or M=&#8221;0D&#8221; Then<br />
+					If M=&#8221;0D&#8221; Then<br />
+						rstr=rstr+L+&#8221;&lt;br&gt;&#8221;<br />
+					End If<br />
+				Else<br />
+					rstr=rstr+L+Chr(Clng(&#8220;&amp;H&#8221;+M))<br />
+				End If</p>
+<p>				TP=(P+2)<br />
+			Else<br />
+				M=Left(M,2)+Right(M,2)<br />
+				rstr=rstr+L+Chr(Clng(&#8220;&amp;H&#8221;+M))<br />
+				TP=(P+5)<br />
+			End If<br />
+			R=Right(TempStr,Len(TempStr)-TP)<br />
+			TempStr=R<br />
+		Loop<br />
+		fnDecode=rstr+TempStr<br />
+	Else<br />
+		fnDecode = inString<br />
+	End If<br />
+End Function</textarea></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/lotusscript-version-urldecode-function.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

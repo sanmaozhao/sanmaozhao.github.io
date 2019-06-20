@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>base64 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/base64/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 30 Apr 2014 02:48:17 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>JavaScript版的Base64编码、解码函数</title>
+		<link>/articles/javascript-base64-encode-decode-function.html</link>
+				<comments>/articles/javascript-base64-encode-decode-function.html#respond</comments>
+				<pubDate>Mon, 04 Jul 2005 13:08:11 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[base64]]></category>
+		<category><![CDATA[javascript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/javascript%e7%89%88%e7%9a%84base64%e7%bc%96%e7%a0%81%e3%80%81%e8%a7%a3%e7%a0%81%e5%87%bd%e6%95%b0.html</guid>
+				<description><![CDATA[比如Sanmao的Base64编码结果是U2FubWFv  代码在下面。 http://www.webtool/ [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>比如<font color="#ff6600">Sanmao</font>的Base64编码结果是<font color="#ff6600">U2FubWFv  </font>代码在下面。</p>
+<p>http://www.webtoolkit.info/javascript-base64.html</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/javascript-base64-encode-decode-function.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>LotusScript版的Base64编码、解码函数</title>
+		<link>/articles/lotusscript-base64-encode-decode-function.html</link>
+				<comments>/articles/lotusscript-base64-encode-decode-function.html#comments</comments>
+				<pubDate>Mon, 04 Jul 2005 13:03:30 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[base64]]></category>
+		<category><![CDATA[lotusscript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/lotusscript%e7%89%88%e7%9a%84base64%e7%bc%96%e7%a0%81%e3%80%81%e8%a7%a3%e7%a0%81%e5%87%bd%e6%95%b0.html</guid>
+				<description><![CDATA[在国华项目中曾经遇到这样一个问题： 需要将OA系统中完整的发文处理单导入到档案系统中。考虑到OA系统中的处理单 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在国华项目中曾经遇到这样一个问题：</p>
+<p>需要将OA系统中完整的发文处理单导入到档案系统中。考虑到OA系统中的处理单并不是独立存在的，而是文档的数据+表单的样式，决定将样式写死在代理中，然后用文档数据填充。</p>
+<p>这样难点就在于怎样把其中的手写批示图片文件传输过去，经过分析发现MS的MHT格式恰好能满足这个要求，他将网页相关的所有文件都存在一个文件里，其中图片等二进制文件采用Base64编码存储。<br />
+我们使用Ls将手写批示图片剥离到服务器的临时目录，再进行Base64编码，与处理单的HTML保存在一个MHT文件中。至此，问题得到了解决。</p>
+<p><a href="http://wwwendt.de/tech/base64/" target="_blank">此处</a>有一个高性能的实现，处理大文件每秒几MB。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/lotusscript-base64-encode-decode-function.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>XPages &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/xpages/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 07 Nov 2012 14:21:22 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>新书推荐：精通 XPages</title>
+		<link>/articles/mastering-xpages-chinese.html</link>
+				<comments>/articles/mastering-xpages-chinese.html#comments</comments>
+				<pubDate>Thu, 25 Oct 2012 06:30:23 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[XPages]]></category>
+
+		<guid isPermaLink="false">/?p=645164</guid>
+				<description><![CDATA[前些时间我介绍过 Mastering XPages 这本书，这本书的内容非常好，只是由于语言的限制很多 Dom [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>前些时间我介绍过 <a href="/articles/new-book-mastering-xpages.html">Mastering XPages</a> 这本书，这本书的内容非常好，只是由于语言的限制很多 Domino 开发人员还没有读这本书。现在本书的中文版已经发布了，所以我再次郑重推荐此书：</p>
+<blockquote><p>本书在架构方面包含了 XPages 的设计思想、JSF 的介绍（XPages 是基于 JSF 框架的）；应用开发方面包含了所有控件的介绍、Domino 文档/视图数据源的应用；还涵盖了扩展性、国际化、安全性、性能等方面。</p>
+<p>Mastering XPages 是现阶段关于 XPages 最全面、最权威的文档和资源，建议每一个 Domino 开发人员阅读</p></blockquote>
+<p><img class="alignnone" title="Mastering XPages" src="/pic/xpages-chinese-book.png" alt="" width="460" height="594" /></p>
+<p>消息来源：<a href="http://www.wissel.net/blog/d6plinks/SHWL-8ZDDYF" target="_blank">Mastering XPages released &#8211; in Chinese</a></p>
+<p>相关链接：<a href="http://book.douban.com/subject/20277511/" target="_blank">豆瓣读书</a>、<a href="http://www.amazon.cn/dp/B009YK336A" target="_blank">亚马逊</a>、<a href="http://book.360buy.com/11118440.html" target="_blank">京东</a>、<a href="http://product.dangdang.com/product.aspx?product_id=22900586" target="_blank">当当</a>、<a href="http://product.china-pub.com/3693325" target="_blank">china-pub</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/mastering-xpages-chinese.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+	</channel>
+</rss>

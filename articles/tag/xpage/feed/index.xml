@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>xpage &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/xpage/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 29 May 2014 07:18:14 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>调整 XPages 相关的内存设置</title>
+		<link>/articles/adjust-xpages-memory-settings.html</link>
+				<comments>/articles/adjust-xpages-memory-settings.html#comments</comments>
+				<pubDate>Wed, 06 Jun 2012 03:31:33 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[XPages]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[xpage]]></category>
+
+		<guid isPermaLink="false">/?p=645127</guid>
+				<description><![CDATA[XPages 为我们带来了新的开发体验，但其服务器端组件树、服务器端状态存储等特性会消耗大量的内存。Domin [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>XPages 为我们带来了新的开发体验，但其服务器端组件树、服务器端状态存储等特性会消耗大量的内存。Domino 8.5.2 版之后，为 HTTP JVM 分配的内存默认为64M，如果使用了较多的 XPages 的话，一般来说这个默认值是不够的。可以通过以下 Notes.ini 参数调整（增加到256M）：</p>
+<blockquote><p>HTTPJVMMaxHeapSize=256M<br />
+HTTPJVMMaxHeapSizeSet=1</p></blockquote>
+<p>如果使用了较多的XPages，通常来说32位操作系统推荐设置为256M，64位操作系统+32位Domino为1024M，64位操作系统+64位Domino为物理内存的1/4。当然具体环境请酌情调整。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/adjust-xpages-memory-settings.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>加快 XPages 第一次访问时的速度</title>
+		<link>/articles/speed-up-xpages-on-first-request.html</link>
+				<comments>/articles/speed-up-xpages-on-first-request.html#comments</comments>
+				<pubDate>Wed, 06 Jun 2012 03:02:58 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[XPages]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[xpage]]></category>
+
+		<guid isPermaLink="false">/?p=645125</guid>
+				<description><![CDATA[在实际使用 XPages 的过程中，我们发现第一次访问时会非常慢，有时候甚至要等5秒钟以上。这是因为第一次访问 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在实际使用 XPages 的过程中，我们发现第一次访问时会非常慢，有时候甚至要等5秒钟以上。这是因为第一次访问时需要加载一些 XPages 相关的 class，所以耗时比较长。</p>
+<p>为了解决这个问题，在 Domino 8.5.3 中引入了 XPages 预加载功能。通过以下 Notes.ini 参数实现：</p>
+<blockquote><p>XPagesPreload=1<br />
+XPagesPreloadDB=myDb.nsf/myXPage.xsp,myDb.nsf/test.xsp</p></blockquote>
+<p>请参考：<a href="http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/topic/com.ibm.designer.domino.ui.doc/wpd_whatsnew.html" target="_blank">Domino Designer 8.5.3 中的新增功能</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/speed-up-xpages-on-first-request.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>通过 Notes.ini 参数禁用 xPage 功能</title>
+		<link>/articles/there-a-notes-ini-parameter-to-disable-xpages.html</link>
+				<comments>/articles/there-a-notes-ini-parameter-to-disable-xpages.html#comments</comments>
+				<pubDate>Thu, 01 Jul 2010 09:05:23 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd85]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[xpage]]></category>
+
+		<guid isPermaLink="false">/?p=644794</guid>
+				<description><![CDATA[Domino 8.5 版引入了新的设计元素：xPage。我承认这是个很强大的东西，但在很多生产服务器我们还没有 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>Domino 8.5 版引入了新的设计元素：xPage。我承认这是个很强大的东西，但在很多生产服务器我们还没有用到它。而我向来有关闭这种不使用的功能的洁癖，所以通过以下参数可以将其禁用：</p>
+<blockquote><p>INOTESDISABLEXPAGECMD=1</p></blockquote>
+<p>设置参数后重启 HTTP 服务即可生效。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/there-a-notes-ini-parameter-to-disable-xpages.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+	</channel>
+</rss>

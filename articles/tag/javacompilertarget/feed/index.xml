@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>JavaCompilerTarget &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/javacompilertarget/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Tue, 24 Aug 2010 03:02:26 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>为 Java 代理设置编译器的&#8221;-target&#8221;参数</title>
+		<link>/articles/set-java-compiler-target-in-domino-designer.html</link>
+				<comments>/articles/set-java-compiler-target-in-domino-designer.html#respond</comments>
+				<pubDate>Tue, 24 Aug 2010 03:02:26 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[java]]></category>
+		<category><![CDATA[JavaCompilerTarget]]></category>
+		<category><![CDATA[notes.ini]]></category>
+
+		<guid isPermaLink="false">/?p=644816</guid>
+				<description><![CDATA[从 8.0 版开始，出于对旧版本兼容性的考虑，在 Designer 中编写 Java 代理时，编译器会生成与  [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>从 8.0 版开始，出于对旧版本兼容性的考虑，在 Designer 中编写 Java 代理时，编译器会生成与 Domino 6(JVM 1.2) 兼容的 class 文件。我们可以通过以下 Notes.ini 参数来修改它（以 1.5 为例，重启客户端生效）：</p>
+<blockquote><p><tt>JavaCompilerTarget=1.5</tt></p></blockquote>
+<p>对于兼容版本的设定，这里有个权衡需要把握：版本设定的越高可用的新特性越多，但同时能够兼容的 Domino 版本越少。大家可以按照实际需要，参考下表来选择。</p>
+<table border="1" width="100%">
+<tbody>
+<tr valign="top">
+<td width="28%"><strong>JavaCompilerTarget=</strong></td>
+<td width="38%">
+<div><strong>等同的 javac 参数<br />
+</strong></div>
+</td>
+<td width="34%">
+<div><strong>兼容的 Notes/Domino 版本</strong></div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>1.1</div>
+</td>
+<td width="38%">
+<div>-source 1.3 -target 1.1</div>
+</td>
+<td width="34%">
+<div>N/D 5.0 及以上</div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>1.2</div>
+</td>
+<td width="38%">
+<div>-source 1.3 -target 1.2</div>
+</td>
+<td width="34%">
+<div>N/D 6.0 及以上</div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>1.3</div>
+</td>
+<td width="38%">
+<div>-source 1.3 -target 1.3</div>
+</td>
+<td width="34%">
+<div>N/D 6.0 及以上</div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>1.4</div>
+</td>
+<td width="38%">
+<div>-source 1.4 -target 1.4</div>
+</td>
+<td width="34%">
+<div>N/D 7.0 及以上</div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>1.5</div>
+</td>
+<td width="38%">
+<div>-source 1.5 -target 1.5</div>
+</td>
+<td width="34%">
+<div>N/D 8.0 及以上</div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>1.6</div>
+</td>
+<td width="38%">
+<div>-source 1.6 -target 1.6</div>
+</td>
+<td width="34%">
+<div>N/D 8.5 及以上</div>
+</td>
+</tr>
+<tr valign="top">
+<td width="28%">
+<div>CurrentJavaVersion</div>
+<div>（取当前版本 Notes 附带的 Java版本，以 N/D 8.5 为例，此值等同于 1.6）</div>
+</td>
+<td width="38%">
+<div>-source 1.6 -target 1.6</div>
+</td>
+<td width="34%">
+<div>N/D 8.5 及以上</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>参考链接：<a href="http://www-10.lotus.com/ldd/ddwiki.nsf/dx/07152009034956PMMSTR75.htm" target="_blank">JavaCompilerTarget</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/set-java-compiler-target-in-domino-designer.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>symphony &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/symphony/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 21 Sep 2007 01:23:20 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>IBM Lotus Symphony，免费的 Office 套件</title>
+		<link>/articles/ibm-lotus-symphony-free-office-suite.html</link>
+				<comments>/articles/ibm-lotus-symphony-free-office-suite.html#respond</comments>
+				<pubDate>Fri, 21 Sep 2007 01:23:20 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[symphony]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/ibm-lotus-symphony-free-office-suite.html</guid>
+				<description><![CDATA[IBM 最近推出了一个新产品：IBM Lotus Symphony，包括文字处理、电子表格、幻灯演示三个部分， [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>IBM 最近推出了一个新产品：<a href="http://symphony.lotus.com/software/lotus/symphony/home.jspa" target="_blank">IBM Lotus Symphony</a>，包括文字处理、电子表格、幻灯演示三个部分，支持的平台有 Windows 和 Linux。它和 Notes 8 中的生产力工具类似，基本上都是装在 Eclipse 外壳中的 OpenOffice，不过不同的是，它是免费的。并且 IBM 已经<a href="http://www.openoffice.org/press/ibm_press_release.html" target="_blank">加入 OpenOffice 组织</a>，参与相关的开发工作。不知道它会不会对微软的 Office 系列带来一定的影响呢？</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/ibm-lotus-symphony-free-office-suite.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>fiddler &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/fiddler/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Tue, 14 Sep 2010 09:10:45 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>解决启用 Fiddler 后 IE 响应非常缓慢的问题</title>
+		<link>/articles/fiddler-slow-performance-on-ie.html</link>
+				<comments>/articles/fiddler-slow-performance-on-ie.html#respond</comments>
+				<pubDate>Tue, 14 Sep 2010 09:10:45 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[fiddler]]></category>
+		<category><![CDATA[performance]]></category>
+
+		<guid isPermaLink="false">/?p=644820</guid>
+				<description><![CDATA[Fiddler 是一个很好用的 HTTP 调试工具，我曾把它推荐给很多同事。 今天在一个同事的机器上启用了 F [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p><a href="http://www.fiddler2.com/fiddler2/" target="_blank">Fiddler</a> 是一个很好用的 HTTP 调试工具，我曾把它推荐给很多同事。</p>
+<p>今天在一个同事的机器上启用了 Fiddler 之后，IE 打开一个页面要十多秒的时间，不用 Fiddler 则没有问题。通过 Fiddler 的 Log 标签页，可以发现以下错误信息：</p>
+<blockquote><p>Fiddler.Network.AutoProxy&gt; AutoProxy Detection failed</p></blockquote>
+<p>最终发现更改以下设定可以解决问题：</p>
+<blockquote><p>IE Internet 选项 &gt; 连接标签页 &gt; 局域网选项 &gt; 取消选择“自动检测设置”项</p></blockquote>
+<p>以上方案供大家参考。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/fiddler-slow-performance-on-ie.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>webservice &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/webservice/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 11 Jul 2014 03:16:21 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>webservice 保存时报&#8217;PortType class&#8217;未指定的错误</title>
+		<link>/articles/porttype-class-error-on-save-webservice.html</link>
+				<comments>/articles/porttype-class-error-on-save-webservice.html#respond</comments>
+				<pubDate>Fri, 11 Jul 2014 03:16:21 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[lotusscript]]></category>
+		<category><![CDATA[webservice]]></category>
+
+		<guid isPermaLink="false">/?p=645249</guid>
+				<description><![CDATA[在使用 Lotusscript 开发 webservice 的过程中，有时会提示以下错误信息： Web Ser [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在使用 Lotusscript 开发 webservice 的过程中，有时会提示以下错误信息：</p>
+<blockquote><p>Web Service 已经保存，但是无效。: Please specify which class exposes your web service interface(s), using the &#8216;PortType class&#8217; field of the Web Service properties panel.</p></blockquote>
+<p>按照提示排查，发现在属性框中&#8217;PortType class&#8217;已经指定了对应的类名。既然不是这里的问题，那只能回头看代码了：</p>
+<blockquote><p>Class Test<br />
+Sub printDoc(doc As NotesDocument)</p>
+<p>End Sub<br />
+End Class</p></blockquote>
+<p>代码足够简单：仅有一个空白方法的 Class。</p>
+<p>这个方法没有声明权限，按帮助中说的默认是 Public。那么此方法就会暴露到 WSDL 中，可以通过 webservice 调用。</p>
+<p>问题出来了：通过 webservice 调用时如何能传进来一个 NotesDocument 对象呢？这显然是不可能的。赶紧把方法改成 Private 或者把 doc 参数改为 String 类型，问题就解决了。</p>
+<p>总结：暴露给 webservice 的方法/函数，不能以 Domino 对象作为参数。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/porttype-class-error-on-save-webservice.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

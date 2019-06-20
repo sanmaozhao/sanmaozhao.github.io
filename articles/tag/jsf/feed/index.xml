@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>jsf &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/jsf/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 23 Feb 2012 05:52:37 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>跟踪 XPages 的各个执行阶段</title>
+		<link>/articles/trace-xpages-life-cycle.html</link>
+				<comments>/articles/trace-xpages-life-cycle.html#respond</comments>
+				<pubDate>Thu, 23 Feb 2012 05:51:28 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[XPages]]></category>
+		<category><![CDATA[jsf]]></category>
+
+		<guid isPermaLink="false">/?p=645102</guid>
+				<description><![CDATA[我们之前提到过，XPages 是基于 JSF 1.1 开发的，在 JSF 中有个很重要的概念：生命周期的六个阶 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>我们之前提到过，XPages 是基于 JSF 1.1 开发的，在 JSF 中有个很重要的概念：<a title="JSF生命周期" href="http://www.ibm.com/developerworks/cn/education/java/j-jsf2/section4.html" target="_blank">生命周期的六个阶段</a>。</p>
+<p>在开发 XPages 的过程中，我们经常遇到一段代码会运行很多次的情况，实际上就是在不同的阶段执行的。我们通过 <a href="http://openntf.org/XSnippets.nsf/snippet.xsp?id=a-simple-lifecyclelistener-" target="_blank">LifeCycleListener</a> 可以记录每个阶段的开始/结束，有助于我们更深入的理解 XPages。结果类似于：</p>
+<blockquote>
+<p style="padding-left: 30px;">HTTP JVM: Before phase: RESTORE_VIEW 1<br />
+HTTP JVM: After phase: RESTORE_VIEW 1<br />
+HTTP JVM: Before phase: APPLY_REQUEST_VALUES 2<br />
+HTTP JVM: After phase: APPLY_REQUEST_VALUES 2<br />
+HTTP JVM: Before phase: PROCESS_VALIDATIONS 3<br />
+HTTP JVM: After phase: PROCESS_VALIDATIONS 3<br />
+HTTP JVM: Before phase: UPDATE_MODEL_VALUES 4<br />
+HTTP JVM: After phase: UPDATE_MODEL_VALUES 4<br />
+HTTP JVM: Before phase: INVOKE_APPLICATION 5<br />
+HTTP JVM: After phase: INVOKE_APPLICATION 5<br />
+HTTP JVM: Before phase: RENDER_RESPONSE 6<br />
+HTTP JVM: some debug info from print()&#8230;<br />
+HTTP JVM: After phase: RENDER_RESPONSE 6</p>
+</blockquote>
+]]></content:encoded>
+							<wfw:commentRss>/articles/trace-xpages-life-cycle.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

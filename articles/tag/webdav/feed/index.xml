@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>webdav &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/webdav/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 13 Oct 2006 05:25:05 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>在Domino中使用WebDAV</title>
+		<link>/articles/set-up-webdav-in-domino.html</link>
+				<comments>/articles/set-up-webdav-in-domino.html#respond</comments>
+				<pubDate>Fri, 13 Oct 2006 05:25:05 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[webdav]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e5%9c%a8domino%e4%b8%ad%e4%bd%bf%e7%94%a8webdav.html</guid>
+				<description><![CDATA[Domino从版本6开始支持WebDAV，使用它我们可以通过资源管理器访问NSF数据库中的图像、文件和CSS资 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>Domino从版本6开始支持WebDAV，使用它我们可以通过资源管理器访问NSF数据库中的图像、文件和CSS资源。有了它，将包含大量文件的工具迁移到Domino上将变得非常方便。比如之前开发FckEditor的Domino版，我就通过了一系列复杂的方法，才将所有文件导入到NSF中的。现在使用WebDAV，直接从文件夹拷贝到映射的NSF文件夹就好了。一切目录层次都能够很好的保留。</p>
+<p>使用WebDAV的方法非常简单，按照Domino管理帮助一步一步来就可以了。这里有一点需要注意：使用WebDAV要求Web站点设定为&ldquo;基本的HTTP验证&rdquo;，也就是不能使用基于Session的验证和SSO。我们可以通过为不同的域名配置不同的Web站点来解决这个问题：保持正在使用的Web应用不变，为服务器新增一个域名，对应这个域名的Web站点按照WebDAV的要求设定就可以了。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/set-up-webdav-in-domino.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

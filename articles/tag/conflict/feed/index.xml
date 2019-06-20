@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>conflict &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/conflict/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 30 Jan 2015 07:51:59 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>保存冲突的那些事儿</title>
+		<link>/articles/save-conflict.html</link>
+				<comments>/articles/save-conflict.html#comments</comments>
+				<pubDate>Wed, 31 Dec 2014 08:39:19 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[conflict]]></category>
+
+		<guid isPermaLink="false">/?p=645270</guid>
+				<description><![CDATA[几年前，我写过一篇关于复制冲突的文章，今天来聊聊它的小兄弟：保存冲突。 从名字上就能看出来，复制冲突是在两台服 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>几年前，我写过一篇关于<a href="/articles/behind-the-scenes-of-replication-conflict.html" target="_blank">复制冲突</a>的文章，今天来聊聊它的小兄弟：保存冲突。</p>
+<p>从名字上就能看出来，复制冲突是在两台服务器上修改同一个文档后产生的，而保存冲突则是在同一台服务器上修改同一个文档后产生的。</p>
+<p>在 web 应用中修改一个文档，主要有两种方式：</p>
+<ol>
+<li>以 ?EditDocument URL 命令打开文档，然后调用 form.submit() 保存当前文档</li>
+<li>通过代理等后台代码的方式修改并保存文档</li>
+</ol>
+<p>以下图的时间线场景为例：</p>
+<p><img class="aligncenter" src="/pic/save-conflict-1.png" alt="" width="493" height="151" /></p>
+<p>由于代理的运行时间一般很短， 3、4 两个代理在时间线上可以考虑为点，所以理论上他们之间的时间是不会有交叉的，也就是两个代理保存同一个文档一般不会出现保存冲突</p>
+<p>通过 ?EditDocument 方式一般持续时间较长，从打开文档到点击保存按钮这一段时间都是其处理时间，这期间出现保存冲突的可能性很大。例如：在用户A编辑期间，代理C保存了同一条文档，那么用户A点击保存按钮的时候，就会产生冲突文档。同样的，用户B编辑期间，用户A通过用户A点击保存按钮修改了同一条文档，用户B点击保存按钮的时候，就会产生冲突文档。</p>
+<p>那么如何避免保存冲突的产生呢？NotesDocument.lock 方法就是针对这个问题的，但是很遗憾此方法在 web 端无法使用。所以我们需要自己实现一个文档锁的逻辑：每次进入编辑状态时加锁，离开编辑状态后解锁；未取得的锁的情况下不允许进入编辑状态。这样就能保证同时只有一人编辑文档，避免了保存冲突的产生。这里有一个思路供参考：<a href="http://www.wissel.net/blog/d6plinks/SHWL-7UVGSE" target="_blank">Distributed Document Locking Web Style</a> 。</p>
+<p>再回到上面的一个问题，代理的运行时间短，一般不会导致冲突文档。如果代理的运行时间很长呢，两个代理保存同一个文档会不会产生冲突文档？为此我写了如下代码做测试：</p>
+<blockquote><p>Sub Initialize<br />
+Dim s As New NotesSession<br />
+Dim db As NotesDatabase<br />
+Dim doc As NotesDocument<br />
+MsgBox &#8220;agent start&#8221;<br />
+Set db = s.Currentdatabase<br />
+Set doc = db.Getdocumentbyunid(&#8220;FC71D0667744C41D48257D6C0011AB7F&#8221;)<br />
+Dim count As Integer<br />
+count  = doc.count(0)<br />
+MsgBox count<br />
+Sleep(5)<br />
+doc.count = count + 1<br />
+doc.agentname = &#8220;1&#8221;<br />
+MsgBox doc.save(true,true)<br />
+MsgBox &#8220;agent end&#8221;<br />
+End Sub</p></blockquote>
+<p>为了拉长运行时间，我在中间加了 Sleep(5)。连续运行两次代理，测试结果如下：</p>
+<ul>
+<li>doc.save(false,false)：后一次保存失败，文档未保存，返回值为 false</li>
+<li>doc.save(false,true)：后一次保存为前一次的答复文档（注意不是冲突文档），返回值为 true</li>
+<li>doc.save(true,true)：后一次保存覆盖前一次保存的内容，前一次的内容丢失，返回值为 true（第二个参数随便传true/false，没有影响）</li>
+</ul>
+<p>总结一下：web 端通过 ?EditDocument 方式编辑文档时，很容易出现保存冲突，注意用文档那个锁的方式来避免；代理保存文档时，一般不会出现冲突，但如果 getDocument 至 doc.save 之间的代码逻辑很复杂、运行时间长，也要注意处理数据覆盖的问题。</p>
+<p>今天是 2014 年的最后一天了，祝大家新年快乐！保存冲突系列还有一篇没写完，明年继续。</p>
+<p>Edit：经测试发现，如果用户A和代理C是以同一个用户身份保存的，那么不会有冲突文档，结果是后保存的覆盖之前的。（这样也合理，同一个用户间的数据覆盖没问题，不同用户间就要保留两份文档，供管理员后续合并冲突文档时参考）</p>
+<p><img class="aligncenter" src="/pic/save-conflict-1.png" alt="" width="493" height="151" /></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/save-conflict.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+		<item>
+		<title>复制冲突文档的生成原理</title>
+		<link>/articles/behind-the-scenes-of-replication-conflict.html</link>
+				<comments>/articles/behind-the-scenes-of-replication-conflict.html#comments</comments>
+				<pubDate>Mon, 31 May 2010 09:25:32 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[conflict]]></category>
+		<category><![CDATA[replication]]></category>
+
+		<guid isPermaLink="false">/?p=644776</guid>
+				<description><![CDATA[前些天在讨论 Domino 环境中各种 ID 时，提到了一些关于如何处理复制冲突的内容，由于其原理比较复杂，当 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>前些天在讨论 <a title="Permanent Link to Domino 环境中各种 ID 的介绍" rel="bookmark" href="/articles/various-ids-in-domino.html">Domino  环境中各种 ID</a> 时，提到了一些关于如何处理复制冲突的内容，由于其原理比较复杂，当时就没有展开讨论。今天有读者询问其中的细节，所以在这篇文章中我们就仔细研究一下这个话题。</p>
+<p>上一次说到在复制过程中如果发现两个副本关系的文档其 OID 不同，那么说明这两个文档处于不同步的状态。首先分析两个文档的 $Revisions 域（此域记录了文档历次修改的时间），判断是否存在冲突：</p>
+<ul>
+<li>如果两个域值除了某一个文档多出来一些值以外，其余部分完全相同，如：<br />
+<blockquote><p>A：时间1，时间2，时间3<br />
+B：时间1，时间2，时间3，时间4，时间5</p></blockquote>
+<p>则表示 B 文档在 A 文档的基础上额外多修改了两次，不存在冲突</li>
+<li>如果两个域值最初相同，然后各自出现了不同的部分，如：<br />
+<blockquote><p>A：时间1，时间2，时间3，时间4<br />
+B：时间1，时间2，时间3，时间5</p></blockquote>
+<p>则表示两个文档在不同的时间分别修改过，存在冲突</li>
+</ul>
+<p>如果存在冲突，下一步检查目标文档（就是这次复制过程中会被修改的那个）的 $ConflictAction 域，如果其值为“1”表示允许合并复制冲突，开始分析两个文档各个域值，以判断能否进行合并：</p>
+<ul>
+<li>首先通过 $Revisions 域和 Sequence Number 找出两个文档最后一致的版本，以下面数据为例：<br />
+<blockquote><p>A $Revisions：时间1，时间2，时间3，时间4<br />
+A SN：5<br />
+B $Revisions：时间1，时间2，时间3，时间5<br />
+B SN：5</p></blockquote>
+<p>两个文档在时间3这一版本是一致的，从 SN = 5 往回反推可以得到一致版本为 4</li>
+<li>每个文档域也有一个 SN 属性，它记录了此域最后一次修改时文档的 SN。用文档域的 SN 与之前得到的一致版本号 4 进行比对，就可以得到在一致版本之后修改的域。</li>
+<li>如果两个文档修改过的域有重合的部分，说明在不同的副本中对相同的域同时做了修改，无法合并冲突；反之则可以合并</li>
+</ul>
+<p>如果 $ConflictAction 域值不是“1”或者属于上一段所述无法合并冲突的情况，则必须创建冲突文档。下一步就是通过 Sequence Number 和 Sequence Datetime 来分析哪个文档作为主文档（winner），哪个文档作为冲突文档（loser）：</p>
+<ul>
+<li>SN 比较大的（在一致版本之后编辑次数较多的）文档是 winner</li>
+<li>如果 SN 相同，SD 比较大的（最后编辑的）文档是 winner</li>
+</ul>
+<p>至此，一个崭新的复制冲突文档诞生了。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/behind-the-scenes-of-replication-conflict.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+	</channel>
+</rss>

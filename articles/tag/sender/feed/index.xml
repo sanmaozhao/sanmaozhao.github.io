@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>sender &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/sender/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Tue, 21 Oct 2008 01:49:00 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>发邮件时设置替代发送人</title>
+		<link>/articles/set-principal-in-mail.html</link>
+				<comments>/articles/set-principal-in-mail.html#respond</comments>
+				<pubDate>Tue, 21 Oct 2008 01:49:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[mail]]></category>
+		<category><![CDATA[sender]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/set-principal-in-mail.html</guid>
+				<description><![CDATA[用代码发送邮件的时候，发送者会显示为代理的签名者。这时可以通过修改 Principal 域的值来实现设置替代发 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>用代码发送邮件的时候，发送者会显示为代理的签名者。这时可以通过修改 Principal 域的值来实现设置替代发送人。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/set-principal-in-mail.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

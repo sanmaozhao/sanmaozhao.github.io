@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>ls2c &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/ls2c/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 19 Dec 2018 02:42:34 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>扩展 LotusScript 的能力</title>
+		<link>/articles/extending-lotusscript.html</link>
+				<comments>/articles/extending-lotusscript.html#comments</comments>
+				<pubDate>Tue, 27 Dec 2016 05:50:36 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[ls2c]]></category>
+		<category><![CDATA[lsx]]></category>
+
+		<guid isPermaLink="false">/?p=645332</guid>
+				<description><![CDATA[需求 LotusScript 最近的更新是版本 7/8 时增加的 WebService 调用者、提供者，这已经 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<h3>需求</h3>
+<p>LotusScript 最近的更新是版本 7/8 时增加的 WebService 调用者、提供者，这已经是快十年前的事情了。现在 LotusScript 已经明显落后，欠缺的大量基础能力：JSON 解析器、跨代理的数据缓存、HTTP Client、完善的面向对象机制、将函数作为参数传递……这严重制约了应用层面的开发。</p>
+<p>IBM 对此问题的应对是推出 XPages，一种新的开发模式。XPages 确实是一个不错的东西，展现和数据分离、內置 Ajax 框架……但是，作为应用开发商我们无法抛弃历史资产一切推倒重来。所以 XPages 我们只能用来做一些新的业务、功能点，对于原有的业务还是要继续在 LotusScript 上发展。</p>
+<p>所以我们必须自己来扩展 LotusScript 的能力。</p>
+<h3>方案</h3>
+<h4>LotusScript 类、函数库</h4>
+<p>首先想到的就是直接用 LotusScript 来实现，但这只能解决一部分问题：比如 JSON 解析器。而类似于 HTTP Client 这种，LotusScript 就无能为力了。</p>
+<p>我们也确实做了一版 LotusScript 的 JSON 解析器，但是性能实在是太差了：由于需要一个字符一个字符的解析，最终导致一个 15K 的 JSON 串解析出来要花 0.5 秒。结果我们又废弃了它，重新回到手工拆解字符串的老路上。</p>
+<p>此路不通。</p>
+<h4>LSX（LotusScript eXtension）</h4>
+<p>这是最正统的扩展 LotusScript 的方式（看看名字就知道），实际上我们使用的 NotesDocument 等 Domino 后台对象都是用这种方式扩展出来的。实际的 C 代码编译成共享库，位于 nlsxbe.dll（<strong>n</strong>=windows平台前缀,<strong>lsx,be=</strong>Back-end）中，LotusScript 引擎会自动加载它，所以我们不用再通过 <strong>USELSX lsxbe</strong> 来手工加载。</p>
+<p>LSX 的优点有很多：跨平台、与 LotusScript 无缝集成……</p>
+<p>但是，LSX 现在已经处于一个半废弃的状态。为什么这么说呢，LSX 最新版 8.0 于 2009 年发布，再往前一版就是 1999 年了。所以即使是最新版也缺少了很多内容：xlinux 64 位的支持等。</p>
+<p>此路不通。</p>
+<h4>LS2C（LotusScript to C API）</h4>
+<p>这是一个比较成熟、<a href="http://www.nsftools.com/tips/APITips.htm" target="_blank" rel="noopener">使用较多的方案</a>。一般都用于在 LotusScript 中调用底层的 C API（例如隐藏设计、重新编译所有代码），因为这些 API 没有暴露到 LotusScript 这一层。</p>
+<p>LS2C 与 LSX 相比会多一些限制，比如：</p>
+<ul>
+<li>只能传递数值、字符串等基础类型，无法传递 NotesDocuemnt</li>
+<li>不支持 LotusScript 扩展语法（doc.itemName 这种）</li>
+</ul>
+<p>但这个方案至少在持续的更新，而且 C 这个层面不需要使用 Lotus 的开发工具包，用任何编译器生成标准的共享库即可。</p>
+<p>我们最终采用了此方案。</p>
+<h3>经验总结</h3>
+<h4>变长字符串</h4>
+<p>C 语言中不支持变长字符串，所以我们在返回变长字符串时，实际返回的是一个 handle 值；这个 handle 值再通过另一个 API 获取实际的字符串（类似于 NSFDbOpen 返回的 handle）。</p>
+<p>handle 用完之后要注意释放（类似于 NSFDbClose）。</p>
+<h4>中文的处理</h4>
+<p>LS2C 的字符串参数传递有三种声明方式：</p>
+<ol>
+<li>arg As String<br />
+采用操作系统本地的编码方式，windows 一般为 GBK，linux 一般为 UTF-8。不同系统编码不同，不利于统一处理</li>
+<li>arg As LMBCS String<br />
+不管操作系统本地的编码方式，统一采用 <a href="/articles/character-encoding-in-domino.html" target="_blank" rel="noopener">LMBCS</a>。这种编码方式适用范围太小，仅 Lotus 自己的产品线</li>
+<li>arg As Unicode String<br />
+不管操作系统本地的编码方式，统一采用 UTF-16。推荐使用此方式，对环境的适应性更好。<br />
+但要注意 UTF-16 英文也用双字节存储，C 语言中会把其中的 0x00 识别为字符串结束。所以进入到 C 代码内部后，可以转为 UTF-8 存储。<br />
+还要注意不同硬件下字节序的问题，x64 和 Power 架构下刚好是相反的。</li>
+</ol>
+<h4>Double 类型的传递</h4>
+<p>LS2C 在 64 位环境下的参数传递有 bug，浮点数无法正常处理。</p>
+<p>bug 已经提交给 IBM 处理（更新：<a href="http://www-01.ibm.com/support/docview.wss?uid=swg21998636" target="_blank" rel="noopener">已确认不修复</a>），在解决前可以先把参数改为按引用传递（即使是只读的参数，也不按值传递）。</p>
+<h4>资源的释放</h4>
+<p>有一部分内存在 C 代码中分配后，后续会被 LotusScript 端继续使用。所以需要在 LotusScript 端不再使用的时候，手工释放这部分资源。</p>
+<p>推荐的做法是把这类资源包装成 LotusScript Class，在 Delete 析构函数中释放资源。这样相当于 LotusScript 引擎会帮忙自动跟踪变量的引用，比较方便。</p>
+<h4>调试共享库加载失败</h4>
+<p>Domino 给出的错误信息很模糊：“dll 加载失败”，没有太多有用的信息。而错误背后可能的原因有很多：文件找不到、32/64 位不匹配、缺少依赖的库……</p>
+<p>可以先通过其他语言（比如 LuaJIT）调用共享库，会得到更详细的错误信息。成功之后再放到 Domino 环境下调试。</p>
+<h4>共享库的权限</h4>
+<p>Linux、Aix 环境下要注意上传的 so 库必须要有运行权限。</p>
+<h4>共享库的更新</h4>
+<p>Linux、Aix 环境下 so 库更新的行为有些奇怪，有时候覆盖 so 文件后会导致 Domino 崩溃。看上去像是内存中保留了一部分旧版的代码，与新版搭配在一起就不行了。</p>
+<p>所以更新共享库时要停掉Domino。</p>
+<h3>总结</h3>
+<p>虽然 LotusScript 已经步入晚年，但我们希望通过 LS2C 这种方式给它注入新的活力，在既有业务资产中继续发光发热。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/extending-lotusscript.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+	</channel>
+</rss>

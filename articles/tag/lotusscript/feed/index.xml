@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>lotusscript &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/lotusscript/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 12 Jun 2015 02:27:54 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>记录 Lotusscript 代码运行的时间</title>
+		<link>/articles/lotusscript-timing-log.html</link>
+				<comments>/articles/lotusscript-timing-log.html#comments</comments>
+				<pubDate>Fri, 12 Jun 2015 02:22:16 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[lotusscript]]></category>
+		<category><![CDATA[performance]]></category>
+
+		<guid isPermaLink="false">/?p=645302</guid>
+				<description><![CDATA[在分析 Lotusscript 性能时，我们经常需要找到耗时最长的瓶颈点，然后再进行针对性的优化。这时最常用的 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在分析 Lotusscript 性能时，我们经常需要找到耗时最长的瓶颈点，然后再进行针对性的优化。这时最常用的工具是<a href="/articles/domino7-new-feature-agent-profile.html" target="_blank">代理性能简要表</a>，但它有个限制是只能记录 Domino 相关对象方法的运行时间，比如 db.getView、view.getAllDocumentsByKey 等，对于原生 Lotusscript 的语句无法记录。</p>
+<p>这时我们就需要将代码打成各个片段，记录每个片段的运行时间以缩小范围、进而定位到性能瓶颈的几条语句。但是 Lotusscript 中的 Now 只能精确到秒，显然是不够用的。还好通过 <a href="http://www-01.ibm.com/support/knowledgecenter/SSVRGU_8.5.3/com.ibm.designer.domino.main.doc/LSAZ_GETTHREADINFO.html?lang=de" target="_blank">getThreadInfo</a> 我们可以获取到毫秒级的时间值，具体代码如下：</p>
+<blockquote><p>Dim startTic As Long<br />
+Dim seconds As Double</p>
+<p>startTic = Getthreadinfo(6)<br />
+seconds = (Getthreadinfo(6) &#8211; startTic) / Getthreadinfo(7)</p>
+<p>msgbox &#8220;Finished. The code ran for &#8221; &amp; seconds &amp; &#8221; seconds.&#8221;</p></blockquote>
+]]></content:encoded>
+							<wfw:commentRss>/articles/lotusscript-timing-log.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>webservice 保存时报&#8217;PortType class&#8217;未指定的错误</title>
+		<link>/articles/porttype-class-error-on-save-webservice.html</link>
+				<comments>/articles/porttype-class-error-on-save-webservice.html#respond</comments>
+				<pubDate>Fri, 11 Jul 2014 03:16:21 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[lotusscript]]></category>
+		<category><![CDATA[webservice]]></category>
+
+		<guid isPermaLink="false">/?p=645249</guid>
+				<description><![CDATA[在使用 Lotusscript 开发 webservice 的过程中，有时会提示以下错误信息： Web Ser [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在使用 Lotusscript 开发 webservice 的过程中，有时会提示以下错误信息：</p>
+<blockquote><p>Web Service 已经保存，但是无效。: Please specify which class exposes your web service interface(s), using the &#8216;PortType class&#8217; field of the Web Service properties panel.</p></blockquote>
+<p>按照提示排查，发现在属性框中&#8217;PortType class&#8217;已经指定了对应的类名。既然不是这里的问题，那只能回头看代码了：</p>
+<blockquote><p>Class Test<br />
+Sub printDoc(doc As NotesDocument)</p>
+<p>End Sub<br />
+End Class</p></blockquote>
+<p>代码足够简单：仅有一个空白方法的 Class。</p>
+<p>这个方法没有声明权限，按帮助中说的默认是 Public。那么此方法就会暴露到 WSDL 中，可以通过 webservice 调用。</p>
+<p>问题出来了：通过 webservice 调用时如何能传进来一个 NotesDocument 对象呢？这显然是不可能的。赶紧把方法改成 Private 或者把 doc 参数改为 String 类型，问题就解决了。</p>
+<p>总结：暴露给 webservice 的方法/函数，不能以 Domino 对象作为参数。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/porttype-class-error-on-save-webservice.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>在 NSD 中查看 LotusScript 的调用堆栈</title>
+		<link>/articles/examining-lotusscript-call-stack-in-nsd.html</link>
+				<comments>/articles/examining-lotusscript-call-stack-in-nsd.html#respond</comments>
+				<pubDate>Wed, 30 Nov 2011 08:57:33 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[lotusscript]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[nsd]]></category>
+
+		<guid isPermaLink="false">/?p=645093</guid>
+				<description><![CDATA[通过添加以下 Notes.ini 参数，可以抓取 LotusScript 的调用堆栈，帮助我们分析宕机等问题： [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>通过添加以下 Notes.ini 参数，可以抓取 LotusScript 的调用堆栈，帮助我们分析宕机等问题：</p>
+<blockquote><p><tt>DEBUG_LS_DUMP=1</tt></p></blockquote>
+<p>结果格式如下：</p>
+<blockquote><p><tt><strong>LotusScript Call Stack</strong></tt><br />
+<tt><strong>&lt;@@ ------ LotusScript Interpreter -&gt; Call Stack for [ </strong></tt><tt><strong>nlnotes:  0ef8:  1494</strong></tt><tt><strong>]  (Time 10:38:14) ------ @@&gt;</strong></tt></p>
+<p><tt><strong>[3] COUNTVIEWS</strong></tt><br />
+<tt><strong>[2] GETDBINFO @ line number 7</strong></tt><br />
+<tt><strong>[1] COUNTDOCUMENTS @ line number 12</strong></tt><br />
+<tt><strong>[0] INITIALIZE @ line number 2</strong></tt></p></blockquote>
+<p>请参考：<a href="https://www-304.ibm.com/support/docview.wss?uid=swg21499034" target="_blank">Examining LotusScript call stack after a crash or hang with NSD</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/examining-lotusscript-call-stack-in-nsd.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>针对分类视图查询数据</title>
+		<link>/articles/categorized-view-and-data-lookup.html</link>
+				<comments>/articles/categorized-view-and-data-lookup.html#comments</comments>
+				<pubDate>Mon, 17 May 2010 07:02:42 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[dblookup]]></category>
+		<category><![CDATA[formula]]></category>
+		<category><![CDATA[lotusscript]]></category>
+
+		<guid isPermaLink="false">/?p=644767</guid>
+				<description><![CDATA[在 Domino 应用开发中，有很多方法可以对数据进行查询。@dblookup 和 NotesView.get [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在 Domino 应用开发中，有很多方法可以对数据进行查询。@dblookup 和 NotesView.getAllDocumentsByKey 利用了预先建好的视图索引，所以在各种查询数据的方法中，它们的性能是最出色的，也是我们最常用的。</p>
+<p>最近在工作中遇到了一个于此相关的问题，请大家也注意：如果查询的视图具有多层分类，那么 @dblookup 和 getAllDocumentsByKey 只能返回第一个子分类下的结果。以如下数据为例：</p>
+<blockquote>
+<pre>分类1
+  分类1.1
+    文档1.1.1
+  分类2.2
+    文档1.1.2
+分类2</pre>
+</blockquote>
+<p>如果以“分类1”作为查询条件，则只有“文档1.1.1”会返回，同样符合条件的“文档1.1.2”则丢失。</p>
+<p>请参考：<a href="http://www-10.lotus.com/ldd/ddwiki.nsf/dx/dblookup-troubleshooting.htm" target="_blank">Troubleshooting @DbLookup, @DbColumn, GetAllDocumentsByKey</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/categorized-view-and-data-lookup.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>Domino 环境中的字符编码</title>
+		<link>/articles/character-encoding-in-domino.html</link>
+				<comments>/articles/character-encoding-in-domino.html#comments</comments>
+				<pubDate>Sun, 21 Mar 2010 08:08:26 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[charset]]></category>
+		<category><![CDATA[LMBCS]]></category>
+		<category><![CDATA[lotusscript]]></category>
+		<category><![CDATA[performance]]></category>
+		<category><![CDATA[Unicode]]></category>
+
+		<guid isPermaLink="false">/?p=644612</guid>
+				<description><![CDATA[大概在很早之前，我就知道在域中一个中文字符占三个字节，但是不知道其中的细节。最近在处理一个关于域内容超限的问题 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>大概在很早之前，我就知道在域中一个中文字符占三个字节，但是不知道其中的细节。最近在处理一个关于域内容超限的问题的时候，研究了一下字符编码，终于明白其中的原因。</p>
+<p>在 Domino 环境下开发时，我们接触的字符编码主要有三种：</p>
+<ul>
+<li>UTF-16：LotusScript 内部的字符编码，中文和英文都占两字节。</li>
+<li>LMBCS（Lotus Multibyte Character Set）：存到文档域中的值以及公式等使用，中文占三字节，英文占一字节。这是在 Unicode 标准推出之前，Lotus 为了解决多语言问题自己使用的编码方式。</li>
+<li>操作系统的编码方式：我们的 Domino 一般都跑在 GB2312 环境下，中文占两字节，英文占一字节。</li>
+</ul>
+<p>UTF-16 和 GB2312 就不多说了，网上介绍的文章非常多。这里着重说明一下 LMBCS。</p>
+<p>LMBCS 为了解决多语言问题，将字符分成了若干个组并将其分别编号，从 0x01 到 0x1F，其中 0x01 为 Latin-1（每个文字一字节），0x13 为简体中文（每个文字两字节）。然后每个字符都以自己的组编号开头，这样就实现了在一个字符串里面包含多种语言。例如“中文Test”以如下几个字节表示：</p>
+<blockquote><p><strong>13</strong> d6 d0 <strong>13</strong> ce c4 <strong>01</strong> 74 <strong>01</strong> 65 <strong>01</strong> 73 <strong>01</strong> 74</p></blockquote>
+<p>其中加粗的部分为组编号。很明显这种访问有个很大的问题：每个字符都要标识其组编号，大大的浪费了空间。所以有了改良方案：每个程序（application file）有个默认的组编号，如果一个字符的组编号和默认的相同，则可以忽略不写（我没有找到设置这个组编号的方法，测试过程中它总是 0x01）。于是在默认组编号为 0x01 的情况下，上面的内容变成了这样：</p>
+<blockquote><p><strong>13</strong> d6 d0 <strong>13</strong> ce c4<strong></strong> 74 65 73 74</p></blockquote>
+<p>这样就有了中文占三字节，英文占一字节的结论。有了上面的背景知识，我们可以得到以下结果：</p>
+<ul>
+<li>Len(&#8220;中文Test&#8221;) = 6，6 个字符</li>
+<li>Lenb(&#8220;中文Test&#8221;) = 12，在 LotusScript 中占用 6×2 个字节</li>
+<li>Lenbp(&#8220;中文Test&#8221;) = 8，按照操作系统的字符编码，占用 2×2+4 个字节</li>
+<li>值为&#8221;中文Test&#8221;的域大小为 10 （2×3+4）字节</li>
+</ul>
+<p>顺便一提，由于 LotusScript 采用的编码与 Domino 环境中其他地方不同，所以每次读写域值、print 语句都会进行转换，所以减少这种转换可以提升性能。比如：</p>
+<blockquote>
+<pre>for i=1 to 100
+    print i
+next i</pre>
+</blockquote>
+<p>进行了 100 此编码转换，而</p>
+<blockquote>
+<pre>strTemp = ""
+for i=1 to 100
+    i = strTemp &amp; i
+next i
+print strTemp</pre>
+</blockquote>
+<p>只进行了一次转换，所以性能上会有优势。</p>
+<p>请参考：<a href="http://www.lotusgeek.com/LotusGeek/LotusGeekBlog.nsf/d6plinks/ROLR-6M9RAX" target="_blank">Computing Strings @Length</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/character-encoding-in-domino.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+		<item>
+		<title>通过Lotusscript修改数据库主模板属性</title>
+		<link>/articles/using-lotusscript-modify-master-template-property.html</link>
+				<comments>/articles/using-lotusscript-modify-master-template-property.html#respond</comments>
+				<pubDate>Fri, 27 Jul 2007 08:02:29 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[lotusscript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e9%80%9a%e8%bf%87lotusscript%e4%bf%ae%e6%94%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e4%b8%bb%e6%a8%a1%e6%9d%bf%e5%b1%9e%e6%80%a7.html</guid>
+				<description><![CDATA[上次我们提到有很多数据库属性，是存储在 Database Icon 文档 $Flags 域里面的。最近有同事问 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>上次我们提到有很多数据库属性，是存储在 Database Icon 文档 $Flags 域里面的。最近有同事问我能否修改数据库的主模板的属性，我们翻翻之前的 Flag 列表，好像没有哦。实际上 Database Icon 文档中还有一些其他的域，存储了数据库另外的属性。这次我们就来看看 $Title 域。</p>
+<p>从名字上看，$Title 应该保存了数据库的标题。没错，标题确实是存在这个域里面的。不过呢，这里还放了一些其他的信息，包括数据库类别、主模板的属性、继承设计自哪个模板。所以我们通过修改这个域，就可以实现控制上述的四个属性了。数据具体的存储方式如下：</p>
+<blockquote><p>标题\n类别\n#1主模板名\n#2继承的模板名</p></blockquote>
+<p>我们可以看到，系统是用“\n”（也就是10号字符）来分隔各个部分的， 我们只要照着样子写回去就好了。但是在实验中我发现，如果用LS的 chr(10) 的话，保存后会变成另外的字符，而不是“\n”。原因可能是由于 LS 的 Unicode 编码和 Notes 的 LMBCS 转化造成的。所以我们改用公式语言的 @Char(10) 就可以了。最后要说明的是，以上四部分信息没有的部分直接略过就可以了。下面部分代码仅供参考：</p>
+<blockquote><p>Set doc = db.GetDocumentByID(&#8220;FFFF0010&#8243;) &#8216;获得 DB Icon 文档<br />
+sTitle = |&#8221;title&#8221; +@char(10) + &#8220;#1| + strtemplatename + |&#8221; | &#8216;标题和模板信息<br />
+r = Evaluate(|@SetField( &#8220;$TITLE&#8221; ; | &amp; sTitle &amp; | )|,doc) &#8216;写入 $Title 域<br />
+Call doc.Save(True,True)</p></blockquote>
+]]></content:encoded>
+							<wfw:commentRss>/articles/using-lotusscript-modify-master-template-property.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>通过LotusScript编程修改数据库的属性</title>
+		<link>/articles/modify-database-properties-using-lotusscript.html</link>
+				<comments>/articles/modify-database-properties-using-lotusscript.html#comments</comments>
+				<pubDate>Mon, 16 Jul 2007 11:28:17 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[capi]]></category>
+		<category><![CDATA[lotusscript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e9%80%9a%e8%bf%87lotusscript%e7%bc%96%e7%a8%8b%e4%bf%ae%e6%94%b9%e6%95%b0%e6%8d%ae%e5%ba%93%e7%9a%84%e5%b1%9e%e6%80%a7.html</guid>
+				<description><![CDATA[上一次我们提到，Database icon 文档里面包含很多数据库属性信息。实际上它们都保存在 $Flags  [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>上一次我们提到，Database icon 文档里面包含很多数据库属性信息。实际上它们都保存在 $Flags 域中，而这个域中每个字符都代表一个属性，列表如下（来源于 Notes C API 中的 stdnames.h 文件）：</p>
+<blockquote><p>Flag  =  Meaning / Action<br />
+4  =  Allow Soft Deletes<br />
+Z  =  Enable LZ1 Compression<br />
+f  =  Do Not Allow Stored Forms<br />
+z  =  Do Not Maintain Unread Marks<br />
+h  =  Mark Parent Document on Reply or Forward<br />
+J  =  Use JavaScript when generating Web Pages<br />
+F  =  Launch Designated Frameset<br />
+n  =  Never Show Policy (ie. Never show About Database when first opened)<br />
+7  =  Large UNK Table (ie. allow more fields in database)<br />
+6  =  Allow Design Locking<br />
+K  =  Restore as lasted viewed by user<br />
+c  =  Show About Database if Modified<br />
+Q  =  Replicate Unread Marks to Clustered Servers Only<br />
+U  =  Replicate Unread Marks to All Servers (appears with Q set)<br />
+2  =  Optimise Document Table Bitmap<br />
+3  =  Maintain LastAccessed Property<br />
+1  =  Don&#8217;t Support Specialised Response Hierarchy<br />
+M  =  Multilingual Database<br />
+X  =  Web Access Requires SSL Connection<br />
+8  =  Web Access Don&#8217;t Allow URL Open<br />
+i  =  Display Images After Loading<br />
+5  =  Allow Document Locking<br />
+g  =  Database Type = Library<br />
+j  =  Database Type = Personal Journal<br />
+b  =  Database Type = Domino Directory<br />
+B  =  Database Type = Directory Catalog<br />
+m  =  Database Type = Multi DB Search<br />
+u  =  Database Type = Portfolio<br />
+A  =  Database Type = Mailbox<br />
+r  =  Database Type = Mailfile<br />
+p  =  Always Show About Database Document (ie. When Opened in the Client Property)<br />
+l  =  Launch Designated Navigator<br />
+s  =  Launch Designated Navigator in Own Window (used in conjuction with l above)<br />
+a  =  Launch First Attachment in About Database Document<br />
+d  =  Launch First DocLink in About Database Document<br />
+P  =  Web Launch = Show About Database Document<br />
+S  =  Web Launch = Open Designated Frameset<br />
+E  =  Web Launch = Open Designated Page<br />
+L  =  Web Launch = Open Designated Navigator in its Own Window<br />
+D  =  Web Launch = Open First DocLink in About Database Document<br />
+T  =  Web Launch = Open Designated DocLink<br />
+V  =  Web Launch = Open First Document in Designated View</p></blockquote>
+<p>通过向这个域中增加（或除去）字符标记，即可设置（或取消）相应的属性。下面是一段具体的代码：</p>
+<blockquote><p>Set doc = db.GetDocumentByID(&#8220;FFFF0010&#8221;)     &#8216;获得 Icon 文档<br />
+doc.~$Flags = doc.~$Flags(0) &amp; &#8220;x&#8221;                        &#8216;x代表需要增加的属性<br />
+doc.Save (True, False)</p></blockquote>
+]]></content:encoded>
+							<wfw:commentRss>/articles/modify-database-properties-using-lotusscript.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>获得数据库中的特殊设计元素</title>
+		<link>/articles/get-special-design-element.html</link>
+				<comments>/articles/get-special-design-element.html#comments</comments>
+				<pubDate>Wed, 11 Jul 2007 12:59:05 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[capi]]></category>
+		<category><![CDATA[lotusscript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e8%8e%b7%e5%be%97%e6%95%b0%e6%8d%ae%e5%ba%93%e4%b8%ad%e7%9a%84%e7%89%b9%e6%ae%8a%e8%ae%be%e8%ae%a1%e5%85%83%e7%b4%a0.html</guid>
+				<description><![CDATA[数据库中的一些特殊元素，他们有着固定的 Note ID。如下表： Note ID Database Eleme [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>数据库中的一些特殊元素，他们有着固定的 Note ID。如下表：</p>
+<table border="1" cellpadding="8" cellspacing="0">
+<tr>
+<th>Note ID</th>
+<th>Database Element</th>
+</tr>
+<tr>
+<td>FFFF0002</td>
+<td>&#8220;About This Database&#8221; document</td>
+</tr>
+<tr>
+<td>FFFF0004</td>
+<td>Default form</td>
+</tr>
+<tr>
+<td>FFFF0008</td>
+<td>Default view</td>
+</tr>
+<tr>
+<td>FFFF0010</td>
+<td>Database icon</td>
+</tr>
+<tr>
+<td>FFFF0020</td>
+<td>Database Design Collection (view)</td>
+</tr>
+<tr>
+<td>FFFF0040</td>
+<td>Database ACL</td>
+</tr>
+<tr>
+<td>FFFF0100</td>
+<td>&#8220;Using This Database&#8221; document</td>
+</tr>
+<tr>
+<td>FFFF0800</td>
+<td>Replication Formul</td>
+</tr>
+</table>
+<p>比如通过 db.GetDocumentByID(&#8220;FFFF0010&#8221;) 即可获得 Database icon 文档。而这个文档中保存了很多数据库属性信息，也就是说我们可以通过编程来修改这些数据库属性。是不是有点意思了呢？</p>
+<p>请参考 <a href="http://www.nsftools.com/tips/NotesTips.htm#defaultelements">Getting Default Elements in the Database</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/get-special-design-element.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>创建显示特殊文档的视图：$FormulaClass的奥秘</title>
+		<link>/articles/fun-about-formulaclass.html</link>
+				<comments>/articles/fun-about-formulaclass.html#respond</comments>
+				<pubDate>Wed, 11 Jul 2007 12:52:18 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[capi]]></category>
+		<category><![CDATA[lotusscript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e5%88%9b%e5%bb%ba%e6%98%be%e7%a4%ba%e7%89%b9%e6%ae%8a%e6%96%87%e6%a1%a3%e7%9a%84%e8%a7%86%e5%9b%be%ef%bc%9aformulaclass%e7%9a%84%e5%a5%a5%e7%a7%98.html</guid>
+				<description><![CDATA[一般情况下，视图都是用来显示文档的。实际上通过更改视图 $FormulaClass 的值，我们可以让它显示其他 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>一般情况下，视图都是用来显示文档的。实际上通过更改视图 $FormulaClass 的值，我们可以让它显示其他的内容。参照下表：</p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr>
+<th>Note Class Type</th>
+<th>Hex Value</th>
+<th>Decimal Value</th>
+<th>Comments</th>
+</tr>
+<tr>
+<td>NOTE_CLASS_DOCUMENT</td>
+<td>0x0001</td>
+<td>1</td>
+<td>document note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_INFO</td>
+<td>0x0002</td>
+<td>2</td>
+<td>notefile info (help-about) note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_FORM</td>
+<td>0x0004</td>
+<td>4</td>
+<td>form note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_VIEW</td>
+<td>0x0008</td>
+<td>8</td>
+<td>view note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_ICON</td>
+<td>0x0010</td>
+<td>16</td>
+<td>icon note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_DESIGN</td>
+<td>0x0020</td>
+<td>32</td>
+<td>design note collection</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_ACL</td>
+<td>0x0040</td>
+<td>64</td>
+<td>acl note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_HELP_INDEX</td>
+<td>0x0080</td>
+<td>128</td>
+<td>Notes product help index note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_HELP</td>
+<td>0x0100</td>
+<td>256</td>
+<td>designer&#8217;s help note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_FILTER</td>
+<td>0x0200</td>
+<td>512</td>
+<td>filter note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_FIELD</td>
+<td>0x0400</td>
+<td>1024</td>
+<td>field note</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_REPLFORMULA</td>
+<td>0x0800</td>
+<td>2048</td>
+<td>replication formula</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_PRIVATE</td>
+<td>0x1000</td>
+<td>4096</td>
+<td>Private design note, use $PrivateDesign view to locate/classify</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_DEFAULT</td>
+<td>0x8000</td>
+<td>32,768</td>
+<td>MODIFIER &#8211; default version of each</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_ALL</td>
+<td>0x7fff</td>
+<td>32,767</td>
+<td>all note types</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_ALLNONDATA</td>
+<td>0x7ffe</td>
+<td>32,766</td>
+<td>all non-data notes</td>
+</tr>
+<tr>
+<td>NOTE_CLASS_NONE</td>
+<td>0x0000</td>
+<td>0</td>
+<td>no notes</td>
+</tr>
+</table>
+<p>比如我们一般的视图，$FormulaClass 的值为1，所以显示一般文档 ；如果是4，则显示所有表单设计元素（实际上，每个设计元素都可以说是一种特殊的文档）。另外还可以这样用：如果将 $FormulaClass 的值指定为 1548（4 + 8 + 512 + 1024），则可以同时显示表单、视图等几种设计元素。</p>
+<p>修改 $FormulaClass 域的方法，可以通过类似如下的代码实现：</p>
+<blockquote><p>Set view= db.GetView(&#8220;FormView&#8221;)<br />
+Set doc = db.GetDocumentByUNID(view.UniversalID)<br />
+Call doc.ReplaceItemValue(&#8220;$FormulaClass&#8221;, &#8220;4&#8221;)</p></blockquote>
+<p>至于这样的视图有什么用，就要看自己的想像力了。比如创建一个包含所有设计元素的视图，就可以通过名字来查找设计元素文档了。</p>
+<p>请参考 <a href="http://www.nsftools.com/tips/NotesTips.htm#formulaclass" target="_blank">Modifying $FormulaClass in Views</a>、<a href="http://www.dominopower.com/issuesprint/issue199908/design.html" target="_blank">Fun with $FormulaClass</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/fun-about-formulaclass.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>使用LotusScript远程调试器的几个问题</title>
+		<link>/articles/lotusscript-remote-debugger.html</link>
+				<comments>/articles/lotusscript-remote-debugger.html#respond</comments>
+				<pubDate>Tue, 19 Sep 2006 02:49:54 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[lotusscript]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e4%bd%bf%e7%94%a8lotusscript%e8%bf%9c%e7%a8%8b%e8%b0%83%e8%af%95%e5%99%a8%e7%9a%84%e5%87%a0%e4%b8%aa%e9%97%ae%e9%a2%98.html</guid>
+				<description><![CDATA[除了按照帮助文档的步骤做好各种配置之外，还有以下几个要注意的地方： 全限定的Internet 主机名这个域填写 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>除了按照帮助文档的步骤做好各种配置之外，还有以下几个要注意的地方：</p>
+<ul>
+<li>全限定的Internet 主机名这个域填写的域名在服务器端必须能解析为IP，否则无法连接</li>
+<li>想要调试的代理必须在根目录下，否则找不到需要调试的代理（这个应该是一个Bug，不过目前可以采用在根目录下建一个相同设计的库的方法，来解决这个问题）</li>
+<li>远程调试仅对定时代理有效，想要调试Web代理，可以将其设定为定时代理，日程选择从不执行即可</li>
+</ul>
+]]></content:encoded>
+							<wfw:commentRss>/articles/lotusscript-remote-debugger.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

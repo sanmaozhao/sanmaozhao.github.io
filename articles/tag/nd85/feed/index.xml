@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nd85 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/nd85/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 01 Jul 2010 09:05:23 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>通过 Notes.ini 参数禁用 xPage 功能</title>
+		<link>/articles/there-a-notes-ini-parameter-to-disable-xpages.html</link>
+				<comments>/articles/there-a-notes-ini-parameter-to-disable-xpages.html#comments</comments>
+				<pubDate>Thu, 01 Jul 2010 09:05:23 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd85]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[xpage]]></category>
+
+		<guid isPermaLink="false">/?p=644794</guid>
+				<description><![CDATA[Domino 8.5 版引入了新的设计元素：xPage。我承认这是个很强大的东西，但在很多生产服务器我们还没有 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>Domino 8.5 版引入了新的设计元素：xPage。我承认这是个很强大的东西，但在很多生产服务器我们还没有用到它。而我向来有关闭这种不使用的功能的洁癖，所以通过以下参数可以将其禁用：</p>
+<blockquote><p>INOTESDISABLEXPAGECMD=1</p></blockquote>
+<p>设置参数后重启 HTTP 服务即可生效。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/there-a-notes-ini-parameter-to-disable-xpages.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>ND 8.5 Beta 试用感受</title>
+		<link>/articles/nd85beta-new-feature.html</link>
+				<comments>/articles/nd85beta-new-feature.html#respond</comments>
+				<pubDate>Mon, 30 Jun 2008 08:27:03 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd85]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/nd85beta-new-feature.html</guid>
+				<description><![CDATA[试用了一段时间，印象比较深刻的有两点： 一是服务器方面引入了 DAOS，由以前的重复文件存储多份改为只存一份， [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>试用了一段时间，印象比较深刻的有两点：</p>
+<p>一是服务器方面引入了 DAOS，由以前的重复文件存储多份改为只存一份，可以在相当大的程度上减少磁盘的占用。</p>
+<p>二是新的设计元素 xPage：</p>
+<ul>
+<li>以 JSF 为基础设计的，提供了一种全新的 web 页面设计方式</li>
+<li>内置了很多 web2.0 的要素，比如 ajax 部分刷新、输入建议等等</li>
+<li>编程语言采用了 javascript，这对于 web 开发者来说是件好事，可以继续发挥自己的特长</li>
+<li>通过绑定 domino 表单、视图数据源来实现快速开发</li>
+<li>可以实现很多以前不好实现的功能：一个页面嵌入多个视图、联合显示多个视图的数据等</li>
+</ul>
+<p>目前 xPage 的文档还很少，大家的认识也还不太完善，相信等正式版发布后会好很多的。我个人蛮看好这个东西的，最起码设计 web 界面的时候多了一种选择。不过头疼的是如何利用现有的大量 Lotusscript 代理？如果把这么多业务逻辑重写一遍的话可就要死人了。让我们来期待 IBM 给我们怎样的一个答案吧。</p>
+<p><a href="http://www.jmackey.net/" target="_blank">这里</a>有一些很好的 xPage 的例子，推荐大家看看。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/nd85beta-new-feature.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Lotus Symphony 1.0 &#038; Lotus Notes/Domino 8.5 beta</title>
+		<link>/articles/lotus-symphony-10-lotus-notesdomino-85-beta.html</link>
+				<comments>/articles/lotus-symphony-10-lotus-notesdomino-85-beta.html#respond</comments>
+				<pubDate>Fri, 30 May 2008 06:13:57 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd85]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/lotus-symphony-10-lotus-notesdomino-85-beta.html</guid>
+				<description><![CDATA[双响炮，具体的内容等试用后再说。 Lotus Symphony 1.0 , Release Notes Lot [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>双响炮，具体的内容等试用后再说。</p>
+<p><a href="http://symphony.lotus.com/software/lotus/symphony/home.jspa" target="_blank">Lotus Symphony 1.0</a> , <a href="http://symphony.lotus.com/software/lotus/symphony/releasenotes.jspa" target="_blank">Release Notes</a></p>
+<p><a href="http://www-10.lotus.com/ldd/nd85forum.nsf/DateAllThreadedWeb/a6a60b2adfabe227852574490072d7a5?OpenDocument" target="_blank">Lotus Notes/Domino 8.5 beta</a> , <a href="http://www-10.lotus.com/ldd/nd85forum.nsf/7756aedc25e6d81285256324005ac76c/0efc82dac98270ff852574580060a1ba/$FILE/readme_85_beta.pdf" target="_blank">Release Notes</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/lotus-symphony-10-lotus-notesdomino-85-beta.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Lotus Notes/Domino 8.5 Beta 即将发布</title>
+		<link>/articles/lotus-notesdomino-85-beta-coming-soon.html</link>
+				<comments>/articles/lotus-notesdomino-85-beta-coming-soon.html#respond</comments>
+				<pubDate>Thu, 29 May 2008 06:59:44 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd85]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/lotus-notesdomino-85-beta-coming-soon.html</guid>
+				<description><![CDATA[Lotus Notes/Domino 8.5 Beta 这两周之内就会发布，目前还没有太多的相关信息，只是确定 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>Lotus Notes/Domino 8.5 Beta 这两周之内就会发布，目前还没有太多的相关信息，只是确定 Designer 将会迁移到 Eclipse 平台。这里有两张图：</p>
+<p><img src="http://pic.yupoo.com/sanmao84/464565a1c7a9/jalmndhl.jpg" height="367" width="256" /></p>
+<p>第一张是设计元素的导航菜单，可以看到增加了一些设计元素，如之前提到的 XPage 等。</p>
+<p><img src="http://pic.yupoo.com/sanmao84/189125a1c7aa/p5yby46y.jpg" /></p>
+<p>第二张是 Lotusscript 的编辑界面，可以看到采用了 Eclipse 的编辑器后，感觉会改善不少。说实话之前 Designer 的编辑器真的是不太好用，撤销容易出错、函数方法的上下文提示不够细致等等，希望这次会有所改善。仔细想想每次版本更新，服务器和客户机都有大票的改进，可是 Designer 已经很久没动过了，是该动动手术了。</p>
+<p>图片来自： <a href="http://www.zarazaga.net/mangelcalvo/blog/home.nsf/dx/28052008191827MANNB5.htm" target="_blank">Lotus Designer 8.5</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/lotus-notesdomino-85-beta-coming-soon.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>基于 Eclipse 平台的 Domino Designer 8.5</title>
+		<link>/articles/domino-designer-in-eclipse.html</link>
+				<comments>/articles/domino-designer-in-eclipse.html#respond</comments>
+				<pubDate>Thu, 24 Jan 2008 03:19:07 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[eclipse]]></category>
+		<category><![CDATA[nd85]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/domino-designer-in-eclipse.html</guid>
+				<description><![CDATA[继 Notes 8 后，Domino Designer 8.5 也转向了 Eclipse 平台，预计于今年下半 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>继 Notes 8 后，Domino Designer 8.5 也转向了 Eclipse 平台，预计于今年下半年发布。转移到 Eclipse 平台将会有如下的优势：</p>
+<ul>
+<li>可以使用 Eclipse 内置的 CSS、HTML、XML 编辑器</li>
+<li>带来了移植到 Linux、Mac 等操作系统的可能性</li>
+<li>更强大的调试功能</li>
+</ul>
+<p>除此之外，8.5 版还引入了一些新特性，都是方便开发 Web 2.0 应用，以及将传统的应用转化为 Web 2.0 应用：</p>
+<ul>
+<li>整合 Dojo Toolkit</li>
+<li>新的设计元素：xPage，它是针对 Domino 的 JSF 扩展</li>
+</ul>
+<p>相比于 Notes 8 的变化，Domino Designer 8.5 的革新与我的工作更加密切相关，我已经有点激动和兴奋了。</p>
+<p>关于 Domino Designer 8.5 的 PPT 我还没有拿到，稍后会补上。感兴趣的可以先看看这个关于 <a href="http://www.lotusgeek.com/SapphireOak/LotusGeekBlog.nsf/downloads/ROLR-7B4QCF" target="_blank">Dojo 及 xPage 的介绍</a>。最后放上一张实际图片供大家 YY（点击查看大图）。</p>
+<p><a href="http://pic.yupoo.com/sanmao84/738964fb7663/vudcgxj5.jpg" target="_blank"><img src="http://pic.yupoo.com/sanmao84/738964fb7663/medium.jpg" alt="Domino Designer in Eclipse" /></a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/domino-designer-in-eclipse.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Mac 下的 Notes 8.5 Beta 版已经发布</title>
+		<link>/articles/notes85-for-mac-beta-available.html</link>
+				<comments>/articles/notes85-for-mac-beta-available.html#comments</comments>
+				<pubDate>Mon, 21 Jan 2008 09:36:48 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd85]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/notes85-for-mac-beta-available.html</guid>
+				<description><![CDATA[目前只有 standard 版可以下载，basic 版还要等大概一周左右的时间，看起来不错。不过有点那啥的是： [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>目前只有 standard 版可以下载，basic 版还要等大概一周左右的时间，看起来不错。不过有点那啥的是：只能在 Intel CPU 的机器上运行，PPC 的没戏！</p>
+<p>参考链接：<a href="http://www-10.lotus.com/ldd/dwteamblog.nsf/dx/public-beta-of-lotus-notes-8.5----for-the-mac" target="_blank">Public beta of Lotus Notes 8.5 &#8212; for the Mac! </a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notes85-for-mac-beta-available.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+	</channel>
+</rss>

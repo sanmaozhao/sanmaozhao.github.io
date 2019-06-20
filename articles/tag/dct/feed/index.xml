@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>dct &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/dct/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 22 Jan 2009 01:43:50 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>服务器配置优化工具：Domino Configuration Tuner</title>
+		<link>/articles/domino-configuration-tuner.html</link>
+				<comments>/articles/domino-configuration-tuner.html#respond</comments>
+				<pubDate>Thu, 22 Jan 2009 01:43:50 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[dct]]></category>
+		<category><![CDATA[domino]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/domino-configuration-tuner.html</guid>
+				<description><![CDATA[这是一个随 Domino 8.5 一起推出的辅助工具，可以通过分析服务器文档、notes.ini 等配置表，为 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>这是一个随 Domino 8.5 一起推出的辅助工具，可以通过分析服务器文档、notes.ini 等配置表，为管理员提出存在的问题以及优化的建议。此工具支持 Domino 7 及以上版本，具体介绍请参考此文档：</p>
+<p style="width: 425px;text-align: left"><a title="Domino Configuration Tuner" href="http://www.slideshare.net/sanmao/domino-configuration-tuner-presentation?type=powerpoint">Domino Configuration Tuner</a></p>
+<p style="font-size: 11px;font-family: tahoma,arial;height: 26px;padding-top: 2px">View more <a href="http://www.slideshare.net/">presentations</a> or <a href="http://www.slideshare.net/upload?type=powerpoint">upload</a> your own. (tags: <a href="http://slideshare.net/tag/domino">domino</a> <a href="http://slideshare.net/tag/dct">dct</a>)</p>
+<p style="font-size: 11px;font-family: tahoma,arial;height: 26px;padding-top: 2px">参考链接：<a href="http://www-10.lotus.com/ldd/dominowiki.nsf/dx/domino-configuration-tuner" target="_blank">Domino Configuration Tuner ( Domino Wiki )</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/domino-configuration-tuner.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

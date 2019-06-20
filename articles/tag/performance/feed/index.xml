@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>performance &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/performance/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Fri, 12 Jun 2015 02:27:54 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>记录 Lotusscript 代码运行的时间</title>
+		<link>/articles/lotusscript-timing-log.html</link>
+				<comments>/articles/lotusscript-timing-log.html#comments</comments>
+				<pubDate>Fri, 12 Jun 2015 02:22:16 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[lotusscript]]></category>
+		<category><![CDATA[performance]]></category>
+
+		<guid isPermaLink="false">/?p=645302</guid>
+				<description><![CDATA[在分析 Lotusscript 性能时，我们经常需要找到耗时最长的瓶颈点，然后再进行针对性的优化。这时最常用的 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>在分析 Lotusscript 性能时，我们经常需要找到耗时最长的瓶颈点，然后再进行针对性的优化。这时最常用的工具是<a href="/articles/domino7-new-feature-agent-profile.html" target="_blank">代理性能简要表</a>，但它有个限制是只能记录 Domino 相关对象方法的运行时间，比如 db.getView、view.getAllDocumentsByKey 等，对于原生 Lotusscript 的语句无法记录。</p>
+<p>这时我们就需要将代码打成各个片段，记录每个片段的运行时间以缩小范围、进而定位到性能瓶颈的几条语句。但是 Lotusscript 中的 Now 只能精确到秒，显然是不够用的。还好通过 <a href="http://www-01.ibm.com/support/knowledgecenter/SSVRGU_8.5.3/com.ibm.designer.domino.main.doc/LSAZ_GETTHREADINFO.html?lang=de" target="_blank">getThreadInfo</a> 我们可以获取到毫秒级的时间值，具体代码如下：</p>
+<blockquote><p>Dim startTic As Long<br />
+Dim seconds As Double</p>
+<p>startTic = Getthreadinfo(6)<br />
+seconds = (Getthreadinfo(6) &#8211; startTic) / Getthreadinfo(7)</p>
+<p>msgbox &#8220;Finished. The code ran for &#8221; &amp; seconds &amp; &#8221; seconds.&#8221;</p></blockquote>
+]]></content:encoded>
+							<wfw:commentRss>/articles/lotusscript-timing-log.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>谨慎使用对 Notes 端隐藏的视图</title>
+		<link>/articles/be-careful-hide-in-notes-view.html</link>
+				<comments>/articles/be-careful-hide-in-notes-view.html#respond</comments>
+				<pubDate>Fri, 01 Apr 2011 09:39:32 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[performance]]></category>
+
+		<guid isPermaLink="false">/?p=644832</guid>
+				<description><![CDATA[Domino 中视图高效的一个关键就是，后台的更新任务会保持视图索引为最新，这样在打开视图时直接从索引中快速获 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>Domino 中视图高效的一个关键就是，后台的更新任务会保持视图索引为最新，这样在打开视图时直接从索引中快速获取内容。但是如果一个视图标识为对 Notes 端隐藏，那么更新任务则不会处理此视图。当从 web 端打开视图时，http 进程首先更新视图索引，再返回视图内容。如果视图比较大，这可能要花很长的时间，所以请注意避免这种情况的发生。</p>
+<p>请参考：<a href="http://www-01.ibm.com/support/docview.wss?uid=swg21238778" target="_blank">Updall does not index views flagged as hidden in design properties</a></p>
+<p>注：此条博客不是在开玩笑：）</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/be-careful-hide-in-notes-view.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>解决启用 Fiddler 后 IE 响应非常缓慢的问题</title>
+		<link>/articles/fiddler-slow-performance-on-ie.html</link>
+				<comments>/articles/fiddler-slow-performance-on-ie.html#respond</comments>
+				<pubDate>Tue, 14 Sep 2010 09:10:45 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Web技术]]></category>
+		<category><![CDATA[fiddler]]></category>
+		<category><![CDATA[performance]]></category>
+
+		<guid isPermaLink="false">/?p=644820</guid>
+				<description><![CDATA[Fiddler 是一个很好用的 HTTP 调试工具，我曾把它推荐给很多同事。 今天在一个同事的机器上启用了 F [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p><a href="http://www.fiddler2.com/fiddler2/" target="_blank">Fiddler</a> 是一个很好用的 HTTP 调试工具，我曾把它推荐给很多同事。</p>
+<p>今天在一个同事的机器上启用了 Fiddler 之后，IE 打开一个页面要十多秒的时间，不用 Fiddler 则没有问题。通过 Fiddler 的 Log 标签页，可以发现以下错误信息：</p>
+<blockquote><p>Fiddler.Network.AutoProxy&gt; AutoProxy Detection failed</p></blockquote>
+<p>最终发现更改以下设定可以解决问题：</p>
+<blockquote><p>IE Internet 选项 &gt; 连接标签页 &gt; 局域网选项 &gt; 取消选择“自动检测设置”项</p></blockquote>
+<p>以上方案供大家参考。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/fiddler-slow-performance-on-ie.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Domino 环境中的字符编码</title>
+		<link>/articles/character-encoding-in-domino.html</link>
+				<comments>/articles/character-encoding-in-domino.html#comments</comments>
+				<pubDate>Sun, 21 Mar 2010 08:08:26 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[charset]]></category>
+		<category><![CDATA[LMBCS]]></category>
+		<category><![CDATA[lotusscript]]></category>
+		<category><![CDATA[performance]]></category>
+		<category><![CDATA[Unicode]]></category>
+
+		<guid isPermaLink="false">/?p=644612</guid>
+				<description><![CDATA[大概在很早之前，我就知道在域中一个中文字符占三个字节，但是不知道其中的细节。最近在处理一个关于域内容超限的问题 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>大概在很早之前，我就知道在域中一个中文字符占三个字节，但是不知道其中的细节。最近在处理一个关于域内容超限的问题的时候，研究了一下字符编码，终于明白其中的原因。</p>
+<p>在 Domino 环境下开发时，我们接触的字符编码主要有三种：</p>
+<ul>
+<li>UTF-16：LotusScript 内部的字符编码，中文和英文都占两字节。</li>
+<li>LMBCS（Lotus Multibyte Character Set）：存到文档域中的值以及公式等使用，中文占三字节，英文占一字节。这是在 Unicode 标准推出之前，Lotus 为了解决多语言问题自己使用的编码方式。</li>
+<li>操作系统的编码方式：我们的 Domino 一般都跑在 GB2312 环境下，中文占两字节，英文占一字节。</li>
+</ul>
+<p>UTF-16 和 GB2312 就不多说了，网上介绍的文章非常多。这里着重说明一下 LMBCS。</p>
+<p>LMBCS 为了解决多语言问题，将字符分成了若干个组并将其分别编号，从 0x01 到 0x1F，其中 0x01 为 Latin-1（每个文字一字节），0x13 为简体中文（每个文字两字节）。然后每个字符都以自己的组编号开头，这样就实现了在一个字符串里面包含多种语言。例如“中文Test”以如下几个字节表示：</p>
+<blockquote><p><strong>13</strong> d6 d0 <strong>13</strong> ce c4 <strong>01</strong> 74 <strong>01</strong> 65 <strong>01</strong> 73 <strong>01</strong> 74</p></blockquote>
+<p>其中加粗的部分为组编号。很明显这种访问有个很大的问题：每个字符都要标识其组编号，大大的浪费了空间。所以有了改良方案：每个程序（application file）有个默认的组编号，如果一个字符的组编号和默认的相同，则可以忽略不写（我没有找到设置这个组编号的方法，测试过程中它总是 0x01）。于是在默认组编号为 0x01 的情况下，上面的内容变成了这样：</p>
+<blockquote><p><strong>13</strong> d6 d0 <strong>13</strong> ce c4<strong></strong> 74 65 73 74</p></blockquote>
+<p>这样就有了中文占三字节，英文占一字节的结论。有了上面的背景知识，我们可以得到以下结果：</p>
+<ul>
+<li>Len(&#8220;中文Test&#8221;) = 6，6 个字符</li>
+<li>Lenb(&#8220;中文Test&#8221;) = 12，在 LotusScript 中占用 6×2 个字节</li>
+<li>Lenbp(&#8220;中文Test&#8221;) = 8，按照操作系统的字符编码，占用 2×2+4 个字节</li>
+<li>值为&#8221;中文Test&#8221;的域大小为 10 （2×3+4）字节</li>
+</ul>
+<p>顺便一提，由于 LotusScript 采用的编码与 Domino 环境中其他地方不同，所以每次读写域值、print 语句都会进行转换，所以减少这种转换可以提升性能。比如：</p>
+<blockquote>
+<pre>for i=1 to 100
+    print i
+next i</pre>
+</blockquote>
+<p>进行了 100 此编码转换，而</p>
+<blockquote>
+<pre>strTemp = ""
+for i=1 to 100
+    i = strTemp &amp; i
+next i
+print strTemp</pre>
+</blockquote>
+<p>只进行了一次转换，所以性能上会有优势。</p>
+<p>请参考：<a href="http://www.lotusgeek.com/LotusGeek/LotusGeekBlog.nsf/d6plinks/ROLR-6M9RAX" target="_blank">Computing Strings @Length</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/character-encoding-in-domino.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+		<item>
+		<title>Domino 中的视图和索引器任务</title>
+		<link>/articles/view-and-indexer-task-in-domino.html</link>
+				<comments>/articles/view-and-indexer-task-in-domino.html#respond</comments>
+				<pubDate>Fri, 19 Mar 2010 09:46:55 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[indexer]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[performance]]></category>
+		<category><![CDATA[updall]]></category>
+		<category><![CDATA[update]]></category>
+
+		<guid isPermaLink="false">/?p=644606</guid>
+				<description><![CDATA[视图在 Domino 环境中起着重要的作用，它将文档按照定义好的方式组织起来，作为展现给用户的数据或者查找数据 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>视图在 Domino 环境中起着重要的作用，它将文档按照定义好的方式组织起来，作为展现给用户的数据或者查找数据的索引。而保持视图中的数据随时更新，是由一个重要的服务器任务：索引器（Indexer）完成的。</p>
+<p>索引器任务由 Update、Updall（Update all）两个任务组成，它们通过调用 Notes Index Facility (NIF) 和 Full-Text services，保持各视图和全文索引内容为最新。本文仅讨论视图和索引器任务相关的部分，全文索引相关内容并未涉及。</p>
+<p>Update 任务默认写在 Notes.ini 文件的 ServerTasks 参数中，所以它是随服务器一起启动的，持续不断地运行，检查其工作队列以查找需要更新的视图和文件夹。Update 保持两个工作队列：一个即时队列，一个延迟队列。其他服务器组件，例如路由器（Router）和复制器（Replicator），在数据库发生修改时将请求投递给 Update 任务。有些请求投递为延迟，有些请求投递为即时。此请求只包含数据库的完整路径，不包含视图名。延迟队列请求在被处理之前会保持 15 秒，以便在此时间内更新同一数据库的请求作为重复请求而被忽略，通过统一处理来提高性能。这个 15 秒的延迟时间可以通过 Update_Suppression_Time 参数修改。</p>
+<p>工作队列中记录了哪些数据库需要更新索引，那么数据库中的具体哪个视图需要更新呢？在数据库的头信息里面，记录了数据库的修改时间；同时在视图的索引信息里面也记录了上次更新索引的时间。通过比较两个时间就可以判断哪些视图需要更新。</p>
+<p>Updall 与 Update 类似，但它不是持续不断地运行，也不使用队列；而是根据需要运行。默认情况下，Updall 包括在 NOTES.INI 设置 ServerTasksAt2 中，因此它在每天凌晨 2 点运行。在运行 Updall 时您可以指定选项，但是如果不指定这些选项，则 Updall 会更新服务器上所有数据库中，需要更新的任何视图索引或全文搜索索引。为节省磁盘空间，Updall 还从数据库中清除删除存根（deletion stubs ），并删除符合条件视图的视图索引。</p>
+<p>在视图属性的高级页签中，有两个和索引相关的选项：刷新、废弃。先看看刷新选项：</p>
+<ul>
+<li>第一次使用后自动刷新<br />
+新建视图时的默认选项，也是一个功能和性能比较均衡的选项，无特殊情况下推荐使用。在用户第一次访问之前，索引器不会更新它，减小了无用视图对性能的影响。用户第一次访问时建立视图索引，所以这次访问会比较慢。不过一旦索引建立起来，索引器就会负责更新它，从而保证用户访问时无需等待。</li>
+<li>自动刷新<br />
+与上一个类似，只是不管用户是否使用过它。这个选项对于用户的体验是最好的，因为打开视图时一般来说无需等待就能查看最新的数据；但对服务器来说压力是最大的，因为即使视图从没有人使用过，依然需要更新它的索引。情谨慎使用。</li>
+<li>手工刷新<br />
+索引器不更新视图索引，完全依赖用户手工操作，对于服务器来说压力最小。用户打开视图时没有任何延迟，但是看到的数据可能不是最新的。此情况下视图左侧会显示刷新图标，提示用户数据并非最新的，用户点击图标或者按 F9 刷新数据。但对于浏览器应用来说，没有任何方式可以触发索引更新，所以无法使用。</li>
+<li>间隔 n 小时自动刷新<br />
+手工刷新和自动刷新的混合体。如果距上次更新索引的时间超过了 n 小时，与自动刷新类似；反之与手工刷新类似。用于可预知更新频率的视图，比如每天晚上定时任务会创建文档，则可以设定为 24 小时刷新一次。</li>
+</ul>
+<p>废弃选项：</p>
+<ul>
+<li>如果闲置 45 天<br />
+45 天内没有任何用户访问此视图，则删除其索引。可以通过 Default_Index_Lifetime_Days 参数修改。</li>
+<li>每次使用后<br />
+用了就删，下次用再重新创建。此方式对服务器压力会很大，一般很少用到，除非真的几乎是一次性使用。</li>
+<li>如果闲置 n 天<br />
+与第一个选项类似。</li>
+</ul>
+<p>请参考：<a href="http://www.duffbert.com/duffbert/blog.nsf/d6plinks/TDUF-5WG454" target="_blank">The Indexer and Its Functionality</a>，<a href="http://www-01.ibm.com/support/docview.wss?uid=swg27002624" target="_blank">The basics of Notes view index refreshing</a>，<a href="http://www-01.ibm.com/support/docview.wss?rs=0&amp;uid=swg21085954" target="_blank">Updall switches, Update and NIF &#8211; Notes indexing basics</a>，<a href="https://infocenters.lotus.com/domino/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_INDEXER_TASKS_UPDATE_AND_UPDALL_STEPS.html" target="_blank">Indexer tasks: Update and Updall</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/view-and-indexer-task-in-domino.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>读者域对视图性能的影响</title>
+		<link>/articles/reader-field-and-performance.html</link>
+				<comments>/articles/reader-field-and-performance.html#respond</comments>
+				<pubDate>Wed, 09 Aug 2006 01:20:42 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[performance]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e8%af%bb%e8%80%85%e5%9f%9f%e5%af%b9%e8%a7%86%e5%9b%be%e6%80%a7%e8%83%bd%e7%9a%84%e5%bd%b1%e5%93%8d.html</guid>
+				<description><![CDATA[带有读者域视图的性能和用户能看到的文档数有密切关系。当用户能看到所有文档时，它和一般视图的性能无异；当用户只能 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>带有读者域视图的性能和用户能看到的文档数有密切关系。当用户能看到所有文档时，它和一般视图的性能无异；当用户只能看到几条文档时，视图的性能最为糟糕。可以参考下图：<img src="/pic/viewperformance.jpg" /></p>
+<p><span id="more-142935"></span></p>
+<p>这种差异会导致最终用户很早就会发现某个视图的速度很慢，但是反映到管理员后，管理员发现速度很理想，直到他用最终用户的ID登录后才发现问题。</p>
+<p>产生这种令人不解的效果的原因如下：由于Domino事先不知道应该把哪些文档展现给用户，所以会在用户请求视图时逐条检查，以决定用户是否有权限查看。同样显示20条文档的情况下，管理员只需要检查20条文档就够了，但是对于只能看到几条文档的用户，可能会检查完所有文档，也没有20条文档可以显示。这就是看到文档越少，性能越差的原因。</p>
+<p>对于这种情况，一般采用以下两种办法解决：</p>
+<p>一、将视图按照读者域分类，然后显示单个分类。这几乎是最佳方案。这样用户对于自己分类下的文档，总是有权查看的，也就没有了性能问题。但是这种方法对于读者域是群组的情况无法处理（除非把群组展开成用户）。</p>
+<p>二、将视图作分类（但是不要选中不显示空分类）。这样每个分类下的文档就会减少很多，可以减轻性能问题。但是有的用户可能看到很多空的分类，这也许会让人很恼火。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/reader-field-and-performance.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

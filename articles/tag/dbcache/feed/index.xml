@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>dbcache &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/dbcache/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Mon, 15 Sep 2014 10:05:01 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>session.getDatabase 中文件名大小写的问题</title>
+		<link>/articles/session-getdatabase-case-sensitive.html</link>
+				<comments>/articles/session-getdatabase-case-sensitive.html#respond</comments>
+				<pubDate>Mon, 15 Sep 2014 10:03:17 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[Ubuntu/Linux]]></category>
+		<category><![CDATA[dbcache]]></category>
+
+		<guid isPermaLink="false">/?p=645259</guid>
+				<description><![CDATA[最近在项目上遇到了一个奇怪的问题：某个 XPages 页面偶发性报错，对数据库进行签名后问题消失，但过些时间就 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>最近在项目上遇到了一个奇怪的问题：某个 XPages 页面偶发性报错，对数据库进行签名后问题消失，但过些时间就又会出现。</p>
+<p>由于签名后问题消失，最开始排查时就认为是代码签名的问题，可能是服务器上有对应的模板，设计不定时的被 Design 任务刷新回来导致问题。但是通过各种方法找了很多遍，都确认库的设计没有被刷新过。</p>
+<p>最终通过检查代码的错误行发现，是一处 session.getDatabase 调用时数据库路径的大小写有问题，修改成与文件系统一致后问题消失。问题虽然解决了，但为什么同样的代码大部分情况下没问题，只有偶发性的报错呢？同样的代码在同为 Linux 平台的产品测试环境上，为什么就一切正常呢？</p>
+<p>带着这些疑问继续探索，终于找到了一些端倪。在这个<a href="http://www-01.ibm.com/support/docview.wss?uid=swg1LO58955" target="_blank">技术文档</a>中提到如下内容：</p>
+<blockquote><p>DB on server names AgentRunner.nsf. Notes the upper/lowercase.</p>
+<p>Steps to Reproduce:</p>
+<p>After a server restart or a &#8220;dbcache flush&#8221;:</p>
+<p>&gt; lo fixup agentrunner<br />
+&gt; 25.06.2002 09:58:00   Database fixup process started<br />
+25.06.2002 09:58:00   Unable to fixup database agentrunner: File<br />
+does not exist<br />
+25.06.2002 09:58:00   Database fixup process shutdown<br />
+&#8211;&gt; <span style="color: #ff0000;">does not work, because db is not in server cache</span></p>
+<p>lo fixup AgentRunner<br />
+&gt; 25.06.2002 09:58:07   Database fixup process started<br />
+25.06.2002 09:58:07   Performing consistency check on<br />
+AgentRunner.nsf&#8230;<br />
+25.06.2002 09:58:08   Completed consistency check on<br />
+AgentRunner.nsf<br />
+25.06.2002 09:58:08   Database fixup process shutdown<br />
+&#8211;&gt; <span style="color: #ff0000;">works &#8211; it`s exact-case</span></p>
+<p>&gt; lo fixup agentrunner<br />
+&gt; 25.06.2002 09:58:12   Database fixup process started<br />
+25.06.2002 09:58:12   Database fixup process shutdown<br />
+&#8211;&gt; <span style="color: #ff0000;">works now with lowercase, cause db is in cache</span></p>
+<p>dbcache flush<br />
+&gt; lo fixup agentrunner<br />
+&gt; 25.06.2002 09:58:21   Database fixup process started<br />
+25.06.2002 09:58:21   Unable to fixup database agentrunner: File<br />
+does not exist<br />
+25.06.2002 09:58:21   Database fixup process shutdown<br />
+&#8211;&gt; <span style="color: #ff0000;">db removed from cache &#8211;&gt; doesn`t work</span></p></blockquote>
+<p>整个过程总结如下：</p>
+<ul>
+<li>首先用大小写错误的文件名访问，报错</li>
+<li>再用大小写正确的文件名访问，正常</li>
+<li>再次用大小写错误的文件名访问，正常（因为上一条命令已经将数据库加入了 dbcache）</li>
+<li>清空 dbcache 后，再次用大小写错误的文件名访问，报错</li>
+</ul>
+<p>导致这个现象的根本原因就是：</p>
+<ul>
+<li>当数据库不在 dbcache 中时，Domino 使用数据库文件名通过文件系统获取数据库对象，此时是区分大小写的</li>
+<li>当数据库在 dbcache 中时，Domino 使用数据库文件名在 dbcache 中查找，找到后直接返回数据库对象，此过程无需访问文件系统，所以就不区分大小写</li>
+</ul>
+<p>分析到这里，最初的所有现象就能说通了：</p>
+<ul>
+<li>错误偶发，是因为大部分情况下此库都在 dbcache 中，可能只有服务器刚刚启动/缓存超限将此库移除时，才会报错</li>
+<li>签名后错误消失，是因为签名的过程肯定会把此库加入到 dbcache</li>
+</ul>
+<p>吃一堑长一智，既然这个问题让我纠结了这么久，那么如何才能避免此类问题发生呢？建议如下：</p>
+<ul>
+<li>数据库名始终使用全小写，代码中获取数据库时也用全小写</li>
+<li>*nux 测试环境下建议通过 NSF_DbCache_Disable=1 禁用缓存。虽然性能会差一些，但是能尽早的发现问题（千万别在生产服务器上这样做）</li>
+</ul>
+]]></content:encoded>
+							<wfw:commentRss>/articles/session-getdatabase-case-sensitive.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

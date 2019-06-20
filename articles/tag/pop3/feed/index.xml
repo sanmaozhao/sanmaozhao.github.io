@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>pop3 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/pop3/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 13 Aug 2008 06:41:03 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>两个常用 POP3 相关的 Notes.ini 参数</title>
+		<link>/articles/notesini-parameter-about-pop3.html</link>
+				<comments>/articles/notesini-parameter-about-pop3.html#respond</comments>
+				<pubDate>Wed, 13 Aug 2008 06:41:03 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[notes.ini]]></category>
+		<category><![CDATA[pop3]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/notesini-parameter-about-pop3.html</guid>
+				<description><![CDATA[POP3MarkRead=2 缺省地，通过 POP3 接收的邮件在 Notes 仍然是未读，添加此参数可以将  [&#8230;]]]></description>
+								<content:encoded><![CDATA[<ul>
+<li><a href="http://www-1.ibm.com/support/docview.wss?rs=463&amp;context=SSKTMJ&amp;context=SSKTWP&amp;q1=POP3MarkRead&amp;uid=swg21105142&amp;loc=en_US&amp;cs=utf-8&amp;lang=en" target="_blank">POP3MarkRead=2</a><br />
+缺省地，通过 POP3 接收的邮件在 Notes 仍然是未读，添加此参数可以将 POP3 接收的邮件标记为已读。</li>
+<li><a href="http://www-1.ibm.com/support/docview.wss?uid=csc18fd64402333111b348256ffd00065f15" target="_blank">POP3_READ_ALL=1</a><br />
+缺省地，一个 POP3 的客户端是不能接收在这个邮件库中已经被 Notes 客户端读过了的邮件。添加此参数可以让 POP3 的客户端 忽略邮件的已读或未读状态，以使得它能接收所有的邮件。需要重启 Domino 服务器生效。</li>
+</ul>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notesini-parameter-about-pop3.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

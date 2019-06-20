@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nd9 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/nd9/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 30 Oct 2013 02:17:28 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Notes/Domino 9.0.1 英文版已发布</title>
+		<link>/articles/notesdomino-901-available.html</link>
+				<comments>/articles/notesdomino-901-available.html#comments</comments>
+				<pubDate>Wed, 30 Oct 2013 02:17:28 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[未分类]]></category>
+		<category><![CDATA[nd9]]></category>
+
+		<guid isPermaLink="false">/?p=645224</guid>
+				<description><![CDATA[Notes/Domino 9.0.1 英文版已发布，这是一个bug修正版本，推荐更新。按照惯例中文版估计一个月 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>Notes/Domino 9.0.1 英文版已发布，这是一个bug修正版本，推荐更新。按照惯例中文版估计一个月后也就能发布了。</p>
+<p>完整的新功能列表请参考：<a href="http://www-10.lotus.com/ldd/fixlist.nsf/8d1c0550e6242b69852570c900549a74/de0329821264ceff85257c130056adda?OpenDocument" target="_blank">修复bug列表</a>、<a href="http://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/1/897/ENUS213-481/index.html&amp;lang=en&amp;request_locale=en" target="_blank">IBM US Announcement Letter</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notesdomino-901-available.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+		<item>
+		<title>Notes/Domino 9 中文版已发布</title>
+		<link>/articles/notes-domino-9-available.html</link>
+				<comments>/articles/notes-domino-9-available.html#respond</comments>
+				<pubDate>Fri, 03 May 2013 08:23:11 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[XPages]]></category>
+		<category><![CDATA[nd9]]></category>
+
+		<guid isPermaLink="false">/?p=645199</guid>
+				<description><![CDATA[Notes/Domino 9 中文版已经于四月底发布，以下是我比较看重的新功能： 服务器端 Javascrip [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>Notes/Domino 9 中文版已经于四月底发布，以下是我比较看重的新功能：</p>
+<h3>服务器端 Javascript 调试器</h3>
+<p>重大改进，可以像调试 Java 那样下断点、监控变量等。</p>
+<h3>Dojo 调试开关</h3>
+<p>打开后可以发送未压缩的 Dojo 代码到浏览器端，便于调试。这个太方便了！</p>
+<h3>Security Assertion Markup Language (SAML)</h3>
+<p>一种新的 SSO 方式，甚至可以跨域（原有的LtpaCookie方式无法跨域）。</p>
+<h3>64位版的 xLinux 服务器</h3>
+<p>终于支持64位了，以前 xLinux 只有32位，基本无法用作生产服务器。</p>
+<h3>Social 特性</h3>
+<p>Domino 9 名字后面多了一个 Social Edition，足见其重要性。主要是对 OpenSocial 标准的支持，包括嵌入式体验等。理念蛮好，但是大面积的实际应用估计还要一段时间。</p>
+<h3>XPages 编辑器增强</h3>
+<p>自动完成、为CC增加链接导航、悬停帮助等。</p>
+<h3>关闭应用程序选项</h3>
+<p>小改进，但是很实用。随时关闭不用的 NSF 应用程序是个好习惯。</p>
+<h3>Jar 设计元素</h3>
+<p>与上一版加入的 Java 设计元素类似，只能在 XPages 中使用。</p>
+<h3>日历 API</h3>
+<p>通过 NotesCalendar 对象操作日历对象。</p>
+<h3>整合的 XPages Extension Libary</h3>
+<p>整合了各种 extlib 控件、REST 服务等，不用再安装 Upgrade Pack 了。</p>
+<p>参考链接：<a href="http://www-12.lotus.com/ldd/doc/domino_notes/9.0/help9_admin.nsf/%28Help%29/what_new?OpenDocument" target="_blank">What&#8217;s new in IBM Domino 9.0 Social Edition?</a><br />
+<a href="http://www-10.lotus.com/ldd/ddwiki.nsf/xpDocViewer.xsp?lookupName=IBM+Domino+Designer+9+User+Guide#action=openDocument&amp;res_title=Whats_new_in_IBM_Domino_Designer_9.0_Social_Edition_dd9ug&amp;content=pdcontent" target="_blank">What&#8217;s new in IBM Domino Designer 9.0 Social Edition?</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/notes-domino-9-available.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

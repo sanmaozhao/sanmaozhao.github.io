@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>LMBCS &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/lmbcs/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Sun, 21 Mar 2010 08:08:26 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Domino 环境中的字符编码</title>
+		<link>/articles/character-encoding-in-domino.html</link>
+				<comments>/articles/character-encoding-in-domino.html#comments</comments>
+				<pubDate>Sun, 21 Mar 2010 08:08:26 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[charset]]></category>
+		<category><![CDATA[LMBCS]]></category>
+		<category><![CDATA[lotusscript]]></category>
+		<category><![CDATA[performance]]></category>
+		<category><![CDATA[Unicode]]></category>
+
+		<guid isPermaLink="false">/?p=644612</guid>
+				<description><![CDATA[大概在很早之前，我就知道在域中一个中文字符占三个字节，但是不知道其中的细节。最近在处理一个关于域内容超限的问题 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>大概在很早之前，我就知道在域中一个中文字符占三个字节，但是不知道其中的细节。最近在处理一个关于域内容超限的问题的时候，研究了一下字符编码，终于明白其中的原因。</p>
+<p>在 Domino 环境下开发时，我们接触的字符编码主要有三种：</p>
+<ul>
+<li>UTF-16：LotusScript 内部的字符编码，中文和英文都占两字节。</li>
+<li>LMBCS（Lotus Multibyte Character Set）：存到文档域中的值以及公式等使用，中文占三字节，英文占一字节。这是在 Unicode 标准推出之前，Lotus 为了解决多语言问题自己使用的编码方式。</li>
+<li>操作系统的编码方式：我们的 Domino 一般都跑在 GB2312 环境下，中文占两字节，英文占一字节。</li>
+</ul>
+<p>UTF-16 和 GB2312 就不多说了，网上介绍的文章非常多。这里着重说明一下 LMBCS。</p>
+<p>LMBCS 为了解决多语言问题，将字符分成了若干个组并将其分别编号，从 0x01 到 0x1F，其中 0x01 为 Latin-1（每个文字一字节），0x13 为简体中文（每个文字两字节）。然后每个字符都以自己的组编号开头，这样就实现了在一个字符串里面包含多种语言。例如“中文Test”以如下几个字节表示：</p>
+<blockquote><p><strong>13</strong> d6 d0 <strong>13</strong> ce c4 <strong>01</strong> 74 <strong>01</strong> 65 <strong>01</strong> 73 <strong>01</strong> 74</p></blockquote>
+<p>其中加粗的部分为组编号。很明显这种访问有个很大的问题：每个字符都要标识其组编号，大大的浪费了空间。所以有了改良方案：每个程序（application file）有个默认的组编号，如果一个字符的组编号和默认的相同，则可以忽略不写（我没有找到设置这个组编号的方法，测试过程中它总是 0x01）。于是在默认组编号为 0x01 的情况下，上面的内容变成了这样：</p>
+<blockquote><p><strong>13</strong> d6 d0 <strong>13</strong> ce c4<strong></strong> 74 65 73 74</p></blockquote>
+<p>这样就有了中文占三字节，英文占一字节的结论。有了上面的背景知识，我们可以得到以下结果：</p>
+<ul>
+<li>Len(&#8220;中文Test&#8221;) = 6，6 个字符</li>
+<li>Lenb(&#8220;中文Test&#8221;) = 12，在 LotusScript 中占用 6×2 个字节</li>
+<li>Lenbp(&#8220;中文Test&#8221;) = 8，按照操作系统的字符编码，占用 2×2+4 个字节</li>
+<li>值为&#8221;中文Test&#8221;的域大小为 10 （2×3+4）字节</li>
+</ul>
+<p>顺便一提，由于 LotusScript 采用的编码与 Domino 环境中其他地方不同，所以每次读写域值、print 语句都会进行转换，所以减少这种转换可以提升性能。比如：</p>
+<blockquote>
+<pre>for i=1 to 100
+    print i
+next i</pre>
+</blockquote>
+<p>进行了 100 此编码转换，而</p>
+<blockquote>
+<pre>strTemp = ""
+for i=1 to 100
+    i = strTemp &amp; i
+next i
+print strTemp</pre>
+</blockquote>
+<p>只进行了一次转换，所以性能上会有优势。</p>
+<p>请参考：<a href="http://www.lotusgeek.com/LotusGeek/LotusGeekBlog.nsf/d6plinks/ROLR-6M9RAX" target="_blank">Computing Strings @Length</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/character-encoding-in-domino.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+	</channel>
+</rss>

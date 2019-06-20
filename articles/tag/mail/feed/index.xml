@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>mail &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/mail/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Tue, 21 Oct 2008 01:49:00 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>发邮件时设置替代发送人</title>
+		<link>/articles/set-principal-in-mail.html</link>
+				<comments>/articles/set-principal-in-mail.html#respond</comments>
+				<pubDate>Tue, 21 Oct 2008 01:49:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[mail]]></category>
+		<category><![CDATA[sender]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/set-principal-in-mail.html</guid>
+				<description><![CDATA[用代码发送邮件的时候，发送者会显示为代理的签名者。这时可以通过修改 Principal 域的值来实现设置替代发 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>用代码发送邮件的时候，发送者会显示为代理的签名者。这时可以通过修改 Principal 域的值来实现设置替代发送人。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/set-principal-in-mail.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>限制 Domino 下的大规模邮件</title>
+		<link>/articles/limit-mass-mailing-on-domino.html</link>
+				<comments>/articles/limit-mass-mailing-on-domino.html#respond</comments>
+				<pubDate>Tue, 01 Jul 2008 09:42:42 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[mail]]></category>
+		<category><![CDATA[notes.ini]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/limit-mass-mailing-on-domino.html</guid>
+				<description><![CDATA[用户有时会将带有很大附件的用户发给一些群组，例如将一个 50M 的邮件发给 100 个人，那么最终就会在服务器 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>用户有时会将带有很大附件的用户发给一些群组，例如将一个 50M 的邮件发给 100 个人，那么最终就会在服务器上产生 5G 的文档。这种情形会给 Domino 带来很严重的性能问题。6.5.5/7.0.1 以上版本，服务器添加了 Notes.ini 参数控制大规模超大邮件：</p>
+<blockquote><p>限制(收件人数)*(邮件大小)的总量<br />
+RouterMaxEffectiveSize=xxx (KB)</p>
+<p>上述参数计算时，邮件大小不包括附件。推荐此参数与上面的配合使用<br />
+RouterMaxEffectiveSizeIncAttach=1</p></blockquote>
+<p>参考文档： <a href="http://www-1.ibm.com/support/docview.wss?rs=0&amp;q1=1227966&amp;uid=swg21227966" target="_blank">Mass mailing causes Router to run out of memory and enter a hang state</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/limit-mass-mailing-on-domino.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>如何个性化邮箱超限额提示的邮件内容？</title>
+		<link>/articles/customize-mail-quota-report.html</link>
+				<comments>/articles/customize-mail-quota-report.html#respond</comments>
+				<pubDate>Thu, 19 Apr 2007 08:22:13 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[mail]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/%e5%a6%82%e4%bd%95%e4%b8%aa%e6%80%a7%e5%8c%96%e9%82%ae%e7%ae%b1%e8%b6%85%e9%99%90%e9%a2%9d%e6%8f%90%e7%a4%ba%e7%9a%84%e9%82%ae%e4%bb%b6%e5%86%85%e5%ae%b9%ef%bc%9f.html</guid>
+				<description><![CDATA[修改邮件模板中的&#34;Quota Report&#34;表单即可。其他提示邮件（如发送失败）的内容也可 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>修改邮件模板中的&quot;Quota Report&quot;表单即可。其他提示邮件（如发送失败）的内容也可以同样的方式处理。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/customize-mail-quota-report.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

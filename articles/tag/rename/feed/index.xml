@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>rename &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/rename/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Mon, 28 Nov 2005 12:27:34 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Domino用户重命名方案</title>
+		<link>/articles/rename-user-in-domino.html</link>
+				<comments>/articles/rename-user-in-domino.html#respond</comments>
+				<pubDate>Mon, 28 Nov 2005 12:27:34 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[rename]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/domino%e7%94%a8%e6%88%b7%e9%87%8d%e5%91%bd%e5%90%8d%e6%96%b9%e6%a1%88.html</guid>
+				<description><![CDATA[前些天在项目中发现Domino的一个问题：名为“张 三”和“张_三”的两个用户在读者域中是混淆的，就是说“张  [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>前些天在项目中发现Domino的一个问题：名为“张 三”和“张_三”的两个用户在读者域中是混淆的，就是说“张 三”能看到读者域为“张_三”的文档，反过来也是。后悔不该让客户注册这种用户名的同时，客户还有另外一个要求，就是将带空格的用户重命名，并且要平滑的过渡，原来该谁看的文档还是给谁看，该谁处理的还是要谁处理。</p>
+<p>还好Domino提供的重命名用户功能比较好用，试了一下ACL/读者域/作者域/姓名域都能处理，算是不错了。不过有个问题，系统中有些存储姓名的域并不是姓名域而是普通文本域，这样的情况就没办法了。</p>
+<p>所以以后在写东西的时候要注意了：是姓名的地方就用姓名域、是数字的地方就用数字域，也省去了明明是数值却不能比较大小的尴尬。还有就是服务器名带下划线时SSO好像会失败，所以对于用户名、服务器名等，我们还是不要使用奇怪的字符，省得出了问题后悔莫及。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/rename-user-in-domino.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

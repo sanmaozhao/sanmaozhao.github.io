@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nd65 &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/nd65/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Wed, 31 Mar 2010 09:25:01 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>ND 6.5.x 服务即将到期 + ND 8.5.1FP2 发布</title>
+		<link>/articles/nd65-end-of-service-and-nd851fp2-release.html</link>
+				<comments>/articles/nd65-end-of-service-and-nd851fp2-release.html#respond</comments>
+				<pubDate>Wed, 31 Mar 2010 09:25:01 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[nd65]]></category>
+		<category><![CDATA[nd851]]></category>
+
+		<guid isPermaLink="false">/?p=644622</guid>
+				<description><![CDATA[ND 6.5.x 系列即将到期，这意味着 IBM 不再提供此版本的技术支持，同时也不会再有新的修补版本。还在使 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>ND 6.5.x 系列即将到期，这意味着 IBM 不再提供此版本的技术支持，同时也不会再有新的修补版本。还在使用此版本的，请抓紧时间升级。</p>
+<p>ND 8.5.1FP2 就无需多说，推荐安装。</p>
+<p>请参考：<a href="http://www-01.ibm.com/support/docview.wss?uid=swg21287154" target="_blank">End of Service (EOS) of Lotus Enterprise Integrator, Notes, and Domino 6.5.x</a>，<a href="http://www-10.lotus.com/ldd/r5fixlist.nsf/8d1c0550e6242b69852570c900549a74/52f9218288b51dcb852576c600741f72?OpenDocument" target="_blank">Lotus Notes/Domino 8.5.1 Fix Pack 2 Release Notice</a></p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/nd65-end-of-service-and-nd851fp2-release.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

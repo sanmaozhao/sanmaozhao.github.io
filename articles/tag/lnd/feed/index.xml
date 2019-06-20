@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>lnd &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/lnd/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Sat, 29 Sep 2007 08:03:37 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>Lotus Notes Diagnostic Tool</title>
+		<link>/articles/lotus-notes-diagnostic-tool.html</link>
+				<comments>/articles/lotus-notes-diagnostic-tool.html#comments</comments>
+				<pubDate>Sat, 29 Sep 2007 08:03:37 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[lnd]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/articles/lotus-notes-diagnostic-tool.html</guid>
+				<description><![CDATA[前些天 IBM 发布了一个工具：Lotus Notes Diagnostic Tool，用于分析 Domino [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>前些天 IBM 发布了一个工具：<a href="http://www-01.ibm.com/support/docview.wss?rs=899&amp;uid=swg24019151" target="_blank">Lotus Notes Diagnostic Tool</a>，用于分析 Domino 服务器宕机、挂起和性能问题。试用了一下，效果还不错，比直接看 NSD 什么的好多了。此工具在 Sandbox 上放出，所以是没有支持、保证这些的，大家看情况使用吧。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/lotus-notes-diagnostic-tool.html/feed</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+	</channel>
+</rss>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>column &#8211; Sanmao的幸福(?)生活</title>
+	<atom:link href="/articles/tag/column/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Domino/Notes技术、Ubuntu、TV Game</description>
+	<lastBuildDate>Thu, 17 Dec 2009 06:31:44 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+	<item>
+		<title>视图列公式返回值的大小限制</title>
+		<link>/articles/limit-for-view-column-formula.html</link>
+				<comments>/articles/limit-for-view-column-formula.html#comments</comments>
+				<pubDate>Thu, 17 Dec 2009 06:31:44 +0000</pubDate>
+		<dc:creator><![CDATA[Sanmao]]></dc:creator>
+				<category><![CDATA[Domino/Notes]]></category>
+		<category><![CDATA[column]]></category>
+		<category><![CDATA[formula]]></category>
+		<category><![CDATA[limit]]></category>
+
+		<guid isPermaLink="false">http://sanmao.yo2.cn/?p=644225</guid>
+				<description><![CDATA[昨天同事提交了一个奇怪的问题，两个选择条件一样的视图 A 和 B，却有一部分文档在 A 中莫名的丢失。 排查了 [&#8230;]]]></description>
+								<content:encoded><![CDATA[<p>昨天同事提交了一个奇怪的问题，两个选择条件一样的视图 A 和 B，却有一部分文档在 A 中莫名的丢失。</p>
+<p>排查了半天，试过新建视图，但只要把某个列加入进去，文档就开始丢失。这也把问题定位在这个列公式上：这一列包含了一个大列表的处理，其计算结果超过了 32k 限制，最终与此文档相关的视图条目就丢失了。</p>
+<p>所以在视图列中处理大列表时，请一定要小心谨慎。</p>
+]]></content:encoded>
+							<wfw:commentRss>/articles/limit-for-view-column-formula.html/feed</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+	</channel>
+</rss>
