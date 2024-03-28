@@ -1,0 +1,61 @@
+body{
+  margin :0
+  }
+  .cal{
+    min-height: 600px;
+  }
+  .vuecal__event{
+    overflow: visible;
+    margin: 1px 0;
+  }
+  .vuecal--short-events .vuecal__event-title{
+    overflow: visible;
+    text-align: center;
+    background-color: #157bfb;
+    color:white;
+    white-space: normal;
+    border-radius: 5px;
+    padding: 0;
+  }
+  .vuecal__event.myevent .vuecal__event-title{
+    background-color: #9c51c5;
+  }
+
+  .vuecal__event.film {
+    background-color: black;
+    padding: 2px 0;
+  }
+
+  .vuecal__event.film .vuecal__event-title{
+    background-image: linear-gradient(#555, #555);
+    border-radius: 0;
+    border-top: dotted white 3px;
+    border-bottom: dotted white 3px;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    padding: 2px 0;
+    line-height: 1.1;
+  }
+
+  .vuecal__event.s {
+    position: absolute;
+    top: 0;
+    left: 4px;
+    width: auto;
+    background: transparent;
+    font-size: 10px;
+  }
+  .vuecal__event.s::after {
+    content:"❤️";
+  }
+
+  .vuecal__cell-content{
+    margin: 0 -1px;
+  }
+  .vuecal__cell--out-of-scope .vuecal__cell-content{
+    display: none;
+  }
+  .vuecal__title > button {
+    font-size: 16px; 
+}

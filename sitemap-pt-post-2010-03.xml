@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/wp-content/plugins/google-sitemap-generator/sitemap.xsl"?><!-- sitemap-generator-url="http://www.arnebrachhold.de/" sitemap-generator-version="4.1.0" -->
+<!-- generated-on="2019年06月20日 2:03 am" -->
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">	<url>
+		<loc>/articles/nd65-end-of-service-and-nd851fp2-release.html</loc>
+		<lastmod>2010-03-31T09:25:01+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>/articles/character-encoding-in-domino.html</loc>
+		<lastmod>2010-03-21T08:08:26+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>/articles/view-and-indexer-task-in-domino.html</loc>
+		<lastmod>2010-03-19T09:46:55+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>/articles/take-care-json-feature-in-domino-702.html</loc>
+		<lastmod>2010-03-12T05:33:18+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>/articles/various-ids-in-domino.html</loc>
+		<lastmod>2010-03-05T08:29:04+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>/articles/modified-form-field-value-when-document-is-save-from-the-web.html</loc>
+		<lastmod>2014-10-10T06:54:54+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+	<url>
+		<loc>/articles/change-replica-id.html</loc>
+		<lastmod>2010-03-02T07:30:35+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+</urlset><!-- Request ID: 3c21251f7ccb5b89fa31e207a4e1a04e; Queries for sitemap: 4; Total queries: 19; Seconds: 0.01; Memory for sitemap: 0.25MB; Total memory: 43.25MB -->

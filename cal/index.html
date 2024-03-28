@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>L & M</title>
+    <script src="https://unpkg.zhimg.com/vue@legacy"></script>
+    <script src="https://unpkg.zhimg.com/vue-cal@legacy"></script>
+    <script src="https://unpkg.zhimg.com/vue2-touch-events"></script>
+    <script src="https://unpkg.zhimg.com/crypto-js@4.2.0/crypto-js.js"></script>
+    <link href="https://unpkg.zhimg.com/vue-cal@legacy/dist/vuecal.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <vue-cal
+        ref="cal"
+        v-touch:swipe="swipeHandler"
+        class="cal"
+        hide-view-selector
+        :locale="'zh-cn'"
+        :selected-date="selectedDate"
+        :dblclick-to-navigate="false"
+        active-view="month"
+       
+        events-on-month-view="short"
+        :events="events"
+       >
+      </vue-cal>
+    </div>
+    <script src="encrypted-data.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
