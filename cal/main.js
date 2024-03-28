@@ -23,6 +23,7 @@ var app = new Vue({
   components: { VueCal: vuecal },
   data: {
     selectedDate:events[events.length-1].start,
+    minDate:events[0].start,
     events:events.map(e=>{
       if(!e.class) e.class="food"
       e.end = e.start

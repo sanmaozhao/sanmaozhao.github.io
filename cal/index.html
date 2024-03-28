@@ -21,9 +21,10 @@
         hide-view-selector
         :locale="'zh-cn'"
         :selected-date="selectedDate"
-        :dblclick-to-navigate="false"
+        :min-date="minDate"
+        :max-date="selectedDate"
         active-view="month"
-       
+        :disable-views="['week', 'day']"
         events-on-month-view="short"
         :events="events"
        >
