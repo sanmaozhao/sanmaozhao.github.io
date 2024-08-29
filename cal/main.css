@@ -71,6 +71,11 @@ body{
 .vuecal__cell--has-events:has(.travel) .vuecal__cell-date{
   display: none;
 }
+
+.vuecal__cell--has-events:has(.travel) .vuecal__cell-content{
+  margin: 10px 0;
+}
+
 .vuecal__cell--has-events:has(.travel)+.vuecal__cell--has-events:has(.travel){
   background-position-x: -100%;
 }.vuecal__cell--has-events:has(.travel)+.vuecal__cell--has-events:has(.travel)+.vuecal__cell--has-events:has(.travel){
