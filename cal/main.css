@@ -93,4 +93,30 @@ body{
   text-shadow: 1px -1px 0 #9c51c5, 1px -1px 0 #9c51c5, -1px 1px 0 #9c51c5, 1px 1px 0 #9c51c5;
 }
 
-
+.list{
+  position: absolute;
+  top: 46px;
+  bottom: 0;
+  overflow: auto;
+  padding: 10px;
+}
+.list .tag{
+  width:50%;
+  display: inline-block;
+  margin: 5px 0;
+}
+.cal-btn{
+  background: none;
+  box-shadow: none;
+  position: absolute;
+  z-index: 9;
+  top: 4px;
+}
+.list-btn{
+  background: none;
+  box-shadow: none;
+  position: absolute;
+  z-index: 9;
+  right: 66px;
+  top: 6px;
+}

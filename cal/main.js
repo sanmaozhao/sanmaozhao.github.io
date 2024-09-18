@@ -18,17 +18,55 @@ try{
 Vue.use(vueTouchEvents,{
   swipeTolerance: 100,
 })
+
+events = events.map(e=>{
+  if(!e.class) e.class="food"
+  e.end = e.start
+  return e
+})
+
+const eventsStat = {}
+events.forEach(event=>{
+  const type = event.class.split(" ")[0]
+
+  if(!eventsStat[type]) eventsStat[type] ={}
+
+  const title = event.title||'s'
+  if(!eventsStat[type][title]){
+    eventsStat[type][title] ={
+      count:1
+    }
+  }else{
+    eventsStat[type][title].count ++
+  }
+})
+
+events.forEach(event=> event.title= (event.title||'') + (event.subTitle||''))
+
+
+const eventsStatArr = {}
+for (let [key, value] of Object.entries(eventsStat)) {
+
+  const events = []
+  for (let [name, event] of Object.entries(value)) {
+    events.push({
+      name,
+      count:event.count
+    })
+  }
+  eventsStatArr[key] = events.sort((a,b)=>b.count - a.count)
+}
+
 var app = new Vue({
   el: '#app',
   components: { VueCal: vuecal },
   data: {
     selectedDate:events[events.length-1].start,
     minDate:events[0].start,
-    events:events.map(e=>{
-      if(!e.class) e.class="food"
-      e.end = e.start
-      return e
-    })
+    events,
+    mode:'cal',
+    eventsStatArr,
+    selectedTab:'food'
   },
   methods:{
     swipeHandler(evt){
@@ -37,6 +75,9 @@ var app = new Vue({
       }else{
         this.$refs.cal.previous()
       }
+    },
+    switchMode(mode){
+      this.mode = mode
     }
   }
 })
