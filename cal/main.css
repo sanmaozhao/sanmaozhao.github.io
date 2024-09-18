@@ -110,7 +110,7 @@ body{
   box-shadow: none;
   position: absolute;
   z-index: 9;
-  top: 4px;
+  top: 3px;
 }
 .list-btn{
   background: none;
