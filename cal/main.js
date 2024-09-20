@@ -64,6 +64,7 @@ var app = new Vue({
   components: { VueCal: vuecal },
   data: {
     selectedDate:events[events.length-1].start,
+    maxDate:events[events.length-1].start,
     minDate:events[0].start,
     events,
     mode:'cal',

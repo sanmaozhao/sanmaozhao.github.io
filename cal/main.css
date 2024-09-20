@@ -8,6 +8,15 @@ body{
   overflow: visible;
   margin: 1px 0;
 }
+
+.vuecal__cell--selected {
+  background-color: #ebfdff66;
+}
+
+.vuecal__cell--selected:before {
+  border-color: #73bfcc80;
+}
+
 .vuecal--short-events .vuecal__event-title{
   overflow: visible;
   text-align: center;
