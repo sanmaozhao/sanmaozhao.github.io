@@ -34,6 +34,7 @@
         :events="events"
         click-to-navigate
         events-count-on-year-view
+        :on-event-click="onEventClick"
        >
       </vue-cal>
       <div class="list" v-else>
@@ -49,12 +50,13 @@
           </mt-tab-item>
         </mt-navbar>
         <div>
-          <div class="tag" v-for="event in eventsStatArr[selectedTab]" :key="event.name">
-            <span>{{event.name}}</span>
+          <div class="tag" v-for="(event,index) in eventsStatArr[selectedTab]" :key="event.name">
+            <span @click="eventsStatIndex=index,sheetVisible = true">{{event.name}}</span>
             <mt-badge v-if="event.count>1" size="small">{{event.count}}</mt-badge>
           </div>
         </div>   
       </div>
+      <mt-actionsheet :actions="eventsStatDates" v-model="sheetVisible" cancel-text=""></mt-actionsheet>
     </div>
     <script src="encrypted-data.js"></script>
     <script src="main.js"></script>
