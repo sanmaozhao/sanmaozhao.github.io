@@ -45,6 +45,7 @@ body{
   width: auto;
   background: transparent;
   font-size: 10px;
+  pointer-events: none;
 }
 .vuecal__event.s::after {
   content:"❤️";
