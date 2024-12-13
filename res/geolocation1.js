@@ -1,10 +1,11 @@
-navigator.geolocation.getCurrentPosition = function(a, b) {
-	a({
-		coords: {
-			latitude: 40.021061 + (Math.random()-0.5)*0.001,
-			longitude: 116.466126 + (Math.random()-0.5)*0.001
-		},
-		timestamp: Date.now()
-	})
-}
-document.body.firstElementChild.style.opacity = "1"
+navigator.geolocation.getCurrentPosition = function (a, b) {
+  setTimeout(function () {
+    a({
+      coords: {
+        latitude: 40.0203737 + (Math.random() - 0.5) * 0.001,
+        longitude: 116.465384 + (Math.random() - 0.5) * 0.001,
+      },
+      timestamp: Date.now(),
+    });
+  }, 100);
+};
