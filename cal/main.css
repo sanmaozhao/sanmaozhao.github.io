@@ -40,10 +40,6 @@ body{
   color: #e72222;
 }
 
-.vuecal__event.angry {
-  display: none;
-}
-
 .vuecal__event.film .vuecal__event-title{
   background-image: linear-gradient(#555, #555);
   border-radius: 0;
