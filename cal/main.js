@@ -16,7 +16,6 @@ try{
 }catch(e){}
 
 Vue.use(vueTouchEvents,{
-  swipeTolerance: 100,
 })
 
 events = events.map(e=>{
@@ -88,7 +87,7 @@ var app = new Vue({
     swipeHandler(evt){
       if(evt === 'left'){
         this.$refs.cal.next()
-      }else{
+      }else if(evt === 'right'){
         this.$refs.cal.previous()
       }
     },
