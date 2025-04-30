@@ -87,6 +87,11 @@ var app = new Vue({
       if(!this.searchText) return []
       return this.events.filter(e=>{
         return e.title?.includes(this.searchText) || e.subTitle?.includes(this.searchText)
+      }).map(e=>{
+        return {
+          dateText:e.start + ' ' + '日一二三四五六'.charAt(new Date(e.start).getDay()),
+          ...e
+        }
       })
     },
   },
