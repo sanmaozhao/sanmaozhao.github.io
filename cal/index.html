@@ -17,7 +17,8 @@
   <body>
     <div id="app">
       <mt-button class="list-btn" @click.native="switchMode('list')" size="small" v-if="mode==='cal'">列表</mt-button>
-      <mt-button class="cal-btn" @click.native="switchMode('cal')" icon="back" v-else></mt-button>
+      <mt-button class="search-btn" @click.native="switchMode('search')" size="small" v-if="mode==='cal'">搜索</mt-button>
+      <mt-button class="cal-btn" @click.native="switchMode('cal')" icon="back"  v-else></mt-button>
       <vue-cal
         ref="cal"
         v-if="mode==='cal'"
@@ -27,7 +28,7 @@
         :locale="'zh-cn'"
         :selected-date="selectedDate"
         :min-date="minDate"
-        :max-date="selectedDate"
+        :max-date="maxDate"
         active-view="month"
         :disable-views="['week', 'day']"
         events-on-month-view="short"
@@ -37,7 +38,7 @@
         :on-event-click="onEventClick"
        >
       </vue-cal>
-      <div class="list" v-else>
+      <div class="list" v-if="mode==='list'">
         <mt-navbar fixed v-model="selectedTab">
           <mt-tab-item id="food">
             美食
@@ -55,6 +56,17 @@
             <mt-badge v-if="event.count>1" size="small">{{event.count}}</mt-badge>
           </div>
         </div>   
+      </div>
+      <div class="search" v-if="mode==='search'">
+        <mt-search v-model="searchText" cancel-text="" autofocus >
+          <mt-cell
+            v-for="item in searchResult"
+            :title="item.title"
+            :value="item.start"
+            @click.native="()=>gotoDate({date:item.start})"
+            >
+          </mt-cell>
+        </mt-search>
       </div>
       <mt-actionsheet :actions="eventsStatDates" v-model="sheetVisible" cancel-text=""></mt-actionsheet>
     </div>

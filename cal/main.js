@@ -70,6 +70,7 @@ var app = new Vue({
     eventsStatArr,
     selectedTab:'food',
     eventsStatIndex:0,
+    searchText:'',
     sheetVisible:false
   },
   computed:{
@@ -81,7 +82,13 @@ var app = new Vue({
           method:this.gotoDate
         }
       })
-    }
+    },
+    searchResult(){
+      if(!this.searchText) return []
+      return this.events.filter(e=>{
+        return e.title?.includes(this.searchText) || e.subTitle?.includes(this.searchText)
+      })
+    },
   },
   methods:{
     swipeHandler(evt){
