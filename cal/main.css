@@ -94,13 +94,10 @@ body{
   background-position-x: -200%;
 }
 
-.vuecal__cell--has-events:has(.travel) .vuecal__event-title,.vuecal__cell--has-events:has(.travel) .vuecal__event{
+.vuecal__cell--has-events:has(.travel)  .vuecal__event:not(.film) .vuecal__event-title,.vuecal__cell--has-events:has(.travel) .vuecal__event:not(.film){
   background: none
 }
-.vuecal__cell--has-events:has(.travel)  .vuecal__event-title{
-  text-shadow: 1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
 
-}
 .vuecal__cell--has-events:has(.travel) .food .vuecal__event-title{
   text-shadow: 1px -1px 0 #157bfb, 1px -1px 0 #157bfb, -1px 1px 0 #157bfb, 1px 1px 0 #157bfb;
 }
