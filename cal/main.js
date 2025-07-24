@@ -42,7 +42,12 @@ events.forEach(event=>{
   }
 })
 
-events.forEach(event=> event.title= (event.title||'') + (event.subTitle||''))
+events.forEach(event=> {
+  event.title= (event.title||'') + (event.subTitle||'')
+  if(event.title.length === 5 && /^[\u4e00-\u9fa5]+$/.test(event.title)){
+    event.class += ' text-length-5'
+  }
+})
 
 const eventsStatArr = {}
 for (let [key, value] of Object.entries(eventsStat)) {

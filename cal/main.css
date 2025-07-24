@@ -148,3 +148,8 @@ body{
 .mint-searchbar-inner{
   margin-left: 30px;
 }
+
+.text-length-5 .vuecal__event-title{
+  font-size: 12px;
+  letter-spacing: -0.5px;
+}
