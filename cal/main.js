@@ -63,6 +63,15 @@ for (let [key, value] of Object.entries(eventsStat)) {
   eventsStatArr[key] = events.sort((a,b)=>b.count - a.count)
 }
 
+const geometries = events.filter(e=>e.coord).map(e=>{
+  const [lat,lng] = e.coord.split(',').map(n=>parseFloat(n))
+  return {
+    position: { lat, lng },
+    content: e.title
+  }
+})
+console.log(geometries)
+
 var app = new Vue({
   el: '#app',
   components: { VueCal: vuecal },
@@ -76,7 +85,11 @@ var app = new Vue({
     selectedTab:'food',
     eventsStatIndex:0,
     searchText:'',
-    sheetVisible:false
+    sheetVisible:false,
+    mapLoaded:false,
+  },
+  created(){
+    // this.switchMode('map')
   },
   computed:{
     eventsStatDates(){
@@ -110,6 +123,9 @@ var app = new Vue({
     },
     switchMode(mode){
       this.mode = mode
+      if(mode==='map'){
+        this.loadMap()
+      }
     },
     gotoDate(item){
       this.sheetVisible = false
@@ -123,6 +139,38 @@ var app = new Vue({
       })
       this.selectedTab = type
       setTimeout(()=>this.sheetVisible = true,10)
+    },
+    loadMap(){
+
+      const createMap =()=>{
+        const map = new TMap.Map("map-container", {      
+          zoom: 10,
+          center: new TMap.LatLng(39.984104, 116.307503)
+        });
+
+          // 创建点聚合实例
+        const markerCluster = new TMap.MarkerCluster({
+          id: 'cluster',
+          map: map,
+          enableDefaultStyle: true, // 启用默认样式
+          minimumClusterSize: 2, // 形成聚合簇的最小个数
+          geometries, // 点标记数据
+          zoomOnClick: true, // 点击簇时放大至簇内点分离
+          gridSize: 60, // 聚合算法的可聚合距离
+          averageCenter: false, // 每个聚和簇的中心是否应该是聚类中所有标记的平均值
+          maxZoom: 10 // 采用聚合策略的最大缩放级别
+        });
+      }
+      if(this.mapLoaded){
+        return
+      }
+      //创建script标签，并设置src属性添加到body中
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "https://map.qq.com/api/gljs?v=1.exp&key=F7WBZ-4NWHP-D6ZDH-LURHL-4P6ME-LUF46&callback=";
+      script.onload = createMap;
+      document.body.appendChild(script);
+      this.mapLoaded = true
     }
   }
 })

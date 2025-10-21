@@ -121,7 +121,7 @@ body{
   background: none;
   box-shadow: none;
   position: absolute;
-  z-index: 9;
+  z-index: 9999;
   top: 3px;
 }
 .list-btn{
@@ -129,10 +129,18 @@ body{
   box-shadow: none;
   position: absolute;
   z-index: 9;
-  right: 70px;
+  right: 90px;
   top: 6px;
 }
 .search-btn{
+  background: none;
+  box-shadow: none;
+  position: absolute;
+  z-index: 9;
+  right: 40px;
+  top: 6px;
+}
+.map-btn{
   background: none;
   box-shadow: none;
   position: absolute;
@@ -152,4 +160,8 @@ body{
 .text-length-5 .vuecal__event-title{
   font-size: 12px;
   letter-spacing: -0.5px;
+}
+
+#map-container {
+  height: 100vh;
 }
