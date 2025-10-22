@@ -136,87 +136,61 @@ var app = new Vue({
       const createMap =()=>{
         const map = new TMap.Map("map-container", {      
           zoom: 5,
-          center: new TMap.LatLng(34.80, 112.00)
+          viewMode: '2D',
+          showControl: false,
+          center: new TMap.LatLng(33, 113)
         });
 
         const geometries = events.filter(e=>e.coord).map(e=>{
         const [lng,lat] = e.coord.split(',').map(n=>parseFloat(n))
-          return {
-            position: new TMap.LatLng(lat, lng),
-            content: e.title,
-            properties: { 
+          const properties = { 
               date: e.start,
               content: e.title,
+              rank:e.class.replace('text-length-5','').trim().length
             }
+          return {
+            position: new TMap.LatLng(lat, lng),
+            content: properties.content,
+            rank: properties.rank,
+            properties
           }
         })
 
-          // 创建点聚合实例
-        const markerCluster = new TMap.MarkerCluster({
-          id: 'cluster',
-          enableDefaultStyle: true,
-          gridSize:5,
-          map: map,
-          geometries, // 点标记数据
-        });
-
-        var clusterBubbleList = [];
-        var markerGeometries = [];
-        var marker = null;
-
-        // 监听聚合簇变化
-        markerCluster.on('cluster_changed', function (e) {
-          markerGeometries = [];
-
-          // 根据新的聚合簇数组生成新的覆盖物和点标记图层
-          var clusters = markerCluster.getClusters();
-          clusters.forEach(function (item) {
-            if (item.geometries.length > 1) {
-
-            } else {
-              markerGeometries.push({
-                position: item.center,
-                content: item.geometries[0].content,
-                properties: { 
-                  ...item.geometries[0].properties
-                }
-              });
-            }
-          });
-
-          if (marker) {
-            // 已创建过点标记图层，直接更新数据
-            marker.setGeometries(markerGeometries);
-          } else {
-            // 创建点标记图层
-            marker = new TMap.MultiLabel({
-              map,
-              // collisionOptions: {
-              //   sameSource: true,
-              // },
-              styles: {
-                default: new TMap.LabelStyle({
-                  color: '#3777FF', // 颜色属性
-                  offset: { x: -8, y: 2 }, // 文字偏移属性单位为像素
-                  alignment: 'center', // 文字水平对齐属性
-                  verticalAlignment: 'middle', // 文字垂直对齐属性
-                }),
-              },
-              geometries: markerGeometries
-            });
-            marker.on('click',(evt)=>{
-              const geometry = evt.geometry
-              let content = geometry.content
-              if(content === geometry.properties.content){
-                content = geometry.properties.content + " " + geometry.properties.date.substr(2)
-              }else{
-                content = geometry.properties.content
-              }
-              geometry.content = content
-              marker.updateGeometries([geometry])
-            })
+        const marker = new TMap.MultiMarker({
+          map,
+          geometries,
+          collisionOptions: {
+            sameSource: true,
+          },
+          styles: {
+            // 点标记样式
+            default: new TMap.MarkerStyle({
+              width: 15, // 样式宽
+              height: 22, // 样式高
+              offset: { x: 0, y: 18 }, // 描点位置
+              wrapOptions:{},
+              color: '#0000FF',
+              strokeColor: '#FFFFFF',
+              strokeWidth: 2,
+              size:16,
+            }),
+          },
+        })
+        marker.on('click',(evt)=>{
+          const geometry = evt.geometry
+          let content = geometry.content
+          let rank
+          if(content === geometry.properties.content){
+            content = geometry.properties.content + "\n" + geometry.properties.date.substr(2)
+            rank = 99
+          }else{
+            content = geometry.properties.content
+            rank = geometry.properties.rank
           }
-        });
+          geometry.content = content
+          geometry.rank = rank
+          marker.updateGeometries([geometry])
+        })
 
       }
       if(this.mapLoaded){
