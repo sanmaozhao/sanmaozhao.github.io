@@ -63,15 +63,6 @@ for (let [key, value] of Object.entries(eventsStat)) {
   eventsStatArr[key] = events.sort((a,b)=>b.count - a.count)
 }
 
-const geometries = events.filter(e=>e.coord).map(e=>{
-  const [lat,lng] = e.coord.split(',').map(n=>parseFloat(n))
-  return {
-    position: { lat, lng },
-    content: e.title
-  }
-})
-console.log(geometries)
-
 var app = new Vue({
   el: '#app',
   components: { VueCal: vuecal },
@@ -144,22 +135,89 @@ var app = new Vue({
 
       const createMap =()=>{
         const map = new TMap.Map("map-container", {      
-          zoom: 10,
-          center: new TMap.LatLng(39.984104, 116.307503)
+          zoom: 5,
+          center: new TMap.LatLng(34.80, 112.00)
         });
+
+        const geometries = events.filter(e=>e.coord).map(e=>{
+        const [lng,lat] = e.coord.split(',').map(n=>parseFloat(n))
+          return {
+            position: new TMap.LatLng(lat, lng),
+            content: e.title,
+            properties: { 
+              date: e.start,
+              content: e.title,
+            }
+          }
+        })
 
           // 创建点聚合实例
         const markerCluster = new TMap.MarkerCluster({
           id: 'cluster',
+          enableDefaultStyle: true,
+          gridSize:5,
           map: map,
-          enableDefaultStyle: true, // 启用默认样式
-          minimumClusterSize: 2, // 形成聚合簇的最小个数
           geometries, // 点标记数据
-          zoomOnClick: true, // 点击簇时放大至簇内点分离
-          gridSize: 60, // 聚合算法的可聚合距离
-          averageCenter: false, // 每个聚和簇的中心是否应该是聚类中所有标记的平均值
-          maxZoom: 10 // 采用聚合策略的最大缩放级别
         });
+
+        var clusterBubbleList = [];
+        var markerGeometries = [];
+        var marker = null;
+
+        // 监听聚合簇变化
+        markerCluster.on('cluster_changed', function (e) {
+          markerGeometries = [];
+
+          // 根据新的聚合簇数组生成新的覆盖物和点标记图层
+          var clusters = markerCluster.getClusters();
+          clusters.forEach(function (item) {
+            if (item.geometries.length > 1) {
+
+            } else {
+              markerGeometries.push({
+                position: item.center,
+                content: item.geometries[0].content,
+                properties: { 
+                  ...item.geometries[0].properties
+                }
+              });
+            }
+          });
+
+          if (marker) {
+            // 已创建过点标记图层，直接更新数据
+            marker.setGeometries(markerGeometries);
+          } else {
+            // 创建点标记图层
+            marker = new TMap.MultiLabel({
+              map,
+              // collisionOptions: {
+              //   sameSource: true,
+              // },
+              styles: {
+                default: new TMap.LabelStyle({
+                  color: '#3777FF', // 颜色属性
+                  offset: { x: -8, y: 2 }, // 文字偏移属性单位为像素
+                  alignment: 'center', // 文字水平对齐属性
+                  verticalAlignment: 'middle', // 文字垂直对齐属性
+                }),
+              },
+              geometries: markerGeometries
+            });
+            marker.on('click',(evt)=>{
+              const geometry = evt.geometry
+              let content = geometry.content
+              if(content === geometry.properties.content){
+                content = geometry.properties.content + " " + geometry.properties.date.substr(2)
+              }else{
+                content = geometry.properties.content
+              }
+              geometry.content = content
+              marker.updateGeometries([geometry])
+            })
+          }
+        });
+
       }
       if(this.mapLoaded){
         return
