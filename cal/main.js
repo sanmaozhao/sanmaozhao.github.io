@@ -80,7 +80,7 @@ var app = new Vue({
     mapLoaded:false,
   },
   created(){
-    // this.switchMode('map')
+    if(location.href.includes('debug=1')) this.switchMode('map')
   },
   computed:{
     eventsStatDates(){
@@ -146,7 +146,7 @@ var app = new Vue({
           const properties = { 
               date: e.start,
               content: e.title,
-              rank:e.class.replace('text-length-5','').trim().length
+              rank:e.rank||e.class.replace('text-length-5','').trim().length
             }
           return {
             position: new TMap.LatLng(lat, lng),
@@ -158,25 +158,36 @@ var app = new Vue({
 
         const marker = new TMap.MultiMarker({
           map,
+          geometries: geometries.map(g=>({position:g.position})),
+          styles: {
+            // 点标记样式
+            default: new TMap.MarkerStyle({
+              width: 15, // 样式宽
+              height: 22, // 样式高
+            }),
+          },
+        })
+
+        const label = new TMap.MultiLabel({
+          map,
           geometries,
           collisionOptions: {
             sameSource: true,
           },
           styles: {
             // 点标记样式
-            default: new TMap.MarkerStyle({
-              width: 15, // 样式宽
-              height: 22, // 样式高
-              offset: { x: 0, y: 18 }, // 描点位置
-              wrapOptions:{},
+            default: new TMap.LabelStyle({
+                            wrapOptions:{},
               color: '#0000FF',
               strokeColor: '#FFFFFF',
               strokeWidth: 2,
               size:16,
+              offset: { x: 0, y: 8 }, // 描点位置
             }),
           },
         })
-        marker.on('click',(evt)=>{
+
+        label.on('click',(evt)=>{
           const geometry = evt.geometry
           let content = geometry.content
           let rank
@@ -189,7 +200,7 @@ var app = new Vue({
           }
           geometry.content = content
           geometry.rank = rank
-          marker.updateGeometries([geometry])
+          label.updateGeometries([geometry])
         })
 
       }
