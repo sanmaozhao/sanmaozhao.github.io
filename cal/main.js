@@ -147,7 +147,10 @@ var app = new Vue({
         });
 
         const geometries = events.filter(e=>e.coord).map(e=>{
-          const [lng,lat] = e.coord.split(',').map(n=>parseFloat(n))
+          let [lng,lat] = e.coord.split(',').map(n=>parseFloat(n))
+          if(lng<lat){
+            [lng,lat] = [lat,lng]
+          }
           const properties = { 
               date: e.start,
               content: e.title,
