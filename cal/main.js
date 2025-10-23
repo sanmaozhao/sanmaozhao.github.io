@@ -140,7 +140,7 @@ var app = new Vue({
 
       const createMap =()=>{
         const map = new TMap.Map("map-container", {      
-          zoom: 4.8,
+          zoom: 4.9,
           viewMode: '2D',
           showControl: false,
           center: new TMap.LatLng(33, 113)
