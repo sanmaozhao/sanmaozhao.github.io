@@ -256,8 +256,12 @@ var app = new Vue({
             styles: {
               'default': new TMap.PolylineStyle({
                 'color': ['#577833','#8C34B5','#3777FF','#EA1E63'][color-1], //线填充色
-                // 'width': 6, //折线宽度
+                // 'width': 4, //折线宽度
                 showArrow: true,
+                arrowOptions:{
+                  height:8,
+                  animSpeed:10,
+                },
               })
             },
             //折线数据定义
