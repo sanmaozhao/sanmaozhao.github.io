@@ -154,6 +154,7 @@ var app = new Vue({
           const properties = { 
               date: e.start,
               content: e.title,
+              styleId: e.class.startsWith('food')?'food':'default',
               rank:e.rank||e.class.replace('text-length-5','').trim().length
             }
           return {
@@ -176,62 +177,149 @@ var app = new Vue({
               geometries.push({
                 position: new TMap.LatLng(path.to.coord.split(',')[1], path.to.coord.split(',')[0]),
                 content: path.to.name,
+                rank:10,
                 properties:{                
                   content: path.to.name,
                   date: path.to.date,
+                  rank:10,
                 }
               })
             }
           })
         }) 
 
-        const marker = new TMap.MultiMarker({
-          map,
-          geometries: geometries.map(g=>({position:g.position})),
-          styles: {
-            // 点标记样式
-            default: new TMap.MarkerStyle({
-              width: 15, // 样式宽
-              height: 22, // 样式高
-            }),
-          },
-        })
+        // 创建点聚合实例
+        const markerCluster = new TMap.MarkerCluster({
+          id: 'cluster',
+          enableDefaultStyle: false,
+          gridSize:25,
+          maxZoom:18,
+          map: map,
+          geometries:geometries, // 点标记数据
+        });
 
-        const label = new TMap.MultiLabel({
-          map,
-          geometries,
-          collisionOptions: {
-            sameSource: true,
-          },
-          styles: {
-            // 点标记样式
-            default: new TMap.LabelStyle({
-              wrapOptions:{},
-              color: '#0000FF',
-              strokeColor: '#FFFFFF',
-              strokeWidth: 2,
-              size:16,
-              offset: { x: 0, y: 8 }, // 描点位置
-            }),
-          },
-        })
+        var marker,marker2 = null;
+        //初始化infoWindow
+        var infoWindow = new TMap.InfoWindow({
+          map: map,
+          position: new TMap.LatLng(39.984104, 116.307503),
+          offset: { x: 0, y: -12 } //设置信息窗相对position偏移像素
+        });
+        infoWindow.close();//初始关闭信息窗关闭
 
-        label.on('click',(evt)=>{
-          const geometry = evt.geometry
-          let content = geometry.content
-          let rank
-          if(content === geometry.properties.content){
-            content = geometry.properties.content + "\n" + geometry.properties.date.substr(2)
-            rank = 99
-          }else{
-            content = geometry.properties.content
-            rank = geometry.properties.rank
+        // 监听聚合簇变化
+        markerCluster.on('cluster_changed', function (e) {
+          var clusterBubbleList = [];
+          var markerGeometries = [];
+          infoWindow.close()
+
+          // 根据新的聚合簇数组生成新的覆盖物和点标记图层
+          var clusters = markerCluster.getClusters();
+          clusters.forEach(function (item) {
+            if (item.geometries.length > 1) {
+              // 找到 geometries 数组中rank最大的元素
+              const maxRankGeometry = item.geometries.reduce((max, geometry) => {
+                return geometry.rank > max.rank ? geometry : max;
+              }, item.geometries[0]);
+
+              clusterBubbleList.push({
+                position: item.center,
+                content: maxRankGeometry.content,                
+                properties: { 
+                  count: item.geometries.length,
+                  styleId:maxRankGeometry.properties.styleId,
+                  bounds: item.bounds,
+                }
+              })
+            } else {
+              markerGeometries.push(item.geometries[0]);
+            }
+          });
+          
+          const allMarker = clusterBubbleList.concat(markerGeometries).map(item=>{
+            item.styleId = item.properties.styleId
+            return item
+          });
+
+          if (marker) {
+            // 已创建过点标记图层，直接更新数据
+            marker.setGeometries(allMarker);
+          } else {
+            // 创建点标记图层
+            marker = new TMap.MultiLabel({
+              map,
+              collisionOptions: {
+                // sameSource: true,
+              },
+              styles: {
+                // 点标记样式
+                default: new TMap.LabelStyle({
+                  wrapOptions:{},
+                  color: '#0000FF',
+                  strokeColor: '#FFFFFF',
+                  strokeWidth: 3,
+                  size:16,
+                }),
+                food: new TMap.LabelStyle({
+                  wrapOptions:{},
+                  color: '#800080',
+                  strokeColor: '#FFFFFF',
+                  strokeWidth: 3,
+                  size:16,
+                })
+              },
+              geometries: allMarker
+            });
           }
-          geometry.content = content
-          geometry.rank = rank
-          label.updateGeometries([geometry])
-        })
 
+          const markerForCluster = clusterBubbleList.map(item=>{
+            return {
+              position: item.position,
+              content:item.properties.count > 9?'+':item.properties.count.toString(),
+              properties: item.properties
+            }
+          })
+          
+          if (marker2) {
+            // 已创建过点标记图层，直接更新数据
+            marker2.setGeometries(markerForCluster);
+          } else {
+            // 创建点标记图层
+            marker2 = new TMap.MultiLabel({
+              map,
+              styles: {
+                // 点标记样式
+                default: new TMap.LabelStyle({
+                  color: '#FFFFFF',
+                  backgroundColor:"#F24E4E",
+                  width:14,
+                  height:14,
+                  borderRadius: 8,
+                  size:12,
+                  offset: { x: 0, y: 15 }, 
+                })
+              },
+              geometries: markerForCluster
+            });
+ 
+            const clickToZoom = (evt)=>{
+              const geometry = evt.geometry
+              if(geometry.properties?.bounds){
+                map.fitBounds(new TMap.LatLngBounds(geometry.properties.bounds._sw,geometry.properties.bounds._ne))
+              }else{
+                //设置infoWindow
+                infoWindow.open(); //打开信息窗
+                infoWindow.setPosition(evt.geometry.position);//设置信息窗位置
+                infoWindow.setContent(evt.geometry.properties.date);//设置信息窗内容
+              }
+            }
+
+            marker.on('click',clickToZoom)
+            marker2.on('click',clickToZoom)
+          }
+        });
+
+ 
         function display_polyline(coords,color){
           
           //坐标解压（返回的点串坐标，通过前向差分进行压缩）
@@ -264,6 +352,7 @@ var app = new Vue({
                 },
               })
             },
+            zIndex:99,
             //折线数据定义
             geometries: [{'paths': pl}]
           });
