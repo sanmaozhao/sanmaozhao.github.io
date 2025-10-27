@@ -17,7 +17,9 @@ try{
   const str2 = bytes2.toString(CryptoJS.enc.Utf8)
   routes = JSON.parse(str2);
   localStorage.setItem('lmCalKey',key)
-}catch(e){}
+}catch(e){
+  localStorage.removeItem('lmCalKey')
+}
 
 Vue.use(vueTouchEvents,{
 })
