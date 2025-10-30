@@ -194,12 +194,12 @@ var app = new Vue({
         const markerCluster = new TMap.MarkerCluster({
           id: 'cluster',
           enableDefaultStyle: false,
-          gridSize:25,
+          gridSize:30,
           maxZoom:18,
           map: map,
           geometries:geometries, // 点标记数据
         });
-
+        
         var marker,marker2 = null;
         //初始化infoWindow
         var infoWindow = new TMap.InfoWindow({
@@ -217,6 +217,7 @@ var app = new Vue({
 
           // 根据新的聚合簇数组生成新的覆盖物和点标记图层
           var clusters = markerCluster.getClusters();
+   
           clusters.forEach(function (item) {
             if (item.geometries.length > 1) {
               // 找到 geometries 数组中rank最大的元素
