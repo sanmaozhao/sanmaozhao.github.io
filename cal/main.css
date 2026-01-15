@@ -202,5 +202,6 @@ body{
 
 .flipper .front {
   transform: rotateY(180deg);
+  z-index: 2;
 }
 
