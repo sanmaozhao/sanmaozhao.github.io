@@ -19,62 +19,70 @@
   </head>
   <body>
     <div id="app">
-      <mt-button class="map-btn" @click.native="switchMode('map')" size="small" v-if="mode==='cal'">地图</mt-button>
-      <mt-button class="list-btn" @click.native="switchMode('list')" size="small" v-if="mode==='cal'">列表</mt-button>
-      <mt-button class="search-btn" @click.native="switchMode('search')" size="small" v-if="mode==='cal'">搜索</mt-button>
-      <mt-button class="cal-btn" @click.native="switchMode('cal')" icon="back"  v-else></mt-button>
-      <vue-cal
-        ref="cal"
-        v-if="mode==='cal'"
-        v-touch:swipe="swipeHandler"
-        class="cal"
-        hide-view-selector
-        :locale="'zh-cn'"
-        :selected-date="selectedDate"
-        :min-date="minDate"
-        :max-date="maxDate"
-        active-view="month"
-        :disable-views="['week', 'day']"
-        events-on-month-view="short"
-        :events="events"
-        click-to-navigate
-        events-count-on-year-view
-        :on-event-click="onEventClick"
-       >
-      </vue-cal>
-      <div class="list" v-if="mode==='list'">
-        <mt-navbar fixed v-model="selectedTab">
-          <mt-tab-item id="food">
-            美食
-          </mt-tab-item>
-          <mt-tab-item id="film">
-            电影
-          </mt-tab-item>
-          <mt-tab-item id="myevent">
-            其他
-          </mt-tab-item>
-        </mt-navbar>
-        <div>
-          <div class="tag" v-for="(event,index) in eventsStatArr[selectedTab]" :key="event.name">
-            <span @click="eventsStatIndex=index,sheetVisible = true">{{event.name}}</span>
-            <mt-badge v-if="event.count>1" size="small">{{event.count}}</mt-badge>
-          </div>
-        </div>   
-      </div>
-      <div class="search" v-if="mode==='search'">
-        <mt-search v-model="searchText" cancel-text="" autofocus >
-          <mt-cell
-            v-for="item in searchResult"
-            :key="item.start"
-            :title="item.title"
-            :value="item.dateText"
-            @click.native="()=>gotoDate({date:item.start})"
+      <mt-button class="cal-btn" @click.native="switchMode('cal')" icon="back"   v-if="mode!=='cal'"></mt-button>
+      <div class="flip-container" :class="{ flipped: mode === 'map' }">
+        <div class="flipper">
+          <div class="front">
+            <mt-button class="map-btn" @click.native="switchMode('map')" size="small" v-if="mode==='cal'">地图</mt-button>
+            <mt-button class="list-btn" @click.native="switchMode('list')" size="small" v-if="mode==='cal'">列表</mt-button>
+            <mt-button class="search-btn" @click.native="switchMode('search')" size="small" v-if="mode==='cal'">搜索</mt-button>
+            <vue-cal
+              ref="cal"
+              v-show="mode === 'cal' || mode === 'map'"
+              v-touch:swipe="swipeHandler"
+              class="cal"
+              hide-view-selector
+              :locale="'zh-cn'"
+              :selected-date="selectedDate"
+              :min-date="minDate"
+              :max-date="maxDate"
+              active-view="month"
+              :disable-views="['week', 'day']"
+              events-on-month-view="short"
+              :events="events"
+              click-to-navigate
+              events-count-on-year-view
+              :on-event-click="onEventClick"
             >
-          </mt-cell>
-        </mt-search>
-      </div>
-      <div class="map" v-show="mode==='map'">
-        <div id="map-container"></div>
+            </vue-cal>
+            <div class="list" v-if="mode==='list'">
+              <mt-navbar fixed v-model="selectedTab">
+                <mt-tab-item id="food">
+                  美食
+                </mt-tab-item>
+                <mt-tab-item id="film">
+                  电影
+                </mt-tab-item>
+                <mt-tab-item id="myevent">
+                  其他
+                </mt-tab-item>
+              </mt-navbar>
+              <div>
+                <div class="tag" v-for="(event,index) in eventsStatArr[selectedTab]" :key="event.name">
+                  <span @click="eventsStatIndex=index,sheetVisible = true">{{event.name}}</span>
+                  <mt-badge v-if="event.count>1" size="small">{{event.count}}</mt-badge>
+                </div>
+              </div>   
+            </div>
+            <div class="search" v-if="mode==='search'">
+              <mt-search v-model="searchText" cancel-text="" autofocus >
+                <mt-cell
+                  v-for="item in searchResult"
+                  :key="item.start"
+                  :title="item.title"
+                  :value="item.dateText"
+                  @click.native="()=>gotoDate({date:item.start})"
+                  >
+                </mt-cell>
+              </mt-search>
+            </div>
+          </div>
+          <div class="back">
+            <div class="map" v-show="mode==='map'">
+              <div id="map-container"></div>
+            </div>
+          </div>
+        </div>
       </div>
       <mt-actionsheet :actions="eventsStatDates" v-model="sheetVisible" cancel-text=""></mt-actionsheet>
     </div>
